@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33122.133
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{C9674DCB-5085-4A16-B785-4C70DD1589BD}") = "Extract_Transform_Load", "Extract_Transform_Load\Extract_Transform_Load.dtproj", "{E42B77C0-5CD2-4095-86BA-BFA339C09B4D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E42B77C0-5CD2-4095-86BA-BFA339C09B4D}.Development|Default.ActiveCfg = Development
+		{E42B77C0-5CD2-4095-86BA-BFA339C09B4D}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9CB5A204-8C91-4EEB-8FDD-CA72ACEF70F7}
+	EndGlobalSection
+EndGlobal

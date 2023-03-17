@@ -11,8 +11,8 @@
   DTS:LocaleID="1043"
   DTS:ObjectName="1  Data Sources to RAW db"
   DTS:PackageType="5"
-  DTS:VersionBuild="10"
-  DTS:VersionGUID="{A9910C25-8232-4F97-8F97-8C84DCED4907}">
+  DTS:VersionBuild="13"
+  DTS:VersionGUID="{3F7BBF3C-D8E5-4A3D-8818-6301F6FAE06A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -47,7 +47,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[RAW_Ship]</property>
+                  name="OpenRowset">[dbo].[Raw_Ship]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -104,12 +104,6 @@
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Load Ship data\RAW_Ship (Kramse_RAW MSSQLDB).Inputs[OLE DB Destination Input].Columns[VS_Shipid]"
-                      cachedDataType="i4"
-                      cachedName="VS_Shipid"
-                      externalMetadataColumnId="Package\Load Ship data\RAW_Ship (Kramse_RAW MSSQLDB).Inputs[OLE DB Destination Input].ExternalColumns[VS_Shipid]"
-                      lineageId="Package\Load Ship data\Ship (Access database).Outputs[OLE DB Source Output].Columns[VS_Shipid]" />
-                    <inputColumn
                       refId="Package\Load Ship data\RAW_Ship (Kramse_RAW MSSQLDB).Inputs[OLE DB Destination Input].Columns[Sh_Shipname]"
                       cachedDataType="wstr"
                       cachedLength="50"
@@ -117,23 +111,11 @@
                       externalMetadataColumnId="Package\Load Ship data\RAW_Ship (Kramse_RAW MSSQLDB).Inputs[OLE DB Destination Input].ExternalColumns[Sh_Shipname]"
                       lineageId="Package\Load Ship data\Ship (Access database).Outputs[OLE DB Source Output].Columns[Sh_Shipname]" />
                     <inputColumn
-                      refId="Package\Load Ship data\RAW_Ship (Kramse_RAW MSSQLDB).Inputs[OLE DB Destination Input].Columns[Sh_MaxTEU]"
-                      cachedDataType="i4"
-                      cachedName="Sh_MaxTEU"
-                      externalMetadataColumnId="Package\Load Ship data\RAW_Ship (Kramse_RAW MSSQLDB).Inputs[OLE DB Destination Input].ExternalColumns[Sh_MaxTEU]"
-                      lineageId="Package\Load Ship data\Ship (Access database).Outputs[OLE DB Source Output].Columns[Sh_MaxTEU]" />
-                    <inputColumn
                       refId="Package\Load Ship data\RAW_Ship (Kramse_RAW MSSQLDB).Inputs[OLE DB Destination Input].Columns[Sh_SpeedInKnots]"
                       cachedDataType="i4"
                       cachedName="Sh_SpeedInKnots"
                       externalMetadataColumnId="Package\Load Ship data\RAW_Ship (Kramse_RAW MSSQLDB).Inputs[OLE DB Destination Input].ExternalColumns[Sh_SpeedInKnots]"
                       lineageId="Package\Load Ship data\Ship (Access database).Outputs[OLE DB Source Output].Columns[Sh_SpeedInKnots]" />
-                    <inputColumn
-                      refId="Package\Load Ship data\RAW_Ship (Kramse_RAW MSSQLDB).Inputs[OLE DB Destination Input].Columns[Sh_SpeedInKm_H]"
-                      cachedDataType="i4"
-                      cachedName="Sh_SpeedInKm_H"
-                      externalMetadataColumnId="Package\Load Ship data\RAW_Ship (Kramse_RAW MSSQLDB).Inputs[OLE DB Destination Input].ExternalColumns[Sh_SpeedInKm_H]"
-                      lineageId="Package\Load Ship data\Ship (Access database).Outputs[OLE DB Source Output].Columns[Sh_SpeedInKm_H]" />
                     <inputColumn
                       refId="Package\Load Ship data\RAW_Ship (Kramse_RAW MSSQLDB).Inputs[OLE DB Destination Input].Columns[Sh_Country]"
                       cachedDataType="wstr"
@@ -163,26 +145,14 @@
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Load Ship data\RAW_Ship (Kramse_RAW MSSQLDB).Inputs[OLE DB Destination Input].ExternalColumns[VS_Shipid]"
-                      dataType="i4"
-                      name="VS_Shipid" />
-                    <externalMetadataColumn
                       refId="Package\Load Ship data\RAW_Ship (Kramse_RAW MSSQLDB).Inputs[OLE DB Destination Input].ExternalColumns[Sh_Shipname]"
                       dataType="wstr"
                       length="50"
                       name="Sh_Shipname" />
                     <externalMetadataColumn
-                      refId="Package\Load Ship data\RAW_Ship (Kramse_RAW MSSQLDB).Inputs[OLE DB Destination Input].ExternalColumns[Sh_MaxTEU]"
-                      dataType="i4"
-                      name="Sh_MaxTEU" />
-                    <externalMetadataColumn
                       refId="Package\Load Ship data\RAW_Ship (Kramse_RAW MSSQLDB).Inputs[OLE DB Destination Input].ExternalColumns[Sh_SpeedInKnots]"
-                      dataType="i4"
+                      dataType="ui1"
                       name="Sh_SpeedInKnots" />
-                    <externalMetadataColumn
-                      refId="Package\Load Ship data\RAW_Ship (Kramse_RAW MSSQLDB).Inputs[OLE DB Destination Input].ExternalColumns[Sh_SpeedInKm_H]"
-                      dataType="i4"
-                      name="Sh_SpeedInKm_H" />
                     <externalMetadataColumn
                       refId="Package\Load Ship data\RAW_Ship (Kramse_RAW MSSQLDB).Inputs[OLE DB Destination Input].ExternalColumns[Sh_Country]"
                       dataType="wstr"
@@ -194,12 +164,24 @@
                       name="Sh_Yearcost" />
                     <externalMetadataColumn
                       refId="Package\Load Ship data\RAW_Ship (Kramse_RAW MSSQLDB).Inputs[OLE DB Destination Input].ExternalColumns[Sh_Length]"
-                      dataType="i4"
+                      dataType="i2"
                       name="Sh_Length" />
                     <externalMetadataColumn
                       refId="Package\Load Ship data\RAW_Ship (Kramse_RAW MSSQLDB).Inputs[OLE DB Destination Input].ExternalColumns[Sh_Width]"
-                      dataType="i4"
+                      dataType="ui1"
                       name="Sh_Width" />
+                    <externalMetadataColumn
+                      refId="Package\Load Ship data\RAW_Ship (Kramse_RAW MSSQLDB).Inputs[OLE DB Destination Input].ExternalColumns[VS_ShipId]"
+                      dataType="i4"
+                      name="VS_ShipId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Ship data\RAW_Ship (Kramse_RAW MSSQLDB).Inputs[OLE DB Destination Input].ExternalColumns[Sh_MaxTeu]"
+                      dataType="i4"
+                      name="Sh_MaxTeu" />
+                    <externalMetadataColumn
+                      refId="Package\Load Ship data\RAW_Ship (Kramse_RAW MSSQLDB).Inputs[OLE DB Destination Input].ExternalColumns[Sh_SpeedInKm]"
+                      dataType="ui1"
+                      name="Sh_SpeedInKm" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -509,7 +491,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{C4B1AB01-C338-4FC0-8246-5B051F4FF5B4}"
-          SQLTask:SqlStatementSource="DELETE FROM RAW_Item;&#xA;DELETE FROM RAW_Ship;&#xA;DELETE FROM RAW_Port;&#xA;DELETE FROM RAW_Voyage;&#xA;DELETE FROM RAW_VoyagePort;&#xA;DELETE FROM RAW_Shipment;&#xA;DELETE FROM RAW_ShipmentDetails;&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="DELETE FROM Raw_Consignor;&#xA;DELETE FROM Raw_Containers;&#xA;DELETE FROM Raw_Item;&#xA;DELETE FROM Raw_Port;&#xA;DELETE FROM Raw_Ship;&#xA;DELETE FROM Raw_Shipment;&#xA;DELETE FROM Raw_ShipmentDetail;&#xA;DELETE FROM Raw_Voyage;&#xA;DELETE FROM Raw_VoyagePort;&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -580,21 +562,21 @@
         <NodeLayout
           Size="253,42"
           Id="Package\Load Ship data\RAW_Ship (Kramse_RAW MSSQLDB)"
-          TopLeft="283,267" />
+          TopLeft="283,268" />
         <EdgeLayout
           Id="Package\Load Ship data.Paths[OLE DB Source Output]"
           TopLeft="406.75,152">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,115"
+              EndConnector="0,116"
               Start="0,0"
-              End="0,107.5">
+              End="0,108.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,107.5" />
+                    End="0,108.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -607,7 +589,7 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Ship data\Ship (Access database)">
+    design-time-name="Package\Load Ship data\RAW_Ship (Kramse_RAW MSSQLDB)">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -620,7 +602,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Ship data\RAW_Ship (Kramse_RAW MSSQLDB)">
+    design-time-name="Package\Load Ship data\Ship (Access database)">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

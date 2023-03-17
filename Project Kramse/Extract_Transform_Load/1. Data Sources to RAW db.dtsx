@@ -11,8 +11,8 @@
   DTS:LocaleID="1043"
   DTS:ObjectName="1  Data Sources to RAW db"
   DTS:PackageType="5"
-  DTS:VersionBuild="28"
-  DTS:VersionGUID="{24604635-AAFC-4E57-B290-DE3257363CBE}">
+  DTS:VersionBuild="36"
+  DTS:VersionGUID="{7F0818B2-AE6D-4E2F-B38F-0B7028C30E50}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -325,17 +325,17 @@
                     <externalMetadataColumn
                       refId="Package\Load Consignor data\Raw_Consignor (Raw database).Inputs[OLE DB Destination Input].ExternalColumns[Consignor]"
                       dataType="wstr"
-                      length="50"
+                      length="255"
                       name="Consignor" />
                     <externalMetadataColumn
                       refId="Package\Load Consignor data\Raw_Consignor (Raw database).Inputs[OLE DB Destination Input].ExternalColumns[City]"
                       dataType="wstr"
-                      length="50"
+                      length="255"
                       name="City" />
                     <externalMetadataColumn
                       refId="Package\Load Consignor data\Raw_Consignor (Raw database).Inputs[OLE DB Destination Input].ExternalColumns[Country]"
                       dataType="wstr"
-                      length="50"
+                      length="255"
                       name="Country" />
                     <externalMetadataColumn
                       refId="Package\Load Consignor data\Raw_Consignor (Raw database).Inputs[OLE DB Destination Input].ExternalColumns[Discount]"
@@ -656,61 +656,54 @@
               </outputs>
             </component>
             <component
-              refId="Package\Load Container data\Convert string values to unicode"
+              refId="Package\Load Container data\Converting data"
               componentClassID="Microsoft.DataConvert"
               contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
               description="Data Conversion"
-              name="Convert string values to unicode"
+              name="Converting data"
               usesDispositions="true">
               <inputs>
                 <input
-                  refId="Package\Load Container data\Convert string values to unicode.Inputs[Data Conversion Input]"
+                  refId="Package\Load Container data\Converting data.Inputs[Data Conversion Input]"
                   name="Data Conversion Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Load Container data\Convert string values to unicode.Inputs[Data Conversion Input].Columns[Type]"
+                      refId="Package\Load Container data\Converting data.Inputs[Data Conversion Input].Columns[Type]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="Type"
                       lineageId="Package\Load Container data\Container data (TXT file).Outputs[Flat File Source Output].Columns[Type]" />
                     <inputColumn
-                      refId="Package\Load Container data\Convert string values to unicode.Inputs[Data Conversion Input].Columns[RefrigerationFlag]"
+                      refId="Package\Load Container data\Converting data.Inputs[Data Conversion Input].Columns[RefrigerationFlag]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="RefrigerationFlag"
                       lineageId="Package\Load Container data\Container data (TXT file).Outputs[Flat File Source Output].Columns[RefrigerationFlag]" />
                     <inputColumn
-                      refId="Package\Load Container data\Convert string values to unicode.Inputs[Data Conversion Input].Columns[PowerFlag]"
+                      refId="Package\Load Container data\Converting data.Inputs[Data Conversion Input].Columns[PowerFlag]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="PowerFlag"
                       lineageId="Package\Load Container data\Container data (TXT file).Outputs[Flat File Source Output].Columns[PowerFlag]" />
                     <inputColumn
-                      refId="Package\Load Container data\Convert string values to unicode.Inputs[Data Conversion Input].Columns[Id]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="Id"
-                      lineageId="Package\Load Container data\Container data (TXT file).Outputs[Flat File Source Output].Columns[Id]" />
-                    <inputColumn
-                      refId="Package\Load Container data\Convert string values to unicode.Inputs[Data Conversion Input].Columns[Length]"
+                      refId="Package\Load Container data\Converting data.Inputs[Data Conversion Input].Columns[Length]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="Length"
                       lineageId="Package\Load Container data\Container data (TXT file).Outputs[Flat File Source Output].Columns[Length]" />
                     <inputColumn
-                      refId="Package\Load Container data\Convert string values to unicode.Inputs[Data Conversion Input].Columns[Cubes]"
+                      refId="Package\Load Container data\Converting data.Inputs[Data Conversion Input].Columns[Cubes]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="Cubes"
                       lineageId="Package\Load Container data\Container data (TXT file).Outputs[Flat File Source Output].Columns[Cubes]" />
                     <inputColumn
-                      refId="Package\Load Container data\Convert string values to unicode.Inputs[Data Conversion Input].Columns[EuroPricePerKm]"
+                      refId="Package\Load Container data\Converting data.Inputs[Data Conversion Input].Columns[EuroPricePerKm]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
@@ -722,18 +715,18 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Load Container data\Convert string values to unicode.Outputs[Data Conversion Output]"
+                  refId="Package\Load Container data\Converting data.Outputs[Data Conversion Output]"
                   exclusionGroup="1"
                   name="Data Conversion Output"
-                  synchronousInputId="Package\Load Container data\Convert string values to unicode.Inputs[Data Conversion Input]">
+                  synchronousInputId="Package\Load Container data\Converting data.Inputs[Data Conversion Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load Container data\Convert string values to unicode.Outputs[Data Conversion Output].Columns[Copy of Type]"
+                      refId="Package\Load Container data\Converting data.Outputs[Data Conversion Output].Columns[Copy of Type]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       length="50"
-                      lineageId="Package\Load Container data\Convert string values to unicode.Outputs[Data Conversion Output].Columns[Copy of Type]"
+                      lineageId="Package\Load Container data\Converting data.Outputs[Data Conversion Output].Columns[Copy of Type]"
                       name="Copy of Type"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -749,12 +742,12 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Load Container data\Convert string values to unicode.Outputs[Data Conversion Output].Columns[Copy of RefrigerationFlag]"
+                      refId="Package\Load Container data\Converting data.Outputs[Data Conversion Output].Columns[Copy of RefrigerationFlag]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       length="50"
-                      lineageId="Package\Load Container data\Convert string values to unicode.Outputs[Data Conversion Output].Columns[Copy of RefrigerationFlag]"
+                      lineageId="Package\Load Container data\Converting data.Outputs[Data Conversion Output].Columns[Copy of RefrigerationFlag]"
                       name="Copy of RefrigerationFlag"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -770,12 +763,12 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Load Container data\Convert string values to unicode.Outputs[Data Conversion Output].Columns[Copy of PowerFlag]"
+                      refId="Package\Load Container data\Converting data.Outputs[Data Conversion Output].Columns[Copy of PowerFlag]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       length="50"
-                      lineageId="Package\Load Container data\Convert string values to unicode.Outputs[Data Conversion Output].Columns[Copy of PowerFlag]"
+                      lineageId="Package\Load Container data\Converting data.Outputs[Data Conversion Output].Columns[Copy of PowerFlag]"
                       name="Copy of PowerFlag"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -791,34 +784,13 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Load Container data\Convert string values to unicode.Outputs[Data Conversion Output].Columns[Copy of Id]"
-                      dataType="wstr"
+                      refId="Package\Load Container data\Converting data.Outputs[Data Conversion Output].Columns[Copy of Length]"
+                      dataType="decimal"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      length="50"
-                      lineageId="Package\Load Container data\Convert string values to unicode.Outputs[Data Conversion Output].Columns[Copy of Id]"
-                      name="Copy of Id"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Load Container data\Container data (TXT file).Outputs[Flat File Source Output].Columns[Id]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Load Container data\Convert string values to unicode.Outputs[Data Conversion Output].Columns[Copy of Length]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      length="50"
-                      lineageId="Package\Load Container data\Convert string values to unicode.Outputs[Data Conversion Output].Columns[Copy of Length]"
+                      lineageId="Package\Load Container data\Converting data.Outputs[Data Conversion Output].Columns[Copy of Length]"
                       name="Copy of Length"
+                      scale="2"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -833,13 +805,13 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Load Container data\Convert string values to unicode.Outputs[Data Conversion Output].Columns[Copy of Cubes]"
-                      dataType="wstr"
+                      refId="Package\Load Container data\Converting data.Outputs[Data Conversion Output].Columns[Copy of Cubes]"
+                      dataType="decimal"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      length="50"
-                      lineageId="Package\Load Container data\Convert string values to unicode.Outputs[Data Conversion Output].Columns[Copy of Cubes]"
+                      lineageId="Package\Load Container data\Converting data.Outputs[Data Conversion Output].Columns[Copy of Cubes]"
                       name="Copy of Cubes"
+                      scale="2"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -854,13 +826,13 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Load Container data\Convert string values to unicode.Outputs[Data Conversion Output].Columns[Copy of EuroPricePerKm]"
-                      dataType="wstr"
+                      refId="Package\Load Container data\Converting data.Outputs[Data Conversion Output].Columns[Copy of EuroPricePerKm]"
+                      dataType="decimal"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      length="50"
-                      lineageId="Package\Load Container data\Convert string values to unicode.Outputs[Data Conversion Output].Columns[Copy of EuroPricePerKm]"
+                      lineageId="Package\Load Container data\Converting data.Outputs[Data Conversion Output].Columns[Copy of EuroPricePerKm]"
                       name="Copy of EuroPricePerKm"
+                      scale="2"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -878,22 +850,22 @@
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Load Container data\Convert string values to unicode.Outputs[Data Conversion Error Output]"
+                  refId="Package\Load Container data\Converting data.Outputs[Data Conversion Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Data Conversion Error Output"
-                  synchronousInputId="Package\Load Container data\Convert string values to unicode.Inputs[Data Conversion Input]">
+                  synchronousInputId="Package\Load Container data\Converting data.Inputs[Data Conversion Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load Container data\Convert string values to unicode.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      refId="Package\Load Container data\Converting data.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Load Container data\Convert string values to unicode.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Load Container data\Converting data.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Load Container data\Convert string values to unicode.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      refId="Package\Load Container data\Converting data.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Load Container data\Convert string values to unicode.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Load Container data\Converting data.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -979,56 +951,56 @@
                       cachedLength="50"
                       cachedName="Copy of Type"
                       externalMetadataColumnId="Package\Load Container data\Raw_Containers.Inputs[OLE DB Destination Input].ExternalColumns[Type]"
-                      lineageId="Package\Load Container data\Convert string values to unicode.Outputs[Data Conversion Output].Columns[Copy of Type]" />
+                      lineageId="Package\Load Container data\Converting data.Outputs[Data Conversion Output].Columns[Copy of Type]" />
                     <inputColumn
                       refId="Package\Load Container data\Raw_Containers.Inputs[OLE DB Destination Input].Columns[Copy of RefrigerationFlag]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="Copy of RefrigerationFlag"
                       externalMetadataColumnId="Package\Load Container data\Raw_Containers.Inputs[OLE DB Destination Input].ExternalColumns[RefrigerationFlag]"
-                      lineageId="Package\Load Container data\Convert string values to unicode.Outputs[Data Conversion Output].Columns[Copy of RefrigerationFlag]" />
+                      lineageId="Package\Load Container data\Converting data.Outputs[Data Conversion Output].Columns[Copy of RefrigerationFlag]" />
                     <inputColumn
                       refId="Package\Load Container data\Raw_Containers.Inputs[OLE DB Destination Input].Columns[Copy of PowerFlag]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="Copy of PowerFlag"
                       externalMetadataColumnId="Package\Load Container data\Raw_Containers.Inputs[OLE DB Destination Input].ExternalColumns[PowerFlag]"
-                      lineageId="Package\Load Container data\Convert string values to unicode.Outputs[Data Conversion Output].Columns[Copy of PowerFlag]" />
+                      lineageId="Package\Load Container data\Converting data.Outputs[Data Conversion Output].Columns[Copy of PowerFlag]" />
                     <inputColumn
-                      refId="Package\Load Container data\Raw_Containers.Inputs[OLE DB Destination Input].Columns[Copy of Id]"
-                      cachedDataType="wstr"
+                      refId="Package\Load Container data\Raw_Containers.Inputs[OLE DB Destination Input].Columns[Id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
                       cachedLength="50"
-                      cachedName="Copy of Id"
+                      cachedName="Id"
                       externalMetadataColumnId="Package\Load Container data\Raw_Containers.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
-                      lineageId="Package\Load Container data\Convert string values to unicode.Outputs[Data Conversion Output].Columns[Copy of Id]" />
+                      lineageId="Package\Load Container data\Container data (TXT file).Outputs[Flat File Source Output].Columns[Id]" />
                     <inputColumn
                       refId="Package\Load Container data\Raw_Containers.Inputs[OLE DB Destination Input].Columns[Copy of Length]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
+                      cachedDataType="decimal"
                       cachedName="Copy of Length"
+                      cachedScale="2"
                       externalMetadataColumnId="Package\Load Container data\Raw_Containers.Inputs[OLE DB Destination Input].ExternalColumns[Length]"
-                      lineageId="Package\Load Container data\Convert string values to unicode.Outputs[Data Conversion Output].Columns[Copy of Length]" />
+                      lineageId="Package\Load Container data\Converting data.Outputs[Data Conversion Output].Columns[Copy of Length]" />
                     <inputColumn
                       refId="Package\Load Container data\Raw_Containers.Inputs[OLE DB Destination Input].Columns[Copy of Cubes]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
+                      cachedDataType="decimal"
                       cachedName="Copy of Cubes"
+                      cachedScale="2"
                       externalMetadataColumnId="Package\Load Container data\Raw_Containers.Inputs[OLE DB Destination Input].ExternalColumns[Cube]"
-                      lineageId="Package\Load Container data\Convert string values to unicode.Outputs[Data Conversion Output].Columns[Copy of Cubes]" />
+                      lineageId="Package\Load Container data\Converting data.Outputs[Data Conversion Output].Columns[Copy of Cubes]" />
                     <inputColumn
                       refId="Package\Load Container data\Raw_Containers.Inputs[OLE DB Destination Input].Columns[Copy of EuroPricePerKm]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
+                      cachedDataType="decimal"
                       cachedName="Copy of EuroPricePerKm"
+                      cachedScale="2"
                       externalMetadataColumnId="Package\Load Container data\Raw_Containers.Inputs[OLE DB Destination Input].ExternalColumns[EuroPricePerKm]"
-                      lineageId="Package\Load Container data\Convert string values to unicode.Outputs[Data Conversion Output].Columns[Copy of EuroPricePerKm]" />
+                      lineageId="Package\Load Container data\Converting data.Outputs[Data Conversion Output].Columns[Copy of EuroPricePerKm]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
                       refId="Package\Load Container data\Raw_Containers.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
-                      dataType="wstr"
-                      length="255"
+                      dataType="i4"
                       name="Id" />
                     <externalMetadataColumn
                       refId="Package\Load Container data\Raw_Containers.Inputs[OLE DB Destination Input].ExternalColumns[Type]"
@@ -1047,18 +1019,15 @@
                       name="PowerFlag" />
                     <externalMetadataColumn
                       refId="Package\Load Container data\Raw_Containers.Inputs[OLE DB Destination Input].ExternalColumns[Length]"
-                      dataType="wstr"
-                      length="255"
+                      dataType="r8"
                       name="Length" />
                     <externalMetadataColumn
                       refId="Package\Load Container data\Raw_Containers.Inputs[OLE DB Destination Input].ExternalColumns[Cube]"
-                      dataType="wstr"
-                      length="255"
+                      dataType="r8"
                       name="Cube" />
                     <externalMetadataColumn
                       refId="Package\Load Container data\Raw_Containers.Inputs[OLE DB Destination Input].ExternalColumns[EuroPricePerKm]"
-                      dataType="wstr"
-                      length="255"
+                      dataType="r8"
                       name="EuroPricePerKm" />
                   </externalMetadataColumns>
                 </input>
@@ -1225,14 +1194,14 @@
           <paths>
             <path
               refId="Package\Load Container data.Paths[Conditional Split Default Output]"
-              endId="Package\Load Container data\Convert string values to unicode.Inputs[Data Conversion Input]"
+              endId="Package\Load Container data\Converting data.Inputs[Data Conversion Input]"
               name="Conditional Split Default Output"
               startId="Package\Load Container data\Remove empty rows.Outputs[Conditional Split Default Output]" />
             <path
               refId="Package\Load Container data.Paths[Data Conversion Output]"
               endId="Package\Load Container data\Raw_Containers.Inputs[OLE DB Destination Input]"
               name="Data Conversion Output"
-              startId="Package\Load Container data\Convert string values to unicode.Outputs[Data Conversion Output]" />
+              startId="Package\Load Container data\Converting data.Outputs[Data Conversion Output]" />
             <path
               refId="Package\Load Container data.Paths[Flat File Source Output]"
               endId="Package\Load Container data\Remove empty rows.Inputs[Conditional Split Input]"
@@ -4095,7 +4064,7 @@
     design-time-name="Package\Load Consignor data">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="229,42"
           Id="Package\Load Consignor data\Raw_Consignor (Raw database)"
@@ -4123,9 +4092,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -4163,43 +4130,21 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="231,42"
-          Id="Package\Load Container data\Convert string values to unicode"
-          TopLeft="357,281" />
+          Size="175,42"
+          Id="Package\Load Container data\Remove empty rows"
+          TopLeft="388,161" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Load Container data\Converting data"
+          TopLeft="394,283" />
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Load Container data\Raw_Containers"
+          TopLeft="393,392" />
         <NodeLayout
           Size="196,42"
           Id="Package\Load Container data\Container data (TXT file)"
           TopLeft="376,45" />
-        <NodeLayout
-          Size="155,42"
-          Id="Package\Load Container data\Raw_Containers"
-          TopLeft="393,391" />
-        <EdgeLayout
-          Id="Package\Load Container data.Paths[Data Conversion Output]"
-          TopLeft="471.5,323">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,68"
-              Start="0,0"
-              End="0,60.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,60.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="175,42"
-          Id="Package\Load Container data\Remove empty rows"
-          TopLeft="388,161" />
         <EdgeLayout
           Id="Package\Load Container data.Paths[Flat File Source Output]"
           TopLeft="474.75,87">
@@ -4223,29 +4168,58 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load Container data.Paths[Conditional Split Default Output]"
-          TopLeft="474,203">
+          Id="Package\Load Container data.Paths[Data Conversion Output]"
+          TopLeft="470.75,325">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,78"
+              EndConnector="0,67"
               Start="0,0"
-              End="0,70.5">
+              End="0,59.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,70.5" />
+                    End="0,59.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Container data.Paths[Conditional Split Default Output]"
+          TopLeft="473.25,203">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,80"
+              Start="0,0"
+              End="0,72.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,72.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-70.61390625,29.4208984375,141.2278125,11.658203125"
+              BoundingBox="-70.61390625,30.4208984375,141.2278125,11.658203125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <AnnotationLayout
+          Text="Convert non-unicode to unicode&#xD;&#xA;Convert varchar to decimal"
+          ParentId="Package\Load Container data"
+          FontInfo="{assembly:Null}"
+          Size="202,60"
+          Id="e707e30c-66fb-4878-b0ec-529dd374847a"
+          TopLeft="203,276" />
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -4272,25 +4246,21 @@
           Id="Package\Load Kramse TPS data\Port (Access database)"
           TopLeft="1169.25,109" />
         <NodeLayout
-          Size="221,42"
-          Id="Package\Load Kramse TPS data\VoyagePort (Access database)"
-          TopLeft="99.5,116" />
+          Size="140,42"
+          Id="Package\Load Kramse TPS data\Raw_Voyage"
+          TopLeft="392,304.25" />
         <NodeLayout
           Size="127,42"
           Id="Package\Load Kramse TPS data\Raw_Item"
           TopLeft="1755.75,305.25" />
         <NodeLayout
-          Size="140,42"
-          Id="Package\Load Kramse TPS data\Raw_Voyage"
-          TopLeft="392,304.25" />
-        <NodeLayout
           Size="124,42"
           Id="Package\Load Kramse TPS data\Raw_Port"
           TopLeft="1201.5,305.25" />
         <NodeLayout
-          Size="125,42"
-          Id="Package\Load Kramse TPS data\Raw_Ship"
-          TopLeft="902.25,307" />
+          Size="159,42"
+          Id="Package\Load Kramse TPS data\Raw_VoyagePort"
+          TopLeft="133.25,303.5" />
         <NodeLayout
           Size="212,42"
           Id="Package\Load Kramse TPS data\Shipment (Access database)"
@@ -4300,95 +4270,33 @@
           Id="Package\Load Kramse TPS data\ShipmentDetail (Access database)"
           TopLeft="585.25,112" />
         <NodeLayout
-          Size="159,42"
-          Id="Package\Load Kramse TPS data\Raw_VoyagePort"
-          TopLeft="133.25,303.5" />
+          Size="188,42"
+          Id="Package\Load Kramse TPS data\Ship (Access database)"
+          TopLeft="870.25,110" />
+        <NodeLayout
+          Size="125,42"
+          Id="Package\Load Kramse TPS data\Raw_Ship"
+          TopLeft="902.25,307" />
         <NodeLayout
           Size="149,42"
           Id="Package\Load Kramse TPS data\Raw_Shipment"
           TopLeft="1493.25,301.5" />
         <NodeLayout
-          Size="188,42"
-          Id="Package\Load Kramse TPS data\Ship (Access database)"
-          TopLeft="870.25,110" />
+          Size="202,42"
+          Id="Package\Load Kramse TPS data\Voyage (Access database)"
+          TopLeft="362,111.75" />
         <NodeLayout
           Size="176,42"
           Id="Package\Load Kramse TPS data\Raw_ShipmentDetail"
           TopLeft="615.75,302.5" />
         <NodeLayout
-          Size="202,42"
-          Id="Package\Load Kramse TPS data\Voyage (Access database)"
-          TopLeft="362,111.75" />
+          Size="221,42"
+          Id="Package\Load Kramse TPS data\VoyagePort (Access database)"
+          TopLeft="99.5,116" />
         <NodeLayout
           Size="190,42"
           Id="Package\Load Kramse TPS data\Item (Access database)"
           TopLeft="1724,109.75" />
-        <EdgeLayout
-          Id="Package\Load Kramse TPS data.Paths[OLE DB Source Output2]"
-          TopLeft="211.375,158">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,145.5"
-              Start="0,0"
-              End="0,138">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,138" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Kramse TPS data.Paths[OLE DB Source Output1]"
-          TopLeft="1263.125,151">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,154.25"
-              Start="0,0"
-              End="0,146.75">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,146.75" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Kramse TPS data.Paths[OLE DB Source Output]"
-          TopLeft="964.5,152">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,155"
-              Start="0,0"
-              End="0,147.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,147.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Kramse TPS data.Paths[OLE DB Source Output6]"
           TopLeft="1819.125,151.75">
@@ -4477,37 +4385,77 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Kramse TPS data.Paths[OLE DB Source Output2]"
+          TopLeft="211.375,158">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,145.5"
+              Start="0,0"
+              End="0,138">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,138" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Kramse TPS data.Paths[OLE DB Source Output1]"
+          TopLeft="1263.125,151">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,154.25"
+              Start="0,0"
+              End="0,146.75">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,146.75" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Kramse TPS data.Paths[OLE DB Source Output]"
+          TopLeft="964.5,152">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,155"
+              Start="0,0"
+              End="0,147.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,147.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\Load Kramse TPS data\Port (Access database)">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Kramse TPS data\VoyagePort (Access database)">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Kramse TPS data\Raw_Item">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -4533,6 +4481,19 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
+    design-time-name="Package\Load Kramse TPS data\Raw_Item">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\Load Kramse TPS data\Raw_Port">
     <Properties>
       <Property>
@@ -4546,7 +4507,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Kramse TPS data\Raw_Ship">
+    design-time-name="Package\Load Kramse TPS data\Raw_VoyagePort">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -4585,7 +4546,20 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Kramse TPS data\Raw_VoyagePort">
+    design-time-name="Package\Load Kramse TPS data\Ship (Access database)">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Kramse TPS data\Raw_Ship">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -4611,7 +4585,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Kramse TPS data\Ship (Access database)">
+    design-time-name="Package\Load Kramse TPS data\Voyage (Access database)">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -4637,7 +4611,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Kramse TPS data\Voyage (Access database)">
+    design-time-name="Package\Load Kramse TPS data\VoyagePort (Access database)">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

@@ -1,2 +1,5 @@
 # Editor files
 .vs/
+
+# Connection manager
+Extract_Transform_Load/*.conmgr

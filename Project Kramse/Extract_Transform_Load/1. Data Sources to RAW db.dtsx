@@ -11,8 +11,8 @@
   DTS:LocaleID="1043"
   DTS:ObjectName="1  Data Sources to RAW db"
   DTS:PackageType="5"
-  DTS:VersionBuild="36"
-  DTS:VersionGUID="{7F0818B2-AE6D-4E2F-B38F-0B7028C30E50}">
+  DTS:VersionBuild="56"
+  DTS:VersionGUID="{E51ABD3B-19E9-45FE-9A5E-46091421CE6D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -975,6 +975,13 @@
                       externalMetadataColumnId="Package\Load Container data\Raw_Containers.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
                       lineageId="Package\Load Container data\Container data (TXT file).Outputs[Flat File Source Output].Columns[Id]" />
                     <inputColumn
+                      refId="Package\Load Container data\Raw_Containers.Inputs[OLE DB Destination Input].Columns[Copy of EuroPricePerKm]"
+                      cachedDataType="decimal"
+                      cachedName="Copy of EuroPricePerKm"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Load Container data\Raw_Containers.Inputs[OLE DB Destination Input].ExternalColumns[EuroPricePerKm]"
+                      lineageId="Package\Load Container data\Converting data.Outputs[Data Conversion Output].Columns[Copy of EuroPricePerKm]" />
+                    <inputColumn
                       refId="Package\Load Container data\Raw_Containers.Inputs[OLE DB Destination Input].Columns[Copy of Length]"
                       cachedDataType="decimal"
                       cachedName="Copy of Length"
@@ -988,13 +995,6 @@
                       cachedScale="2"
                       externalMetadataColumnId="Package\Load Container data\Raw_Containers.Inputs[OLE DB Destination Input].ExternalColumns[Cube]"
                       lineageId="Package\Load Container data\Converting data.Outputs[Data Conversion Output].Columns[Copy of Cubes]" />
-                    <inputColumn
-                      refId="Package\Load Container data\Raw_Containers.Inputs[OLE DB Destination Input].Columns[Copy of EuroPricePerKm]"
-                      cachedDataType="decimal"
-                      cachedName="Copy of EuroPricePerKm"
-                      cachedScale="2"
-                      externalMetadataColumnId="Package\Load Container data\Raw_Containers.Inputs[OLE DB Destination Input].ExternalColumns[EuroPricePerKm]"
-                      lineageId="Package\Load Container data\Converting data.Outputs[Data Conversion Output].Columns[Copy of EuroPricePerKm]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1019,16 +1019,22 @@
                       name="PowerFlag" />
                     <externalMetadataColumn
                       refId="Package\Load Container data\Raw_Containers.Inputs[OLE DB Destination Input].ExternalColumns[Length]"
-                      dataType="r8"
-                      name="Length" />
+                      dataType="numeric"
+                      name="Length"
+                      precision="18"
+                      scale="2" />
                     <externalMetadataColumn
                       refId="Package\Load Container data\Raw_Containers.Inputs[OLE DB Destination Input].ExternalColumns[Cube]"
-                      dataType="r8"
-                      name="Cube" />
+                      dataType="numeric"
+                      name="Cube"
+                      precision="18"
+                      scale="2" />
                     <externalMetadataColumn
                       refId="Package\Load Container data\Raw_Containers.Inputs[OLE DB Destination Input].ExternalColumns[EuroPricePerKm]"
-                      dataType="r8"
-                      name="EuroPricePerKm" />
+                      dataType="numeric"
+                      name="EuroPricePerKm"
+                      precision="18"
+                      scale="2" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1225,6 +1231,81 @@
         <pipeline
           version="1">
           <components>
+            <component
+              refId="Package\Load Kramse TPS data\Correct name for ships"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Correct name for ships"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load Kramse TPS data\Correct name for ships.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Kramse TPS data\Correct name for ships.Inputs[Derived Column Input].Columns[Sh_Shipname]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Sh_Shipname"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Kramse TPS data\Ship (Access database).Outputs[OLE DB Source Output].Columns[Sh_Shipname]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Load Kramse TPS data\Ship (Access database).Outputs[OLE DB Source Output].Columns[Sh_Shipname]} == "XIN BEIJING" ? "XIN BEING" : #{Package\Load Kramse TPS data\Ship (Access database).Outputs[OLE DB Source Output].Columns[Sh_Shipname]} == "MÆRSK STEPNICA" ? "MSC STEPNICA" : #{Package\Load Kramse TPS data\Ship (Access database).Outputs[OLE DB Source Output].Columns[Sh_Shipname]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">Sh_Shipname == "XIN BEIJING" ? "XIN BEING" : Sh_Shipname == "MÆRSK STEPNICA" ? "MSC STEPNICA" : Sh_Shipname</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Kramse TPS data\Correct name for ships.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Load Kramse TPS data\Correct name for ships.Inputs[Derived Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Kramse TPS data\Correct name for ships.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Load Kramse TPS data\Correct name for ships.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Kramse TPS data\Correct name for ships.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Kramse TPS data\Correct name for ships.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Kramse TPS data\Correct name for ships.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Kramse TPS data\Correct name for ships.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
             <component
               refId="Package\Load Kramse TPS data\Item (Access database)"
               componentClassID="Microsoft.OLEDBSource"
@@ -1429,6 +1510,81 @@
                       refId="Package\Load Kramse TPS data\Item (Access database).Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
                       lineageId="Package\Load Kramse TPS data\Item (Access database).Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Kramse TPS data\Name to uppercase"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Name to uppercase"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load Kramse TPS data\Name to uppercase.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Kramse TPS data\Name to uppercase.Inputs[Derived Column Input].Columns[Sh_Shipname]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Sh_Shipname"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Kramse TPS data\Ship (Access database).Outputs[OLE DB Source Output].Columns[Sh_Shipname]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[UPPER](#{Package\Load Kramse TPS data\Ship (Access database).Outputs[OLE DB Source Output].Columns[Sh_Shipname]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">UPPER(Sh_Shipname)</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Kramse TPS data\Name to uppercase.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Load Kramse TPS data\Name to uppercase.Inputs[Derived Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Kramse TPS data\Name to uppercase.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Load Kramse TPS data\Name to uppercase.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Kramse TPS data\Name to uppercase.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Kramse TPS data\Name to uppercase.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Kramse TPS data\Name to uppercase.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Kramse TPS data\Name to uppercase.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -2153,6 +2309,26 @@
                       refId="Package\Load Kramse TPS data\Raw_Ship.Inputs[OLE DB Destination Input].ExternalColumns[Sh_SpeedInKm]"
                       dataType="ui1"
                       name="Sh_SpeedInKm" />
+                    <externalMetadataColumn
+                      refId="Package\Load Kramse TPS data\Raw_Ship.Inputs[OLE DB Destination Input].ExternalColumns[TotalFuelConsumptionInTonnes]"
+                      dataType="r8"
+                      name="TotalFuelConsumptionInTonnes" />
+                    <externalMetadataColumn
+                      refId="Package\Load Kramse TPS data\Raw_Ship.Inputs[OLE DB Destination Input].ExternalColumns[TotalCo2EmissionsInTonnes]"
+                      dataType="r8"
+                      name="TotalCo2EmissionsInTonnes" />
+                    <externalMetadataColumn
+                      refId="Package\Load Kramse TPS data\Raw_Ship.Inputs[OLE DB Destination Input].ExternalColumns[TotalTimeSpentAtSeaInHours]"
+                      dataType="i4"
+                      name="TotalTimeSpentAtSeaInHours" />
+                    <externalMetadataColumn
+                      refId="Package\Load Kramse TPS data\Raw_Ship.Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageFuelConsumptionPerDistanceKgToMile]"
+                      dataType="r8"
+                      name="AnnualAverageFuelConsumptionPerDistanceKgToMile" />
+                    <externalMetadataColumn
+                      refId="Package\Load Kramse TPS data\Raw_Ship.Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageCo2EmissionPerDistanceKgCo2ToMile]"
+                      dataType="r8"
+                      name="AnnualAverageCo2EmissionPerDistanceKgCo2ToMile" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -3857,40 +4033,954 @@
           </components>
           <paths>
             <path
-              refId="Package\Load Kramse TPS data.Paths[OLE DB Source Output]"
-              endId="Package\Load Kramse TPS data\Raw_Ship.Inputs[OLE DB Destination Input]"
-              name="OLE DB Source Output"
-              startId="Package\Load Kramse TPS data\Ship (Access database).Outputs[OLE DB Source Output]" />
+              refId="Package\Load Kramse TPS data.Paths[Derived Column Output]"
+              endId="Package\Load Kramse TPS data\Correct name for ships.Inputs[Derived Column Input]"
+              name="Derived Column Output"
+              startId="Package\Load Kramse TPS data\Name to uppercase.Outputs[Derived Column Output]" />
             <path
-              refId="Package\Load Kramse TPS data.Paths[OLE DB Source Output1]"
+              refId="Package\Load Kramse TPS data.Paths[Derived Column Output1]"
+              endId="Package\Load Kramse TPS data\Raw_Ship.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Load Kramse TPS data\Correct name for ships.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Load Kramse TPS data.Paths[OLE DB Source Output]"
               endId="Package\Load Kramse TPS data\Raw_Port.Inputs[OLE DB Destination Input]"
               name="OLE DB Source Output"
               startId="Package\Load Kramse TPS data\Port (Access database).Outputs[OLE DB Source Output]" />
             <path
-              refId="Package\Load Kramse TPS data.Paths[OLE DB Source Output2]"
+              refId="Package\Load Kramse TPS data.Paths[OLE DB Source Output1]"
               endId="Package\Load Kramse TPS data\Raw_VoyagePort.Inputs[OLE DB Destination Input]"
               name="OLE DB Source Output"
               startId="Package\Load Kramse TPS data\VoyagePort (Access database).Outputs[OLE DB Source Output]" />
             <path
-              refId="Package\Load Kramse TPS data.Paths[OLE DB Source Output3]"
+              refId="Package\Load Kramse TPS data.Paths[OLE DB Source Output2]"
               endId="Package\Load Kramse TPS data\Raw_Voyage.Inputs[OLE DB Destination Input]"
               name="OLE DB Source Output"
               startId="Package\Load Kramse TPS data\Voyage (Access database).Outputs[OLE DB Source Output]" />
             <path
-              refId="Package\Load Kramse TPS data.Paths[OLE DB Source Output4]"
+              refId="Package\Load Kramse TPS data.Paths[OLE DB Source Output3]"
               endId="Package\Load Kramse TPS data\Raw_ShipmentDetail.Inputs[OLE DB Destination Input]"
               name="OLE DB Source Output"
               startId="Package\Load Kramse TPS data\ShipmentDetail (Access database).Outputs[OLE DB Source Output]" />
             <path
-              refId="Package\Load Kramse TPS data.Paths[OLE DB Source Output5]"
+              refId="Package\Load Kramse TPS data.Paths[OLE DB Source Output4]"
               endId="Package\Load Kramse TPS data\Raw_Shipment.Inputs[OLE DB Destination Input]"
               name="OLE DB Source Output"
               startId="Package\Load Kramse TPS data\Shipment (Access database).Outputs[OLE DB Source Output]" />
             <path
-              refId="Package\Load Kramse TPS data.Paths[OLE DB Source Output6]"
+              refId="Package\Load Kramse TPS data.Paths[OLE DB Source Output5]"
               endId="Package\Load Kramse TPS data\Raw_Item.Inputs[OLE DB Destination Input]"
               name="OLE DB Source Output"
               startId="Package\Load Kramse TPS data\Item (Access database).Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Load Kramse TPS data.Paths[OLE DB Source Output6]"
+              endId="Package\Load Kramse TPS data\Name to uppercase.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\Load Kramse TPS data\Ship (Access database).Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load MRV publication data"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{A78B3D17-E007-4E6E-A10A-9B2A6175FABE}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load MRV publication data"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load MRV publication data\Lookup TPS Ship"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup TPS Ship"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Raw_Ship]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Raw_Ship]) [refTable]
+where [refTable].[Sh_Shipname] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="VS_ShipId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Sh_Shipname" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Sh_MaxTeu" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Sh_SpeedInKnots" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Sh_SpeedInKm" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Sh_Country" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Sh_Yearcost" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Sh_Length" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Sh_Width" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TotalFuelConsumptionInTonnes" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TotalCo2EmissionsInTonnes" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TotalTimeSpentAtSeaInHours" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="AnnualAverageFuelConsumptionPerDistanceKgToMile" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="AnnualAverageCo2EmissionPerDistanceKgCo2ToMile" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].Columns[Name]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load MRV publication data\Lookup TPS Ship.Connections[OleDbConnection]"
+                  connectionManagerID="{C4B1AB01-C338-4FC0-8246-5B051F4FF5B4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[RAW database - MSSQL connection]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load MRV publication data\Lookup TPS Ship.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load MRV publication data\Lookup TPS Ship.Inputs[Lookup Input].Columns[Sh_Shipname]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Name"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].Columns[Name]"
+                      name="Sh_Shipname"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Sh_Shipname</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Sh_Shipname</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load MRV publication data\Lookup TPS Ship.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Load MRV publication data\Lookup TPS Ship.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load MRV publication data\Lookup TPS Ship.Outputs[Lookup Match Output].Columns[VS_ShipId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load MRV publication data\Lookup TPS Ship.Outputs[Lookup Match Output].Columns[VS_ShipId]"
+                      name="VS_ShipId"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">VS_ShipId</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load MRV publication data\Lookup TPS Ship.Outputs[Lookup Match Output].Columns[Sh_MaxTeu]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load MRV publication data\Lookup TPS Ship.Outputs[Lookup Match Output].Columns[Sh_MaxTeu]"
+                      name="Sh_MaxTeu"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Sh_MaxTeu</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load MRV publication data\Lookup TPS Ship.Outputs[Lookup Match Output].Columns[Sh_SpeedInKnots]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load MRV publication data\Lookup TPS Ship.Outputs[Lookup Match Output].Columns[Sh_SpeedInKnots]"
+                      name="Sh_SpeedInKnots"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Sh_SpeedInKnots</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load MRV publication data\Lookup TPS Ship.Outputs[Lookup Match Output].Columns[Sh_SpeedInKm]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load MRV publication data\Lookup TPS Ship.Outputs[Lookup Match Output].Columns[Sh_SpeedInKm]"
+                      name="Sh_SpeedInKm"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Sh_SpeedInKm</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load MRV publication data\Lookup TPS Ship.Outputs[Lookup Match Output].Columns[Sh_Country]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="255"
+                      lineageId="Package\Load MRV publication data\Lookup TPS Ship.Outputs[Lookup Match Output].Columns[Sh_Country]"
+                      name="Sh_Country"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Sh_Country</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load MRV publication data\Lookup TPS Ship.Outputs[Lookup Match Output].Columns[Sh_Yearcost]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load MRV publication data\Lookup TPS Ship.Outputs[Lookup Match Output].Columns[Sh_Yearcost]"
+                      name="Sh_Yearcost"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Sh_Yearcost</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load MRV publication data\Lookup TPS Ship.Outputs[Lookup Match Output].Columns[Sh_Length]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load MRV publication data\Lookup TPS Ship.Outputs[Lookup Match Output].Columns[Sh_Length]"
+                      name="Sh_Length"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Sh_Length</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load MRV publication data\Lookup TPS Ship.Outputs[Lookup Match Output].Columns[Sh_Width]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load MRV publication data\Lookup TPS Ship.Outputs[Lookup Match Output].Columns[Sh_Width]"
+                      name="Sh_Width"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Sh_Width</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load MRV publication data\Lookup TPS Ship.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Load MRV publication data\Lookup TPS Ship.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load MRV publication data\Lookup TPS Ship.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Load MRV publication data\Lookup TPS Ship.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load MRV publication data\Lookup TPS Ship.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load MRV publication data\Lookup TPS Ship.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load MRV publication data\Lookup TPS Ship.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load MRV publication data\Lookup TPS Ship.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load MRV publication data\MRV Publication data"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="MRV Publication data"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Publication$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load MRV publication data\MRV Publication data.Connections[OleDbConnection]"
+                  connectionManagerID="{774EE819-C18D-4E31-A22C-A7F339FFC6DC}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[EU MRV Publication of information - Excel connection]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].Columns[Total fuel consumption (m tonnes)]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[Total fuel consumption (m tonnes)]"
+                      lineageId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].Columns[Total fuel consumption (m tonnes)]"
+                      name="Total fuel consumption (m tonnes)"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].Columns[Total CO₂ emissions (m tonnes)]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[Total CO₂ emissions (m tonnes)]"
+                      lineageId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].Columns[Total CO₂ emissions (m tonnes)]"
+                      name="Total CO₂ emissions (m tonnes)"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].Columns[Total time spent at sea (hours)]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[Total time spent at sea (hours)]"
+                      lineageId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].Columns[Total time spent at sea (hours)]"
+                      name="Total time spent at sea (hours)"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].Columns[Annual average Fuel consumption per distance (kg / n mile)]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[Annual average Fuel consumption per distance (kg / n mile)]"
+                      lineageId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].Columns[Annual average Fuel consumption per distance (kg / n mile)]"
+                      name="Annual average Fuel consumption per distance (kg / n mile)"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].Columns[Annual average CO₂ emissions per distance (kg CO₂ / n mile)]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[Annual average CO₂ emissions per distance (kg CO₂ / n mile)]"
+                      lineageId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].Columns[Annual average CO₂ emissions per distance (kg CO₂ / n mile)]"
+                      name="Annual average CO₂ emissions per distance (kg CO₂ / n mile)"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].Columns[Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[Name]"
+                      length="255"
+                      lineageId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[IMO Number]"
+                      dataType="wstr"
+                      length="255"
+                      name="IMO Number" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[Ship type]"
+                      dataType="wstr"
+                      length="255"
+                      name="Ship type" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[Reporting Period]"
+                      dataType="r8"
+                      name="Reporting Period" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[Technical efficiency]"
+                      dataType="wstr"
+                      length="255"
+                      name="Technical efficiency" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[Port of Registry]"
+                      dataType="wstr"
+                      length="255"
+                      name="Port of Registry" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[Home Port]"
+                      dataType="wstr"
+                      length="255"
+                      name="Home Port" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[Ice Class]"
+                      dataType="wstr"
+                      length="255"
+                      name="Ice Class" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[Verifier Number]"
+                      dataType="wstr"
+                      length="255"
+                      name="Verifier Number" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[Verifier Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Verifier Name" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[Verifier NAB]"
+                      dataType="wstr"
+                      length="255"
+                      name="Verifier NAB" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[Verifier Address]"
+                      dataType="wstr"
+                      length="255"
+                      name="Verifier Address" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[Verifier City]"
+                      dataType="wstr"
+                      length="255"
+                      name="Verifier City" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[Verifier Accreditation number]"
+                      dataType="wstr"
+                      length="255"
+                      name="Verifier Accreditation number" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[Verifier Country]"
+                      dataType="wstr"
+                      length="255"
+                      name="Verifier Country" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[A]"
+                      dataType="wstr"
+                      length="255"
+                      name="A" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[B]"
+                      dataType="wstr"
+                      length="255"
+                      name="B" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[C]"
+                      dataType="wstr"
+                      length="255"
+                      name="C" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[D]"
+                      dataType="wstr"
+                      length="255"
+                      name="D" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[Total fuel consumption (m tonnes)]"
+                      dataType="r8"
+                      name="Total fuel consumption (m tonnes)" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[Fuel consumptions assigned to On laden (m tonnes)]"
+                      dataType="wstr"
+                      length="255"
+                      name="Fuel consumptions assigned to On laden (m tonnes)" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[Total CO₂ emissions (m tonnes)]"
+                      dataType="r8"
+                      name="Total CO₂ emissions (m tonnes)" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[CO₂ emissions from all voyages between ports under a MS jurisdic]"
+                      dataType="r8"
+                      name="CO₂ emissions from all voyages between ports under a MS jurisdic" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[CO₂ emissions from all voyages which departed from ports under a]"
+                      dataType="r8"
+                      name="CO₂ emissions from all voyages which departed from ports under a" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[CO₂ emissions from all voyages to ports under a MS jurisdiction ]"
+                      dataType="r8"
+                      name="CO₂ emissions from all voyages to ports under a MS jurisdiction " />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[CO₂ emissions which occurred within ports under a MS jurisdictio]"
+                      dataType="r8"
+                      name="CO₂ emissions which occurred within ports under a MS jurisdictio" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[CO₂ emissions assigned to Passenger transport (m tonnes)]"
+                      dataType="wstr"
+                      length="255"
+                      name="CO₂ emissions assigned to Passenger transport (m tonnes)" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[CO₂ emissions assigned to Freight transport (m tonnes)]"
+                      dataType="wstr"
+                      length="255"
+                      name="CO₂ emissions assigned to Freight transport (m tonnes)" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[CO₂ emissions assigned to On laden (m tonnes)]"
+                      dataType="wstr"
+                      length="255"
+                      name="CO₂ emissions assigned to On laden (m tonnes)" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[Annual Total time spent at sea (hours)]"
+                      dataType="r8"
+                      name="Annual Total time spent at sea (hours)" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[Annual average Fuel consumption per distance (kg / n mile)]"
+                      dataType="r8"
+                      name="Annual average Fuel consumption per distance (kg / n mile)" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[Annual average Fuel consumption per transport work (mass) (g / m]"
+                      dataType="r8"
+                      name="Annual average Fuel consumption per transport work (mass) (g / m" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[Annual average Fuel consumption per transport work (volume) (g /]"
+                      dataType="wstr"
+                      length="255"
+                      name="Annual average Fuel consumption per transport work (volume) (g /" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[Annual average Fuel consumption per transport work (dwt) (g / dw]"
+                      dataType="wstr"
+                      length="255"
+                      name="Annual average Fuel consumption per transport work (dwt) (g / dw" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[Annual average Fuel consumption per transport work (pax) (g / pa]"
+                      dataType="wstr"
+                      length="255"
+                      name="Annual average Fuel consumption per transport work (pax) (g / pa" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[Annual average Fuel consumption per transport work (freight) (g ]"
+                      dataType="wstr"
+                      length="255"
+                      name="Annual average Fuel consumption per transport work (freight) (g " />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[Annual average CO₂ emissions per distance (kg CO₂ / n mile)]"
+                      dataType="r8"
+                      name="Annual average CO₂ emissions per distance (kg CO₂ / n mile)" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[Annual average CO₂ emissions per transport work (mass) (g CO₂ / ]"
+                      dataType="r8"
+                      name="Annual average CO₂ emissions per transport work (mass) (g CO₂ / " />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[Annual average CO₂ emissions per transport work (volume) (g CO₂ ]"
+                      dataType="wstr"
+                      length="255"
+                      name="Annual average CO₂ emissions per transport work (volume) (g CO₂ " />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[Annual average CO₂ emissions per transport work (dwt) (g CO₂ / d]"
+                      dataType="wstr"
+                      length="255"
+                      name="Annual average CO₂ emissions per transport work (dwt) (g CO₂ / d" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[Annual average CO₂ emissions per transport work (pax) (g CO₂ / p]"
+                      dataType="wstr"
+                      length="255"
+                      name="Annual average CO₂ emissions per transport work (pax) (g CO₂ / p" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[Annual average CO₂ emissions per transport work (freight) (g CO₂]"
+                      dataType="wstr"
+                      length="255"
+                      name="Annual average CO₂ emissions per transport work (freight) (g CO₂" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[Through ice (n miles)]"
+                      dataType="wstr"
+                      length="255"
+                      name="Through ice (n miles)" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[Total time spent at sea (hours)]"
+                      dataType="r8"
+                      name="Total time spent at sea (hours)" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[Total time spent at sea through ice (hours)]"
+                      dataType="wstr"
+                      length="255"
+                      name="Total time spent at sea through ice (hours)" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[Fuel consumption per distance on laden voyages (kg / n mile)]"
+                      dataType="wstr"
+                      length="255"
+                      name="Fuel consumption per distance on laden voyages (kg / n mile)" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[Fuel consumption per transport work (mass) on laden voyages (g /]"
+                      dataType="wstr"
+                      length="255"
+                      name="Fuel consumption per transport work (mass) on laden voyages (g /" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[Fuel consumption per transport work (volume) on laden voyages (g]"
+                      dataType="wstr"
+                      length="255"
+                      name="Fuel consumption per transport work (volume) on laden voyages (g" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[Fuel consumption per transport work (dwt) on laden voyages (g / ]"
+                      dataType="wstr"
+                      length="255"
+                      name="Fuel consumption per transport work (dwt) on laden voyages (g / " />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[Fuel consumption per transport work (pax) on laden voyages (g / ]"
+                      dataType="wstr"
+                      length="255"
+                      name="Fuel consumption per transport work (pax) on laden voyages (g / " />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[Fuel consumption per transport work (freight) on laden voyages (]"
+                      dataType="wstr"
+                      length="255"
+                      name="Fuel consumption per transport work (freight) on laden voyages (" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[CO₂ emissions per distance on laden voyages (kg CO₂ / n mile)]"
+                      dataType="wstr"
+                      length="255"
+                      name="CO₂ emissions per distance on laden voyages (kg CO₂ / n mile)" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[CO₂ emissions per transport work (mass) on laden voyages (g CO₂ ]"
+                      dataType="wstr"
+                      length="255"
+                      name="CO₂ emissions per transport work (mass) on laden voyages (g CO₂ " />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[CO₂ emissions per transport work (volume) on laden voyages (g CO]"
+                      dataType="wstr"
+                      length="255"
+                      name="CO₂ emissions per transport work (volume) on laden voyages (g CO" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[CO₂ emissions per transport work (dwt) on laden voyages (g CO₂ /]"
+                      dataType="wstr"
+                      length="255"
+                      name="CO₂ emissions per transport work (dwt) on laden voyages (g CO₂ /" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[CO₂ emissions per transport work (pax) on laden voyages (g CO₂ /]"
+                      dataType="wstr"
+                      length="255"
+                      name="CO₂ emissions per transport work (pax) on laden voyages (g CO₂ /" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[CO₂ emissions per transport work (freight) on laden voyages (g C]"
+                      dataType="wstr"
+                      length="255"
+                      name="CO₂ emissions per transport work (freight) on laden voyages (g C" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[Additional information to facilitate the understanding of the re]"
+                      dataType="wstr"
+                      length="255"
+                      name="Additional information to facilitate the understanding of the re" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[Average density of the cargo transported (m tonnes / m³)]"
+                      dataType="wstr"
+                      length="255"
+                      name="Average density of the cargo transported (m tonnes / m³)" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Error Output].Columns[Total fuel consumption (m tonnes)]"
+                      dataType="r8"
+                      lineageId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Error Output].Columns[Total fuel consumption (m tonnes)]"
+                      name="Total fuel consumption (m tonnes)" />
+                    <outputColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Error Output].Columns[Total CO₂ emissions (m tonnes)]"
+                      dataType="r8"
+                      lineageId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Error Output].Columns[Total CO₂ emissions (m tonnes)]"
+                      name="Total CO₂ emissions (m tonnes)" />
+                    <outputColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Error Output].Columns[Total time spent at sea (hours)]"
+                      dataType="r8"
+                      lineageId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Error Output].Columns[Total time spent at sea (hours)]"
+                      name="Total time spent at sea (hours)" />
+                    <outputColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Error Output].Columns[Annual average Fuel consumption per distance (kg / n mile)]"
+                      dataType="r8"
+                      lineageId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Error Output].Columns[Annual average Fuel consumption per distance (kg / n mile)]"
+                      name="Annual average Fuel consumption per distance (kg / n mile)" />
+                    <outputColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Error Output].Columns[Annual average CO₂ emissions per distance (kg CO₂ / n mile)]"
+                      dataType="r8"
+                      lineageId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Error Output].Columns[Annual average CO₂ emissions per distance (kg CO₂ / n mile)]"
+                      name="Annual average CO₂ emissions per distance (kg CO₂ / n mile)" />
+                    <outputColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Error Output].Columns[Name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Error Output].Columns[Name]"
+                      name="Name" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load MRV publication data\Raw_MRV"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Raw_MRV"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Raw_MRV]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load MRV publication data\Raw_MRV.Connections[OleDbConnection]"
+                  connectionManagerID="{C4B1AB01-C338-4FC0-8246-5B051F4FF5B4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[RAW database - MSSQL connection]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load MRV publication data\Raw_MRV.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load MRV publication data\Raw_MRV.Inputs[OLE DB Destination Input].Columns[Total fuel consumption (m tonnes)]"
+                      cachedDataType="r8"
+                      cachedName="Total fuel consumption (m tonnes)"
+                      externalMetadataColumnId="Package\Load MRV publication data\Raw_MRV.Inputs[OLE DB Destination Input].ExternalColumns[TotalFuelConsumptionInTonnes]"
+                      lineageId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].Columns[Total fuel consumption (m tonnes)]" />
+                    <inputColumn
+                      refId="Package\Load MRV publication data\Raw_MRV.Inputs[OLE DB Destination Input].Columns[Total CO₂ emissions (m tonnes)]"
+                      cachedDataType="r8"
+                      cachedName="Total CO₂ emissions (m tonnes)"
+                      externalMetadataColumnId="Package\Load MRV publication data\Raw_MRV.Inputs[OLE DB Destination Input].ExternalColumns[TotalCo2EmissionsInTonnes]"
+                      lineageId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].Columns[Total CO₂ emissions (m tonnes)]" />
+                    <inputColumn
+                      refId="Package\Load MRV publication data\Raw_MRV.Inputs[OLE DB Destination Input].Columns[Total time spent at sea (hours)]"
+                      cachedDataType="r8"
+                      cachedName="Total time spent at sea (hours)"
+                      externalMetadataColumnId="Package\Load MRV publication data\Raw_MRV.Inputs[OLE DB Destination Input].ExternalColumns[TotalTimeSpentAtSeaInHours]"
+                      lineageId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].Columns[Total time spent at sea (hours)]" />
+                    <inputColumn
+                      refId="Package\Load MRV publication data\Raw_MRV.Inputs[OLE DB Destination Input].Columns[Annual average Fuel consumption per distance (kg / n mile)]"
+                      cachedDataType="r8"
+                      cachedName="Annual average Fuel consumption per distance (kg / n mile)"
+                      externalMetadataColumnId="Package\Load MRV publication data\Raw_MRV.Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageFuelConsumptionPerDistanceKgToMile]"
+                      lineageId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].Columns[Annual average Fuel consumption per distance (kg / n mile)]" />
+                    <inputColumn
+                      refId="Package\Load MRV publication data\Raw_MRV.Inputs[OLE DB Destination Input].Columns[Annual average CO₂ emissions per distance (kg CO₂ / n mile)]"
+                      cachedDataType="r8"
+                      cachedName="Annual average CO₂ emissions per distance (kg CO₂ / n mile)"
+                      externalMetadataColumnId="Package\Load MRV publication data\Raw_MRV.Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageCo2EmissionPerDistanceKgCo2ToMile]"
+                      lineageId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].Columns[Annual average CO₂ emissions per distance (kg CO₂ / n mile)]" />
+                    <inputColumn
+                      refId="Package\Load MRV publication data\Raw_MRV.Inputs[OLE DB Destination Input].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\Load MRV publication data\Raw_MRV.Inputs[OLE DB Destination Input].ExternalColumns[ShipName]"
+                      lineageId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].Columns[Name]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\Raw_MRV.Inputs[OLE DB Destination Input].ExternalColumns[TotalFuelConsumptionInTonnes]"
+                      dataType="r8"
+                      name="TotalFuelConsumptionInTonnes" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\Raw_MRV.Inputs[OLE DB Destination Input].ExternalColumns[TotalCo2EmissionsInTonnes]"
+                      dataType="r8"
+                      name="TotalCo2EmissionsInTonnes" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\Raw_MRV.Inputs[OLE DB Destination Input].ExternalColumns[TotalTimeSpentAtSeaInHours]"
+                      dataType="i4"
+                      name="TotalTimeSpentAtSeaInHours" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\Raw_MRV.Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageFuelConsumptionPerDistanceKgToMile]"
+                      dataType="r8"
+                      name="AnnualAverageFuelConsumptionPerDistanceKgToMile" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\Raw_MRV.Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageCo2EmissionPerDistanceKgCo2ToMile]"
+                      dataType="r8"
+                      name="AnnualAverageCo2EmissionPerDistanceKgCo2ToMile" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\Raw_MRV.Inputs[OLE DB Destination Input].ExternalColumns[ShipName]"
+                      dataType="wstr"
+                      length="50"
+                      name="ShipName" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load MRV publication data\Raw_MRV.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load MRV publication data\Raw_MRV.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load MRV publication data\Raw_MRV.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load MRV publication data\Raw_MRV.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load MRV publication data\Raw_MRV.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load MRV publication data\Raw_MRV.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load MRV publication data.Paths[Excel Source Output]"
+              endId="Package\Load MRV publication data\Lookup TPS Ship.Inputs[Lookup Input]"
+              name="Excel Source Output"
+              startId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output]" />
+            <path
+              refId="Package\Load MRV publication data.Paths[Lookup Match Output]"
+              endId="Package\Load MRV publication data\Raw_MRV.Inputs[OLE DB Destination Input]"
+              name="Lookup Match Output"
+              startId="Package\Load MRV publication data\Lookup TPS Ship.Outputs[Lookup Match Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -3909,7 +4999,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{C4B1AB01-C338-4FC0-8246-5B051F4FF5B4}"
-          SQLTask:SqlStatementSource="DELETE FROM Raw_Consignor;&#xA;DELETE FROM Raw_Containers;&#xA;DELETE FROM Raw_Item;&#xA;DELETE FROM Raw_Port;&#xA;DELETE FROM Raw_Ship;&#xA;DELETE FROM Raw_Shipment;&#xA;DELETE FROM Raw_ShipmentDetail;&#xA;DELETE FROM Raw_Voyage;&#xA;DELETE FROM Raw_VoyagePort;&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="DELETE FROM Raw_Consignor;&#xA;DELETE FROM Raw_Containers;&#xA;DELETE FROM Raw_Item;&#xA;DELETE FROM Raw_Port;&#xA;DELETE FROM Raw_Ship;&#xA;DELETE FROM Raw_Shipment;&#xA;DELETE FROM Raw_ShipmentDetail;&#xA;DELETE FROM Raw_Voyage;&#xA;DELETE FROM Raw_VoyagePort;&#xA;DELETE FROM Raw_MRV;&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -3938,6 +5028,14 @@
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
       DTS:To="Package\Load Container data" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{BD809831-A81D-4142-BD4F-6F78A9E0368C}"
+      DTS:From="Package\Load Kramse TPS data"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Load MRV publication data" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -3950,7 +5048,7 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="176,42"
           Id="Package\Load Consignor data"
@@ -4057,6 +5155,32 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="204,42"
+          Id="Package\Load MRV publication data"
+          TopLeft="450,299" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="551.25,231">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,68"
+              Start="0,0"
+              End="0,60.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,60.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -4064,7 +5188,7 @@
     design-time-name="Package\Load Consignor data">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="229,42"
           Id="Package\Load Consignor data\Raw_Consignor (Raw database)"
@@ -4092,7 +5216,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -4130,6 +5256,10 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="155,42"
+          Id="Package\Load Container data\Raw_Containers"
+          TopLeft="392,393" />
+        <NodeLayout
           Size="175,42"
           Id="Package\Load Container data\Remove empty rows"
           TopLeft="388,161" />
@@ -4138,57 +5268,9 @@
           Id="Package\Load Container data\Converting data"
           TopLeft="394,283" />
         <NodeLayout
-          Size="155,42"
-          Id="Package\Load Container data\Raw_Containers"
-          TopLeft="393,392" />
-        <NodeLayout
           Size="196,42"
           Id="Package\Load Container data\Container data (TXT file)"
           TopLeft="376,45" />
-        <EdgeLayout
-          Id="Package\Load Container data.Paths[Flat File Source Output]"
-          TopLeft="474.75,87">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,74"
-              Start="0,0"
-              End="0,66.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,66.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Container data.Paths[Data Conversion Output]"
-          TopLeft="470.75,325">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,67"
-              Start="0,0"
-              End="0,59.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,59.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Container data.Paths[Conditional Split Default Output]"
           TopLeft="473.25,203">
@@ -4213,11 +5295,55 @@
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Container data.Paths[Flat File Source Output]"
+          TopLeft="474.75,87">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,74"
+              Start="0,0"
+              End="0,66.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,66.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Container data.Paths[Data Conversion Output]"
+          TopLeft="470.25,325">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,68"
+              Start="0,0"
+              End="0,60.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,60.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <AnnotationLayout
-          Text="Convert non-unicode to unicode&#xD;&#xA;Convert varchar to decimal"
+          Text="Convert non-unicode to unicode&#xA;Convert varchar to decimal"
           ParentId="Package\Load Container data"
           FontInfo="{assembly:Null}"
-          Size="202,60"
+          Size="202,56"
           Id="e707e30c-66fb-4878-b0ec-529dd374847a"
           TopLeft="203,276" />
       </GraphLayout>
@@ -4244,7 +5370,7 @@
         <NodeLayout
           Size="187,42"
           Id="Package\Load Kramse TPS data\Port (Access database)"
-          TopLeft="1169.25,109" />
+          TopLeft="1199,110.5" />
         <NodeLayout
           Size="140,42"
           Id="Package\Load Kramse TPS data\Raw_Voyage"
@@ -4252,11 +5378,11 @@
         <NodeLayout
           Size="127,42"
           Id="Package\Load Kramse TPS data\Raw_Item"
-          TopLeft="1755.75,305.25" />
+          TopLeft="1785.5,306.75" />
         <NodeLayout
           Size="124,42"
           Id="Package\Load Kramse TPS data\Raw_Port"
-          TopLeft="1201.5,305.25" />
+          TopLeft="1231.25,306.75" />
         <NodeLayout
           Size="159,42"
           Id="Package\Load Kramse TPS data\Raw_VoyagePort"
@@ -4264,7 +5390,7 @@
         <NodeLayout
           Size="212,42"
           Id="Package\Load Kramse TPS data\Shipment (Access database)"
-          TopLeft="1458.25,110" />
+          TopLeft="1488,111.5" />
         <NodeLayout
           Size="239,42"
           Id="Package\Load Kramse TPS data\ShipmentDetail (Access database)"
@@ -4272,15 +5398,15 @@
         <NodeLayout
           Size="188,42"
           Id="Package\Load Kramse TPS data\Ship (Access database)"
-          TopLeft="870.25,110" />
+          TopLeft="927.25,111" />
         <NodeLayout
           Size="125,42"
           Id="Package\Load Kramse TPS data\Raw_Ship"
-          TopLeft="902.25,307" />
+          TopLeft="961,406" />
         <NodeLayout
           Size="149,42"
           Id="Package\Load Kramse TPS data\Raw_Shipment"
-          TopLeft="1493.25,301.5" />
+          TopLeft="1523,303" />
         <NodeLayout
           Size="202,42"
           Id="Package\Load Kramse TPS data\Voyage (Access database)"
@@ -4296,10 +5422,10 @@
         <NodeLayout
           Size="190,42"
           Id="Package\Load Kramse TPS data\Item (Access database)"
-          TopLeft="1724,109.75" />
+          TopLeft="1753.75,111.25" />
         <EdgeLayout
-          Id="Package\Load Kramse TPS data.Paths[OLE DB Source Output6]"
-          TopLeft="1819.125,151.75">
+          Id="Package\Load Kramse TPS data.Paths[OLE DB Source Output5]"
+          TopLeft="1848.875,153.25">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -4320,8 +5446,8 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load Kramse TPS data.Paths[OLE DB Source Output5]"
-          TopLeft="1566,152">
+          Id="Package\Load Kramse TPS data.Paths[OLE DB Source Output4]"
+          TopLeft="1595.75,153.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -4342,7 +5468,7 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load Kramse TPS data.Paths[OLE DB Source Output4]"
+          Id="Package\Load Kramse TPS data.Paths[OLE DB Source Output3]"
           TopLeft="704.25,154">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -4364,7 +5490,7 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load Kramse TPS data.Paths[OLE DB Source Output3]"
+          Id="Package\Load Kramse TPS data.Paths[OLE DB Source Output2]"
           TopLeft="462.5,153.75">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -4386,7 +5512,7 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load Kramse TPS data.Paths[OLE DB Source Output2]"
+          Id="Package\Load Kramse TPS data.Paths[OLE DB Source Output1]"
           TopLeft="211.375,158">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -4408,8 +5534,8 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load Kramse TPS data.Paths[OLE DB Source Output1]"
-          TopLeft="1263.125,151">
+          Id="Package\Load Kramse TPS data.Paths[OLE DB Source Output]"
+          TopLeft="1292.875,152.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -4429,20 +5555,72 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Load Kramse TPS data\Name to uppercase"
+          TopLeft="939,209" />
         <EdgeLayout
-          Id="Package\Load Kramse TPS data.Paths[OLE DB Source Output]"
-          TopLeft="964.5,152">
+          Id="Package\Load Kramse TPS data.Paths[OLE DB Source Output6]"
+          TopLeft="1022.625,153">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,155"
+              EndConnector="0,56"
               Start="0,0"
-              End="0,147.5">
+              End="0,48.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,147.5" />
+                    End="0,48.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="186,42"
+          Id="Package\Load Kramse TPS data\Correct name for ships"
+          TopLeft="932,309" />
+        <EdgeLayout
+          Id="Package\Load Kramse TPS data.Paths[Derived Column Output]"
+          TopLeft="1024.5,251">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58"
+              Start="0,0"
+              End="0,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Kramse TPS data.Paths[Derived Column Output1]"
+          TopLeft="1024.25,351">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,55"
+              Start="0,0"
+              End="0,47.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4633,6 +5811,121 @@
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Load MRV publication data">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="178,42"
+          Id="Package\Load MRV publication data\MRV Publication data"
+          TopLeft="455,57" />
+        <NodeLayout
+          Size="126,42"
+          Id="Package\Load MRV publication data\Raw_MRV"
+          TopLeft="483,303" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Load MRV publication data\Lookup TPS Ship"
+          TopLeft="466,180" />
+        <EdgeLayout
+          Id="Package\Load MRV publication data.Paths[Excel Source Output]"
+          TopLeft="544.5,99">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,81"
+              Start="0,0"
+              End="0,73.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,73.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load MRV publication data.Paths[Lookup Match Output]"
+          TopLeft="545.5,222">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,81"
+              Start="0,0"
+              End="0,73.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,73.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,30.9453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load MRV publication data\MRV Publication data">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load MRV publication data\Raw_MRV">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load MRV publication data\Lookup TPS Ship">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Raw_Ship]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

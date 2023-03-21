@@ -7,12 +7,12 @@
   DTS:CreatorName="DESKTOP-9EATKT8\Tristan"
   DTS:DTSID="{432A33F7-9A3E-4D92-B542-C3B7B3988DC5}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="16.0.5035.3"
+  DTS:LastModifiedProductVersion="16.0.5131.0"
   DTS:LocaleID="1043"
   DTS:ObjectName="1  Data Sources to RAW db"
   DTS:PackageType="5"
-  DTS:VersionBuild="56"
-  DTS:VersionGUID="{E51ABD3B-19E9-45FE-9A5E-46091421CE6D}">
+  DTS:VersionBuild="58"
+  DTS:VersionGUID="{BA194E83-F9F4-4352-8DB8-EB2FE011D2EF}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -2309,26 +2309,6 @@
                       refId="Package\Load Kramse TPS data\Raw_Ship.Inputs[OLE DB Destination Input].ExternalColumns[Sh_SpeedInKm]"
                       dataType="ui1"
                       name="Sh_SpeedInKm" />
-                    <externalMetadataColumn
-                      refId="Package\Load Kramse TPS data\Raw_Ship.Inputs[OLE DB Destination Input].ExternalColumns[TotalFuelConsumptionInTonnes]"
-                      dataType="r8"
-                      name="TotalFuelConsumptionInTonnes" />
-                    <externalMetadataColumn
-                      refId="Package\Load Kramse TPS data\Raw_Ship.Inputs[OLE DB Destination Input].ExternalColumns[TotalCo2EmissionsInTonnes]"
-                      dataType="r8"
-                      name="TotalCo2EmissionsInTonnes" />
-                    <externalMetadataColumn
-                      refId="Package\Load Kramse TPS data\Raw_Ship.Inputs[OLE DB Destination Input].ExternalColumns[TotalTimeSpentAtSeaInHours]"
-                      dataType="i4"
-                      name="TotalTimeSpentAtSeaInHours" />
-                    <externalMetadataColumn
-                      refId="Package\Load Kramse TPS data\Raw_Ship.Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageFuelConsumptionPerDistanceKgToMile]"
-                      dataType="r8"
-                      name="AnnualAverageFuelConsumptionPerDistanceKgToMile" />
-                    <externalMetadataColumn
-                      refId="Package\Load Kramse TPS data\Raw_Ship.Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageCo2EmissionPerDistanceKgCo2ToMile]"
-                      dataType="r8"
-                      name="AnnualAverageCo2EmissionPerDistanceKgCo2ToMile" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -5058,11 +5038,15 @@ where [refTable].[Sh_Shipname] = ?</property>
           Id="Package\Load Container data"
           TopLeft="705,188" />
         <NodeLayout
-          Size="185,42"
+          Size="185.333333333334,42"
           Id="Package\Load Kramse TPS data"
           TopLeft="458,189" />
         <NodeLayout
-          Size="193,42"
+          Size="204,42"
+          Id="Package\Load MRV publication data"
+          TopLeft="450,299" />
+        <NodeLayout
+          Size="193.333333333334,42"
           Id="Package\Truncate RAW database"
           TopLeft="450,69" />
         <EdgeLayout
@@ -5155,10 +5139,6 @@ where [refTable].[Sh_Shipname] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="204,42"
-          Id="Package\Load MRV publication data"
-          TopLeft="450,299" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
           TopLeft="551.25,231">
@@ -5314,7 +5294,9 @@ where [refTable].[Sh_Shipname] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5336,14 +5318,16 @@ where [refTable].[Sh_Shipname] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <AnnotationLayout
           Text="Convert non-unicode to unicode&#xA;Convert varchar to decimal"
           ParentId="Package\Load Container data"
           FontInfo="{assembly:Null}"
-          Size="202,56"
+          Size="202,NaN"
           Id="e707e30c-66fb-4878-b0ec-529dd374847a"
           TopLeft="203,276" />
       </GraphLayout>
@@ -5368,31 +5352,51 @@ where [refTable].[Sh_Shipname] = ?</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="187,42"
-          Id="Package\Load Kramse TPS data\Port (Access database)"
-          TopLeft="1199,110.5" />
+          Size="149.333333333334,42"
+          Id="Package\Load Kramse TPS data\Raw_Shipment"
+          TopLeft="1523,303" />
+        <NodeLayout
+          Size="125.333333333334,42.6666666666667"
+          Id="Package\Load Kramse TPS data\Raw_Ship"
+          TopLeft="961,406" />
+        <NodeLayout
+          Size="176,42"
+          Id="Package\Load Kramse TPS data\Raw_ShipmentDetail"
+          TopLeft="615.75,302.5" />
+        <NodeLayout
+          Size="221.333333333334,42"
+          Id="Package\Load Kramse TPS data\VoyagePort (Access database)"
+          TopLeft="99.5,116" />
+        <NodeLayout
+          Size="202,42"
+          Id="Package\Load Kramse TPS data\Voyage (Access database)"
+          TopLeft="362,111.75" />
         <NodeLayout
           Size="140,42"
           Id="Package\Load Kramse TPS data\Raw_Voyage"
           TopLeft="392,304.25" />
         <NodeLayout
-          Size="127,42"
+          Size="186.666666666667,42"
+          Id="Package\Load Kramse TPS data\Port (Access database)"
+          TopLeft="1199,110.5" />
+        <NodeLayout
+          Size="126.666666666667,42"
           Id="Package\Load Kramse TPS data\Raw_Item"
           TopLeft="1785.5,306.75" />
         <NodeLayout
-          Size="124,42"
-          Id="Package\Load Kramse TPS data\Raw_Port"
-          TopLeft="1231.25,306.75" />
+          Size="190,42"
+          Id="Package\Load Kramse TPS data\Item (Access database)"
+          TopLeft="1753.75,111.25" />
         <NodeLayout
-          Size="159,42"
+          Size="158.666666666667,42"
           Id="Package\Load Kramse TPS data\Raw_VoyagePort"
           TopLeft="133.25,303.5" />
         <NodeLayout
-          Size="212,42"
-          Id="Package\Load Kramse TPS data\Shipment (Access database)"
-          TopLeft="1488,111.5" />
+          Size="170,42"
+          Id="Package\Load Kramse TPS data\Name to uppercase"
+          TopLeft="939,209" />
         <NodeLayout
-          Size="239,42"
+          Size="238.666666666667,42"
           Id="Package\Load Kramse TPS data\ShipmentDetail (Access database)"
           TopLeft="585.25,112" />
         <NodeLayout
@@ -5400,51 +5404,17 @@ where [refTable].[Sh_Shipname] = ?</property>
           Id="Package\Load Kramse TPS data\Ship (Access database)"
           TopLeft="927.25,111" />
         <NodeLayout
-          Size="125,42"
-          Id="Package\Load Kramse TPS data\Raw_Ship"
-          TopLeft="961,406" />
+          Size="124,42"
+          Id="Package\Load Kramse TPS data\Raw_Port"
+          TopLeft="1231.25,306.75" />
         <NodeLayout
-          Size="149,42"
-          Id="Package\Load Kramse TPS data\Raw_Shipment"
-          TopLeft="1523,303" />
+          Size="212,42"
+          Id="Package\Load Kramse TPS data\Shipment (Access database)"
+          TopLeft="1488,111.5" />
         <NodeLayout
-          Size="202,42"
-          Id="Package\Load Kramse TPS data\Voyage (Access database)"
-          TopLeft="362,111.75" />
-        <NodeLayout
-          Size="176,42"
-          Id="Package\Load Kramse TPS data\Raw_ShipmentDetail"
-          TopLeft="615.75,302.5" />
-        <NodeLayout
-          Size="221,42"
-          Id="Package\Load Kramse TPS data\VoyagePort (Access database)"
-          TopLeft="99.5,116" />
-        <NodeLayout
-          Size="190,42"
-          Id="Package\Load Kramse TPS data\Item (Access database)"
-          TopLeft="1753.75,111.25" />
-        <EdgeLayout
-          Id="Package\Load Kramse TPS data.Paths[OLE DB Source Output5]"
-          TopLeft="1848.875,153.25">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,153.5"
-              Start="0,0"
-              End="0,146">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,146" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="186,42"
+          Id="Package\Load Kramse TPS data\Correct name for ships"
+          TopLeft="932,309" />
         <EdgeLayout
           Id="Package\Load Kramse TPS data.Paths[OLE DB Source Output4]"
           TopLeft="1595.75,153.5">
@@ -5555,24 +5525,20 @@ where [refTable].[Sh_Shipname] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="170,42"
-          Id="Package\Load Kramse TPS data\Name to uppercase"
-          TopLeft="939,209" />
         <EdgeLayout
-          Id="Package\Load Kramse TPS data.Paths[OLE DB Source Output6]"
-          TopLeft="1022.625,153">
+          Id="Package\Load Kramse TPS data.Paths[Derived Column Output1]"
+          TopLeft="1024.33333333333,351">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,56"
+              EndConnector="0,55"
               Start="0,0"
-              End="0,48.5">
+              End="0,47.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,48.5" />
+                    End="0,47.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5581,10 +5547,6 @@ where [refTable].[Sh_Shipname] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="186,42"
-          Id="Package\Load Kramse TPS data\Correct name for ships"
-          TopLeft="932,309" />
         <EdgeLayout
           Id="Package\Load Kramse TPS data.Paths[Derived Column Output]"
           TopLeft="1024.5,251">
@@ -5608,19 +5570,41 @@ where [refTable].[Sh_Shipname] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load Kramse TPS data.Paths[Derived Column Output1]"
-          TopLeft="1024.25,351">
+          Id="Package\Load Kramse TPS data.Paths[OLE DB Source Output6]"
+          TopLeft="1022.625,153">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,55"
+              EndConnector="0,56"
               Start="0,0"
-              End="0,47.5">
+              End="0,48.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,47.5" />
+                    End="0,48.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Kramse TPS data.Paths[OLE DB Source Output5]"
+          TopLeft="1848.875,153.25">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,153.5"
+              Start="0,0"
+              End="0,146">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,146" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5632,123 +5616,6 @@ where [refTable].[Sh_Shipname] = ?</property>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Kramse TPS data\Port (Access database)">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Kramse TPS data\Raw_Voyage">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Kramse TPS data\Raw_Item">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Kramse TPS data\Raw_Port">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Kramse TPS data\Raw_VoyagePort">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Kramse TPS data\Shipment (Access database)">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Kramse TPS data\ShipmentDetail (Access database)">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Kramse TPS data\Ship (Access database)">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Kramse TPS data\Raw_Ship">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Load Kramse TPS data\Raw_Shipment">
     <Properties>
@@ -5763,7 +5630,7 @@ where [refTable].[Sh_Shipname] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Kramse TPS data\Voyage (Access database)">
+    design-time-name="Package\Load Kramse TPS data\Raw_Ship">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -5802,7 +5669,124 @@ where [refTable].[Sh_Shipname] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
+    design-time-name="Package\Load Kramse TPS data\Voyage (Access database)">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Kramse TPS data\Raw_Voyage">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Kramse TPS data\Port (Access database)">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Kramse TPS data\Raw_Item">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\Load Kramse TPS data\Item (Access database)">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Kramse TPS data\Raw_VoyagePort">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Kramse TPS data\ShipmentDetail (Access database)">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Kramse TPS data\Ship (Access database)">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Kramse TPS data\Raw_Port">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Kramse TPS data\Shipment (Access database)">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -5824,35 +5808,13 @@ where [refTable].[Sh_Shipname] = ?</property>
           Id="Package\Load MRV publication data\MRV Publication data"
           TopLeft="455,57" />
         <NodeLayout
-          Size="126,42"
-          Id="Package\Load MRV publication data\Raw_MRV"
-          TopLeft="483,303" />
-        <NodeLayout
           Size="158,42"
           Id="Package\Load MRV publication data\Lookup TPS Ship"
           TopLeft="466,180" />
-        <EdgeLayout
-          Id="Package\Load MRV publication data.Paths[Excel Source Output]"
-          TopLeft="544.5,99">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,81"
-              Start="0,0"
-              End="0,73.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,73.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+        <NodeLayout
+          Size="126,42"
+          Id="Package\Load MRV publication data\Raw_MRV"
+          TopLeft="483,303" />
         <EdgeLayout
           Id="Package\Load MRV publication data.Paths[Lookup Match Output]"
           TopLeft="545.5,222">
@@ -5877,6 +5839,28 @@ where [refTable].[Sh_Shipname] = ?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load MRV publication data.Paths[Excel Source Output]"
+          TopLeft="544.5,99">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,81"
+              Start="0,0"
+              End="0,73.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,73.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -5894,25 +5878,12 @@ where [refTable].[Sh_Shipname] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load MRV publication data\Raw_MRV">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Load MRV publication data\Lookup TPS Ship">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -5922,10 +5893,23 @@ where [refTable].[Sh_Shipname] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load MRV publication data\Raw_MRV">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

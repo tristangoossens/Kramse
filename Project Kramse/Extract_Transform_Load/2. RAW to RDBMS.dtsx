@@ -7,16 +7,33 @@
   DTS:CreatorName="JELMERS-PC\Gebruiker"
   DTS:DTSID="{E02B5664-55C4-4BB7-864C-7EEEE4DDEFB2}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="16.0.5035.3"
+  DTS:LastModifiedProductVersion="16.0.5131.0"
   DTS:LocaleID="1043"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="64"
-  DTS:VersionGUID="{6D3C0698-9ECC-4398-B24F-A0696147854B}">
+  DTS:VersionBuild="73"
+  DTS:VersionGUID="{7B16F70B-AB56-403F-8D79-8F007F38103E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
   <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Create View IdleTime"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{A643DD0E-745C-4FD8-BBB1-2D7174455B62}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Create View IdleTime"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{1421DBD4-2B2C-4ECE-91B7-A456A919242E}"
+          SQLTask:SqlStatementSource="CREATE VIEW RDBMS_IdleTime AS&#xA;SELECT RDBMS_Voyage.Id AS VoyageId, ShipId, RDBMS_VoyagePort.PortIdNext AS DestinationPort, RDBMS_VoyagePort.ArrivalDate AS ArrivalDate,  NextPort.DepartureDate AS DepartureDate, DATEDIFF(Day, RDBMS_VoyagePort.ArrivalDate, NextPort.DepartureDate) AS IdleTime&#xA;FROM RDBMS_VoyagePort&#xA;JOIN RDBMS_Voyage ON RDBMS_Voyage.Id = RDBMS_VoyagePort.VoyageId&#xA;LEFT JOIN RDBMS_VoyagePort AS NextPort ON RDBMS_VoyagePort.VoyageId = NextPort.VoyageId&#xA;    AND RDBMS_VoyagePort.PortIdNext = NextPort.PortIdCurrent" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\Execute SQL Task"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
@@ -31,7 +48,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{1421DBD4-2B2C-4ECE-91B7-A456A919242E}"
-          SQLTask:SqlStatementSource="DELETE FROM RDBMS_ShipmentDetail;&#xA;DELETE FROM RDBMS_Shipment;&#xA;DELETE FROM RDBMS_VoyagePort;&#xA;DELETE FROM RDBMS_Voyage;&#xA;DELETE FROM RDBMS_Item;&#xA;DELETE FROM RDBMS_Consignor;&#xA;DELETE FROM RDBMS_Containers;&#xA;DELETE FROM RDBMS_Ship;&#xA;DELETE FROM RDBMS_Port;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="DELETE FROM RDBMS_ShipmentDetail;&#xA;DELETE FROM RDBMS_Shipment;&#xA;DROP VIEW RDBMS_IdleTime;&#xA;DELETE FROM RDBMS_VoyagePort;&#xA;DELETE FROM RDBMS_Voyage;&#xA;DELETE FROM RDBMS_Item;&#xA;DELETE FROM RDBMS_Consignor;&#xA;DELETE FROM RDBMS_Containers;&#xA;DELETE FROM RDBMS_Ship;&#xA;DELETE FROM RDBMS_Port;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -2792,6 +2809,30 @@ VALUES ('Country Lookup', 'Country not found')</property>
                           name="FriendlyExpression">(DT_I4)Sh_Yearcost * 0.94</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Ship\DOLLAR -&gt; EUR Conversion.Inputs[Derived Column Input].Columns[Sh_Shipname]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Sh_Shipname"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Ship\Raw_Ship.Outputs[OLE DB Source Output].Columns[Sh_Shipname]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[SUBSTRING](#{Package\Load Ship\Raw_Ship.Outputs[OLE DB Source Output].Columns[Sh_Shipname]},1,49)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">SUBSTRING(Sh_Shipname,1,49)</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -3499,7 +3540,7 @@ where [refTable].[ShipName] = ?</property>
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">0</property>
+                  typeConverter="AccessMode">3</property>
                 <property
                   dataType="System.Boolean"
                   description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
@@ -3511,7 +3552,7 @@ where [refTable].[ShipName] = ?</property>
                 <property
                   dataType="System.String"
                   description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                  name="FastLoadOptions"></property>
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
@@ -3533,44 +3574,6 @@ where [refTable].[ShipName] = ?</property>
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
-                    <inputColumn
-                      refId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].Columns[Sh_MaxTeu]"
-                      cachedDataType="i4"
-                      cachedName="Sh_MaxTeu"
-                      externalMetadataColumnId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].ExternalColumns[MaxTeu]"
-                      lineageId="Package\Load Ship\Raw_Ship.Outputs[OLE DB Source Output].Columns[Sh_MaxTeu]" />
-                    <inputColumn
-                      refId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].Columns[Sh_SpeedInKnots]"
-                      cachedDataType="ui1"
-                      cachedName="Sh_SpeedInKnots"
-                      externalMetadataColumnId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].ExternalColumns[SpeedInKnots]"
-                      lineageId="Package\Load Ship\Raw_Ship.Outputs[OLE DB Source Output].Columns[Sh_SpeedInKnots]" />
-                    <inputColumn
-                      refId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].Columns[Sh_SpeedInKm]"
-                      cachedDataType="ui1"
-                      cachedName="Sh_SpeedInKm"
-                      externalMetadataColumnId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].ExternalColumns[SpeedInKm]"
-                      lineageId="Package\Load Ship\Raw_Ship.Outputs[OLE DB Source Output].Columns[Sh_SpeedInKm]" />
-                    <inputColumn
-                      refId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].Columns[VS_ShipId]"
-                      cachedDataType="i4"
-                      cachedName="VS_ShipId"
-                      externalMetadataColumnId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
-                      lineageId="Package\Load Ship\Raw_Ship.Outputs[OLE DB Source Output].Columns[VS_ShipId]" />
-                    <inputColumn
-                      refId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].Columns[Sh_Shipname]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="Sh_Shipname"
-                      externalMetadataColumnId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
-                      lineageId="Package\Load Ship\Raw_Ship.Outputs[OLE DB Source Output].Columns[Sh_Shipname]" />
-                    <inputColumn
-                      refId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].Columns[ISO3Code]"
-                      cachedDataType="wstr"
-                      cachedLength="10"
-                      cachedName="ISO3Code"
-                      externalMetadataColumnId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].ExternalColumns[Country]"
-                      lineageId="Package\Load Ship\Lookup ISO Country.Outputs[Lookup Match Output].Columns[ISO3Code]" />
                     <inputColumn
                       refId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].Columns[TotalFuelConsumptionInTonnes]"
                       cachedDataType="r8"
@@ -3602,6 +3605,44 @@ where [refTable].[ShipName] = ?</property>
                       externalMetadataColumnId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageCo2EmissionPerDistanceKgCo2ToMile]"
                       lineageId="Package\Load Ship\Lookup ship MRV data.Outputs[Lookup Match Output].Columns[AnnualAverageCo2EmissionPerDistanceKgCo2ToMile]" />
                     <inputColumn
+                      refId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].Columns[VS_ShipId]"
+                      cachedDataType="i4"
+                      cachedName="VS_ShipId"
+                      externalMetadataColumnId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                      lineageId="Package\Load Ship\Raw_Ship.Outputs[OLE DB Source Output].Columns[VS_ShipId]" />
+                    <inputColumn
+                      refId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].Columns[Sh_Shipname]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Sh_Shipname"
+                      externalMetadataColumnId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                      lineageId="Package\Load Ship\Raw_Ship.Outputs[OLE DB Source Output].Columns[Sh_Shipname]" />
+                    <inputColumn
+                      refId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].Columns[Sh_MaxTeu]"
+                      cachedDataType="i4"
+                      cachedName="Sh_MaxTeu"
+                      externalMetadataColumnId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].ExternalColumns[MaxTeu]"
+                      lineageId="Package\Load Ship\Raw_Ship.Outputs[OLE DB Source Output].Columns[Sh_MaxTeu]" />
+                    <inputColumn
+                      refId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].Columns[Sh_SpeedInKnots]"
+                      cachedDataType="ui1"
+                      cachedName="Sh_SpeedInKnots"
+                      externalMetadataColumnId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].ExternalColumns[SpeedInKnots]"
+                      lineageId="Package\Load Ship\Raw_Ship.Outputs[OLE DB Source Output].Columns[Sh_SpeedInKnots]" />
+                    <inputColumn
+                      refId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].Columns[Sh_SpeedInKm]"
+                      cachedDataType="ui1"
+                      cachedName="Sh_SpeedInKm"
+                      externalMetadataColumnId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].ExternalColumns[SpeedInKm]"
+                      lineageId="Package\Load Ship\Raw_Ship.Outputs[OLE DB Source Output].Columns[Sh_SpeedInKm]" />
+                    <inputColumn
+                      refId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].Columns[ISO3Code]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="ISO3Code"
+                      externalMetadataColumnId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].ExternalColumns[Country]"
+                      lineageId="Package\Load Ship\Lookup ISO Country.Outputs[Lookup Match Output].Columns[ISO3Code]" />
+                    <inputColumn
                       refId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].Columns[Sh_Yearcost]"
                       cachedDataType="r8"
                       cachedName="Sh_Yearcost"
@@ -3623,6 +3664,15 @@ where [refTable].[ShipName] = ?</property>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
+                      refId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                      dataType="i4"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="50"
+                      name="Name" />
+                    <externalMetadataColumn
                       refId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].ExternalColumns[MaxTeu]"
                       dataType="i4"
                       name="MaxTeu" />
@@ -3640,14 +3690,17 @@ where [refTable].[ShipName] = ?</property>
                       length="50"
                       name="Country" />
                     <externalMetadataColumn
-                      refId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
-                      dataType="i4"
-                      name="Id" />
+                      refId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].ExternalColumns[YearcostEuro]"
+                      dataType="r8"
+                      name="YearcostEuro" />
                     <externalMetadataColumn
-                      refId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
-                      dataType="wstr"
-                      length="50"
-                      name="Name" />
+                      refId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].ExternalColumns[LengthInM]"
+                      dataType="i2"
+                      name="LengthInM" />
+                    <externalMetadataColumn
+                      refId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].ExternalColumns[WidthInM]"
+                      dataType="ui1"
+                      name="WidthInM" />
                     <externalMetadataColumn
                       refId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].ExternalColumns[TotalFuelConsumptionInTonnes]"
                       dataType="r8"
@@ -3668,18 +3721,6 @@ where [refTable].[ShipName] = ?</property>
                       refId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageCo2EmissionPerDistanceKgCo2ToMile]"
                       dataType="r8"
                       name="AnnualAverageCo2EmissionPerDistanceKgCo2ToMile" />
-                    <externalMetadataColumn
-                      refId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].ExternalColumns[YearcostEuro]"
-                      dataType="r8"
-                      name="YearcostEuro" />
-                    <externalMetadataColumn
-                      refId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].ExternalColumns[LengthInM]"
-                      dataType="i2"
-                      name="LengthInM" />
-                    <externalMetadataColumn
-                      refId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].ExternalColumns[WidthInM]"
-                      dataType="ui1"
-                      name="WidthInM" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -4947,10 +4988,10 @@ where [refTable].[ShipName] = ?</property>
                       cachedName="VP_LegDateDepart"
                       lineageId="Package\Load VoyagePort\Raw_VoyagePort.Outputs[OLE DB Source Output].Columns[VP_LegDateDepart]" />
                     <inputColumn
-                      refId="Package\Load VoyagePort\Calculate Idle Time.Inputs[Derived Column Input].Columns[VP_LegDateArrival]"
+                      refId="Package\Load VoyagePort\Calculate Idle Time.Inputs[Derived Column Input].Columns[ArrivalDateOfNextPort]"
                       cachedDataType="dbDate"
-                      cachedName="VP_LegDateArrival"
-                      lineageId="Package\Load VoyagePort\Raw_VoyagePort.Outputs[OLE DB Source Output].Columns[VP_LegDateArrival]" />
+                      cachedName="ArrivalDateOfNextPort"
+                      lineageId="Package\Load VoyagePort\Lookup.Outputs[Lookup Match Output].Columns[ArrivalDateOfNextPort]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -4976,13 +5017,13 @@ where [refTable].[ShipName] = ?</property>
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[DATEDIFF]("dd",#{Package\Load VoyagePort\Raw_VoyagePort.Outputs[OLE DB Source Output].Columns[VP_LegDateDepart]},#{Package\Load VoyagePort\Raw_VoyagePort.Outputs[OLE DB Source Output].Columns[VP_LegDateArrival]})</property>
+                          name="Expression">[DATEDIFF]("dd",#{Package\Load VoyagePort\Raw_VoyagePort.Outputs[OLE DB Source Output].Columns[VP_LegDateDepart]},#{Package\Load VoyagePort\Lookup.Outputs[Lookup Match Output].Columns[ArrivalDateOfNextPort]})</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">DATEDIFF("dd",VP_LegDateDepart,VP_LegDateArrival)</property>
+                          name="FriendlyExpression">DATEDIFF("dd",VP_LegDateDepart,ArrivalDateOfNextPort)</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -5006,6 +5047,163 @@ where [refTable].[ShipName] = ?</property>
                       refId="Package\Load VoyagePort\Calculate Idle Time.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       dataType="i4"
                       lineageId="Package\Load VoyagePort\Calculate Idle Time.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load VoyagePort\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[RDBMS_VoyagePort]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[RDBMS_VoyagePort]) [refTable]
+where [refTable].[PortIdCurrent] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="VoyageId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="PortIdCurrent" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="PortIdNext" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DepartureDate" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ArrivalDate" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TrajectDistanceInKm" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IdleTimeInDays" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Load VoyagePort\Raw_VoyagePort.Outputs[OLE DB Source Output].Columns[VP_PortIdNext]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load VoyagePort\Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="{1421DBD4-2B2C-4ECE-91B7-A456A919242E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[RDBMS database - MSSQL connection]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load VoyagePort\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load VoyagePort\Lookup.Inputs[Lookup Input].Columns[VP_PortIdNext]"
+                      cachedDataType="i4"
+                      cachedName="VP_PortIdNext"
+                      lineageId="Package\Load VoyagePort\Raw_VoyagePort.Outputs[OLE DB Source Output].Columns[VP_PortIdNext]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">PortIdCurrent</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load VoyagePort\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Load VoyagePort\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load VoyagePort\Lookup.Outputs[Lookup Match Output].Columns[ArrivalDateOfNextPort]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load VoyagePort\Lookup.Outputs[Lookup Match Output].Columns[ArrivalDateOfNextPort]"
+                      name="ArrivalDateOfNextPort"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">ArrivalDate</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load VoyagePort\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Load VoyagePort\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load VoyagePort\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Load VoyagePort\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load VoyagePort\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load VoyagePort\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load VoyagePort\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load VoyagePort\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -5408,8 +5606,13 @@ where [refTable].[ShipName] = ?</property>
               name="Derived Column Output"
               startId="Package\Load VoyagePort\Calculate Idle Time.Outputs[Derived Column Output]" />
             <path
-              refId="Package\Load VoyagePort.Paths[OLE DB Source Output]"
+              refId="Package\Load VoyagePort.Paths[Lookup Match Output]"
               endId="Package\Load VoyagePort\Calculate Idle Time.Inputs[Derived Column Input]"
+              name="Lookup Match Output"
+              startId="Package\Load VoyagePort\Lookup.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Load VoyagePort.Paths[OLE DB Source Output]"
+              endId="Package\Load VoyagePort\Lookup.Inputs[Lookup Input]"
               name="OLE DB Source Output"
               startId="Package\Load VoyagePort\Raw_VoyagePort.Outputs[OLE DB Source Output]" />
           </paths>
@@ -5458,6 +5661,14 @@ where [refTable].[ShipName] = ?</property>
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 12"
       DTS:To="Package\Load Ship" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 13]"
+      DTS:CreationName=""
+      DTS:DTSID="{14BF3D13-D4D2-421D-BCFA-631CE0DCA111}"
+      DTS:From="Package\Load VoyagePort"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 13"
+      DTS:To="Package\Create View IdleTime" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
@@ -5536,31 +5747,31 @@ where [refTable].[ShipName] = ?</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="163,42"
+          Size="162.666666666667,42"
           Id="Package\Execute SQL Task"
           TopLeft="552.507936507937,2.97557997557997" />
         <NodeLayout
           Size="152,42"
           Id="Package\Load Consignor"
-          TopLeft="581.444444444444,126.777777777778" />
+          TopLeft="581.444444444444,126.127777808772" />
         <NodeLayout
-          Size="155,42"
+          Size="154.666666666667,42"
           Id="Package\Load Containers"
           TopLeft="748.555555555556,128.008547008547" />
         <NodeLayout
-          Size="127,42"
+          Size="126.666666666667,42"
           Id="Package\Load Item"
           TopLeft="938.888888888889,127.666666666667" />
         <NodeLayout
           Size="124,42"
           Id="Package\Load Port"
-          TopLeft="421.444444444444,126.777777777778" />
+          TopLeft="420.819444472384,126.777777777778" />
         <NodeLayout
-          Size="125,42"
+          Size="125.333333333334,42"
           Id="Package\Load Ship"
-          TopLeft="211.025641025641,127.777777777778" />
+          TopLeft="211.650640997701,128.427777746784" />
         <NodeLayout
-          Size="149,42"
+          Size="149.333333333334,42"
           Id="Package\Load Shipment"
           TopLeft="566.493395493396,217.292929292929" />
         <NodeLayout
@@ -5572,35 +5783,35 @@ where [refTable].[ShipName] = ?</property>
           Id="Package\Load Voyage"
           TopLeft="196.923076923077,214.615384615385" />
         <NodeLayout
-          Size="159,42"
+          Size="158.666666666667,42"
           Id="Package\Load VoyagePort"
           TopLeft="380.683760683761,216.837606837607" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="502.777777777777,168.777777777778">
+          TopLeft="502.152777805717,168.777777777778">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="114.715617715619,48.515151515151"
+              EndConnector="115.45172879879,48.515151515151"
               Start="0,0"
-              End="114.715617715619,41.015151515151">
+              End="115.45172879879,41.015151515151">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.3213376536894" />
+                    End="0,20.3220454651421" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,20.3213376536894"
-                    Point2="0,24.3213376536894"
-                    Point3="4,24.3213376536894" />
+                    Point1="0,20.3220454651421"
+                    Point2="0,24.3220454651421"
+                    Point3="4,24.3220454651421" />
                   <mssgle:LineSegment
-                    End="110.715617715619,24.3213376536894" />
+                    End="111.45172879879,24.3220454651421" />
                   <mssgle:CubicBezierSegment
-                    Point1="110.715617715619,24.3213376536894"
-                    Point2="114.715617715619,24.3213376536894"
-                    Point3="114.715617715619,28.3213376536894" />
+                    Point1="111.45172879879,24.3220454651421"
+                    Point2="115.45172879879,24.3220454651421"
+                    Point3="115.45172879879,28.3220454651421" />
                   <mssgle:LineSegment
-                    End="114.715617715619,41.015151515151" />
+                    End="115.45172879879,41.015151515151" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5611,18 +5822,18 @@ where [refTable].[ShipName] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="660.96891996892,168.777777777778">
+          TopLeft="661.080031080031,168.127777808772">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,48.5151515151514"
+              EndConnector="0,49.1651514841566"
               Start="0,0"
-              End="0,41.0151515151514">
+              End="0,41.6651514841566">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,41.0151515151514" />
+                    End="0,41.6651514841566" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5633,7 +5844,7 @@ where [refTable].[ShipName] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 10]"
-          TopLeft="462.147435897436,168.777777777778">
+          TopLeft="461.751602578072,168.777777777778">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -5655,18 +5866,18 @@ where [refTable].[ShipName] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 11]"
-          TopLeft="270.224358974359,169.777777777778">
+          TopLeft="270.620192293722,170.427777746784">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,44.8376068376069"
+              EndConnector="0,44.1876068686014"
               Start="0,0"
-              End="0,37.3376068376069">
+              End="0,36.6876068686014">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,37.3376068376069" />
+                    End="0,36.6876068686014" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5677,30 +5888,30 @@ where [refTable].[ShipName] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 12]"
-          TopLeft="582.34126984127,44.97557997558">
+          TopLeft="582.285714285715,44.97557997558">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-308.815628815629,82.8021978021978"
+              EndConnector="-307.968406621347,83.4521977712036"
               Start="0,0"
-              End="-308.815628815629,75.3021978021978">
+              End="-307.968406621347,75.9521977712036">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,18.1880140817267" />
+                    End="0,18.3651890026826" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,18.1880140817267"
-                    Point2="0,22.1880140817267"
-                    Point3="-4,22.1880140817267" />
+                    Point1="0,18.3651890026826"
+                    Point2="0,22.3651890026826"
+                    Point3="-4,22.3651890026826" />
                   <mssgle:LineSegment
-                    End="-304.815628815629,22.1880140817267" />
+                    End="-303.968406621347,22.3651890026826" />
                   <mssgle:CubicBezierSegment
-                    Point1="-304.815628815629,22.1880140817267"
-                    Point2="-308.815628815629,22.1880140817267"
-                    Point3="-308.815628815629,26.1880140817267" />
+                    Point1="-303.968406621347,22.3651890026826"
+                    Point2="-307.968406621347,22.3651890026826"
+                    Point3="-307.968406621347,26.3651890026826" />
                   <mssgle:LineSegment
-                    End="-308.815628815629,75.3021978021978" />
+                    End="-307.968406621347,75.9521977712036" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5801,30 +6012,30 @@ where [refTable].[ShipName] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 5]"
-          TopLeft="608.174603174604,44.97557997558">
+          TopLeft="608.063492063493,44.97557997558">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-124.73015873016,81.802197802198"
+              EndConnector="-125.244047591109,81.802197802198"
               Start="0,0"
-              End="-124.73015873016,74.302197802198">
+              End="-125.244047591109,74.302197802198">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,29.1979757787778" />
+                    End="0,29.1989439132297" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,29.1979757787778"
-                    Point2="0,33.1979757787778"
-                    Point3="-4,33.1979757787778" />
+                    Point1="0,29.1989439132297"
+                    Point2="0,33.1989439132297"
+                    Point3="-4,33.1989439132297" />
                   <mssgle:LineSegment
-                    End="-120.73015873016,33.1979757787778" />
+                    End="-121.244047591109,33.1989439132297" />
                   <mssgle:CubicBezierSegment
-                    Point1="-120.73015873016,33.1979757787778"
-                    Point2="-124.73015873016,33.1979757787778"
-                    Point3="-124.73015873016,37.1979757787778" />
+                    Point1="-121.244047591109,33.1989439132297"
+                    Point2="-125.244047591109,33.1989439132297"
+                    Point3="-125.244047591109,37.1989439132297" />
                   <mssgle:LineSegment
-                    End="-124.73015873016,74.302197802198" />
+                    End="-125.244047591109,74.302197802198" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5835,30 +6046,30 @@ where [refTable].[ShipName] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 6]"
-          TopLeft="634.007936507937,44.97557997558">
+          TopLeft="633.84126984127,44.97557997558">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="23.4365079365078,81.8021978021979"
+              EndConnector="23.6031746031737,81.1521978331924"
               Start="0,0"
-              End="23.4365079365078,74.3021978021979">
+              End="23.6031746031737,73.6521978331924">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,36.901098901099" />
+                    End="0,36.5760989165962" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,36.901098901099"
-                    Point2="0,40.901098901099"
-                    Point3="4,40.901098901099" />
+                    Point1="0,36.5760989165962"
+                    Point2="0,40.5760989165962"
+                    Point3="4,40.5760989165962" />
                   <mssgle:LineSegment
-                    End="19.4365079365078,40.901098901099" />
+                    End="19.6031746031737,40.5760989165962" />
                   <mssgle:CubicBezierSegment
-                    Point1="19.4365079365078,40.901098901099"
-                    Point2="23.4365079365078,40.901098901099"
-                    Point3="23.4365079365078,44.901098901099" />
+                    Point1="19.6031746031737,40.5760989165962"
+                    Point2="23.6031746031737,40.5760989165962"
+                    Point3="23.6031746031737,44.5760989165962" />
                   <mssgle:LineSegment
-                    End="23.4365079365078,74.3021978021979" />
+                    End="23.6031746031737,73.6521978331924" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5957,6 +6168,32 @@ where [refTable].[ShipName] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="180,42.6666666666667"
+          Id="Package\Create View IdleTime"
+          TopLeft="371.874983375892,337.999983882905" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 13]"
+          TopLeft="460.946038696493,258.837606837607">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,79.1623770452976"
+              Start="0,0"
+              End="0,71.6623770452976">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,71.6623770452976" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -5978,13 +6215,39 @@ where [refTable].[ShipName] = ?</property>
           Id="Package\Load Consignor\Replace NULL values in Discount"
           TopLeft="346,172" />
         <NodeLayout
+          Size="216,42"
+          Id="Package\Load Consignor\Remove duplicate consignors"
+          TopLeft="312,403" />
+        <NodeLayout
           Size="152,42"
           Id="Package\Load Consignor\Raw_Consignor"
           TopLeft="381,68" />
         <NodeLayout
-          Size="207,42"
+          Size="206.666666666667,42"
           Id="Package\Load Consignor\Lookup ISO3 Country Code"
           TopLeft="355,271" />
+        <EdgeLayout
+          Id="Package\Load Consignor.Paths[Sort Output]"
+          TopLeft="416.5,445">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,55"
+              Start="0,0"
+              End="0,47.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Consignor.Paths[OLE DB Source Output]"
           TopLeft="459.5,110">
@@ -6039,36 +6302,10 @@ where [refTable].[ShipName] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="32.4916276041667,55.1706615532119,129.350078125,16"
+              BoundingBox="32.4916276041667,55.1706615532119,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Consignor.Paths[Derived Column Output]"
-          TopLeft="460.25,214">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,57"
-              Start="0,0"
-              End="0,49.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,49.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="216,42"
-          Id="Package\Load Consignor\Remove duplicate consignors"
-          TopLeft="312,403" />
         <EdgeLayout
           Id="Package\Load Consignor.Paths[Lookup Match Output]"
           TopLeft="422.666666666667,313">
@@ -6094,19 +6331,19 @@ where [refTable].[ShipName] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load Consignor.Paths[Sort Output]"
-          TopLeft="416.5,445">
+          Id="Package\Load Consignor.Paths[Derived Column Output]"
+          TopLeft="460.25,214">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,55"
+              EndConnector="0,57"
               Start="0,0"
-              End="0,47.5">
+              End="0,49.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,47.5" />
+                    End="0,49.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6120,6 +6357,19 @@ where [refTable].[ShipName] = ?</property>
   </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\Load Consignor\RDBMS_Consignor">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Consignor\Raw_Consignor">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -6151,19 +6401,6 @@ where [refTable].[ShipName] = ?</property>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Consignor\Raw_Consignor">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -6247,7 +6484,33 @@ where [refTable].[ShipName] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Containers.Paths[Derived Column Output]"
+          TopLeft="350.75,226">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,93"
+              Start="0,0"
+              End="0,85.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,85.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6272,28 +6535,6 @@ where [refTable].[ShipName] = ?</property>
             <mssgm:EdgeLabel
               BoundingBox="-70.61390625,24.4208984375,141.2278125,11.658203125"
               RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Containers.Paths[Derived Column Output]"
-          TopLeft="350.75,226">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,93"
-              Start="0,0"
-              End="0,85.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,85.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -6329,7 +6570,7 @@ where [refTable].[ShipName] = ?</property>
     design-time-name="Package\Load Item">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="127,42"
           Id="Package\Load Item\Raw_Item"
@@ -6357,7 +6598,9 @@ where [refTable].[ShipName] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -6399,7 +6642,7 @@ where [refTable].[ShipName] = ?</property>
           Id="Package\Load Port\OLE DB Command"
           TopLeft="525,358" />
         <NodeLayout
-          Size="207,42"
+          Size="206.666666666667,42"
           Id="Package\Load Port\Lookup ISO3 Country Code"
           TopLeft="302,180" />
         <NodeLayout
@@ -6550,17 +6793,21 @@ where [refTable].[ShipName] = ?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="125,42"
-          Id="Package\Load Ship\Raw_Ship"
-          TopLeft="323,68" />
-        <NodeLayout
-          Size="139,42"
-          Id="Package\Load Ship\RDBMS_Ship"
-          TopLeft="314,489" />
+          Size="210.666666666667,42.6666666666667"
+          Id="Package\Load Ship\DOLLAR -&gt; EUR Conversion"
+          TopLeft="277.000000119209,429.999998807907" />
         <NodeLayout
           Size="174,42"
           Id="Package\Load Ship\Lookup ISO Country"
           TopLeft="302,180" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\Load Ship\Lookup ship MRV data"
+          TopLeft="295,294" />
+        <NodeLayout
+          Size="125.333333333334,42"
+          Id="Package\Load Ship\Raw_Ship"
+          TopLeft="323,68" />
         <EdgeLayout
           Id="Package\Load Ship.Paths[OLE DB Source Output]"
           TopLeft="387.25,110">
@@ -6583,10 +6830,30 @@ where [refTable].[ShipName] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="184,42"
-          Id="Package\Load Ship\Lookup ship MRV data"
-          TopLeft="295,294" />
+        <EdgeLayout
+          Id="Package\Load Ship.Paths[Lookup Match Output1]"
+          TopLeft="384.666666726271,336">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,93.999998807907"
+              Start="0,0"
+              End="0,86.499998807907">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,86.499998807907" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,37.4453119039535,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Ship.Paths[Lookup Match Output]"
           TopLeft="388,222">
@@ -6612,47 +6879,23 @@ where [refTable].[ShipName] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="210,42"
-          Id="Package\Load Ship\DOLLAR -&gt; EUR Conversion"
-          TopLeft="281,390" />
-        <EdgeLayout
-          Id="Package\Load Ship.Paths[Lookup Match Output1]"
-          TopLeft="386.5,336">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,54"
-              Start="0,0"
-              End="0,46.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,46.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,17.4453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="140,42.6666666666667"
+          Id="Package\Load Ship\RDBMS_Ship"
+          TopLeft="309.99999076128,560.999983280898" />
         <EdgeLayout
           Id="Package\Load Ship.Paths[Derived Column Output]"
-          TopLeft="384.75,432">
+          TopLeft="381.166662106911,472.666665474574">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,57"
+              EndConnector="0,88.3333178063239"
               Start="0,0"
-              End="0,49.5">
+              End="0,80.8333178063239">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,49.5" />
+                    End="0,80.8333178063239" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6666,19 +6909,6 @@ where [refTable].[ShipName] = ?</property>
   </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\Load Ship\Raw_Ship">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Ship\RDBMS_Ship">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -6713,11 +6943,34 @@ where [refTable].[ShipName] = ?</property>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Ship\Lookup ship MRV data">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Raw_MRV]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Load Shipment">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="163,42"
           Id="Package\Load Shipment\RDBMS_Shipment"
@@ -6745,7 +6998,9 @@ where [refTable].[ShipName] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -6781,7 +7036,7 @@ where [refTable].[ShipName] = ?</property>
     design-time-name="Package\Load ShipmentDetail">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="327,42"
           Id="Package\Load ShipmentDetail\Replace ContainerNr with Container amount (Range)"
@@ -6813,7 +7068,9 @@ where [refTable].[ShipName] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6835,7 +7092,9 @@ where [refTable].[ShipName] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -6935,33 +7194,37 @@ where [refTable].[ShipName] = ?</property>
     design-time-name="Package\Load VoyagePort">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="159,42"
+          Size="113.333333333334,42.6666666666667"
+          Id="Package\Load VoyagePort\Lookup"
+          TopLeft="322.499990388751,176.388884890411" />
+        <NodeLayout
+          Size="173.333333333334,42"
+          Id="Package\Load VoyagePort\RDBMS_VoyagePort"
+          TopLeft="293.166666691502,394.111109074619" />
+        <NodeLayout
+          Size="158.666666666667,42"
           Id="Package\Load VoyagePort\Raw_VoyagePort"
           TopLeft="306,95" />
         <NodeLayout
-          Size="169,42"
+          Size="169.333333333334,42"
           Id="Package\Load VoyagePort\Calculate Idle Time"
-          TopLeft="299,193" />
-        <NodeLayout
-          Size="173,42"
-          Id="Package\Load VoyagePort\RDBMS_VoyagePort"
-          TopLeft="294,318" />
+          TopLeft="302.333333233992,277.999997466803" />
         <EdgeLayout
           Id="Package\Load VoyagePort.Paths[OLE DB Source Output]"
-          TopLeft="384.5,137">
+          TopLeft="382.249995194376,137">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,56"
+              EndConnector="0,39.3888848904108"
               Start="0,0"
-              End="0,48.5">
+              End="0,31.8888848904108">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,48.5" />
+                    End="0,31.8888848904108" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6971,19 +7234,43 @@ where [refTable].[ShipName] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load VoyagePort.Paths[Derived Column Output]"
-          TopLeft="382,235">
+          Id="Package\Load VoyagePort.Paths[Lookup Match Output]"
+          TopLeft="383.083328478038,219.055551557077">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,83"
+              EndConnector="0,58.9444459097252"
               Start="0,0"
-              End="0,75.5">
+              End="0,51.4444459097252">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,75.5" />
+                    End="0,51.4444459097252" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,19.9175354548626,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load VoyagePort.Paths[Derived Column Output]"
+          TopLeft="383.416666629414,319.999997466803">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,74.1111116078164"
+              Start="0,0"
+              End="0,66.6111116078164">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,66.6111116078164" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6996,15 +7283,25 @@ where [refTable].[ShipName] = ?</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Load VoyagePort\Raw_VoyagePort">
+    design-time-name="Package\Load VoyagePort\Lookup">
     <Properties>
       <Property>
-        <Name>DataSourceViewID</Name>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[RDBMS_VoyagePort]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q2:string">Table</Value>
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -7022,25 +7319,28 @@ where [refTable].[ShipName] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Ship\Lookup ship MRV data">
+    design-time-name="Package\Load VoyagePort\Raw_VoyagePort">
     <Properties>
       <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Raw_MRV]</Value>
+        <Name>DataSourceViewID</Name>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q2:string">Table</Value>
       </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Ship\RDBMS_Ship">
+    <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

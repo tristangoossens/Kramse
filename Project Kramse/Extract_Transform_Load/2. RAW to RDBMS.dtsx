@@ -11,8 +11,8 @@
   DTS:LocaleID="1043"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="96"
-  DTS:VersionGUID="{F55492B2-002F-497C-AAF0-7AAB3166FADA}">
+  DTS:VersionBuild="97"
+  DTS:VersionGUID="{7D802872-6B11-4980-A8C6-92A2DCA7C4CE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -3327,13 +3327,13 @@ VALUES ('Country', 'Country not found', ?)</property>
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">#{Package\Load Ship\Lookup ship MRV data.Outputs[Lookup Match Output].Columns[AnnualAverageFuelConsumptionPerDistanceKgToMile]} * 1.852</property>
+                          name="Expression">#{Package\Load Ship\Lookup ship MRV data.Outputs[Lookup Match Output].Columns[AnnualAverageFuelConsumptionPerDistanceKgToMile]} / 1.852</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">AnnualAverageFuelConsumptionPerDistanceKgToMile * 1.852</property>
+                          name="FriendlyExpression">AnnualAverageFuelConsumptionPerDistanceKgToMile / 1.852</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
@@ -3350,13 +3350,13 @@ VALUES ('Country', 'Country not found', ?)</property>
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">#{Package\Load Ship\Lookup ship MRV data.Outputs[Lookup Match Output].Columns[AnnualAverageCo2EmissionPerDistanceKgCo2ToMile]} * 1.852</property>
+                          name="Expression">#{Package\Load Ship\Lookup ship MRV data.Outputs[Lookup Match Output].Columns[AnnualAverageCo2EmissionPerDistanceKgCo2ToMile]} / 1.852</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">AnnualAverageCo2EmissionPerDistanceKgCo2ToMile * 1.852</property>
+                          name="FriendlyExpression">AnnualAverageCo2EmissionPerDistanceKgCo2ToMile / 1.852</property>
                       </properties>
                     </inputColumn>
                   </inputColumns>

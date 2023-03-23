@@ -7,12 +7,12 @@
   DTS:CreatorName="JELMERS-PC\Gebruiker"
   DTS:DTSID="{E02B5664-55C4-4BB7-864C-7EEEE4DDEFB2}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="16.0.5131.0"
+  DTS:LastModifiedProductVersion="16.0.5035.3"
   DTS:LocaleID="1043"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="97"
-  DTS:VersionGUID="{7D802872-6B11-4980-A8C6-92A2DCA7C4CE}">
+  DTS:VersionBuild="105"
+  DTS:VersionGUID="{09511FFC-AE74-4F6B-823C-38A66F4D70F0}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -84,7 +84,7 @@
                   expressionType="Notify"
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">INSERT INTO RDBMS_Log
-VALUES ('City', 'City not found', ?)</property>
+VALUES ('City', 'City not found', ?, getdate())</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -182,7 +182,7 @@ VALUES ('City', 'City not found', ?)</property>
                   expressionType="Notify"
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">INSERT INTO RDBMS_Log
-VALUES ('Country Check', 'Country not found', ?)</property>
+VALUES ('Country Check', 'Country not found', ?, getdate())</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -280,7 +280,7 @@ VALUES ('Country Check', 'Country not found', ?)</property>
                   expressionType="Notify"
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">INSERT INTO RDBMS_Log 
-Values('Consignor', 'Data needs to be reviewed of row Id', ?) </property>
+Values('Consignor', 'Data needs to be reviewed of row Id', ?, getdate()) </property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1577,7 +1577,7 @@ where [refTable].[CountryName] = ?</property>
                   expressionType="Notify"
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">INSERT INTO RDBMS_Log
-VALUES ('Container', 'PowerFlag or Type is to big', ?)</property>
+VALUES ('Container', 'PowerFlag or Type is to big', ?, getdate())</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -2809,7 +2809,7 @@ where [refTable].[CountryName] = ?</property>
                   expressionType="Notify"
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">INSERT INTO RDBMS_Log 
-VALUES ('Country', 'Country not found', ?)</property>
+VALUES ('Country', 'Country not found', ?, getdate())</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -6114,47 +6114,47 @@ where [refTable].[ShipName] = ?</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="180,42.6666666666667"
+          Size="180,43"
           Id="Package\Create View IdleTime"
           TopLeft="163.666666107873,426.791666279237" />
         <NodeLayout
-          Size="164,42.6666666666667"
+          Size="164,43"
           Id="Package\Execute SQL Task"
           TopLeft="495.66666722546,7.12499992251389" />
         <NodeLayout
-          Size="152,42.6666666666667"
+          Size="152,43"
           Id="Package\Load Consignor"
           TopLeft="388.885416142798,117.166666356723" />
         <NodeLayout
-          Size="156,42.6666666666667"
+          Size="156,43"
           Id="Package\Load Containers"
           TopLeft="524.666666107873,221.458332945903" />
         <NodeLayout
-          Size="128,42.6666666666667"
+          Size="128,43"
           Id="Package\Load Item"
           TopLeft="741.666666107873,221.458332945903" />
         <NodeLayout
-          Size="125.333333333334,42.6666666666667"
+          Size="125,43"
           Id="Package\Load Port"
           TopLeft="203.999999441207,118.791666279237" />
         <NodeLayout
-          Size="125.333333333334,42.6666666666667"
+          Size="125,43"
           Id="Package\Load Ship"
           TopLeft="17.9999994412065,118.791666279237" />
         <NodeLayout
-          Size="149.333333333334,42.6666666666667"
+          Size="149,43"
           Id="Package\Load Shipment"
           TopLeft="314.999999441207,221.458332945903" />
         <NodeLayout
-          Size="177.333333333334,42.6666666666667"
+          Size="177,43"
           Id="Package\Load ShipmentDetail"
           TopLeft="513.999999441206,324.12499961257" />
         <NodeLayout
-          Size="140,42.6666666666667"
+          Size="140,43"
           Id="Package\Load Voyage"
           TopLeft="52.6666661078732,221.458332945903" />
         <NodeLayout
-          Size="158.666666666667,42.6666666666667"
+          Size="159,43"
           Id="Package\Load VoyagePort"
           TopLeft="174.33333277454,324.12499961257" />
         <EdgeLayout
@@ -6606,43 +6606,43 @@ where [refTable].[ShipName] = ?</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="165.333333333334,42.6666666666667"
+          Size="165,43"
           Id="Package\Load Consignor\Country not found"
           TopLeft="4.50000002980234,494.833329399427" />
         <NodeLayout
-          Size="233.333333333334,42.6666666666667"
+          Size="233,43"
           Id="Package\Load Consignor\Replace NULL values in Discount"
           TopLeft="227.16666657726,74.1666676799457" />
         <NodeLayout
-          Size="208,42.6666666666667"
+          Size="208,43"
           Id="Package\Load Consignor\Lookup ISO3 Country Code"
           TopLeft="235.833333363136,392.16666273276" />
         <NodeLayout
-          Size="120,42.6666666666667"
+          Size="120,43"
           Id="Package\Load Consignor\Log data"
           TopLeft="0,245.066655012767" />
         <NodeLayout
-          Size="216,42.6666666666667"
+          Size="216,43"
           Id="Package\Load Consignor\Remove duplicate consignors"
           TopLeft="231.833333363136,494.833329399427" />
         <NodeLayout
-          Size="200.666666666667,42.6666666666667"
+          Size="201,43"
           Id="Package\Load Consignor\Lookup correct City name"
           TopLeft="235.249992970378,245.333326252301" />
         <NodeLayout
-          Size="152,42.6666666666667"
+          Size="152,43"
           Id="Package\Load Consignor\Raw_Consignor"
           TopLeft="264.833333333333,0.500000149011647" />
         <NodeLayout
-          Size="229.333333333334,42.6666666666667"
+          Size="229,43"
           Id="Package\Load Consignor\Split inconsistent or invalid data"
           TopLeft="227.499989829958,141.699993243218" />
         <NodeLayout
-          Size="146.666666666667,42.6666666666667"
+          Size="147,43"
           Id="Package\Load Consignor\City not found"
           TopLeft="7.99999976158144,343.999991714955" />
         <NodeLayout
-          Size="166.666666666667,42.6666666666667"
+          Size="167,43"
           Id="Package\Load Consignor\RDBMS_Consignor"
           TopLeft="256.500000029802,597.499996066094" />
         <EdgeLayout
@@ -6779,7 +6779,7 @@ where [refTable].[ShipName] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-166.875827767593,27.6657872516387,111.6127734375,11.609375"
+              BoundingBox="-175.744480111343,27.6657872516387,129.350078125,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -6923,7 +6923,7 @@ where [refTable].[ShipName] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-184.273844741368,29.5323305843059,123.269921875,9.7490234375"
+              BoundingBox="-193.000895522618,29.5323305843059,140.7240234375,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -6972,23 +6972,23 @@ where [refTable].[ShipName] = ?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="166.666666666667,42.6666666666667"
+          Size="167,43"
           Id="Package\Load Containers\OLE DB Command"
           TopLeft="458.999986320734,395.999988198281" />
         <NodeLayout
-          Size="169.333333333334,42.6666666666667"
+          Size="169,43"
           Id="Package\Load Containers\RDBMS_Containers"
           TopLeft="246.999992638827,399.333322068056" />
         <NodeLayout
-          Size="154.666666666667,42.6666666666667"
+          Size="155,43"
           Id="Package\Load Containers\TEU Conversion"
           TopLeft="309.99999076128,122.999996334314" />
         <NodeLayout
-          Size="156,42.6666666666667"
+          Size="156,43"
           Id="Package\Load Containers\Raw_Containers"
           TopLeft="303.999990940094,27.999999165535" />
         <NodeLayout
-          Size="249.333333333334,42.6666666666667"
+          Size="249,43"
           Id="Package\Load Containers\Check if PowerFlag or Type is to big"
           TopLeft="254.999992400408,265.999992072582" />
         <EdgeLayout
@@ -7010,9 +7010,7 @@ where [refTable].[ShipName] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -7071,7 +7069,7 @@ where [refTable].[ShipName] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="6.17813715113534,40.2674444149119,110.0881640625,11.7119140625"
+              BoundingBox="6.17813715113534,40.2674444149119,127.08328125,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -7094,9 +7092,7 @@ where [refTable].[ShipName] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -7106,33 +7102,35 @@ where [refTable].[ShipName] = ?</property>
     design-time-name="Package\Load Item">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="NaN,NaN"
+          Size="127,42"
           Id="Package\Load Item\Raw_Item"
-          TopLeft="NaN,NaN" />
+          TopLeft="155,85" />
         <NodeLayout
-          Size="NaN,NaN"
+          Size="141,42"
           Id="Package\Load Item\RDBMS_Item"
-          TopLeft="NaN,NaN" />
+          TopLeft="144,242" />
         <EdgeLayout
           Id="Package\Load Item.Paths[OLE DB Source Output]"
-          TopLeft="NaN,NaN">
+          TopLeft="216.5,127">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
+              EndConnector="0,115"
               Start="0,0"
-              End="0,0">
+              End="0,107.5">
               <mssgle:Curve.Segments>
-                <assembly:Null />
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,107.5" />
+                </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -7144,21 +7142,21 @@ where [refTable].[ShipName] = ?</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="166.666666666667,42.6666666666667"
+          Size="167,43"
           Id="Package\Load Port\OLE DB Command"
-          TopLeft="341.249984744937,252.849987943173" />
+          TopLeft="341.249984744937,251.849987943173" />
         <NodeLayout
-          Size="208,42.6666666666667"
-          Id="Package\Load Port\Lookup ISO3 Country Code"
-          TopLeft="158.124992931262,87.7499958157541" />
-        <NodeLayout
-          Size="125.333333333334,42.6666666666667"
+          Size="125,43"
           Id="Package\Load Port\Raw_Port"
           TopLeft="191.874991422519,3.24999984502793" />
         <NodeLayout
-          Size="139.333333333334,42"
+          Size="139,42"
           Id="Package\Load Port\RDBMS_Port"
           TopLeft="158.124992931262,250.449988439083" />
+        <NodeLayout
+          Size="208,43"
+          Id="Package\Load Port\Lookup ISO3 Country Code"
+          TopLeft="158.124992931262,87.7499958157541" />
         <EdgeLayout
           Id="Package\Load Port.Paths[OLE DB Source Output]"
           TopLeft="258.333325510224,45.9166665116946">
@@ -7183,37 +7181,37 @@ where [refTable].[ShipName] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Port.Paths[Lookup No Match Output]"
-          TopLeft="295.458326264595,130.416662482421">
+          TopLeft="295.458326264595,130.749995815754">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="129.124991813675,122.433325460752"
+              EndConnector="129.291658480342,121.099992127419"
               Start="0,0"
-              End="129.124991813675,114.933325460752">
+              End="129.291658480342,113.599992127419">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,45.5340935070219" />
+                    End="0,44.9946533034596" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,45.5340935070219"
-                    Point2="0,49.5340935070219"
-                    Point3="4,49.5340935070219" />
+                    Point1="0,44.9946533034596"
+                    Point2="0,48.9946533034596"
+                    Point3="4,48.9946533034596" />
                   <mssgle:LineSegment
-                    End="125.124991813675,49.5340935070219" />
+                    End="125.291658480342,48.9946533034596" />
                   <mssgle:CubicBezierSegment
-                    Point1="125.124991813675,49.5340935070219"
-                    Point2="129.124991813675,49.5340935070219"
-                    Point3="129.124991813675,53.5340935070219" />
+                    Point1="125.291658480342,48.9946533034596"
+                    Point2="129.291658480342,48.9946533034596"
+                    Point3="129.291658480342,52.9946533034596" />
                   <mssgle:LineSegment
-                    End="129.124991813675,114.933325460752" />
+                    End="129.291658480342,113.599992127419" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="8.75610918808743,54.5340935070219,111.6127734375,11.609375"
+              BoundingBox="8.83944252142086,53.9946533034596,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -7237,7 +7235,7 @@ where [refTable].[ShipName] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,50.4619754783313,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,50.4619754783315,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -7250,49 +7248,29 @@ where [refTable].[ShipName] = ?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="174.666666666667,42.6666666666667"
-          Id="Package\Load Ship\Lookup ISO Country"
-          TopLeft="363.999989151955,100.999996989966" />
-        <NodeLayout
-          Size="140,42.6666666666667"
-          Id="Package\Load Ship\RDBMS_Ship"
-          TopLeft="377.999988734722,449.999986588955" />
-        <NodeLayout
-          Size="184,42.6666666666667"
-          Id="Package\Load Ship\Lookup ship MRV data"
-          TopLeft="356.999989360571,198.999994069338" />
-        <NodeLayout
-          Size="125.333333333334,42.6666666666667"
+          Size="125,43"
           Id="Package\Load Ship\Raw_Ship"
           TopLeft="387.999988436699,16.9999994933606" />
         <NodeLayout
-          Size="210.666666666667,42.6666666666667"
+          Size="211,43"
           Id="Package\Load Ship\DOLLAR -&gt; EUR Conversion"
           TopLeft="343.999989748001,294.999991208315" />
-        <EdgeLayout
-          Id="Package\Load Ship.Paths[Lookup Match Output]"
-          TopLeft="450.16665592293,143.666663656632">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,55.3333304127058"
-              Start="0,0"
-              End="0,47.8333304127058">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,47.8333304127058" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,18.1119777063529,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+        <NodeLayout
+          Size="175,43"
+          Id="Package\Load Ship\Lookup ISO Country"
+          TopLeft="363.999989151955,100.999996989966" />
+        <NodeLayout
+          Size="140,43"
+          Id="Package\Load Ship\RDBMS_Ship"
+          TopLeft="377.999988734722,449.999986588955" />
+        <NodeLayout
+          Size="176,43"
+          Id="Package\Load Ship\Convert nMile to Km"
+          TopLeft="363.999989151955,372.666656593482" />
+        <NodeLayout
+          Size="184,43"
+          Id="Package\Load Ship\Lookup ship MRV data"
+          TopLeft="356.999989360571,198.999994069338" />
         <EdgeLayout
           Id="Package\Load Ship.Paths[OLE DB Source Output]"
           TopLeft="450.999988794327,59.6666661600272">
@@ -7339,30 +7317,28 @@ where [refTable].[ShipName] = ?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="176,42.6666666666667"
-          Id="Package\Load Ship\Convert nMile to Km"
-          TopLeft="363.999989151955,372.666656593482" />
         <EdgeLayout
-          Id="Package\Load Ship.Paths[Derived Column Output]"
-          TopLeft="450.666656116645,337.666657874982">
+          Id="Package\Load Ship.Paths[Lookup Match Output]"
+          TopLeft="450.16665592293,143.666663656632">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,34.9999987185001"
+              EndConnector="0,55.3333304127058"
               Start="0,0"
-              End="0,27.4999987185001">
+              End="0,47.8333304127058">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,27.4999987185001" />
+                    End="0,47.8333304127058" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,18.1119777063529,96.3827734375,11.609375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -7379,6 +7355,28 @@ where [refTable].[ShipName] = ?</property>
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,27.1666633288065" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Ship.Paths[Derived Column Output]"
+          TopLeft="450.666656116645,337.666657874982">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,34.9999987185001"
+              Start="0,0"
+              End="0,27.4999987185001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.4999987185001" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7407,13 +7405,13 @@ where [refTable].[ShipName] = ?</property>
     design-time-name="Package\Load Shipment">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="164,42.6666666666667"
+          Size="164,43"
           Id="Package\Load Shipment\RDBMS_Shipment"
           TopLeft="5.50000000000001,108.166666666667" />
         <NodeLayout
-          Size="149.333333333334,42.6666666666667"
+          Size="149,43"
           Id="Package\Load Shipment\Raw_Shipment"
           TopLeft="12.8333333333333,5.50000000000004" />
         <EdgeLayout
@@ -7435,9 +7433,7 @@ where [refTable].[ShipName] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -7515,13 +7511,13 @@ where [refTable].[ShipName] = ?</property>
     design-time-name="Package\Load Voyage">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="154.666666666667,42.6666666666667"
+          Size="155,43"
           Id="Package\Load Voyage\RDBMS_Voyage"
           TopLeft="5.50000000000001,108.166666666667" />
         <NodeLayout
-          Size="140,42.6666666666667"
+          Size="140,43"
           Id="Package\Load Voyage\Raw_Voyage"
           TopLeft="12.8333333333333,5.50000000000004" />
         <EdgeLayout
@@ -7543,9 +7539,7 @@ where [refTable].[ShipName] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -7555,13 +7549,13 @@ where [refTable].[ShipName] = ?</property>
     design-time-name="Package\Load VoyagePort">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="173.333333333334,42.6666666666667"
+          Size="173,43"
           Id="Package\Load VoyagePort\RDBMS_VoyagePort"
           TopLeft="5.50000000000001,108.166666666667" />
         <NodeLayout
-          Size="158.666666666667,42.6666666666667"
+          Size="159,43"
           Id="Package\Load VoyagePort\Raw_VoyagePort"
           TopLeft="12.8333333333334,5.50000000000004" />
         <EdgeLayout
@@ -7583,9 +7577,7 @@ where [refTable].[ShipName] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

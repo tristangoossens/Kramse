@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="PSA database - MSSQL connection"
+  DTS:DTSID="{9E0848C1-6020-4450-9413-23A14FDB6FC5}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=PSA_Kramse;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Extract_Transform_Load-{9E0848C1-6020-4450-9413-23A14FDB6FC5}(localdb)\MSSQLLocalDB.PSA_Kramse;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

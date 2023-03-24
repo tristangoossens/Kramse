@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="ODS database - MSSQL connection"
+  DTS:DTSID="{4150D8DF-A531-40EB-8F70-71703C3984F8}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=QUINCY-LAPTOP;Initial Catalog=ODS_Kramse;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Extract_Transform_Load-{4150D8DF-A531-40EB-8F70-71703C3984F8}QUINCY-LAPTOP.ODS_Kramse;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

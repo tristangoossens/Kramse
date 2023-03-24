@@ -11,29 +11,12 @@
   DTS:LocaleID="1043"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="106"
-  DTS:VersionGUID="{00C17256-874C-4591-B85E-B05560A3CBD0}">
+  DTS:VersionBuild="109"
+  DTS:VersionGUID="{6DA97FEB-127D-4BEB-8107-E3955146CC36}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
   <DTS:Executables>
-    <DTS:Executable
-      DTS:refId="Package\Create View IdleTime"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Execute SQL Task"
-      DTS:DTSID="{A643DD0E-745C-4FD8-BBB1-2D7174455B62}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Create View IdleTime"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{1421DBD4-2B2C-4ECE-91B7-A456A919242E}"
-          SQLTask:SqlStatementSource="CREATE VIEW RDBMS_IdleTime AS &#xA;SELECT RDBMS_Voyage.Id AS VoyageId, ShipId, RDBMS_VoyagePort.PortIdNext AS PortId, RDBMS_VoyagePort.ArrivalDate AS ArrivalDate,  NextPort.DepartureDate AS DepartureDate, DATEDIFF(Day, RDBMS_VoyagePort.ArrivalDate, NextPort.DepartureDate) + 1 AS IdleTime&#xA;FROM RDBMS_VoyagePort&#xA;JOIN RDBMS_Voyage ON RDBMS_Voyage.Id = RDBMS_VoyagePort.VoyageId&#xA;LEFT JOIN RDBMS_VoyagePort AS NextPort ON RDBMS_VoyagePort.VoyageId = NextPort.VoyageId&#xA;    AND RDBMS_VoyagePort.PortIdNext = NextPort.PortIdCurrent" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-      </DTS:ObjectData>
-    </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\Execute SQL Task"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
@@ -48,7 +31,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{1421DBD4-2B2C-4ECE-91B7-A456A919242E}"
-          SQLTask:SqlStatementSource="DELETE FROM RDBMS_ShipmentDetail;&#xA;DELETE FROM RDBMS_Shipment;&#xA;DROP VIEW IF EXISTS RDBMS_IdleTime;&#xA;DELETE FROM RDBMS_VoyagePort;&#xA;DELETE FROM RDBMS_Voyage;&#xA;DELETE FROM RDBMS_Item;&#xA;DELETE FROM RDBMS_Consignor;&#xA;DELETE FROM RDBMS_Containers;&#xA;DELETE FROM RDBMS_Ship;&#xA;DELETE FROM RDBMS_Port;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="DELETE FROM RDBMS_ShipmentDetail;&#xA;DELETE FROM RDBMS_Shipment;&#xA;DELETE FROM RDBMS_VoyagePort;&#xA;DELETE FROM RDBMS_Voyage;&#xA;DELETE FROM RDBMS_Item;&#xA;DELETE FROM RDBMS_Consignor;&#xA;DELETE FROM RDBMS_Containers;&#xA;DELETE FROM RDBMS_Ship;&#xA;DELETE FROM RDBMS_Port;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -3398,6 +3381,163 @@ VALUES ('Country', 'Country not found', ?, getdate())</property>
               </outputs>
             </component>
             <component
+              refId="Package\Load Ship\Convert Report year to string"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Convert Report year to string"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load Ship\Convert Report year to string.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Ship\Convert Report year to string.Inputs[Data Conversion Input].Columns[ReportingYear]"
+                      cachedDataType="i4"
+                      cachedName="ReportingYear"
+                      lineageId="Package\Load Ship\Lookup ship MRV data.Outputs[Lookup Match Output].Columns[ReportingYear]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Ship\Convert Report year to string.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Load Ship\Convert Report year to string.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Ship\Convert Report year to string.Outputs[Data Conversion Output].Columns[Copy of ReportingYear]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="4"
+                      lineageId="Package\Load Ship\Convert Report year to string.Outputs[Data Conversion Output].Columns[Copy of ReportingYear]"
+                      name="Copy of ReportingYear"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load Ship\Lookup ship MRV data.Outputs[Lookup Match Output].Columns[ReportingYear]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Ship\Convert Report year to string.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Load Ship\Convert Report year to string.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Ship\Convert Report year to string.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Ship\Convert Report year to string.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Ship\Convert Report year to string.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Ship\Convert Report year to string.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Ship\Convert reporting year to date"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Convert reporting year to date"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load Ship\Convert reporting year to date.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Ship\Convert reporting year to date.Inputs[Derived Column Input].Columns[Copy of ReportingYear]"
+                      cachedDataType="wstr"
+                      cachedLength="4"
+                      cachedName="Copy of ReportingYear"
+                      lineageId="Package\Load Ship\Convert Report year to string.Outputs[Data Conversion Output].Columns[Copy of ReportingYear]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Ship\Convert reporting year to date.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Load Ship\Convert reporting year to date.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Ship\Convert reporting year to date.Outputs[Derived Column Output].Columns[MeasurementReportingDate]"
+                      dataType="date"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Ship\Convert reporting year to date.Outputs[Derived Column Output].Columns[MeasurementReportingDate]"
+                      name="MeasurementReportingDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_DATE)(#{Package\Load Ship\Convert Report year to string.Outputs[Data Conversion Output].Columns[Copy of ReportingYear]} + "-12-31")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DATE)([Copy of ReportingYear] + "-12-31")</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Ship\Convert reporting year to date.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Load Ship\Convert reporting year to date.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Ship\Convert reporting year to date.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Ship\Convert reporting year to date.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Ship\Convert reporting year to date.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Ship\Convert reporting year to date.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Load Ship\DOLLAR -&gt; EUR Conversion"
               componentClassID="Microsoft.DerivedColumn"
               contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
@@ -3707,7 +3847,7 @@ where [refTable].[ShipName] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ShipName" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TotalFuelConsumptionInTonnes" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TotalCo2EmissionsInTonnes" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TotalTimeSpentAtSeaInHours" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="AnnualAverageFuelConsumptionPerDistanceKgToMile" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="AnnualAverageCo2EmissionPerDistanceKgCo2ToMile" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ShipName" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TotalFuelConsumptionInTonnes" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TotalCo2EmissionsInTonnes" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TotalTimeSpentAtSeaInHours" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="AnnualAverageFuelConsumptionPerDistanceKgToMile" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="AnnualAverageCo2EmissionPerDistanceKgCo2ToMile" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ReportingYear" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
@@ -3833,6 +3973,20 @@ where [refTable].[ShipName] = ?</property>
                           dataType="System.String"
                           description="Specifies the column in the reference table from which a column is copied."
                           name="CopyFromReferenceColumn">AnnualAverageCo2EmissionPerDistanceKgCo2ToMile</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Ship\Lookup ship MRV data.Outputs[Lookup Match Output].Columns[ReportingYear]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load Ship\Lookup ship MRV data.Outputs[Lookup Match Output].Columns[ReportingYear]"
+                      name="ReportingYear"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">ReportingYear</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -4284,6 +4438,12 @@ where [refTable].[ShipName] = ?</property>
                       cachedName="AnnualAverageCo2EmissionPerDistanceKgCo2ToMile"
                       externalMetadataColumnId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageCo2EmissionKgPerKm]"
                       lineageId="Package\Load Ship\Lookup ship MRV data.Outputs[Lookup Match Output].Columns[AnnualAverageCo2EmissionPerDistanceKgCo2ToMile]" />
+                    <inputColumn
+                      refId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].Columns[MeasurementReportingDate]"
+                      cachedDataType="date"
+                      cachedName="MeasurementReportingDate"
+                      externalMetadataColumnId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].ExternalColumns[MeasurementReportingDate]"
+                      lineageId="Package\Load Ship\Convert reporting year to date.Outputs[Derived Column Output].Columns[MeasurementReportingDate]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -4345,6 +4505,10 @@ where [refTable].[ShipName] = ?</property>
                       refId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageCo2EmissionKgPerKm]"
                       dataType="r8"
                       name="AnnualAverageCo2EmissionKgPerKm" />
+                    <externalMetadataColumn
+                      refId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].ExternalColumns[MeasurementReportingDate]"
+                      dataType="dbDate"
+                      name="MeasurementReportingDate" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -4376,6 +4540,11 @@ where [refTable].[ShipName] = ?</property>
           </components>
           <paths>
             <path
+              refId="Package\Load Ship.Paths[Data Conversion Output]"
+              endId="Package\Load Ship\Convert reporting year to date.Inputs[Derived Column Input]"
+              name="Data Conversion Output"
+              startId="Package\Load Ship\Convert Report year to string.Outputs[Data Conversion Output]" />
+            <path
               refId="Package\Load Ship.Paths[Derived Column Output]"
               endId="Package\Load Ship\Convert nMile to Km.Inputs[Derived Column Input]"
               name="Derived Column Output"
@@ -4383,6 +4552,11 @@ where [refTable].[ShipName] = ?</property>
             <path
               refId="Package\Load Ship.Paths[Derived Column Output1]"
               endId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Load Ship\Convert reporting year to date.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Load Ship.Paths[Derived Column Output2]"
+              endId="Package\Load Ship\Convert Report year to string.Inputs[Data Conversion Input]"
               name="Derived Column Output"
               startId="Package\Load Ship\Convert nMile to Km.Outputs[Derived Column Output]" />
             <path
@@ -6029,14 +6203,6 @@ where [refTable].[ShipName] = ?</property>
       DTS:ObjectName="Constraint 12"
       DTS:To="Package\Load Ship" />
     <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 13]"
-      DTS:CreationName=""
-      DTS:DTSID="{14BF3D13-D4D2-421D-BCFA-631CE0DCA111}"
-      DTS:From="Package\Load VoyagePort"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 13"
-      DTS:To="Package\Create View IdleTime" />
-    <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
       DTS:DTSID="{4433E18C-AAF1-47BD-8898-A2D2C74D0927}"
@@ -6113,10 +6279,6 @@ where [refTable].[ShipName] = ?</property>
     <LayoutInfo>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="180,43"
-          Id="Package\Create View IdleTime"
-          TopLeft="163.666666107873,426.791666279237" />
         <NodeLayout
           Size="164,43"
           Id="Package\Execute SQL Task"
@@ -6319,28 +6481,6 @@ where [refTable].[ShipName] = ?</property>
                     Point3="-445.000001117587,22.4821427741221" />
                   <mssgle:LineSegment
                     End="-445.000001117587,61.499999690056" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 13]"
-          TopLeft="253.666666107873,366.791666279237">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60.0000000000001"
-              Start="0,0"
-              End="0,52.5000000000001">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5000000000001" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6664,7 +6804,9 @@ where [refTable].[ShipName] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6722,7 +6864,9 @@ where [refTable].[ShipName] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6744,7 +6888,9 @@ where [refTable].[ShipName] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -7010,7 +7156,9 @@ where [refTable].[ShipName] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -7092,7 +7240,9 @@ where [refTable].[ShipName] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -7102,7 +7252,7 @@ where [refTable].[ShipName] = ?</property>
     design-time-name="Package\Load Item">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="127,42"
           Id="Package\Load Item\Raw_Item"
@@ -7130,7 +7280,9 @@ where [refTable].[ShipName] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -7176,7 +7328,9 @@ where [refTable].[ShipName] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -7262,7 +7416,7 @@ where [refTable].[ShipName] = ?</property>
         <NodeLayout
           Size="140,43"
           Id="Package\Load Ship\RDBMS_Ship"
-          TopLeft="377.999988734722,449.999986588955" />
+          TopLeft="379.999988734722,597.999986588955" />
         <NodeLayout
           Size="176,43"
           Id="Package\Load Ship\Convert nMile to Km"
@@ -7342,28 +7496,6 @@ where [refTable].[ShipName] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load Ship.Paths[Derived Column Output1]"
-          TopLeft="449.999988943339,415.333323260149">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,34.6666633288065"
-              Start="0,0"
-              End="0,27.1666633288065">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,27.1666633288065" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\Load Ship.Paths[Derived Column Output]"
           TopLeft="450.666656116645,337.666657874982">
           <EdgeLayout.Curve>
@@ -7377,6 +7509,80 @@ where [refTable].[ShipName] = ?</property>
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,27.4999987185001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="222,42"
+          Id="Package\Load Ship\Convert reporting year to date"
+          TopLeft="342,515" />
+        <EdgeLayout
+          Id="Package\Load Ship.Paths[Derived Column Output1]"
+          TopLeft="451.499994367361,557">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40.9999865889549"
+              Start="0,0"
+              End="0,33.4999865889549">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.4999865889549" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="216,42"
+          Id="Package\Load Ship\Convert Report year to string"
+          TopLeft="339,442" />
+        <EdgeLayout
+          Id="Package\Load Ship.Paths[Derived Column Output2]"
+          TopLeft="449.499994575977,415.666656593482">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,26.333343406518"
+              Start="0,0"
+              End="0,18.833343406518">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.833343406518" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Ship.Paths[Data Conversion Output]"
+          TopLeft="450,484">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31"
+              Start="0,0"
+              End="0,23.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7401,11 +7607,34 @@ where [refTable].[ShipName] = ?</property>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Ship\Lookup ship MRV data">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Raw_MRV]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Load Shipment">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="164,43"
           Id="Package\Load Shipment\RDBMS_Shipment"
@@ -7433,7 +7662,9 @@ where [refTable].[ShipName] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -7511,7 +7742,7 @@ where [refTable].[ShipName] = ?</property>
     design-time-name="Package\Load Voyage">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="155,43"
           Id="Package\Load Voyage\RDBMS_Voyage"
@@ -7539,7 +7770,9 @@ where [refTable].[ShipName] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -7549,7 +7782,7 @@ where [refTable].[ShipName] = ?</property>
     design-time-name="Package\Load VoyagePort">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="173,43"
           Id="Package\Load VoyagePort\RDBMS_VoyagePort"
@@ -7577,7 +7810,9 @@ where [refTable].[ShipName] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

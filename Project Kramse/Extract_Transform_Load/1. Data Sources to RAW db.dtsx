@@ -7,12 +7,12 @@
   DTS:CreatorName="DESKTOP-9EATKT8\Tristan"
   DTS:DTSID="{432A33F7-9A3E-4D92-B542-C3B7B3988DC5}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="16.0.5131.0"
+  DTS:LastModifiedProductVersion="16.0.5035.3"
   DTS:LocaleID="1043"
   DTS:ObjectName="1  Data Sources to RAW db"
   DTS:PackageType="5"
-  DTS:VersionBuild="58"
-  DTS:VersionGUID="{BA194E83-F9F4-4352-8DB8-EB2FE011D2EF}">
+  DTS:VersionBuild="60"
+  DTS:VersionGUID="{FF891CAE-B570-4D45-86D8-A98FBC7B4605}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -4127,7 +4127,7 @@ where [refTable].[Sh_Shipname] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="VS_ShipId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Sh_Shipname" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Sh_MaxTeu" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Sh_SpeedInKnots" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Sh_SpeedInKm" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Sh_Country" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Sh_Yearcost" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Sh_Length" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Sh_Width" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TotalFuelConsumptionInTonnes" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TotalCo2EmissionsInTonnes" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TotalTimeSpentAtSeaInHours" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="AnnualAverageFuelConsumptionPerDistanceKgToMile" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="AnnualAverageCo2EmissionPerDistanceKgCo2ToMile" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="VS_ShipId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Sh_Shipname" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Sh_MaxTeu" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Sh_SpeedInKnots" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Sh_SpeedInKm" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Sh_Country" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Sh_Yearcost" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Sh_Length" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Sh_Width" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
@@ -4187,121 +4187,6 @@ where [refTable].[Sh_Shipname] = ?</property>
                   exclusionGroup="1"
                   name="Lookup Match Output"
                   synchronousInputId="Package\Load MRV publication data\Lookup TPS Ship.Inputs[Lookup Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Load MRV publication data\Lookup TPS Ship.Outputs[Lookup Match Output].Columns[VS_ShipId]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\Load MRV publication data\Lookup TPS Ship.Outputs[Lookup Match Output].Columns[VS_ShipId]"
-                      name="VS_ShipId"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">VS_ShipId</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Load MRV publication data\Lookup TPS Ship.Outputs[Lookup Match Output].Columns[Sh_MaxTeu]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\Load MRV publication data\Lookup TPS Ship.Outputs[Lookup Match Output].Columns[Sh_MaxTeu]"
-                      name="Sh_MaxTeu"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">Sh_MaxTeu</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Load MRV publication data\Lookup TPS Ship.Outputs[Lookup Match Output].Columns[Sh_SpeedInKnots]"
-                      dataType="ui1"
-                      errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\Load MRV publication data\Lookup TPS Ship.Outputs[Lookup Match Output].Columns[Sh_SpeedInKnots]"
-                      name="Sh_SpeedInKnots"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">Sh_SpeedInKnots</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Load MRV publication data\Lookup TPS Ship.Outputs[Lookup Match Output].Columns[Sh_SpeedInKm]"
-                      dataType="ui1"
-                      errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\Load MRV publication data\Lookup TPS Ship.Outputs[Lookup Match Output].Columns[Sh_SpeedInKm]"
-                      name="Sh_SpeedInKm"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">Sh_SpeedInKm</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Load MRV publication data\Lookup TPS Ship.Outputs[Lookup Match Output].Columns[Sh_Country]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Copy Column"
-                      length="255"
-                      lineageId="Package\Load MRV publication data\Lookup TPS Ship.Outputs[Lookup Match Output].Columns[Sh_Country]"
-                      name="Sh_Country"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">Sh_Country</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Load MRV publication data\Lookup TPS Ship.Outputs[Lookup Match Output].Columns[Sh_Yearcost]"
-                      dataType="r8"
-                      errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\Load MRV publication data\Lookup TPS Ship.Outputs[Lookup Match Output].Columns[Sh_Yearcost]"
-                      name="Sh_Yearcost"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">Sh_Yearcost</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Load MRV publication data\Lookup TPS Ship.Outputs[Lookup Match Output].Columns[Sh_Length]"
-                      dataType="i2"
-                      errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\Load MRV publication data\Lookup TPS Ship.Outputs[Lookup Match Output].Columns[Sh_Length]"
-                      name="Sh_Length"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">Sh_Length</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Load MRV publication data\Lookup TPS Ship.Outputs[Lookup Match Output].Columns[Sh_Width]"
-                      dataType="ui1"
-                      errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\Load MRV publication data\Lookup TPS Ship.Outputs[Lookup Match Output].Columns[Sh_Width]"
-                      name="Sh_Width"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">Sh_Width</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
                   <externalMetadataColumns />
                 </output>
                 <output
@@ -4443,6 +4328,15 @@ where [refTable].[Sh_Shipname] = ?</property>
                       length="255"
                       lineageId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].Columns[Name]"
                       name="Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].Columns[Reporting Period]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].ExternalColumns[Reporting Period]"
+                      lineageId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].Columns[Reporting Period]"
+                      name="Reporting Period"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
@@ -4779,6 +4673,11 @@ where [refTable].[Sh_Shipname] = ?</property>
                       length="255"
                       lineageId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Error Output].Columns[Name]"
                       name="Name" />
+                    <outputColumn
+                      refId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Error Output].Columns[Reporting Period]"
+                      dataType="r8"
+                      lineageId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Error Output].Columns[Reporting Period]"
+                      name="Reporting Period" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -4893,6 +4792,12 @@ where [refTable].[Sh_Shipname] = ?</property>
                       cachedName="Name"
                       externalMetadataColumnId="Package\Load MRV publication data\Raw_MRV.Inputs[OLE DB Destination Input].ExternalColumns[ShipName]"
                       lineageId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].Columns[Name]" />
+                    <inputColumn
+                      refId="Package\Load MRV publication data\Raw_MRV.Inputs[OLE DB Destination Input].Columns[Reporting Period]"
+                      cachedDataType="r8"
+                      cachedName="Reporting Period"
+                      externalMetadataColumnId="Package\Load MRV publication data\Raw_MRV.Inputs[OLE DB Destination Input].ExternalColumns[ReportingYear]"
+                      lineageId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].Columns[Reporting Period]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -4921,6 +4826,10 @@ where [refTable].[Sh_Shipname] = ?</property>
                       dataType="wstr"
                       length="50"
                       name="ShipName" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\Raw_MRV.Inputs[OLE DB Destination Input].ExternalColumns[ReportingYear]"
+                      dataType="i4"
+                      name="ReportingYear" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -5038,7 +4947,7 @@ where [refTable].[Sh_Shipname] = ?</property>
           Id="Package\Load Container data"
           TopLeft="705,188" />
         <NodeLayout
-          Size="185.333333333334,42"
+          Size="185,42"
           Id="Package\Load Kramse TPS data"
           TopLeft="458,189" />
         <NodeLayout
@@ -5046,7 +4955,7 @@ where [refTable].[Sh_Shipname] = ?</property>
           Id="Package\Load MRV publication data"
           TopLeft="450,299" />
         <NodeLayout
-          Size="193.333333333334,42"
+          Size="193,42"
           Id="Package\Truncate RAW database"
           TopLeft="450,69" />
         <EdgeLayout
@@ -5350,15 +5259,27 @@ where [refTable].[Sh_Shipname] = ?</property>
     design-time-name="Package\Load Kramse TPS data">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="188,42"
+          Id="Package\Load Kramse TPS data\Ship (Access database)"
+          TopLeft="927.25,111" />
+        <NodeLayout
+          Size="125.333333333334,42.6666666666667"
+          Id="Package\Load Kramse TPS data\Raw_Ship"
+          TopLeft="961,406" />
         <NodeLayout
           Size="149.333333333334,42"
           Id="Package\Load Kramse TPS data\Raw_Shipment"
           TopLeft="1523,303" />
         <NodeLayout
-          Size="125.333333333334,42.6666666666667"
-          Id="Package\Load Kramse TPS data\Raw_Ship"
-          TopLeft="961,406" />
+          Size="212,42"
+          Id="Package\Load Kramse TPS data\Shipment (Access database)"
+          TopLeft="1488,111.5" />
+        <NodeLayout
+          Size="202,42"
+          Id="Package\Load Kramse TPS data\Voyage (Access database)"
+          TopLeft="362,111.75" />
         <NodeLayout
           Size="176,42"
           Id="Package\Load Kramse TPS data\Raw_ShipmentDetail"
@@ -5368,17 +5289,13 @@ where [refTable].[Sh_Shipname] = ?</property>
           Id="Package\Load Kramse TPS data\VoyagePort (Access database)"
           TopLeft="99.5,116" />
         <NodeLayout
-          Size="202,42"
-          Id="Package\Load Kramse TPS data\Voyage (Access database)"
-          TopLeft="362,111.75" />
+          Size="186.666666666667,42"
+          Id="Package\Load Kramse TPS data\Port (Access database)"
+          TopLeft="1199,110.5" />
         <NodeLayout
           Size="140,42"
           Id="Package\Load Kramse TPS data\Raw_Voyage"
           TopLeft="392,304.25" />
-        <NodeLayout
-          Size="186.666666666667,42"
-          Id="Package\Load Kramse TPS data\Port (Access database)"
-          TopLeft="1199,110.5" />
         <NodeLayout
           Size="126.666666666667,42"
           Id="Package\Load Kramse TPS data\Raw_Item"
@@ -5388,187 +5305,25 @@ where [refTable].[Sh_Shipname] = ?</property>
           Id="Package\Load Kramse TPS data\Item (Access database)"
           TopLeft="1753.75,111.25" />
         <NodeLayout
-          Size="158.666666666667,42"
-          Id="Package\Load Kramse TPS data\Raw_VoyagePort"
-          TopLeft="133.25,303.5" />
-        <NodeLayout
           Size="170,42"
           Id="Package\Load Kramse TPS data\Name to uppercase"
           TopLeft="939,209" />
-        <NodeLayout
-          Size="238.666666666667,42"
-          Id="Package\Load Kramse TPS data\ShipmentDetail (Access database)"
-          TopLeft="585.25,112" />
-        <NodeLayout
-          Size="188,42"
-          Id="Package\Load Kramse TPS data\Ship (Access database)"
-          TopLeft="927.25,111" />
         <NodeLayout
           Size="124,42"
           Id="Package\Load Kramse TPS data\Raw_Port"
           TopLeft="1231.25,306.75" />
         <NodeLayout
-          Size="212,42"
-          Id="Package\Load Kramse TPS data\Shipment (Access database)"
-          TopLeft="1488,111.5" />
+          Size="158.666666666667,42"
+          Id="Package\Load Kramse TPS data\Raw_VoyagePort"
+          TopLeft="133.25,303.5" />
         <NodeLayout
           Size="186,42"
           Id="Package\Load Kramse TPS data\Correct name for ships"
           TopLeft="932,309" />
-        <EdgeLayout
-          Id="Package\Load Kramse TPS data.Paths[OLE DB Source Output4]"
-          TopLeft="1595.75,153.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,149.5"
-              Start="0,0"
-              End="0,142">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,142" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Kramse TPS data.Paths[OLE DB Source Output3]"
-          TopLeft="704.25,154">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,148.5"
-              Start="0,0"
-              End="0,141">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,141" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Kramse TPS data.Paths[OLE DB Source Output2]"
-          TopLeft="462.5,153.75">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,150.5"
-              Start="0,0"
-              End="0,143">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,143" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Kramse TPS data.Paths[OLE DB Source Output1]"
-          TopLeft="211.375,158">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,145.5"
-              Start="0,0"
-              End="0,138">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,138" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Kramse TPS data.Paths[OLE DB Source Output]"
-          TopLeft="1292.875,152.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,154.25"
-              Start="0,0"
-              End="0,146.75">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,146.75" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Kramse TPS data.Paths[Derived Column Output1]"
-          TopLeft="1024.33333333333,351">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,55"
-              Start="0,0"
-              End="0,47.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,47.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Kramse TPS data.Paths[Derived Column Output]"
-          TopLeft="1024.5,251">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,58"
-              Start="0,0"
-              End="0,50.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,50.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+        <NodeLayout
+          Size="238.666666666667,42"
+          Id="Package\Load Kramse TPS data\ShipmentDetail (Access database)"
+          TopLeft="585.25,112" />
         <EdgeLayout
           Id="Package\Load Kramse TPS data.Paths[OLE DB Source Output6]"
           TopLeft="1022.625,153">
@@ -5588,7 +5343,9 @@ where [refTable].[Sh_Shipname] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5610,12 +5367,208 @@ where [refTable].[Sh_Shipname] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Kramse TPS data.Paths[OLE DB Source Output4]"
+          TopLeft="1595.75,153.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,149.5"
+              Start="0,0"
+              End="0,142">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,142" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Kramse TPS data.Paths[OLE DB Source Output3]"
+          TopLeft="704.25,154">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,148.5"
+              Start="0,0"
+              End="0,141">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,141" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Kramse TPS data.Paths[OLE DB Source Output2]"
+          TopLeft="462.5,153.75">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,150.5"
+              Start="0,0"
+              End="0,143">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,143" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Kramse TPS data.Paths[OLE DB Source Output1]"
+          TopLeft="211.375,158">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,145.5"
+              Start="0,0"
+              End="0,138">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,138" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Kramse TPS data.Paths[OLE DB Source Output]"
+          TopLeft="1292.875,152.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,154.25"
+              Start="0,0"
+              End="0,146.75">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,146.75" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Kramse TPS data.Paths[Derived Column Output1]"
+          TopLeft="1024.33333333333,351">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,55"
+              Start="0,0"
+              End="0,47.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Kramse TPS data.Paths[Derived Column Output]"
+          TopLeft="1024.5,251">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58"
+              Start="0,0"
+              End="0,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Kramse TPS data\Ship (Access database)">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Kramse TPS data\Raw_Ship">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Load Kramse TPS data\Raw_Shipment">
     <Properties>
@@ -5630,7 +5583,20 @@ where [refTable].[Sh_Shipname] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Kramse TPS data\Raw_Ship">
+    design-time-name="Package\Load Kramse TPS data\Shipment (Access database)">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Kramse TPS data\Voyage (Access database)">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -5669,7 +5635,7 @@ where [refTable].[Sh_Shipname] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Kramse TPS data\Voyage (Access database)">
+    design-time-name="Package\Load Kramse TPS data\Port (Access database)">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -5683,19 +5649,6 @@ where [refTable].[Sh_Shipname] = ?</property>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Load Kramse TPS data\Raw_Voyage">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Kramse TPS data\Port (Access database)">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -5734,6 +5687,19 @@ where [refTable].[Sh_Shipname] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
+    design-time-name="Package\Load Kramse TPS data\Raw_Port">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\Load Kramse TPS data\Raw_VoyagePort">
     <Properties>
       <Property>
@@ -5748,45 +5714,6 @@ where [refTable].[Sh_Shipname] = ?</property>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Load Kramse TPS data\ShipmentDetail (Access database)">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Kramse TPS data\Ship (Access database)">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Kramse TPS data\Raw_Port">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Kramse TPS data\Shipment (Access database)">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -5883,7 +5810,7 @@ where [refTable].[Sh_Shipname] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -5893,7 +5820,7 @@ where [refTable].[Sh_Shipname] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>

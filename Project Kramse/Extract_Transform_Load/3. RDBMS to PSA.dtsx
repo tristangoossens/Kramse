@@ -12,11 +12,28 @@
   DTS:ObjectName="3  RDBMS to PSA"
   DTS:PackageType="5"
   DTS:VersionBuild="64"
-  DTS:VersionGUID="{506EC2CC-17E4-4BB9-9AC0-7DF5439EBDB9}">
+  DTS:VersionGUID="{36B424CD-13DE-4CCE-B9CB-3E46241750E8}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
   <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Create View IdleTime"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{18309eb2-9134-459b-a145-be1564a15c42}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Create View IdleTime"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{9E0848C1-6020-4450-9413-23A14FDB6FC5}"
+          SQLTask:SqlStatementSource="CREATE VIEW [dbo].[VIEW_IdleTime] AS &#xA;SELECT CurrentPort.VoyageId, CurrentPort.PortIdCurrent, CurrentPort.DepartureDate, CurrentPort.ArrivalDate, CurrentPort.ShipId, DATEDIFF(Day, CurrentPort.ArrivalDate, NextPort.DepartureDate) + 1 AS IdleTime&#xA;FROM FACT_Shipment AS CurrentPort&#xA;INNER JOIN FACT_Shipment AS NextPort ON CurrentPort.PortIdNext = NextPort.PortIdCurrent&#xA;AND CurrentPort.VoyageId = NextPort.VoyageId&#xA;AND CurrentPort.ShipId = NextPort.ShipId&#xA;GROUP BY CurrentPort.VoyageId, CurrentPort.PortIdCurrent, CurrentPort.DepartureDate, CurrentPort.ArrivalDate, NextPort.DepartureDate, CurrentPort.ShipId" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\Load Consignor"
       DTS:CreationName="Microsoft.Pipeline"
@@ -1721,12 +1738,6 @@
                       externalMetadataColumnId="Package\Load Shipment\FACT_Shipment.Inputs[OLE DB Destination Input].ExternalColumns[ContainerId]"
                       lineageId="Package\Load Shipment\Lookup ShipmentDetail data.Outputs[Lookup Match Output].Columns[ContainerTypeId]" />
                     <inputColumn
-                      refId="Package\Load Shipment\FACT_Shipment.Inputs[OLE DB Destination Input].Columns[DepartureDate]"
-                      cachedDataType="dbDate"
-                      cachedName="DepartureDate"
-                      externalMetadataColumnId="Package\Load Shipment\FACT_Shipment.Inputs[OLE DB Destination Input].ExternalColumns[DepartureDateVoyaye]"
-                      lineageId="Package\Load Shipment\Join shipment and voyageport data.Outputs[Merge Join Output].Columns[DepartureDate]" />
-                    <inputColumn
                       refId="Package\Load Shipment\FACT_Shipment.Inputs[OLE DB Destination Input].Columns[PortIdFrom]"
                       cachedDataType="i4"
                       cachedName="PortIdFrom"
@@ -1741,17 +1752,23 @@
                       externalMetadataColumnId="Package\Load Shipment\FACT_Shipment.Inputs[OLE DB Destination Input].ExternalColumns[PortIdNext]"
                       lineageId="Package\Load Shipment\Join shipment and voyageport data.Outputs[Merge Join Output].Columns[PortIdTo]" />
                     <inputColumn
-                      refId="Package\Load Shipment\FACT_Shipment.Inputs[OLE DB Destination Input].Columns[ArrivalDate]"
-                      cachedDataType="dbDate"
-                      cachedName="ArrivalDate"
-                      externalMetadataColumnId="Package\Load Shipment\FACT_Shipment.Inputs[OLE DB Destination Input].ExternalColumns[ArrivalDateVoyage]"
-                      lineageId="Package\Load Shipment\Join shipment and voyageport data.Outputs[Merge Join Output].Columns[ArrivalDate]" />
-                    <inputColumn
                       refId="Package\Load Shipment\FACT_Shipment.Inputs[OLE DB Destination Input].Columns[TrajectDistanceInKm]"
                       cachedDataType="i4"
                       cachedName="TrajectDistanceInKm"
                       externalMetadataColumnId="Package\Load Shipment\FACT_Shipment.Inputs[OLE DB Destination Input].ExternalColumns[PortDistanceInKm]"
                       lineageId="Package\Load Shipment\Join shipment and voyageport data.Outputs[Merge Join Output].Columns[TrajectDistanceInKm]" />
+                    <inputColumn
+                      refId="Package\Load Shipment\FACT_Shipment.Inputs[OLE DB Destination Input].Columns[DepartureDate]"
+                      cachedDataType="dbDate"
+                      cachedName="DepartureDate"
+                      externalMetadataColumnId="Package\Load Shipment\FACT_Shipment.Inputs[OLE DB Destination Input].ExternalColumns[DepartureDate]"
+                      lineageId="Package\Load Shipment\Join shipment and voyageport data.Outputs[Merge Join Output].Columns[DepartureDate]" />
+                    <inputColumn
+                      refId="Package\Load Shipment\FACT_Shipment.Inputs[OLE DB Destination Input].Columns[ArrivalDate]"
+                      cachedDataType="dbDate"
+                      cachedName="ArrivalDate"
+                      externalMetadataColumnId="Package\Load Shipment\FACT_Shipment.Inputs[OLE DB Destination Input].ExternalColumns[ArrivalDate]"
+                      lineageId="Package\Load Shipment\Join shipment and voyageport data.Outputs[Merge Join Output].Columns[ArrivalDate]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1776,10 +1793,6 @@
                       dataType="i4"
                       name="ConsignorId" />
                     <externalMetadataColumn
-                      refId="Package\Load Shipment\FACT_Shipment.Inputs[OLE DB Destination Input].ExternalColumns[DepartureDateVoyaye]"
-                      dataType="dbDate"
-                      name="DepartureDateVoyaye" />
-                    <externalMetadataColumn
                       refId="Package\Load Shipment\FACT_Shipment.Inputs[OLE DB Destination Input].ExternalColumns[PortIdCurrent]"
                       dataType="i4"
                       name="PortIdCurrent" />
@@ -1788,10 +1801,6 @@
                       dataType="i4"
                       name="PortIdNext" />
                     <externalMetadataColumn
-                      refId="Package\Load Shipment\FACT_Shipment.Inputs[OLE DB Destination Input].ExternalColumns[ArrivalDateVoyage]"
-                      dataType="dbDate"
-                      name="ArrivalDateVoyage" />
-                    <externalMetadataColumn
                       refId="Package\Load Shipment\FACT_Shipment.Inputs[OLE DB Destination Input].ExternalColumns[ContainerAmount]"
                       dataType="i4"
                       name="ContainerAmount" />
@@ -1799,6 +1808,14 @@
                       refId="Package\Load Shipment\FACT_Shipment.Inputs[OLE DB Destination Input].ExternalColumns[PortDistanceInKm]"
                       dataType="i4"
                       name="PortDistanceInKm" />
+                    <externalMetadataColumn
+                      refId="Package\Load Shipment\FACT_Shipment.Inputs[OLE DB Destination Input].ExternalColumns[DepartureDate]"
+                      dataType="dbDate"
+                      name="DepartureDate" />
+                    <externalMetadataColumn
+                      refId="Package\Load Shipment\FACT_Shipment.Inputs[OLE DB Destination Input].ExternalColumns[ArrivalDate]"
+                      dataType="dbDate"
+                      name="ArrivalDate" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -3663,6 +3680,15 @@ where [refTable].[Id] = ?</property>
                       lineageId="Package\Load Ships\RDBMS_Ship.Outputs[OLE DB Source Output].Columns[AnnualAverageCo2EmissionKgPerKm]"
                       name="AnnualAverageCo2EmissionKgPerKm"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Ships\RDBMS_Ship.Outputs[OLE DB Source Output].Columns[MeasurementReportingDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Ships\RDBMS_Ship.Outputs[OLE DB Source Output].ExternalColumns[MeasurementReportingDate]"
+                      lineageId="Package\Load Ships\RDBMS_Ship.Outputs[OLE DB Source Output].Columns[MeasurementReportingDate]"
+                      name="MeasurementReportingDate"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -3724,6 +3750,10 @@ where [refTable].[Id] = ?</property>
                       refId="Package\Load Ships\RDBMS_Ship.Outputs[OLE DB Source Output].ExternalColumns[AnnualAverageCo2EmissionKgPerKm]"
                       dataType="r8"
                       name="AnnualAverageCo2EmissionKgPerKm" />
+                    <externalMetadataColumn
+                      refId="Package\Load Ships\RDBMS_Ship.Outputs[OLE DB Source Output].ExternalColumns[MeasurementReportingDate]"
+                      dataType="dbDate"
+                      name="MeasurementReportingDate" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -3803,6 +3833,11 @@ where [refTable].[Id] = ?</property>
                       dataType="r8"
                       lineageId="Package\Load Ships\RDBMS_Ship.Outputs[OLE DB Source Error Output].Columns[AnnualAverageCo2EmissionKgPerKm]"
                       name="AnnualAverageCo2EmissionKgPerKm" />
+                    <outputColumn
+                      refId="Package\Load Ships\RDBMS_Ship.Outputs[OLE DB Source Error Output].Columns[MeasurementReportingDate]"
+                      dataType="dbDate"
+                      lineageId="Package\Load Ships\RDBMS_Ship.Outputs[OLE DB Source Error Output].Columns[MeasurementReportingDate]"
+                      name="MeasurementReportingDate" />
                     <outputColumn
                       refId="Package\Load Ships\RDBMS_Ship.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -5062,11 +5097,11 @@ where [refTable].[Id] = ?</property>
                       externalMetadataColumnId="Package\Load YearlyMeasurementShipData\PSA_YearlyMeasurementShipData.Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageFuelConsumptionKgPerKm]"
                       lineageId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Output].Columns[AnnualAverageFuelConsumptionKgPerKm]" />
                     <inputColumn
-                      refId="Package\Load YearlyMeasurementShipData\PSA_YearlyMeasurementShipData.Inputs[OLE DB Destination Input].Columns[Id]"
-                      cachedDataType="i4"
-                      cachedName="Id"
-                      externalMetadataColumnId="Package\Load YearlyMeasurementShipData\PSA_YearlyMeasurementShipData.Inputs[OLE DB Destination Input].ExternalColumns[ShipId]"
-                      lineageId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Output].Columns[Id]" />
+                      refId="Package\Load YearlyMeasurementShipData\PSA_YearlyMeasurementShipData.Inputs[OLE DB Destination Input].Columns[AnnualAverageCo2EmissionKgPerKm]"
+                      cachedDataType="r8"
+                      cachedName="AnnualAverageCo2EmissionKgPerKm"
+                      externalMetadataColumnId="Package\Load YearlyMeasurementShipData\PSA_YearlyMeasurementShipData.Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageCo2EmmisionKgPerKm]"
+                      lineageId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Output].Columns[AnnualAverageCo2EmissionKgPerKm]" />
                     <inputColumn
                       refId="Package\Load YearlyMeasurementShipData\PSA_YearlyMeasurementShipData.Inputs[OLE DB Destination Input].Columns[YearcostEuro]"
                       cachedDataType="r8"
@@ -5074,11 +5109,17 @@ where [refTable].[Id] = ?</property>
                       externalMetadataColumnId="Package\Load YearlyMeasurementShipData\PSA_YearlyMeasurementShipData.Inputs[OLE DB Destination Input].ExternalColumns[ShipCostEuro]"
                       lineageId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Output].Columns[YearcostEuro]" />
                     <inputColumn
-                      refId="Package\Load YearlyMeasurementShipData\PSA_YearlyMeasurementShipData.Inputs[OLE DB Destination Input].Columns[AnnualAverageCo2EmissionKgPerKm]"
-                      cachedDataType="r8"
-                      cachedName="AnnualAverageCo2EmissionKgPerKm"
-                      externalMetadataColumnId="Package\Load YearlyMeasurementShipData\PSA_YearlyMeasurementShipData.Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageCo2EmmisionKgPerKm]"
-                      lineageId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Output].Columns[AnnualAverageCo2EmissionKgPerKm]" />
+                      refId="Package\Load YearlyMeasurementShipData\PSA_YearlyMeasurementShipData.Inputs[OLE DB Destination Input].Columns[Id]"
+                      cachedDataType="i4"
+                      cachedName="Id"
+                      externalMetadataColumnId="Package\Load YearlyMeasurementShipData\PSA_YearlyMeasurementShipData.Inputs[OLE DB Destination Input].ExternalColumns[ShipId]"
+                      lineageId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Output].Columns[Id]" />
+                    <inputColumn
+                      refId="Package\Load YearlyMeasurementShipData\PSA_YearlyMeasurementShipData.Inputs[OLE DB Destination Input].Columns[MeasurementReportingDate]"
+                      cachedDataType="dbDate"
+                      cachedName="MeasurementReportingDate"
+                      externalMetadataColumnId="Package\Load YearlyMeasurementShipData\PSA_YearlyMeasurementShipData.Inputs[OLE DB Destination Input].ExternalColumns[DateOfMeasurement]"
+                      lineageId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Output].Columns[MeasurementReportingDate]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -5086,10 +5127,6 @@ where [refTable].[Id] = ?</property>
                       refId="Package\Load YearlyMeasurementShipData\PSA_YearlyMeasurementShipData.Inputs[OLE DB Destination Input].ExternalColumns[ShipId]"
                       dataType="i4"
                       name="ShipId" />
-                    <externalMetadataColumn
-                      refId="Package\Load YearlyMeasurementShipData\PSA_YearlyMeasurementShipData.Inputs[OLE DB Destination Input].ExternalColumns[YearOfMeasurement]"
-                      dataType="i4"
-                      name="YearOfMeasurement" />
                     <externalMetadataColumn
                       refId="Package\Load YearlyMeasurementShipData\PSA_YearlyMeasurementShipData.Inputs[OLE DB Destination Input].ExternalColumns[ShipCostEuro]"
                       dataType="r8"
@@ -5114,6 +5151,10 @@ where [refTable].[Id] = ?</property>
                       refId="Package\Load YearlyMeasurementShipData\PSA_YearlyMeasurementShipData.Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageCo2EmmisionKgPerKm]"
                       dataType="r8"
                       name="AnnualAverageCo2EmmisionKgPerKm" />
+                    <externalMetadataColumn
+                      refId="Package\Load YearlyMeasurementShipData\PSA_YearlyMeasurementShipData.Inputs[OLE DB Destination Input].ExternalColumns[DateOfMeasurement]"
+                      dataType="dbDate"
+                      name="DateOfMeasurement" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -5331,6 +5372,15 @@ where [refTable].[Id] = ?</property>
                       lineageId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Output].Columns[AnnualAverageCo2EmissionKgPerKm]"
                       name="AnnualAverageCo2EmissionKgPerKm"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Output].Columns[MeasurementReportingDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Output].ExternalColumns[MeasurementReportingDate]"
+                      lineageId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Output].Columns[MeasurementReportingDate]"
+                      name="MeasurementReportingDate"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -5392,6 +5442,10 @@ where [refTable].[Id] = ?</property>
                       refId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Output].ExternalColumns[AnnualAverageCo2EmissionKgPerKm]"
                       dataType="r8"
                       name="AnnualAverageCo2EmissionKgPerKm" />
+                    <externalMetadataColumn
+                      refId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Output].ExternalColumns[MeasurementReportingDate]"
+                      dataType="dbDate"
+                      name="MeasurementReportingDate" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -5472,6 +5526,11 @@ where [refTable].[Id] = ?</property>
                       lineageId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Error Output].Columns[AnnualAverageCo2EmissionKgPerKm]"
                       name="AnnualAverageCo2EmissionKgPerKm" />
                     <outputColumn
+                      refId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Error Output].Columns[MeasurementReportingDate]"
+                      dataType="dbDate"
+                      lineageId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Error Output].Columns[MeasurementReportingDate]"
+                      name="MeasurementReportingDate" />
+                    <outputColumn
                       refId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
                       lineageId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
@@ -5513,7 +5572,7 @@ where [refTable].[Id] = ?</property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{9E0848C1-6020-4450-9413-23A14FDB6FC5}"
-          SQLTask:SqlStatementSource="DELETE FROM FACT_YearlyMeasurementShipData;&#xA;DELETE FROM FACT_Shipment;&#xA;DELETE FROM DIM_Voyage;&#xA;DELETE FROM DIM_Port;&#xA;DELETE FROM DIM_Ship;&#xA;DELETE FROM DIM_Item;&#xA;DELETE FROM DIM_Container;&#xA;DELETE FROM DIM_Consignor;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="DELETE FROM FACT_YearlyMeasurementShipData;&#xA;DELETE FROM FACT_Shipment;&#xA;DROP VIEW IF EXISTS VIEW_IdleTime;&#xA;DELETE FROM DIM_Voyage;&#xA;DELETE FROM DIM_Port;&#xA;DELETE FROM DIM_Ship;&#xA;DELETE FROM DIM_Item;&#xA;DELETE FROM DIM_Container;&#xA;DELETE FROM DIM_Consignor;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -5558,6 +5617,14 @@ where [refTable].[Id] = ?</property>
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 12"
       DTS:To="Package\Load Shipment" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 13]"
+      DTS:CreationName=""
+      DTS:DTSID="{D603A939-5A91-4C18-B8C2-2FB0687A3D51}"
+      DTS:From="Package\Load Shipment"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 13"
+      DTS:To="Package\Create View IdleTime" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
@@ -5666,7 +5733,7 @@ where [refTable].[Id] = ?</property>
         <NodeLayout
           Size="240,42"
           Id="Package\Load YearlyMeasurementShipData"
-          TopLeft="778,416" />
+          TopLeft="777,407" />
         <NodeLayout
           Size="173,42"
           Id="Package\Truncate PSA tables"
@@ -5955,18 +6022,18 @@ where [refTable].[Id] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 6]"
-          TopLeft="899.166666666667,221">
+          TopLeft="898.666666666667,221">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,195"
+              EndConnector="0,186"
               Start="0,0"
-              End="0,187.5">
+              End="0,178.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,187.5" />
+                    End="0,178.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6077,6 +6144,32 @@ where [refTable].[Id] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="180,42"
+          Id="Package\Create View IdleTime"
+          TopLeft="454,520" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 13]"
+          TopLeft="544.25,459">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61"
+              Start="0,0"
+              End="0,53.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -6084,7 +6177,7 @@ where [refTable].[Id] = ?</property>
     design-time-name="Package\Load Consignor">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="150,42"
           Id="Package\Load Consignor\PSA_Consignor"
@@ -6112,7 +6205,9 @@ where [refTable].[Id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -6148,7 +6243,7 @@ where [refTable].[Id] = ?</property>
     design-time-name="Package\Load Containers">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="148,42"
           Id="Package\Load Containers\PSA_Container"
@@ -6176,7 +6271,9 @@ where [refTable].[Id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -6212,7 +6309,7 @@ where [refTable].[Id] = ?</property>
     design-time-name="Package\Load Items">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="156,42"
           Id="Package\Load Items\DIM_Item (PSA)"
@@ -6240,7 +6337,9 @@ where [refTable].[Id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -6276,7 +6375,7 @@ where [refTable].[Id] = ?</property>
     design-time-name="Package\Load Ports">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="138,42"
           Id="Package\Load Ports\RDBMS_Port"
@@ -6304,7 +6403,9 @@ where [refTable].[Id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -6508,6 +6609,30 @@ where [refTable].[Id] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package\Load Shipment.Paths[Lookup Match Output1]"
+          TopLeft="529,526">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59"
+              Start="0,0"
+              End="0,51.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,19.9453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\Load Shipment.Paths[Lookup Match Output]"
           TopLeft="532.5,426">
           <EdgeLayout.Curve>
@@ -6528,30 +6653,6 @@ where [refTable].[Id] = ?</property>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
               BoundingBox="-48.19138671875,19.4453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Shipment.Paths[Lookup Match Output1]"
-          TopLeft="529,526">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,59"
-              Start="0,0"
-              End="0,51.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,51.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,48.4453125,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -6711,7 +6812,7 @@ where [refTable].[Id] = ?</property>
     design-time-name="Package\Load Voyages">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="126,42"
           Id="Package\Load Voyages\Sort by Id"
@@ -6727,7 +6828,7 @@ where [refTable].[Id] = ?</property>
         <NodeLayout
           Size="169,42"
           Id="Package\Load Voyages\DIM_Voyage (PSA)"
-          TopLeft="473,431" />
+          TopLeft="473,432" />
         <NodeLayout
           Size="154,42"
           Id="Package\Load Voyages\RDBMS_Voyage"
@@ -6771,7 +6872,9 @@ where [refTable].[Id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6805,7 +6908,9 @@ where [refTable].[Id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6827,7 +6932,9 @@ where [refTable].[Id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6849,7 +6956,9 @@ where [refTable].[Id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6858,20 +6967,22 @@ where [refTable].[Id] = ?</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,64"
+              EndConnector="0,65"
               Start="0,0"
-              End="0,56.5">
+              End="0,57.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,56.5" />
+                    End="0,57.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6893,7 +7004,9 @@ where [refTable].[Id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

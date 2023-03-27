@@ -11,8 +11,8 @@
   DTS:LocaleID="1043"
   DTS:ObjectName="3  RDBMS to PSA"
   DTS:PackageType="5"
-  DTS:VersionBuild="64"
-  DTS:VersionGUID="{36B424CD-13DE-4CCE-B9CB-3E46241750E8}">
+  DTS:VersionBuild="65"
+  DTS:VersionGUID="{168DFF01-C506-4561-8F39-50D1E764868F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -3663,24 +3663,6 @@ where [refTable].[Id] = ?</property>
                       name="TotalTimeSpentAtSeaInHours"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Load Ships\RDBMS_Ship.Outputs[OLE DB Source Output].Columns[AnnualAverageFuelConsumptionKgPerKm]"
-                      dataType="r8"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Ships\RDBMS_Ship.Outputs[OLE DB Source Output].ExternalColumns[AnnualAverageFuelConsumptionKgPerKm]"
-                      lineageId="Package\Load Ships\RDBMS_Ship.Outputs[OLE DB Source Output].Columns[AnnualAverageFuelConsumptionKgPerKm]"
-                      name="AnnualAverageFuelConsumptionKgPerKm"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load Ships\RDBMS_Ship.Outputs[OLE DB Source Output].Columns[AnnualAverageCo2EmissionKgPerKm]"
-                      dataType="r8"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Ships\RDBMS_Ship.Outputs[OLE DB Source Output].ExternalColumns[AnnualAverageCo2EmissionKgPerKm]"
-                      lineageId="Package\Load Ships\RDBMS_Ship.Outputs[OLE DB Source Output].Columns[AnnualAverageCo2EmissionKgPerKm]"
-                      name="AnnualAverageCo2EmissionKgPerKm"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\Load Ships\RDBMS_Ship.Outputs[OLE DB Source Output].Columns[MeasurementReportingDate]"
                       dataType="dbDate"
                       errorOrTruncationOperation="Conversion"
@@ -3688,6 +3670,24 @@ where [refTable].[Id] = ?</property>
                       externalMetadataColumnId="Package\Load Ships\RDBMS_Ship.Outputs[OLE DB Source Output].ExternalColumns[MeasurementReportingDate]"
                       lineageId="Package\Load Ships\RDBMS_Ship.Outputs[OLE DB Source Output].Columns[MeasurementReportingDate]"
                       name="MeasurementReportingDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Ships\RDBMS_Ship.Outputs[OLE DB Source Output].Columns[AnnualAverageFuelConsumptionKgPerNMile]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Ships\RDBMS_Ship.Outputs[OLE DB Source Output].ExternalColumns[AnnualAverageFuelConsumptionKgPerNMile]"
+                      lineageId="Package\Load Ships\RDBMS_Ship.Outputs[OLE DB Source Output].Columns[AnnualAverageFuelConsumptionKgPerNMile]"
+                      name="AnnualAverageFuelConsumptionKgPerNMile"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Ships\RDBMS_Ship.Outputs[OLE DB Source Output].Columns[AnnualAverageCo2EmissionKgPerNMile]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Ships\RDBMS_Ship.Outputs[OLE DB Source Output].ExternalColumns[AnnualAverageCo2EmissionKgPerNMile]"
+                      lineageId="Package\Load Ships\RDBMS_Ship.Outputs[OLE DB Source Output].Columns[AnnualAverageCo2EmissionKgPerNMile]"
+                      name="AnnualAverageCo2EmissionKgPerNMile"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
@@ -3743,17 +3743,17 @@ where [refTable].[Id] = ?</property>
                       dataType="i4"
                       name="TotalTimeSpentAtSeaInHours" />
                     <externalMetadataColumn
-                      refId="Package\Load Ships\RDBMS_Ship.Outputs[OLE DB Source Output].ExternalColumns[AnnualAverageFuelConsumptionKgPerKm]"
-                      dataType="r8"
-                      name="AnnualAverageFuelConsumptionKgPerKm" />
-                    <externalMetadataColumn
-                      refId="Package\Load Ships\RDBMS_Ship.Outputs[OLE DB Source Output].ExternalColumns[AnnualAverageCo2EmissionKgPerKm]"
-                      dataType="r8"
-                      name="AnnualAverageCo2EmissionKgPerKm" />
-                    <externalMetadataColumn
                       refId="Package\Load Ships\RDBMS_Ship.Outputs[OLE DB Source Output].ExternalColumns[MeasurementReportingDate]"
                       dataType="dbDate"
                       name="MeasurementReportingDate" />
+                    <externalMetadataColumn
+                      refId="Package\Load Ships\RDBMS_Ship.Outputs[OLE DB Source Output].ExternalColumns[AnnualAverageFuelConsumptionKgPerNMile]"
+                      dataType="r8"
+                      name="AnnualAverageFuelConsumptionKgPerNMile" />
+                    <externalMetadataColumn
+                      refId="Package\Load Ships\RDBMS_Ship.Outputs[OLE DB Source Output].ExternalColumns[AnnualAverageCo2EmissionKgPerNMile]"
+                      dataType="r8"
+                      name="AnnualAverageCo2EmissionKgPerNMile" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -3824,15 +3824,15 @@ where [refTable].[Id] = ?</property>
                       lineageId="Package\Load Ships\RDBMS_Ship.Outputs[OLE DB Source Error Output].Columns[TotalTimeSpentAtSeaInHours]"
                       name="TotalTimeSpentAtSeaInHours" />
                     <outputColumn
-                      refId="Package\Load Ships\RDBMS_Ship.Outputs[OLE DB Source Error Output].Columns[AnnualAverageFuelConsumptionKgPerKm]"
+                      refId="Package\Load Ships\RDBMS_Ship.Outputs[OLE DB Source Error Output].Columns[AnnualAverageFuelConsumptionKgPerNMile]"
                       dataType="r8"
-                      lineageId="Package\Load Ships\RDBMS_Ship.Outputs[OLE DB Source Error Output].Columns[AnnualAverageFuelConsumptionKgPerKm]"
-                      name="AnnualAverageFuelConsumptionKgPerKm" />
+                      lineageId="Package\Load Ships\RDBMS_Ship.Outputs[OLE DB Source Error Output].Columns[AnnualAverageFuelConsumptionKgPerNMile]"
+                      name="AnnualAverageFuelConsumptionKgPerNMile" />
                     <outputColumn
-                      refId="Package\Load Ships\RDBMS_Ship.Outputs[OLE DB Source Error Output].Columns[AnnualAverageCo2EmissionKgPerKm]"
+                      refId="Package\Load Ships\RDBMS_Ship.Outputs[OLE DB Source Error Output].Columns[AnnualAverageCo2EmissionKgPerNMile]"
                       dataType="r8"
-                      lineageId="Package\Load Ships\RDBMS_Ship.Outputs[OLE DB Source Error Output].Columns[AnnualAverageCo2EmissionKgPerKm]"
-                      name="AnnualAverageCo2EmissionKgPerKm" />
+                      lineageId="Package\Load Ships\RDBMS_Ship.Outputs[OLE DB Source Error Output].Columns[AnnualAverageCo2EmissionKgPerNMile]"
+                      name="AnnualAverageCo2EmissionKgPerNMile" />
                     <outputColumn
                       refId="Package\Load Ships\RDBMS_Ship.Outputs[OLE DB Source Error Output].Columns[MeasurementReportingDate]"
                       dataType="dbDate"
@@ -5091,18 +5091,6 @@ where [refTable].[Id] = ?</property>
                       externalMetadataColumnId="Package\Load YearlyMeasurementShipData\PSA_YearlyMeasurementShipData.Inputs[OLE DB Destination Input].ExternalColumns[TotalTimeSpentAtSeaInHours]"
                       lineageId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Output].Columns[TotalTimeSpentAtSeaInHours]" />
                     <inputColumn
-                      refId="Package\Load YearlyMeasurementShipData\PSA_YearlyMeasurementShipData.Inputs[OLE DB Destination Input].Columns[AnnualAverageFuelConsumptionKgPerKm]"
-                      cachedDataType="r8"
-                      cachedName="AnnualAverageFuelConsumptionKgPerKm"
-                      externalMetadataColumnId="Package\Load YearlyMeasurementShipData\PSA_YearlyMeasurementShipData.Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageFuelConsumptionKgPerKm]"
-                      lineageId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Output].Columns[AnnualAverageFuelConsumptionKgPerKm]" />
-                    <inputColumn
-                      refId="Package\Load YearlyMeasurementShipData\PSA_YearlyMeasurementShipData.Inputs[OLE DB Destination Input].Columns[AnnualAverageCo2EmissionKgPerKm]"
-                      cachedDataType="r8"
-                      cachedName="AnnualAverageCo2EmissionKgPerKm"
-                      externalMetadataColumnId="Package\Load YearlyMeasurementShipData\PSA_YearlyMeasurementShipData.Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageCo2EmmisionKgPerKm]"
-                      lineageId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Output].Columns[AnnualAverageCo2EmissionKgPerKm]" />
-                    <inputColumn
                       refId="Package\Load YearlyMeasurementShipData\PSA_YearlyMeasurementShipData.Inputs[OLE DB Destination Input].Columns[YearcostEuro]"
                       cachedDataType="r8"
                       cachedName="YearcostEuro"
@@ -5120,6 +5108,18 @@ where [refTable].[Id] = ?</property>
                       cachedName="MeasurementReportingDate"
                       externalMetadataColumnId="Package\Load YearlyMeasurementShipData\PSA_YearlyMeasurementShipData.Inputs[OLE DB Destination Input].ExternalColumns[DateOfMeasurement]"
                       lineageId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Output].Columns[MeasurementReportingDate]" />
+                    <inputColumn
+                      refId="Package\Load YearlyMeasurementShipData\PSA_YearlyMeasurementShipData.Inputs[OLE DB Destination Input].Columns[AnnualAverageFuelConsumptionKgPerNMile]"
+                      cachedDataType="r8"
+                      cachedName="AnnualAverageFuelConsumptionKgPerNMile"
+                      externalMetadataColumnId="Package\Load YearlyMeasurementShipData\PSA_YearlyMeasurementShipData.Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageFuelConsumptionKgPerNMile]"
+                      lineageId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Output].Columns[AnnualAverageFuelConsumptionKgPerNMile]" />
+                    <inputColumn
+                      refId="Package\Load YearlyMeasurementShipData\PSA_YearlyMeasurementShipData.Inputs[OLE DB Destination Input].Columns[AnnualAverageCo2EmissionKgPerNMile]"
+                      cachedDataType="r8"
+                      cachedName="AnnualAverageCo2EmissionKgPerNMile"
+                      externalMetadataColumnId="Package\Load YearlyMeasurementShipData\PSA_YearlyMeasurementShipData.Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageCo2EmmisionKgPerNMile]"
+                      lineageId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Output].Columns[AnnualAverageCo2EmissionKgPerNMile]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -5144,17 +5144,17 @@ where [refTable].[Id] = ?</property>
                       dataType="i4"
                       name="TotalTimeSpentAtSeaInHours" />
                     <externalMetadataColumn
-                      refId="Package\Load YearlyMeasurementShipData\PSA_YearlyMeasurementShipData.Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageFuelConsumptionKgPerKm]"
-                      dataType="r8"
-                      name="AnnualAverageFuelConsumptionKgPerKm" />
-                    <externalMetadataColumn
-                      refId="Package\Load YearlyMeasurementShipData\PSA_YearlyMeasurementShipData.Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageCo2EmmisionKgPerKm]"
-                      dataType="r8"
-                      name="AnnualAverageCo2EmmisionKgPerKm" />
-                    <externalMetadataColumn
                       refId="Package\Load YearlyMeasurementShipData\PSA_YearlyMeasurementShipData.Inputs[OLE DB Destination Input].ExternalColumns[DateOfMeasurement]"
                       dataType="dbDate"
                       name="DateOfMeasurement" />
+                    <externalMetadataColumn
+                      refId="Package\Load YearlyMeasurementShipData\PSA_YearlyMeasurementShipData.Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageFuelConsumptionKgPerNMile]"
+                      dataType="r8"
+                      name="AnnualAverageFuelConsumptionKgPerNMile" />
+                    <externalMetadataColumn
+                      refId="Package\Load YearlyMeasurementShipData\PSA_YearlyMeasurementShipData.Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageCo2EmmisionKgPerNMile]"
+                      dataType="r8"
+                      name="AnnualAverageCo2EmmisionKgPerNMile" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -5355,24 +5355,6 @@ where [refTable].[Id] = ?</property>
                       name="TotalTimeSpentAtSeaInHours"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Output].Columns[AnnualAverageFuelConsumptionKgPerKm]"
-                      dataType="r8"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Output].ExternalColumns[AnnualAverageFuelConsumptionKgPerKm]"
-                      lineageId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Output].Columns[AnnualAverageFuelConsumptionKgPerKm]"
-                      name="AnnualAverageFuelConsumptionKgPerKm"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Output].Columns[AnnualAverageCo2EmissionKgPerKm]"
-                      dataType="r8"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Output].ExternalColumns[AnnualAverageCo2EmissionKgPerKm]"
-                      lineageId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Output].Columns[AnnualAverageCo2EmissionKgPerKm]"
-                      name="AnnualAverageCo2EmissionKgPerKm"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Output].Columns[MeasurementReportingDate]"
                       dataType="dbDate"
                       errorOrTruncationOperation="Conversion"
@@ -5380,6 +5362,24 @@ where [refTable].[Id] = ?</property>
                       externalMetadataColumnId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Output].ExternalColumns[MeasurementReportingDate]"
                       lineageId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Output].Columns[MeasurementReportingDate]"
                       name="MeasurementReportingDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Output].Columns[AnnualAverageFuelConsumptionKgPerNMile]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Output].ExternalColumns[AnnualAverageFuelConsumptionKgPerNMile]"
+                      lineageId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Output].Columns[AnnualAverageFuelConsumptionKgPerNMile]"
+                      name="AnnualAverageFuelConsumptionKgPerNMile"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Output].Columns[AnnualAverageCo2EmissionKgPerNMile]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Output].ExternalColumns[AnnualAverageCo2EmissionKgPerNMile]"
+                      lineageId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Output].Columns[AnnualAverageCo2EmissionKgPerNMile]"
+                      name="AnnualAverageCo2EmissionKgPerNMile"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
@@ -5435,17 +5435,17 @@ where [refTable].[Id] = ?</property>
                       dataType="i4"
                       name="TotalTimeSpentAtSeaInHours" />
                     <externalMetadataColumn
-                      refId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Output].ExternalColumns[AnnualAverageFuelConsumptionKgPerKm]"
-                      dataType="r8"
-                      name="AnnualAverageFuelConsumptionKgPerKm" />
-                    <externalMetadataColumn
-                      refId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Output].ExternalColumns[AnnualAverageCo2EmissionKgPerKm]"
-                      dataType="r8"
-                      name="AnnualAverageCo2EmissionKgPerKm" />
-                    <externalMetadataColumn
                       refId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Output].ExternalColumns[MeasurementReportingDate]"
                       dataType="dbDate"
                       name="MeasurementReportingDate" />
+                    <externalMetadataColumn
+                      refId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Output].ExternalColumns[AnnualAverageFuelConsumptionKgPerNMile]"
+                      dataType="r8"
+                      name="AnnualAverageFuelConsumptionKgPerNMile" />
+                    <externalMetadataColumn
+                      refId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Output].ExternalColumns[AnnualAverageCo2EmissionKgPerNMile]"
+                      dataType="r8"
+                      name="AnnualAverageCo2EmissionKgPerNMile" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -5516,15 +5516,15 @@ where [refTable].[Id] = ?</property>
                       lineageId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Error Output].Columns[TotalTimeSpentAtSeaInHours]"
                       name="TotalTimeSpentAtSeaInHours" />
                     <outputColumn
-                      refId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Error Output].Columns[AnnualAverageFuelConsumptionKgPerKm]"
+                      refId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Error Output].Columns[AnnualAverageFuelConsumptionKgPerNMile]"
                       dataType="r8"
-                      lineageId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Error Output].Columns[AnnualAverageFuelConsumptionKgPerKm]"
-                      name="AnnualAverageFuelConsumptionKgPerKm" />
+                      lineageId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Error Output].Columns[AnnualAverageFuelConsumptionKgPerNMile]"
+                      name="AnnualAverageFuelConsumptionKgPerNMile" />
                     <outputColumn
-                      refId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Error Output].Columns[AnnualAverageCo2EmissionKgPerKm]"
+                      refId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Error Output].Columns[AnnualAverageCo2EmissionKgPerNMile]"
                       dataType="r8"
-                      lineageId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Error Output].Columns[AnnualAverageCo2EmissionKgPerKm]"
-                      name="AnnualAverageCo2EmissionKgPerKm" />
+                      lineageId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Error Output].Columns[AnnualAverageCo2EmissionKgPerNMile]"
+                      name="AnnualAverageCo2EmissionKgPerNMile" />
                     <outputColumn
                       refId="Package\Load YearlyMeasurementShipData\RDBMS_Ship.Outputs[OLE DB Source Error Output].Columns[MeasurementReportingDate]"
                       dataType="dbDate"
@@ -5703,6 +5703,10 @@ where [refTable].[Id] = ?</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="180,42"
+          Id="Package\Create View IdleTime"
+          TopLeft="454,520" />
+        <NodeLayout
           Size="152,42"
           Id="Package\Load Consignor"
           TopLeft="992,177" />
@@ -5876,6 +5880,28 @@ where [refTable].[Id] = ?</property>
                     Point3="319.642857142857,152.784214337437" />
                   <mssgle:LineSegment
                     End="319.642857142857,189.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 13]"
+          TopLeft="544.25,459">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61"
+              Start="0,0"
+              End="0,53.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6136,32 +6162,6 @@ where [refTable].[Id] = ?</property>
                     Point3="-154.928571428571,110.176863753213" />
                   <mssgle:LineSegment
                     End="-154.928571428571,190.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="180,42"
-          Id="Package\Create View IdleTime"
-          TopLeft="454,520" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 13]"
-          TopLeft="544.25,459">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,61"
-              Start="0,0"
-              End="0,53.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,53.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7057,13 +7057,13 @@ where [refTable].[Id] = ?</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="139,42"
-          Id="Package\Load YearlyMeasurementShipData\RDBMS_Ship"
-          TopLeft="525,52" />
-        <NodeLayout
           Size="238,42"
           Id="Package\Load YearlyMeasurementShipData\PSA_YearlyMeasurementShipData"
           TopLeft="471,168" />
+        <NodeLayout
+          Size="139,42"
+          Id="Package\Load YearlyMeasurementShipData\RDBMS_Ship"
+          TopLeft="525,52" />
         <EdgeLayout
           Id="Package\Load YearlyMeasurementShipData.Paths[OLE DB Source Output]"
           TopLeft="592.25,94">

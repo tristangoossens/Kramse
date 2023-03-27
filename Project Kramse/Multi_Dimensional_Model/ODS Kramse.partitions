@@ -1,0 +1,65 @@
+﻿<Cube xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="b1792c2e-9b30-4df5-96de-d99b8be60292" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>ODS Kramse</ID>
+  <MeasureGroups>
+    <MeasureGroup>
+      <ID>FACT Shipment</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="6ab11365-0ea4-4824-83f5-ff5e95cabed0">
+          <ID>FACT Shipment</ID>
+          <Name>FACT Shipment</Name>
+          <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="DsvTableBinding" dwd:design-time-name="18b17323-9051-4e4f-9081-62707f5e17e9">
+            <DataSourceViewID>ODS Kramse</DataSourceViewID>
+            <TableID>dbo_FACT_Shipment</TableID>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>FACT Idle Time</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="c3c9d18f-774d-4516-aed2-7e8982a8f663">
+          <ID>FACT Idle Time</ID>
+          <Name>FACT Idle Time</Name>
+          <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="DsvTableBinding" dwd:design-time-name="79da9bfe-69f6-4738-900f-61a38078e056">
+            <DataSourceViewID>ODS Kramse</DataSourceViewID>
+            <TableID>dbo_FACT_IdleTime</TableID>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>FACT Yearly Measurement Ship Data</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="894a3c7e-7371-4262-aaed-fd2413c0ff77">
+          <ID>FACT Yearly Measurement Ship Data</ID>
+          <Name>FACT Yearly Measurement Ship Data</Name>
+          <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="DsvTableBinding" dwd:design-time-name="98ac6e09-414a-41f7-896d-752457f3b80f">
+            <DataSourceViewID>ODS Kramse</DataSourceViewID>
+            <TableID>dbo_FACT_YearlyMeasurementShipData</TableID>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+  </MeasureGroups>
+</Cube>

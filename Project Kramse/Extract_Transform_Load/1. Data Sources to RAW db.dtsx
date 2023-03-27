@@ -11,8 +11,8 @@
   DTS:LocaleID="1043"
   DTS:ObjectName="1  Data Sources to RAW db"
   DTS:PackageType="5"
-  DTS:VersionBuild="61"
-  DTS:VersionGUID="{C97A90C8-E560-4F36-B355-67695C901D39}">
+  DTS:VersionBuild="62"
+  DTS:VersionGUID="{38E9AAC9-8D4A-42BB-AA47-41549AEC33B0}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -4774,18 +4774,6 @@ where [refTable].[Sh_Shipname] = ?</property>
                       externalMetadataColumnId="Package\Load MRV publication data\Raw_MRV.Inputs[OLE DB Destination Input].ExternalColumns[TotalTimeSpentAtSeaInHours]"
                       lineageId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].Columns[Total time spent at sea (hours)]" />
                     <inputColumn
-                      refId="Package\Load MRV publication data\Raw_MRV.Inputs[OLE DB Destination Input].Columns[Annual average Fuel consumption per distance (kg / n mile)]"
-                      cachedDataType="r8"
-                      cachedName="Annual average Fuel consumption per distance (kg / n mile)"
-                      externalMetadataColumnId="Package\Load MRV publication data\Raw_MRV.Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageFuelConsumptionPerDistanceKgToMile]"
-                      lineageId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].Columns[Annual average Fuel consumption per distance (kg / n mile)]" />
-                    <inputColumn
-                      refId="Package\Load MRV publication data\Raw_MRV.Inputs[OLE DB Destination Input].Columns[Annual average CO₂ emissions per distance (kg CO₂ / n mile)]"
-                      cachedDataType="r8"
-                      cachedName="Annual average CO₂ emissions per distance (kg CO₂ / n mile)"
-                      externalMetadataColumnId="Package\Load MRV publication data\Raw_MRV.Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageCo2EmissionPerDistanceKgCo2ToMile]"
-                      lineageId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].Columns[Annual average CO₂ emissions per distance (kg CO₂ / n mile)]" />
-                    <inputColumn
                       refId="Package\Load MRV publication data\Raw_MRV.Inputs[OLE DB Destination Input].Columns[Name]"
                       cachedDataType="wstr"
                       cachedLength="255"
@@ -4798,6 +4786,18 @@ where [refTable].[Sh_Shipname] = ?</property>
                       cachedName="Reporting Period"
                       externalMetadataColumnId="Package\Load MRV publication data\Raw_MRV.Inputs[OLE DB Destination Input].ExternalColumns[ReportingYear]"
                       lineageId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].Columns[Reporting Period]" />
+                    <inputColumn
+                      refId="Package\Load MRV publication data\Raw_MRV.Inputs[OLE DB Destination Input].Columns[Annual average Fuel consumption per distance (kg / n mile)]"
+                      cachedDataType="r8"
+                      cachedName="Annual average Fuel consumption per distance (kg / n mile)"
+                      externalMetadataColumnId="Package\Load MRV publication data\Raw_MRV.Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageFuelConsumptionPerDistanceKgToNMile]"
+                      lineageId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].Columns[Annual average Fuel consumption per distance (kg / n mile)]" />
+                    <inputColumn
+                      refId="Package\Load MRV publication data\Raw_MRV.Inputs[OLE DB Destination Input].Columns[Annual average CO₂ emissions per distance (kg CO₂ / n mile)]"
+                      cachedDataType="r8"
+                      cachedName="Annual average CO₂ emissions per distance (kg CO₂ / n mile)"
+                      externalMetadataColumnId="Package\Load MRV publication data\Raw_MRV.Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageCo2EmissionPerDistanceKgCo2ToNMile]"
+                      lineageId="Package\Load MRV publication data\MRV Publication data.Outputs[Excel Source Output].Columns[Annual average CO₂ emissions per distance (kg CO₂ / n mile)]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -4814,14 +4814,6 @@ where [refTable].[Sh_Shipname] = ?</property>
                       dataType="i4"
                       name="TotalTimeSpentAtSeaInHours" />
                     <externalMetadataColumn
-                      refId="Package\Load MRV publication data\Raw_MRV.Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageFuelConsumptionPerDistanceKgToMile]"
-                      dataType="r8"
-                      name="AnnualAverageFuelConsumptionPerDistanceKgToMile" />
-                    <externalMetadataColumn
-                      refId="Package\Load MRV publication data\Raw_MRV.Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageCo2EmissionPerDistanceKgCo2ToMile]"
-                      dataType="r8"
-                      name="AnnualAverageCo2EmissionPerDistanceKgCo2ToMile" />
-                    <externalMetadataColumn
                       refId="Package\Load MRV publication data\Raw_MRV.Inputs[OLE DB Destination Input].ExternalColumns[ShipName]"
                       dataType="wstr"
                       length="50"
@@ -4830,6 +4822,14 @@ where [refTable].[Sh_Shipname] = ?</property>
                       refId="Package\Load MRV publication data\Raw_MRV.Inputs[OLE DB Destination Input].ExternalColumns[ReportingYear]"
                       dataType="i4"
                       name="ReportingYear" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\Raw_MRV.Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageFuelConsumptionPerDistanceKgToNMile]"
+                      dataType="r8"
+                      name="AnnualAverageFuelConsumptionPerDistanceKgToNMile" />
+                    <externalMetadataColumn
+                      refId="Package\Load MRV publication data\Raw_MRV.Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageCo2EmissionPerDistanceKgCo2ToNMile]"
+                      dataType="r8"
+                      name="AnnualAverageCo2EmissionPerDistanceKgCo2ToNMile" />
                   </externalMetadataColumns>
                 </input>
               </inputs>

@@ -11,8 +11,8 @@
   DTS:LocaleID="1043"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="109"
-  DTS:VersionGUID="{6DA97FEB-127D-4BEB-8107-E3955146CC36}">
+  DTS:VersionBuild="112"
+  DTS:VersionGUID="{69C40095-724C-4282-9418-DC5D3C7FD601}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -3284,103 +3284,6 @@ VALUES ('Country', 'Country not found', ?, getdate())</property>
           version="1">
           <components>
             <component
-              refId="Package\Load Ship\Convert nMile to Km"
-              componentClassID="Microsoft.DerivedColumn"
-              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-              name="Convert nMile to Km"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\Load Ship\Convert nMile to Km.Inputs[Derived Column Input]"
-                  description="Input to the Derived Column Transformation"
-                  name="Derived Column Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Load Ship\Convert nMile to Km.Inputs[Derived Column Input].Columns[AnnualAverageFuelConsumptionPerDistanceKgToMile]"
-                      cachedDataType="r8"
-                      cachedName="AnnualAverageFuelConsumptionPerDistanceKgToMile"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Load Ship\Lookup ship MRV data.Outputs[Lookup Match Output].Columns[AnnualAverageFuelConsumptionPerDistanceKgToMile]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">#{Package\Load Ship\Lookup ship MRV data.Outputs[Lookup Match Output].Columns[AnnualAverageFuelConsumptionPerDistanceKgToMile]} / 1.852</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">AnnualAverageFuelConsumptionPerDistanceKgToMile / 1.852</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Load Ship\Convert nMile to Km.Inputs[Derived Column Input].Columns[AnnualAverageCo2EmissionPerDistanceKgCo2ToMile]"
-                      cachedDataType="r8"
-                      cachedName="AnnualAverageCo2EmissionPerDistanceKgCo2ToMile"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Load Ship\Lookup ship MRV data.Outputs[Lookup Match Output].Columns[AnnualAverageCo2EmissionPerDistanceKgCo2ToMile]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">#{Package\Load Ship\Lookup ship MRV data.Outputs[Lookup Match Output].Columns[AnnualAverageCo2EmissionPerDistanceKgCo2ToMile]} / 1.852</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">AnnualAverageCo2EmissionPerDistanceKgCo2ToMile / 1.852</property>
-                      </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Load Ship\Convert nMile to Km.Outputs[Derived Column Output]"
-                  description="Default Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  name="Derived Column Output"
-                  synchronousInputId="Package\Load Ship\Convert nMile to Km.Inputs[Derived Column Input]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Load Ship\Convert nMile to Km.Outputs[Derived Column Error Output]"
-                  description="Error Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Derived Column Error Output"
-                  synchronousInputId="Package\Load Ship\Convert nMile to Km.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Load Ship\Convert nMile to Km.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Load Ship\Convert nMile to Km.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Load Ship\Convert nMile to Km.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Load Ship\Convert nMile to Km.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
               refId="Package\Load Ship\Convert Report year to string"
               componentClassID="Microsoft.DataConvert"
               contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
@@ -4427,23 +4330,23 @@ where [refTable].[ShipName] = ?</property>
                       externalMetadataColumnId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].ExternalColumns[WidthInM]"
                       lineageId="Package\Load Ship\Raw_Ship.Outputs[OLE DB Source Output].Columns[Sh_Width]" />
                     <inputColumn
-                      refId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].Columns[AnnualAverageFuelConsumptionPerDistanceKgToMile]"
-                      cachedDataType="r8"
-                      cachedName="AnnualAverageFuelConsumptionPerDistanceKgToMile"
-                      externalMetadataColumnId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageFuelConsumptionKgPerKm]"
-                      lineageId="Package\Load Ship\Lookup ship MRV data.Outputs[Lookup Match Output].Columns[AnnualAverageFuelConsumptionPerDistanceKgToMile]" />
-                    <inputColumn
-                      refId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].Columns[AnnualAverageCo2EmissionPerDistanceKgCo2ToMile]"
-                      cachedDataType="r8"
-                      cachedName="AnnualAverageCo2EmissionPerDistanceKgCo2ToMile"
-                      externalMetadataColumnId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageCo2EmissionKgPerKm]"
-                      lineageId="Package\Load Ship\Lookup ship MRV data.Outputs[Lookup Match Output].Columns[AnnualAverageCo2EmissionPerDistanceKgCo2ToMile]" />
-                    <inputColumn
                       refId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].Columns[MeasurementReportingDate]"
                       cachedDataType="date"
                       cachedName="MeasurementReportingDate"
                       externalMetadataColumnId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].ExternalColumns[MeasurementReportingDate]"
                       lineageId="Package\Load Ship\Convert reporting year to date.Outputs[Derived Column Output].Columns[MeasurementReportingDate]" />
+                    <inputColumn
+                      refId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].Columns[AnnualAverageFuelConsumptionPerDistanceKgToMile]"
+                      cachedDataType="r8"
+                      cachedName="AnnualAverageFuelConsumptionPerDistanceKgToMile"
+                      externalMetadataColumnId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageFuelConsumptionKgPerNMile]"
+                      lineageId="Package\Load Ship\Lookup ship MRV data.Outputs[Lookup Match Output].Columns[AnnualAverageFuelConsumptionPerDistanceKgToMile]" />
+                    <inputColumn
+                      refId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].Columns[AnnualAverageCo2EmissionPerDistanceKgCo2ToMile]"
+                      cachedDataType="r8"
+                      cachedName="AnnualAverageCo2EmissionPerDistanceKgCo2ToMile"
+                      externalMetadataColumnId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageCo2EmissionKgPerNMile]"
+                      lineageId="Package\Load Ship\Lookup ship MRV data.Outputs[Lookup Match Output].Columns[AnnualAverageCo2EmissionPerDistanceKgCo2ToMile]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -4498,17 +4401,17 @@ where [refTable].[ShipName] = ?</property>
                       dataType="i4"
                       name="TotalTimeSpentAtSeaInHours" />
                     <externalMetadataColumn
-                      refId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageFuelConsumptionKgPerKm]"
-                      dataType="r8"
-                      name="AnnualAverageFuelConsumptionKgPerKm" />
-                    <externalMetadataColumn
-                      refId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageCo2EmissionKgPerKm]"
-                      dataType="r8"
-                      name="AnnualAverageCo2EmissionKgPerKm" />
-                    <externalMetadataColumn
                       refId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].ExternalColumns[MeasurementReportingDate]"
                       dataType="dbDate"
                       name="MeasurementReportingDate" />
+                    <externalMetadataColumn
+                      refId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageFuelConsumptionKgPerNMile]"
+                      dataType="r8"
+                      name="AnnualAverageFuelConsumptionKgPerNMile" />
+                    <externalMetadataColumn
+                      refId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageCo2EmissionKgPerNMile]"
+                      dataType="r8"
+                      name="AnnualAverageCo2EmissionKgPerNMile" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -4546,19 +4449,14 @@ where [refTable].[ShipName] = ?</property>
               startId="Package\Load Ship\Convert Report year to string.Outputs[Data Conversion Output]" />
             <path
               refId="Package\Load Ship.Paths[Derived Column Output]"
-              endId="Package\Load Ship\Convert nMile to Km.Inputs[Derived Column Input]"
-              name="Derived Column Output"
-              startId="Package\Load Ship\DOLLAR -&gt; EUR Conversion.Outputs[Derived Column Output]" />
-            <path
-              refId="Package\Load Ship.Paths[Derived Column Output1]"
               endId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input]"
               name="Derived Column Output"
               startId="Package\Load Ship\Convert reporting year to date.Outputs[Derived Column Output]" />
             <path
-              refId="Package\Load Ship.Paths[Derived Column Output2]"
+              refId="Package\Load Ship.Paths[Derived Column Output1]"
               endId="Package\Load Ship\Convert Report year to string.Inputs[Data Conversion Input]"
               name="Derived Column Output"
-              startId="Package\Load Ship\Convert nMile to Km.Outputs[Derived Column Output]" />
+              startId="Package\Load Ship\DOLLAR -&gt; EUR Conversion.Outputs[Derived Column Output]" />
             <path
               refId="Package\Load Ship.Paths[Lookup Match Output]"
               endId="Package\Load Ship\Lookup ship MRV data.Inputs[Lookup Input]"
@@ -7402,29 +7300,33 @@ where [refTable].[ShipName] = ?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="125,43"
-          Id="Package\Load Ship\Raw_Ship"
-          TopLeft="387.999988436699,16.9999994933606" />
-        <NodeLayout
-          Size="211,43"
-          Id="Package\Load Ship\DOLLAR -&gt; EUR Conversion"
-          TopLeft="343.999989748001,294.999991208315" />
+          Size="216,42"
+          Id="Package\Load Ship\Convert Report year to string"
+          TopLeft="339,442" />
         <NodeLayout
           Size="175,43"
           Id="Package\Load Ship\Lookup ISO Country"
           TopLeft="363.999989151955,100.999996989966" />
         <NodeLayout
+          Size="222,42"
+          Id="Package\Load Ship\Convert reporting year to date"
+          TopLeft="342,515" />
+        <NodeLayout
           Size="140,43"
           Id="Package\Load Ship\RDBMS_Ship"
           TopLeft="379.999988734722,597.999986588955" />
         <NodeLayout
-          Size="176,43"
-          Id="Package\Load Ship\Convert nMile to Km"
-          TopLeft="363.999989151955,372.666656593482" />
+          Size="125,43"
+          Id="Package\Load Ship\Raw_Ship"
+          TopLeft="387.999988436699,16.9999994933606" />
         <NodeLayout
           Size="184,43"
           Id="Package\Load Ship\Lookup ship MRV data"
           TopLeft="356.999989360571,198.999994069338" />
+        <NodeLayout
+          Size="211,43"
+          Id="Package\Load Ship\DOLLAR -&gt; EUR Conversion"
+          TopLeft="337.999989748001,327.999991208315" />
         <EdgeLayout
           Id="Package\Load Ship.Paths[OLE DB Source Output]"
           TopLeft="450.999988794327,59.6666661600272">
@@ -7449,25 +7351,25 @@ where [refTable].[ShipName] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Ship.Paths[Lookup Match Output1]"
-          TopLeft="449.166656220953,241.666660736005">
+          TopLeft="446.249989554286,241.999994069338">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,53.3333304723105"
+              EndConnector="0,85.999997138977"
               Start="0,0"
-              End="0,45.8333304723105">
+              End="0,78.499997138977">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,45.8333304723105" />
+                    End="0,78.499997138977" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,17.1119777361553,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,33.4453110694885,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -7497,32 +7399,6 @@ where [refTable].[ShipName] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Ship.Paths[Derived Column Output]"
-          TopLeft="450.666656116645,337.666657874982">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,34.9999987185001"
-              Start="0,0"
-              End="0,27.4999987185001">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,27.4999987185001" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="222,42"
-          Id="Package\Load Ship\Convert reporting year to date"
-          TopLeft="342,515" />
-        <EdgeLayout
-          Id="Package\Load Ship.Paths[Derived Column Output1]"
           TopLeft="451.499994367361,557">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -7535,32 +7411,6 @@ where [refTable].[ShipName] = ?</property>
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,33.4999865889549" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="216,42"
-          Id="Package\Load Ship\Convert Report year to string"
-          TopLeft="339,442" />
-        <EdgeLayout
-          Id="Package\Load Ship.Paths[Derived Column Output2]"
-          TopLeft="449.499994575977,415.666656593482">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,26.333343406518"
-              Start="0,0"
-              End="0,18.833343406518">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,18.833343406518" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7591,6 +7441,28 @@ where [refTable].[ShipName] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Ship.Paths[Derived Column Output1]"
+          TopLeft="445.249994874,370.999991208315">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,71.000008791685"
+              Start="0,0"
+              End="0,63.500008791685">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,63.500008791685" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -7613,7 +7485,7 @@ where [refTable].[ShipName] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -7623,7 +7495,7 @@ where [refTable].[ShipName] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>

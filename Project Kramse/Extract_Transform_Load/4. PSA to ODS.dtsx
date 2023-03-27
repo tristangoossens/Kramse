@@ -11,8 +11,8 @@
   DTS:LocaleID="1043"
   DTS:ObjectName="4  PSA to ODS"
   DTS:PackageType="5"
-  DTS:VersionBuild="62"
-  DTS:VersionGUID="{25443F53-080E-4171-AD8C-D6D2F227EE34}">
+  DTS:VersionBuild="72"
+  DTS:VersionGUID="{CF29D526-4ED4-42E7-95D9-F819453EA7C5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -238,7 +238,7 @@
               <connections>
                 <connection
                   refId="Package\Load Dim Consignor\ODS_Consignor.Connections[OleDbConnection]"
-                  connectionManagerID="{040822C5-69BF-43E9-971E-867929A258DB}:external"
+                  connectionManagerID="{4150D8DF-A531-40EB-8F70-71703C3984F8}:external"
                   connectionManagerRefId="Project.ConnectionManagers[ODS database - MSSQL connection]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
@@ -383,7 +383,7 @@
               <connections>
                 <connection
                   refId="Package\Load Dim Consignor\OLE DB Command.Connections[OleDbConnection]"
-                  connectionManagerID="{040822C5-69BF-43E9-971E-867929A258DB}:external"
+                  connectionManagerID="{4150D8DF-A531-40EB-8F70-71703C3984F8}:external"
                   connectionManagerRefId="Project.ConnectionManagers[ODS database - MSSQL connection]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
@@ -495,7 +495,7 @@
               <connections>
                 <connection
                   refId="Package\Load Dim Consignor\OLE DB Command 1.Connections[OleDbConnection]"
-                  connectionManagerID="{040822C5-69BF-43E9-971E-867929A258DB}:external"
+                  connectionManagerID="{4150D8DF-A531-40EB-8F70-71703C3984F8}:external"
                   connectionManagerRefId="Project.ConnectionManagers[ODS database - MSSQL connection]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
@@ -838,7 +838,7 @@
               <connections>
                 <connection
                   refId="Package\Load Dim Consignor\Slowly Changing Dimension.Connections[LookupConnection]"
-                  connectionManagerID="{040822C5-69BF-43E9-971E-867929A258DB}:external"
+                  connectionManagerID="{4150D8DF-A531-40EB-8F70-71703C3984F8}:external"
                   connectionManagerRefId="Project.ConnectionManagers[ODS database - MSSQL connection]"
                   description="Defines the connection to use for lookups in the dimension table"
                   name="LookupConnection" />
@@ -1476,7 +1476,7 @@
               <connections>
                 <connection
                   refId="Package\Load Dim Container\ODS_Container.Connections[OleDbConnection]"
-                  connectionManagerID="{040822C5-69BF-43E9-971E-867929A258DB}:external"
+                  connectionManagerID="{4150D8DF-A531-40EB-8F70-71703C3984F8}:external"
                   connectionManagerRefId="Project.ConnectionManagers[ODS database - MSSQL connection]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
@@ -1617,7 +1617,7 @@
               <connections>
                 <connection
                   refId="Package\Load Dim Container\OLE DB Command.Connections[OleDbConnection]"
-                  connectionManagerID="{040822C5-69BF-43E9-971E-867929A258DB}:external"
+                  connectionManagerID="{4150D8DF-A531-40EB-8F70-71703C3984F8}:external"
                   connectionManagerRefId="Project.ConnectionManagers[ODS database - MSSQL connection]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
@@ -1933,7 +1933,7 @@
               <connections>
                 <connection
                   refId="Package\Load Dim Container\Slowly Changing Dimension.Connections[LookupConnection]"
-                  connectionManagerID="{040822C5-69BF-43E9-971E-867929A258DB}:external"
+                  connectionManagerID="{4150D8DF-A531-40EB-8F70-71703C3984F8}:external"
                   connectionManagerRefId="Project.ConnectionManagers[ODS database - MSSQL connection]"
                   description="Defines the connection to use for lookups in the dimension table"
                   name="LookupConnection" />
@@ -2556,7 +2556,7 @@
               <connections>
                 <connection
                   refId="Package\Load Dim Item\ODS_Item.Connections[OleDbConnection]"
-                  connectionManagerID="{040822C5-69BF-43E9-971E-867929A258DB}:external"
+                  connectionManagerID="{4150D8DF-A531-40EB-8F70-71703C3984F8}:external"
                   connectionManagerRefId="Project.ConnectionManagers[ODS database - MSSQL connection]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
@@ -2703,7 +2703,7 @@
               <connections>
                 <connection
                   refId="Package\Load Dim Item\OLE DB Command.Connections[OleDbConnection]"
-                  connectionManagerID="{040822C5-69BF-43E9-971E-867929A258DB}:external"
+                  connectionManagerID="{4150D8DF-A531-40EB-8F70-71703C3984F8}:external"
                   connectionManagerRefId="Project.ConnectionManagers[ODS database - MSSQL connection]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
@@ -3028,7 +3028,7 @@
               <connections>
                 <connection
                   refId="Package\Load Dim Item\Slowly Changing Dimension.Connections[LookupConnection]"
-                  connectionManagerID="{040822C5-69BF-43E9-971E-867929A258DB}:external"
+                  connectionManagerID="{4150D8DF-A531-40EB-8F70-71703C3984F8}:external"
                   connectionManagerRefId="Project.ConnectionManagers[ODS database - MSSQL connection]"
                   description="Defines the connection to use for lookups in the dimension table"
                   name="LookupConnection" />
@@ -3518,7 +3518,7 @@
               <connections>
                 <connection
                   refId="Package\Load Dim Port\ODS_Port.Connections[OleDbConnection]"
-                  connectionManagerID="{040822C5-69BF-43E9-971E-867929A258DB}:external"
+                  connectionManagerID="{4150D8DF-A531-40EB-8F70-71703C3984F8}:external"
                   connectionManagerRefId="Project.ConnectionManagers[ODS database - MSSQL connection]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
@@ -3653,7 +3653,7 @@
               <connections>
                 <connection
                   refId="Package\Load Dim Port\OLE DB Command.Connections[OleDbConnection]"
-                  connectionManagerID="{040822C5-69BF-43E9-971E-867929A258DB}:external"
+                  connectionManagerID="{4150D8DF-A531-40EB-8F70-71703C3984F8}:external"
                   connectionManagerRefId="Project.ConnectionManagers[ODS database - MSSQL connection]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
@@ -3990,7 +3990,7 @@
               <connections>
                 <connection
                   refId="Package\Load Dim Port\Slowly Changing Dimension.Connections[LookupConnection]"
-                  connectionManagerID="{040822C5-69BF-43E9-971E-867929A258DB}:external"
+                  connectionManagerID="{4150D8DF-A531-40EB-8F70-71703C3984F8}:external"
                   connectionManagerRefId="Project.ConnectionManagers[ODS database - MSSQL connection]"
                   description="Defines the connection to use for lookups in the dimension table"
                   name="LookupConnection" />
@@ -4405,7 +4405,7 @@
               <connections>
                 <connection
                   refId="Package\Load Dim Ship\ODS_Ship.Connections[OleDbConnection]"
-                  connectionManagerID="{040822C5-69BF-43E9-971E-867929A258DB}:external"
+                  connectionManagerID="{4150D8DF-A531-40EB-8F70-71703C3984F8}:external"
                   connectionManagerRefId="Project.ConnectionManagers[ODS database - MSSQL connection]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
@@ -4546,7 +4546,7 @@
               <connections>
                 <connection
                   refId="Package\Load Dim Ship\OLE DB Command.Connections[OleDbConnection]"
-                  connectionManagerID="{040822C5-69BF-43E9-971E-867929A258DB}:external"
+                  connectionManagerID="{4150D8DF-A531-40EB-8F70-71703C3984F8}:external"
                   connectionManagerRefId="Project.ConnectionManagers[ODS database - MSSQL connection]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
@@ -4862,7 +4862,7 @@
               <connections>
                 <connection
                   refId="Package\Load Dim Ship\Slowly Changing Dimension.Connections[LookupConnection]"
-                  connectionManagerID="{040822C5-69BF-43E9-971E-867929A258DB}:external"
+                  connectionManagerID="{4150D8DF-A531-40EB-8F70-71703C3984F8}:external"
                   connectionManagerRefId="Project.ConnectionManagers[ODS database - MSSQL connection]"
                   description="Defines the connection to use for lookups in the dimension table"
                   name="LookupConnection" />
@@ -5337,7 +5337,7 @@
               <connections>
                 <connection
                   refId="Package\Load Dim Voyage\Insert Destination.Connections[OleDbConnection]"
-                  connectionManagerID="{040822C5-69BF-43E9-971E-867929A258DB}:external"
+                  connectionManagerID="{4150D8DF-A531-40EB-8F70-71703C3984F8}:external"
                   connectionManagerRefId="Project.ConnectionManagers[ODS database - MSSQL connection]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
@@ -5631,7 +5631,7 @@
               <connections>
                 <connection
                   refId="Package\Load Dim Voyage\Slowly Changing Dimension.Connections[LookupConnection]"
-                  connectionManagerID="{040822C5-69BF-43E9-971E-867929A258DB}:external"
+                  connectionManagerID="{4150D8DF-A531-40EB-8F70-71703C3984F8}:external"
                   connectionManagerRefId="Project.ConnectionManagers[ODS database - MSSQL connection]"
                   description="Defines the connection to use for lookups in the dimension table"
                   name="LookupConnection" />
@@ -5955,7 +5955,7 @@
               <connections>
                 <connection
                   refId="Package\Load Fact IdleTime\FACT_IdleTime.Connections[OleDbConnection]"
-                  connectionManagerID="{040822C5-69BF-43E9-971E-867929A258DB}:external"
+                  connectionManagerID="{4150D8DF-A531-40EB-8F70-71703C3984F8}:external"
                   connectionManagerRefId="Project.ConnectionManagers[ODS database - MSSQL connection]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
@@ -6119,7 +6119,7 @@ where [refTable].[PortIdCurrent] = ? and [refTable].[ArrivalDateTime] = ? and [r
               <connections>
                 <connection
                   refId="Package\Load Fact IdleTime\Lookup Increment.Connections[OleDbConnection]"
-                  connectionManagerID="{040822C5-69BF-43E9-971E-867929A258DB}:external"
+                  connectionManagerID="{4150D8DF-A531-40EB-8F70-71703C3984F8}:external"
                   connectionManagerRefId="Project.ConnectionManagers[ODS database - MSSQL connection]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
@@ -6292,7 +6292,7 @@ where [refTable].[Id] = ? AND [refTable].[EndDate] IS NULL;</property>
               <connections>
                 <connection
                   refId="Package\Load Fact IdleTime\Lookup ShipId.Connections[OleDbConnection]"
-                  connectionManagerID="{040822C5-69BF-43E9-971E-867929A258DB}:external"
+                  connectionManagerID="{4150D8DF-A531-40EB-8F70-71703C3984F8}:external"
                   connectionManagerRefId="Project.ConnectionManagers[ODS database - MSSQL connection]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
@@ -6686,7 +6686,7 @@ AND [refTable].[EndDate] IS NULL;</property>
               <connections>
                 <connection
                   refId="Package\Load Fact Shipment\Consignor Lookup.Connections[OleDbConnection]"
-                  connectionManagerID="{040822C5-69BF-43E9-971E-867929A258DB}:external"
+                  connectionManagerID="{4150D8DF-A531-40EB-8F70-71703C3984F8}:external"
                   connectionManagerRefId="Project.ConnectionManagers[ODS database - MSSQL connection]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
@@ -6844,7 +6844,7 @@ AND [refTable].[EndDate] IS NULL;</property>
               <connections>
                 <connection
                   refId="Package\Load Fact Shipment\Container Lookup.Connections[OleDbConnection]"
-                  connectionManagerID="{040822C5-69BF-43E9-971E-867929A258DB}:external"
+                  connectionManagerID="{4150D8DF-A531-40EB-8F70-71703C3984F8}:external"
                   connectionManagerRefId="Project.ConnectionManagers[ODS database - MSSQL connection]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
@@ -7102,7 +7102,7 @@ AND [refTable].[EndDate] IS NULL;</property>
               <connections>
                 <connection
                   refId="Package\Load Fact Shipment\Item Lookup.Connections[OleDbConnection]"
-                  connectionManagerID="{040822C5-69BF-43E9-971E-867929A258DB}:external"
+                  connectionManagerID="{4150D8DF-A531-40EB-8F70-71703C3984F8}:external"
                   connectionManagerRefId="Project.ConnectionManagers[ODS database - MSSQL connection]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
@@ -7259,7 +7259,7 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
               <connections>
                 <connection
                   refId="Package\Load Fact Shipment\Lookup Shipment Increment.Connections[OleDbConnection]"
-                  connectionManagerID="{040822C5-69BF-43E9-971E-867929A258DB}:external"
+                  connectionManagerID="{4150D8DF-A531-40EB-8F70-71703C3984F8}:external"
                   connectionManagerRefId="Project.ConnectionManagers[ODS database - MSSQL connection]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
@@ -7501,7 +7501,7 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
               <connections>
                 <connection
                   refId="Package\Load Fact Shipment\ODS Shipment.Connections[OleDbConnection]"
-                  connectionManagerID="{040822C5-69BF-43E9-971E-867929A258DB}:external"
+                  connectionManagerID="{4150D8DF-A531-40EB-8F70-71703C3984F8}:external"
                   connectionManagerRefId="Project.ConnectionManagers[ODS database - MSSQL connection]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
@@ -8012,7 +8012,7 @@ AND [refTable].[EndDate] IS NULL;</property>
               <connections>
                 <connection
                   refId="Package\Load Fact Shipment\Ship Lookup.Connections[OleDbConnection]"
-                  connectionManagerID="{040822C5-69BF-43E9-971E-867929A258DB}:external"
+                  connectionManagerID="{4150D8DF-A531-40EB-8F70-71703C3984F8}:external"
                   connectionManagerRefId="Project.ConnectionManagers[ODS database - MSSQL connection]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
@@ -8288,7 +8288,7 @@ AND [refTable].[EndDate] IS NULL;</property>
               <connections>
                 <connection
                   refId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (ODS).Connections[OleDbConnection]"
-                  connectionManagerID="{040822C5-69BF-43E9-971E-867929A258DB}:external"
+                  connectionManagerID="{4150D8DF-A531-40EB-8F70-71703C3984F8}:external"
                   connectionManagerRefId="Project.ConnectionManagers[ODS database - MSSQL connection]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
@@ -8326,18 +8326,6 @@ AND [refTable].[EndDate] IS NULL;</property>
                       externalMetadataColumnId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (ODS).Inputs[OLE DB Destination Input].ExternalColumns[TotalTimeSpentAtSeaInHours]"
                       lineageId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (PSA).Outputs[OLE DB Source Output].Columns[TotalTimeSpentAtSeaInHours]" />
                     <inputColumn
-                      refId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (ODS).Inputs[OLE DB Destination Input].Columns[AnnualAverageFuelConsumptionKgPerKm]"
-                      cachedDataType="r8"
-                      cachedName="AnnualAverageFuelConsumptionKgPerKm"
-                      externalMetadataColumnId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (ODS).Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageFuelConsumptionKgPerKm]"
-                      lineageId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (PSA).Outputs[OLE DB Source Output].Columns[AnnualAverageFuelConsumptionKgPerKm]" />
-                    <inputColumn
-                      refId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (ODS).Inputs[OLE DB Destination Input].Columns[AnnualAverageCo2EmmisionKgPerKm]"
-                      cachedDataType="r8"
-                      cachedName="AnnualAverageCo2EmmisionKgPerKm"
-                      externalMetadataColumnId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (ODS).Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageCo2EmmisionKgPerKm]"
-                      lineageId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (PSA).Outputs[OLE DB Source Output].Columns[AnnualAverageCo2EmmisionKgPerKm]" />
-                    <inputColumn
                       refId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (ODS).Inputs[OLE DB Destination Input].Columns[ShipRowId]"
                       cachedDataType="i4"
                       cachedName="ShipRowId"
@@ -8349,6 +8337,18 @@ AND [refTable].[EndDate] IS NULL;</property>
                       cachedName="DateTimeOfMeasurement"
                       externalMetadataColumnId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (ODS).Inputs[OLE DB Destination Input].ExternalColumns[MeasurementDateTime]"
                       lineageId="Package\Load Ship measurement data\Date to DateTime conversion.Outputs[Data Conversion Output].Columns[DateTimeOfMeasurement]" />
+                    <inputColumn
+                      refId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (ODS).Inputs[OLE DB Destination Input].Columns[AnnualAverageFuelConsumptionKgPerNMile]"
+                      cachedDataType="r8"
+                      cachedName="AnnualAverageFuelConsumptionKgPerNMile"
+                      externalMetadataColumnId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (ODS).Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageFuelConsumptionKgPerNMile]"
+                      lineageId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (PSA).Outputs[OLE DB Source Output].Columns[AnnualAverageFuelConsumptionKgPerNMile]" />
+                    <inputColumn
+                      refId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (ODS).Inputs[OLE DB Destination Input].Columns[AnnualAverageCo2EmmisionKgPerNMile]"
+                      cachedDataType="r8"
+                      cachedName="AnnualAverageCo2EmmisionKgPerNMile"
+                      externalMetadataColumnId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (ODS).Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageCo2EmmisionKgPerNMile]"
+                      lineageId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (PSA).Outputs[OLE DB Source Output].Columns[AnnualAverageCo2EmmisionKgPerNMile]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -8369,14 +8369,6 @@ AND [refTable].[EndDate] IS NULL;</property>
                       dataType="i4"
                       name="TotalTimeSpentAtSeaInHours" />
                     <externalMetadataColumn
-                      refId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (ODS).Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageFuelConsumptionKgPerKm]"
-                      dataType="r8"
-                      name="AnnualAverageFuelConsumptionKgPerKm" />
-                    <externalMetadataColumn
-                      refId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (ODS).Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageCo2EmmisionKgPerKm]"
-                      dataType="r8"
-                      name="AnnualAverageCo2EmmisionKgPerKm" />
-                    <externalMetadataColumn
                       refId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (ODS).Inputs[OLE DB Destination Input].ExternalColumns[ShipRowId]"
                       dataType="i4"
                       name="ShipRowId" />
@@ -8384,6 +8376,14 @@ AND [refTable].[EndDate] IS NULL;</property>
                       refId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (ODS).Inputs[OLE DB Destination Input].ExternalColumns[MeasurementDateTime]"
                       dataType="dbTimeStamp"
                       name="MeasurementDateTime" />
+                    <externalMetadataColumn
+                      refId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (ODS).Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageFuelConsumptionKgPerNMile]"
+                      dataType="r8"
+                      name="AnnualAverageFuelConsumptionKgPerNMile" />
+                    <externalMetadataColumn
+                      refId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (ODS).Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageCo2EmmisionKgPerNMile]"
+                      dataType="r8"
+                      name="AnnualAverageCo2EmmisionKgPerNMile" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -8519,24 +8519,6 @@ AND [refTable].[EndDate] IS NULL;</property>
                       name="TotalTimeSpentAtSeaInHours"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (PSA).Outputs[OLE DB Source Output].Columns[AnnualAverageFuelConsumptionKgPerKm]"
-                      dataType="r8"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (PSA).Outputs[OLE DB Source Output].ExternalColumns[AnnualAverageFuelConsumptionKgPerKm]"
-                      lineageId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (PSA).Outputs[OLE DB Source Output].Columns[AnnualAverageFuelConsumptionKgPerKm]"
-                      name="AnnualAverageFuelConsumptionKgPerKm"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (PSA).Outputs[OLE DB Source Output].Columns[AnnualAverageCo2EmmisionKgPerKm]"
-                      dataType="r8"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (PSA).Outputs[OLE DB Source Output].ExternalColumns[AnnualAverageCo2EmmisionKgPerKm]"
-                      lineageId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (PSA).Outputs[OLE DB Source Output].Columns[AnnualAverageCo2EmmisionKgPerKm]"
-                      name="AnnualAverageCo2EmmisionKgPerKm"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (PSA).Outputs[OLE DB Source Output].Columns[DateOfMeasurement]"
                       dataType="dbDate"
                       errorOrTruncationOperation="Conversion"
@@ -8544,6 +8526,24 @@ AND [refTable].[EndDate] IS NULL;</property>
                       externalMetadataColumnId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (PSA).Outputs[OLE DB Source Output].ExternalColumns[DateOfMeasurement]"
                       lineageId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (PSA).Outputs[OLE DB Source Output].Columns[DateOfMeasurement]"
                       name="DateOfMeasurement"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (PSA).Outputs[OLE DB Source Output].Columns[AnnualAverageFuelConsumptionKgPerNMile]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (PSA).Outputs[OLE DB Source Output].ExternalColumns[AnnualAverageFuelConsumptionKgPerNMile]"
+                      lineageId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (PSA).Outputs[OLE DB Source Output].Columns[AnnualAverageFuelConsumptionKgPerNMile]"
+                      name="AnnualAverageFuelConsumptionKgPerNMile"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (PSA).Outputs[OLE DB Source Output].Columns[AnnualAverageCo2EmmisionKgPerNMile]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (PSA).Outputs[OLE DB Source Output].ExternalColumns[AnnualAverageCo2EmmisionKgPerNMile]"
+                      lineageId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (PSA).Outputs[OLE DB Source Output].Columns[AnnualAverageCo2EmmisionKgPerNMile]"
+                      name="AnnualAverageCo2EmmisionKgPerNMile"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
@@ -8569,17 +8569,17 @@ AND [refTable].[EndDate] IS NULL;</property>
                       dataType="i4"
                       name="TotalTimeSpentAtSeaInHours" />
                     <externalMetadataColumn
-                      refId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (PSA).Outputs[OLE DB Source Output].ExternalColumns[AnnualAverageFuelConsumptionKgPerKm]"
-                      dataType="r8"
-                      name="AnnualAverageFuelConsumptionKgPerKm" />
-                    <externalMetadataColumn
-                      refId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (PSA).Outputs[OLE DB Source Output].ExternalColumns[AnnualAverageCo2EmmisionKgPerKm]"
-                      dataType="r8"
-                      name="AnnualAverageCo2EmmisionKgPerKm" />
-                    <externalMetadataColumn
                       refId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (PSA).Outputs[OLE DB Source Output].ExternalColumns[DateOfMeasurement]"
                       dataType="dbDate"
                       name="DateOfMeasurement" />
+                    <externalMetadataColumn
+                      refId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (PSA).Outputs[OLE DB Source Output].ExternalColumns[AnnualAverageFuelConsumptionKgPerNMile]"
+                      dataType="r8"
+                      name="AnnualAverageFuelConsumptionKgPerNMile" />
+                    <externalMetadataColumn
+                      refId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (PSA).Outputs[OLE DB Source Output].ExternalColumns[AnnualAverageCo2EmmisionKgPerNMile]"
+                      dataType="r8"
+                      name="AnnualAverageCo2EmmisionKgPerNMile" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -8618,15 +8618,15 @@ AND [refTable].[EndDate] IS NULL;</property>
                       lineageId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (PSA).Outputs[OLE DB Source Error Output].Columns[TotalTimeSpentAtSeaInHours]"
                       name="TotalTimeSpentAtSeaInHours" />
                     <outputColumn
-                      refId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (PSA).Outputs[OLE DB Source Error Output].Columns[AnnualAverageFuelConsumptionKgPerKm]"
+                      refId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (PSA).Outputs[OLE DB Source Error Output].Columns[AnnualAverageFuelConsumptionKgPerNMile]"
                       dataType="r8"
-                      lineageId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (PSA).Outputs[OLE DB Source Error Output].Columns[AnnualAverageFuelConsumptionKgPerKm]"
-                      name="AnnualAverageFuelConsumptionKgPerKm" />
+                      lineageId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (PSA).Outputs[OLE DB Source Error Output].Columns[AnnualAverageFuelConsumptionKgPerNMile]"
+                      name="AnnualAverageFuelConsumptionKgPerNMile" />
                     <outputColumn
-                      refId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (PSA).Outputs[OLE DB Source Error Output].Columns[AnnualAverageCo2EmmisionKgPerKm]"
+                      refId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (PSA).Outputs[OLE DB Source Error Output].Columns[AnnualAverageCo2EmmisionKgPerNMile]"
                       dataType="r8"
-                      lineageId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (PSA).Outputs[OLE DB Source Error Output].Columns[AnnualAverageCo2EmmisionKgPerKm]"
-                      name="AnnualAverageCo2EmmisionKgPerKm" />
+                      lineageId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (PSA).Outputs[OLE DB Source Error Output].Columns[AnnualAverageCo2EmmisionKgPerNMile]"
+                      name="AnnualAverageCo2EmmisionKgPerNMile" />
                     <outputColumn
                       refId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (PSA).Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -8714,7 +8714,7 @@ where [refTable].[MeasurementDateTime] = ? and [refTable].[ShipRowId] = ?</prope
               <connections>
                 <connection
                   refId="Package\Load Ship measurement data\Lookup Increment.Connections[OleDbConnection]"
-                  connectionManagerID="{040822C5-69BF-43E9-971E-867929A258DB}:external"
+                  connectionManagerID="{4150D8DF-A531-40EB-8F70-71703C3984F8}:external"
                   connectionManagerRefId="Project.ConnectionManagers[ODS database - MSSQL connection]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
@@ -8872,7 +8872,7 @@ AND [refTable].[EndDate] IS NULL;</property>
               <connections>
                 <connection
                   refId="Package\Load Ship measurement data\Lookup ShipId.Connections[OleDbConnection]"
-                  connectionManagerID="{040822C5-69BF-43E9-971E-867929A258DB}:external"
+                  connectionManagerID="{4150D8DF-A531-40EB-8F70-71703C3984F8}:external"
                   connectionManagerRefId="Project.ConnectionManagers[ODS database - MSSQL connection]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
@@ -9087,7 +9087,7 @@ AND [refTable].[EndDate] IS NULL;</property>
         <NodeLayout
           Size="161,42"
           Id="Package\Load Dim Voyage"
-          TopLeft="683,107.5" />
+          TopLeft="682,108.5" />
         <NodeLayout
           Size="169,42"
           Id="Package\Load Fact IdleTime"
@@ -9192,18 +9192,18 @@ AND [refTable].[EndDate] IS NULL;</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="763.5,47.4999999999999">
+          TopLeft="763,47.4999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="0,61.0000000000001"
               Start="0,0"
-              End="0,52.5">
+              End="0,53.5000000000001">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,53.5000000000001" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -9214,30 +9214,30 @@ AND [refTable].[EndDate] IS NULL;</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="763.5,149.5">
+          TopLeft="762.5,150.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-188.666666666667,60"
+              EndConnector="-187.666666666667,59"
               Start="0,0"
-              End="-188.666666666667,52.5">
+              End="-187.666666666667,51.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,31.668202764977" />
+                    End="0,31.073732718894" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,31.668202764977"
-                    Point2="0,35.668202764977"
-                    Point3="-4,35.668202764977" />
+                    Point1="0,31.073732718894"
+                    Point2="0,35.073732718894"
+                    Point3="-4,35.073732718894" />
                   <mssgle:LineSegment
-                    End="-184.666666666667,35.668202764977" />
+                    End="-183.666666666667,35.073732718894" />
                   <mssgle:CubicBezierSegment
-                    Point1="-184.666666666667,35.668202764977"
-                    Point2="-188.666666666667,35.668202764977"
-                    Point3="-188.666666666667,39.668202764977" />
+                    Point1="-183.666666666667,35.073732718894"
+                    Point2="-187.666666666667,35.073732718894"
+                    Point3="-187.666666666667,39.073732718894" />
                   <mssgle:LineSegment
-                    End="-188.666666666667,52.5" />
+                    End="-187.666666666667,51.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -9419,9 +9419,7 @@ AND [refTable].[EndDate] IS NULL;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9515,9 +9513,7 @@ AND [refTable].[EndDate] IS NULL;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9539,9 +9535,7 @@ AND [refTable].[EndDate] IS NULL;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9599,9 +9593,7 @@ AND [refTable].[EndDate] IS NULL;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9623,9 +9615,7 @@ AND [refTable].[EndDate] IS NULL;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -9774,9 +9764,7 @@ AND [refTable].[EndDate] IS NULL;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9798,9 +9786,7 @@ AND [refTable].[EndDate] IS NULL;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9834,9 +9820,7 @@ AND [refTable].[EndDate] IS NULL;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9930,9 +9914,7 @@ AND [refTable].[EndDate] IS NULL;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9954,9 +9936,7 @@ AND [refTable].[EndDate] IS NULL;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -10104,9 +10084,7 @@ AND [refTable].[EndDate] IS NULL;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10128,9 +10106,7 @@ AND [refTable].[EndDate] IS NULL;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10164,9 +10140,7 @@ AND [refTable].[EndDate] IS NULL;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10260,9 +10234,7 @@ AND [refTable].[EndDate] IS NULL;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10284,9 +10256,7 @@ AND [refTable].[EndDate] IS NULL;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -10422,9 +10392,7 @@ AND [refTable].[EndDate] IS NULL;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10647,9 +10615,7 @@ AND [refTable].[EndDate] IS NULL;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10683,9 +10649,7 @@ AND [refTable].[EndDate] IS NULL;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10719,9 +10683,7 @@ AND [refTable].[EndDate] IS NULL;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10827,9 +10789,7 @@ AND [refTable].[EndDate] IS NULL;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10851,9 +10811,7 @@ AND [refTable].[EndDate] IS NULL;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -10985,9 +10943,7 @@ AND [refTable].[EndDate] IS NULL;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -11103,10 +11059,6 @@ AND [refTable].[EndDate] IS NULL;</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="226,42"
-          Id="Package\Load Fact IdleTime\Convert Date to type DateTime"
-          TopLeft="512,183" />
-        <NodeLayout
           Size="151,42"
           Id="Package\Load Fact IdleTime\FACT_IdleTime"
           TopLeft="551,504" />
@@ -11122,28 +11074,10 @@ AND [refTable].[EndDate] IS NULL;</property>
           Size="146,42"
           Id="Package\Load Fact IdleTime\Lookup ShipId"
           TopLeft="550,285" />
-        <EdgeLayout
-          Id="Package\Load Fact IdleTime.Paths[OLE DB Source Output]"
-          TopLeft="622.5,110">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,73"
-              Start="0,0"
-              End="0,65.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,65.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+        <NodeLayout
+          Size="226,42"
+          Id="Package\Load Fact IdleTime\Convert Date to type DateTime"
+          TopLeft="512,183" />
         <EdgeLayout
           Id="Package\Load Fact IdleTime.Paths[Lookup No Match Output]"
           TopLeft="626.5,445">
@@ -11214,22 +11148,31 @@ AND [refTable].[EndDate] IS NULL;</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Fact IdleTime.Paths[OLE DB Source Output]"
+          TopLeft="622.5,110">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,73"
+              Start="0,0"
+              End="0,65.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,65.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Fact IdleTime\FACT_IdleTime">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Load Fact IdleTime\VIEW_IdleTime">
     <Properties>
@@ -11240,29 +11183,6 @@ AND [refTable].[EndDate] IS NULL;</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">View</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Fact IdleTime\Lookup Increment">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[FACT_IdleTime]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -11289,35 +11209,71 @@ AND [refTable].[EndDate] IS NULL;</property>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Fact IdleTime\FACT_IdleTime">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Fact IdleTime\Lookup Increment">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[FACT_IdleTime]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Load Fact Shipment">
     <LayoutInfo>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="139,43"
-          Id="Package\Load Fact Shipment\Item Lookup"
-          TopLeft="347.999989628792,441.666657100121" />
-        <NodeLayout
-          Size="137,43"
-          Id="Package\Load Fact Shipment\Ship Lookup"
-          TopLeft="348.99998959899,513.666654954354" />
-        <NodeLayout
           Size="147,42"
           Id="Package\Load Fact Shipment\ODS Shipment"
           TopLeft="352.000000417233,747.166661674778" />
+        <NodeLayout
+          Size="139,43"
+          Id="Package\Load Fact Shipment\Item Lookup"
+          TopLeft="347.999989628792,441.666657100121" />
         <NodeLayout
           Size="163,43"
           Id="Package\Load Fact Shipment\Container Lookup"
           TopLeft="337.999989926815,361.333327790102" />
         <NodeLayout
-          Size="145,42"
-          Id="Package\Load Fact Shipment\PSA Shipment"
-          TopLeft="348.000000208616,57.0000028014182" />
+          Size="137,43"
+          Id="Package\Load Fact Shipment\Ship Lookup"
+          TopLeft="348.99998959899,513.666654954354" />
         <NodeLayout
           Size="213,43"
           Id="Package\Load Fact Shipment\Lookup Shipment Increment"
           TopLeft="314.59089971537,631.666651437681" />
+        <NodeLayout
+          Size="145,42"
+          Id="Package\Load Fact Shipment\PSA Shipment"
+          TopLeft="348.000000208616,57.0000028014182" />
         <NodeLayout
           Size="164,43"
           Id="Package\Load Fact Shipment\Consignor Lookup"
@@ -11494,6 +11450,19 @@ AND [refTable].[EndDate] IS NULL;</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\Load Fact Shipment\ODS Shipment">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\Load Fact Shipment\Item Lookup">
     <Properties>
       <Property>
@@ -11505,6 +11474,29 @@ AND [refTable].[EndDate] IS NULL;</property>
         <Name>UsedTableName</Name>
         <Value
           type="q3:string">[dbo].[DIM_Item]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Fact Shipment\Container Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">true</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DIM_Container]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
@@ -11540,30 +11532,17 @@ AND [refTable].[EndDate] IS NULL;</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Fact Shipment\ODS Shipment">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Fact Shipment\Container Lookup">
+    design-time-name="Package\Load Fact Shipment\Lookup Shipment Increment">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">true</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
         <Value
-          type="q3:string">[dbo].[DIM_Container]</Value>
+          type="q3:string">[dbo].[FACT_Shipment]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
@@ -11585,29 +11564,6 @@ AND [refTable].[EndDate] IS NULL;</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Fact Shipment\Lookup Shipment Increment">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[FACT_Shipment]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -11640,10 +11596,6 @@ AND [refTable].[EndDate] IS NULL;</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="216,42"
-          Id="Package\Load Ship measurement data\Date to DateTime conversion"
-          TopLeft="405,185" />
-        <NodeLayout
           Size="165,42"
           Id="Package\Load Ship measurement data\Lookup Increment"
           TopLeft="429,427" />
@@ -11659,6 +11611,10 @@ AND [refTable].[EndDate] IS NULL;</property>
           Size="146,42"
           Id="Package\Load Ship measurement data\Lookup ShipId"
           TopLeft="435,297" />
+        <NodeLayout
+          Size="216,42"
+          Id="Package\Load Ship measurement data\Date to DateTime conversion"
+          TopLeft="405,185" />
         <EdgeLayout
           Id="Package\Load Ship measurement data.Paths[OLE DB Source Output]"
           TopLeft="509.5,121">
@@ -11755,29 +11711,6 @@ AND [refTable].[EndDate] IS NULL;</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Ship measurement data\Lookup Increment">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[FACT_YearlyMeasurementShipData]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (ODS)">
     <Properties>
       <Property>
@@ -11815,6 +11748,29 @@ AND [refTable].[EndDate] IS NULL;</property>
         <Name>UsedTableName</Name>
         <Value
           type="q3:string">[dbo].[DIM_Ship]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Ship measurement data\Lookup Increment">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[FACT_YearlyMeasurementShipData]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>

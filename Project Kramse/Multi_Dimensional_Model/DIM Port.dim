@@ -1,6 +1,6 @@
-﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="4fa89610-862d-4116-a53e-353e8abdcc1d" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
-  <ID>DIM_Voyage</ID>
-  <Name>DIM_Voyage</Name>
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="9b9330ef-8bb3-47bd-b38c-056aee070bfa" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>DIM Port</ID>
+  <Name>DIM Port</Name>
   <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
   <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
   <Annotations>
@@ -42,91 +42,49 @@
   </Annotations>
   <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
   <State>Unprocessed</State>
-  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="6af6e5e1-37cd-427b-b440-d3c7f9e8cf43">
-    <DataSourceViewID>ODS Kramse - DataSourceView</DataSourceViewID>
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="8395962c-8c41-483c-87b7-db202becff05">
+    <DataSourceViewID>ODS Kramse</DataSourceViewID>
   </Source>
   <UnknownMember>Visible</UnknownMember>
-  <ErrorConfiguration dwd:design-time-name="ac8099d0-695b-460c-bb79-e7d9c93142b9">
+  <ErrorConfiguration dwd:design-time-name="433cfdbf-83ae-4c7e-b413-b9f3ec4704a8">
     <KeyNotFound>ReportAndStop</KeyNotFound>
     <KeyDuplicate>ReportAndStop</KeyDuplicate>
     <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
   </ErrorConfiguration>
   <CurrentStorageMode>Molap</CurrentStorageMode>
   <Attributes>
-    <Attribute dwd:design-time-name="76240dc3-34b8-46a5-b9fc-637d7bbeaf2b">
+    <Attribute dwd:design-time-name="c810b363-a4b4-466b-9c1a-856677e95010">
       <ID>Id</ID>
       <Name>Id</Name>
       <Usage>Key</Usage>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="48c75546-52dd-4628-9dcc-10870c71943b">
-          <DataType>Integer</DataType>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="960b0e79-a89f-4c30-aa53-3c85de312d6f">
-            <TableID>dbo_DIM_Voyage</TableID>
-            <ColumnID>Id</ColumnID>
-          </Source>
-        </KeyColumn>
-      </KeyColumns>
-      <AttributeRelationships>
-        <AttributeRelationship dwd:design-time-name="0c2b0086-ee7f-4ef7-8d17-a6883249ec0c">
-          <AttributeID>Distance In Km</AttributeID>
-          <Name>Distance In Km</Name>
-        </AttributeRelationship>
-        <AttributeRelationship dwd:design-time-name="43d2c0b4-e7bf-4471-b295-4dedf56047d0">
-          <AttributeID>DIM Port - Id</AttributeID>
-          <Name>DIM Port - Id</Name>
-        </AttributeRelationship>
-      </AttributeRelationships>
-      <OrderBy>Key</OrderBy>
-      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
-      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
-    </Attribute>
-    <Attribute dwd:design-time-name="ff1028cd-7f05-40fe-8054-7851911e4a05">
-      <ID>Distance In Km</ID>
-      <Name>Distance In Km</Name>
-      <KeyColumns>
-        <KeyColumn dwd:design-time-name="54c2aaf3-d9e0-493f-870a-8ee4969914c6">
-          <DataType>Integer</DataType>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="f76aa38b-53cc-4abe-bb7d-7a0a799552be">
-            <TableID>dbo_DIM_Voyage</TableID>
-            <ColumnID>DistanceInKm</ColumnID>
-          </Source>
-        </KeyColumn>
-      </KeyColumns>
-      <OrderBy>Key</OrderBy>
-      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
-      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
-    </Attribute>
-    <Attribute dwd:design-time-name="66897299-a7cd-4d74-9b31-ddfa85ee8631">
-      <ID>DIM Port - Id</ID>
-      <Name>DIM Port - Id</Name>
-      <KeyColumns>
-        <KeyColumn dwd:design-time-name="471957df-5235-4874-a429-d22911f2bbd0">
+        <KeyColumn dwd:design-time-name="1d08a38e-17ff-4e79-9a8c-1b24f4395949">
           <DataType>Integer</DataType>
           <NullProcessing>UnknownMember</NullProcessing>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="55d21fdc-1d55-4cdc-a158-d21c3752ebd1">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="5d4bb61b-8149-4b55-93a7-d926aad074e3">
             <TableID>dbo_DIM_Port</TableID>
             <ColumnID>Id</ColumnID>
           </Source>
         </KeyColumn>
       </KeyColumns>
       <AttributeRelationships>
-        <AttributeRelationship dwd:design-time-name="3c98bce6-326f-46ed-979e-4983ce3c0fb0">
+        <AttributeRelationship dwd:design-time-name="bd32bd6e-5f71-4e92-80fe-091794865417">
           <AttributeID>Port Size Rank</AttributeID>
           <Name>Port Size Rank</Name>
         </AttributeRelationship>
-        <AttributeRelationship dwd:design-time-name="5bfac538-ddd6-4e3d-9343-5b42306793d3">
+        <AttributeRelationship dwd:design-time-name="63772dff-9f43-4624-a615-d791a3636268">
           <AttributeID>Name</AttributeID>
           <Name>Name_</Name>
         </AttributeRelationship>
-        <AttributeRelationship dwd:design-time-name="abcd0688-59f3-4862-8f03-652d73ecd4c0">
+        <AttributeRelationship dwd:design-time-name="53e420da-e794-4cba-830e-6a65bcdbfdcd">
           <AttributeID>Country Iso3</AttributeID>
           <Name>Country Iso3</Name>
         </AttributeRelationship>
-        <AttributeRelationship dwd:design-time-name="dc62d16a-9775-4acb-8d96-738f4d1f53b5">
+        <AttributeRelationship dwd:design-time-name="5c863d93-7cac-4c8b-a644-8030f373b624">
           <AttributeID>Distance From Oslo In Km</AttributeID>
           <Name>Distance From Oslo In Km</Name>
         </AttributeRelationship>
-        <AttributeRelationship dwd:design-time-name="675fd588-c7e8-4b2f-9973-08349231e07e">
+        <AttributeRelationship dwd:design-time-name="80d7c0d0-5efe-447f-8565-b49d5cf47824">
           <AttributeID>Distance From Piraeus In Km</AttributeID>
           <Name>Distance From Piraeus In Km</Name>
         </AttributeRelationship>
@@ -135,13 +93,13 @@
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="5f7691c4-c450-4489-af31-eda90518a699">
+    <Attribute dwd:design-time-name="d3f2700f-67a5-4aca-9622-de76de7239eb">
       <ID>Port Size Rank</ID>
       <Name>Port Size Rank</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="08ac6b04-66a5-4ae9-9643-2ac74713418d">
+        <KeyColumn dwd:design-time-name="7d765403-d960-4d7f-afda-f5dc0ec072dc">
           <DataType>Integer</DataType>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="a6246472-4a8c-426b-b4bf-3e057ed77e7f">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="18669806-8f09-4627-a029-d6443c3643d5">
             <TableID>dbo_DIM_Port</TableID>
             <ColumnID>PortSizeRank</ColumnID>
           </Source>
@@ -151,14 +109,14 @@
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="623be6dc-721e-43e5-895b-8be9c6e6386d">
+    <Attribute dwd:design-time-name="89a40b93-363e-4f2a-9a93-f0d95f3db3ef">
       <ID>Name</ID>
       <Name>Name</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="1892a3a2-7fb4-42ab-a552-826c9b75d4a5">
+        <KeyColumn dwd:design-time-name="510b09c1-35b4-48cb-a06d-738dfcfb6c79">
           <DataType>WChar</DataType>
           <DataSize>50</DataSize>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="edd88b18-402d-4567-88d2-81166c0b6023">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="87f812ce-de10-4857-89fa-874798e722e3">
             <TableID>dbo_DIM_Port</TableID>
             <ColumnID>Name</ColumnID>
           </Source>
@@ -168,14 +126,14 @@
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="a8df6b11-b398-4da5-8d65-b853b9c71413">
+    <Attribute dwd:design-time-name="7d42fc0b-caff-4ef4-b9d5-60ba0a895975">
       <ID>Country Iso3</ID>
       <Name>Country Iso3</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="eba6af4c-4dd9-4db1-94a4-469792c7a1d6">
+        <KeyColumn dwd:design-time-name="a41ad0ea-4f3c-43e6-ac79-215877a3627a">
           <DataType>WChar</DataType>
           <DataSize>50</DataSize>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="5117b9c0-bcfc-4889-b23d-3d374395d924">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="f4636320-e32d-43d0-8891-09c4b85c1caa">
             <TableID>dbo_DIM_Port</TableID>
             <ColumnID>CountryIso3</ColumnID>
           </Source>
@@ -185,13 +143,13 @@
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="0245a982-3191-4768-a32d-f612e289566f">
+    <Attribute dwd:design-time-name="4216f382-db43-49c3-982d-5dd7a0493ec2">
       <ID>Distance From Oslo In Km</ID>
       <Name>Distance From Oslo In Km</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="b17423b2-9d30-4290-bad1-fc73fd6df806">
+        <KeyColumn dwd:design-time-name="6d483c2d-61a7-4568-b3f7-aaf8af08544f">
           <DataType>SmallInt</DataType>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="c773014c-d6b5-45de-9413-8fc228fc09fc">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="48839a49-9822-48d7-8b0f-89c5c3df1451">
             <TableID>dbo_DIM_Port</TableID>
             <ColumnID>DistanceFromOsloInKm</ColumnID>
           </Source>
@@ -201,13 +159,13 @@
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="bf28da21-7552-4968-9164-8dcc7e007c92">
+    <Attribute dwd:design-time-name="fe1ab45a-3288-4b60-a32d-349555f4ac53">
       <ID>Distance From Piraeus In Km</ID>
       <Name>Distance From Piraeus In Km</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="3aa748ea-83db-41f5-906c-cc757527fabf">
+        <KeyColumn dwd:design-time-name="35dbec8f-4584-4dfd-95a6-e214598d1b66">
           <DataType>SmallInt</DataType>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="4dacec18-bcf3-4c67-bf2f-0d2e1f42b0ff">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="fe01a631-4a14-4f50-b2aa-b176a2630710">
             <TableID>dbo_DIM_Port</TableID>
             <ColumnID>DistanceFromPiraeusInKm</ColumnID>
           </Source>

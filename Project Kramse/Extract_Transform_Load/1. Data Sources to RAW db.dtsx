@@ -11,8 +11,8 @@
   DTS:LocaleID="1043"
   DTS:ObjectName="1  Data Sources to RAW db"
   DTS:PackageType="5"
-  DTS:VersionBuild="60"
-  DTS:VersionGUID="{FF891CAE-B570-4D45-86D8-A98FBC7B4605}">
+  DTS:VersionBuild="61"
+  DTS:VersionGUID="{C97A90C8-E560-4F36-B355-67695C901D39}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -5731,6 +5731,10 @@ where [refTable].[Sh_Shipname] = ?</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="126,42"
+          Id="Package\Load MRV publication data\Raw_MRV"
+          TopLeft="483,303" />
+        <NodeLayout
           Size="178,42"
           Id="Package\Load MRV publication data\MRV Publication data"
           TopLeft="455,57" />
@@ -5738,10 +5742,6 @@ where [refTable].[Sh_Shipname] = ?</property>
           Size="158,42"
           Id="Package\Load MRV publication data\Lookup TPS Ship"
           TopLeft="466,180" />
-        <NodeLayout
-          Size="126,42"
-          Id="Package\Load MRV publication data\Raw_MRV"
-          TopLeft="483,303" />
         <EdgeLayout
           Id="Package\Load MRV publication data.Paths[Lookup Match Output]"
           TopLeft="545.5,222">
@@ -5792,6 +5792,19 @@ where [refTable].[Sh_Shipname] = ?</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\Load MRV publication data\Raw_MRV">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\Load MRV publication data\MRV Publication data">
     <Properties>
       <Property>
@@ -5810,7 +5823,7 @@ where [refTable].[Sh_Shipname] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -5820,23 +5833,10 @@ where [refTable].[Sh_Shipname] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load MRV publication data\Raw_MRV">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

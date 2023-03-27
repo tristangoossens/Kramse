@@ -11,8 +11,8 @@
   DTS:LocaleID="1043"
   DTS:ObjectName="4  PSA to ODS"
   DTS:PackageType="5"
-  DTS:VersionBuild="55"
-  DTS:VersionGUID="{FFFD6E62-6A07-456F-B347-E2CE7C1A9039}">
+  DTS:VersionBuild="62"
+  DTS:VersionGUID="{25443F53-080E-4171-AD8C-D6D2F227EE34}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -5797,133 +5797,24 @@
           version="1">
           <components>
             <component
-              refId="Package\Load Fact IdleTime\Convert Departure and Arrival to Calendar Id"
-              componentClassID="Microsoft.DerivedColumn"
-              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-              name="Convert Departure and Arrival to Calendar Id"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\Load Fact IdleTime\Convert Departure and Arrival to Calendar Id.Inputs[Derived Column Input]"
-                  description="Input to the Derived Column Transformation"
-                  name="Derived Column Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Load Fact IdleTime\Convert Departure and Arrival to Calendar Id.Inputs[Derived Column Input].Columns[Copy of DepartureDate]"
-                      cachedDataType="wstr"
-                      cachedLength="10"
-                      cachedName="Copy of DepartureDate"
-                      lineageId="Package\Load Fact IdleTime\Convert Departure and Arrival to string.Outputs[Data Conversion Output].Columns[Copy of DepartureDate]" />
-                    <inputColumn
-                      refId="Package\Load Fact IdleTime\Convert Departure and Arrival to Calendar Id.Inputs[Derived Column Input].Columns[Copy of ArrivalDate]"
-                      cachedDataType="wstr"
-                      cachedLength="10"
-                      cachedName="Copy of ArrivalDate"
-                      lineageId="Package\Load Fact IdleTime\Convert Departure and Arrival to string.Outputs[Data Conversion Output].Columns[Copy of ArrivalDate]" />
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Load Fact IdleTime\Convert Departure and Arrival to Calendar Id.Outputs[Derived Column Output]"
-                  description="Default Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  name="Derived Column Output"
-                  synchronousInputId="Package\Load Fact IdleTime\Convert Departure and Arrival to Calendar Id.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Load Fact IdleTime\Convert Departure and Arrival to Calendar Id.Outputs[Derived Column Output].Columns[DepartureDateId]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Load Fact IdleTime\Convert Departure and Arrival to Calendar Id.Outputs[Derived Column Output].Columns[DepartureDateId]"
-                      name="DepartureDateId"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">(DT_I4)[REPLACE](#{Package\Load Fact IdleTime\Convert Departure and Arrival to string.Outputs[Data Conversion Output].Columns[Copy of DepartureDate]},"-","")</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">(DT_I4)REPLACE([Copy of DepartureDate],"-","")</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Load Fact IdleTime\Convert Departure and Arrival to Calendar Id.Outputs[Derived Column Output].Columns[ArrivalDateId]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Load Fact IdleTime\Convert Departure and Arrival to Calendar Id.Outputs[Derived Column Output].Columns[ArrivalDateId]"
-                      name="ArrivalDateId"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">(DT_I4)[REPLACE](#{Package\Load Fact IdleTime\Convert Departure and Arrival to string.Outputs[Data Conversion Output].Columns[Copy of ArrivalDate]},"-","")</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">(DT_I4)REPLACE([Copy of ArrivalDate],"-","")</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Load Fact IdleTime\Convert Departure and Arrival to Calendar Id.Outputs[Derived Column Error Output]"
-                  description="Error Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Derived Column Error Output"
-                  synchronousInputId="Package\Load Fact IdleTime\Convert Departure and Arrival to Calendar Id.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Load Fact IdleTime\Convert Departure and Arrival to Calendar Id.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Load Fact IdleTime\Convert Departure and Arrival to Calendar Id.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Load Fact IdleTime\Convert Departure and Arrival to Calendar Id.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Load Fact IdleTime\Convert Departure and Arrival to Calendar Id.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\Load Fact IdleTime\Convert Departure and Arrival to string"
+              refId="Package\Load Fact IdleTime\Convert Date to type DateTime"
               componentClassID="Microsoft.DataConvert"
               contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
               description="Data Conversion"
-              name="Convert Departure and Arrival to string"
+              name="Convert Date to type DateTime"
               usesDispositions="true">
               <inputs>
                 <input
-                  refId="Package\Load Fact IdleTime\Convert Departure and Arrival to string.Inputs[Data Conversion Input]"
+                  refId="Package\Load Fact IdleTime\Convert Date to type DateTime.Inputs[Data Conversion Input]"
                   name="Data Conversion Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Load Fact IdleTime\Convert Departure and Arrival to string.Inputs[Data Conversion Input].Columns[DepartureDate]"
+                      refId="Package\Load Fact IdleTime\Convert Date to type DateTime.Inputs[Data Conversion Input].Columns[DepartureDate]"
                       cachedDataType="dbDate"
                       cachedName="DepartureDate"
                       lineageId="Package\Load Fact IdleTime\VIEW_IdleTime.Outputs[OLE DB Source Output].Columns[DepartureDate]" />
                     <inputColumn
-                      refId="Package\Load Fact IdleTime\Convert Departure and Arrival to string.Inputs[Data Conversion Input].Columns[ArrivalDate]"
+                      refId="Package\Load Fact IdleTime\Convert Date to type DateTime.Inputs[Data Conversion Input].Columns[ArrivalDate]"
                       cachedDataType="dbDate"
                       cachedName="ArrivalDate"
                       lineageId="Package\Load Fact IdleTime\VIEW_IdleTime.Outputs[OLE DB Source Output].Columns[ArrivalDate]" />
@@ -5933,19 +5824,18 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Load Fact IdleTime\Convert Departure and Arrival to string.Outputs[Data Conversion Output]"
+                  refId="Package\Load Fact IdleTime\Convert Date to type DateTime.Outputs[Data Conversion Output]"
                   exclusionGroup="1"
                   name="Data Conversion Output"
-                  synchronousInputId="Package\Load Fact IdleTime\Convert Departure and Arrival to string.Inputs[Data Conversion Input]">
+                  synchronousInputId="Package\Load Fact IdleTime\Convert Date to type DateTime.Inputs[Data Conversion Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load Fact IdleTime\Convert Departure and Arrival to string.Outputs[Data Conversion Output].Columns[Copy of DepartureDate]"
-                      dataType="wstr"
+                      refId="Package\Load Fact IdleTime\Convert Date to type DateTime.Outputs[Data Conversion Output].Columns[DepartureDateTime]"
+                      dataType="dbTimeStamp"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      length="10"
-                      lineageId="Package\Load Fact IdleTime\Convert Departure and Arrival to string.Outputs[Data Conversion Output].Columns[Copy of DepartureDate]"
-                      name="Copy of DepartureDate"
+                      lineageId="Package\Load Fact IdleTime\Convert Date to type DateTime.Outputs[Data Conversion Output].Columns[DepartureDateTime]"
+                      name="DepartureDateTime"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -5960,13 +5850,12 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Load Fact IdleTime\Convert Departure and Arrival to string.Outputs[Data Conversion Output].Columns[Copy of ArrivalDate]"
-                      dataType="wstr"
+                      refId="Package\Load Fact IdleTime\Convert Date to type DateTime.Outputs[Data Conversion Output].Columns[ArrivalDateTime]"
+                      dataType="dbTimeStamp"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      length="10"
-                      lineageId="Package\Load Fact IdleTime\Convert Departure and Arrival to string.Outputs[Data Conversion Output].Columns[Copy of ArrivalDate]"
-                      name="Copy of ArrivalDate"
+                      lineageId="Package\Load Fact IdleTime\Convert Date to type DateTime.Outputs[Data Conversion Output].Columns[ArrivalDateTime]"
+                      name="ArrivalDateTime"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -5984,22 +5873,22 @@
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Load Fact IdleTime\Convert Departure and Arrival to string.Outputs[Data Conversion Error Output]"
+                  refId="Package\Load Fact IdleTime\Convert Date to type DateTime.Outputs[Data Conversion Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Data Conversion Error Output"
-                  synchronousInputId="Package\Load Fact IdleTime\Convert Departure and Arrival to string.Inputs[Data Conversion Input]">
+                  synchronousInputId="Package\Load Fact IdleTime\Convert Date to type DateTime.Inputs[Data Conversion Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load Fact IdleTime\Convert Departure and Arrival to string.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      refId="Package\Load Fact IdleTime\Convert Date to type DateTime.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Load Fact IdleTime\Convert Departure and Arrival to string.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Load Fact IdleTime\Convert Date to type DateTime.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Load Fact IdleTime\Convert Departure and Arrival to string.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      refId="Package\Load Fact IdleTime\Convert Date to type DateTime.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Load Fact IdleTime\Convert Departure and Arrival to string.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Load Fact IdleTime\Convert Date to type DateTime.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -6086,29 +5975,29 @@
                       externalMetadataColumnId="Package\Load Fact IdleTime\FACT_IdleTime.Inputs[OLE DB Destination Input].ExternalColumns[PortIdCurrent]"
                       lineageId="Package\Load Fact IdleTime\VIEW_IdleTime.Outputs[OLE DB Source Output].Columns[PortIdCurrent]" />
                     <inputColumn
-                      refId="Package\Load Fact IdleTime\FACT_IdleTime.Inputs[OLE DB Destination Input].Columns[ArrivalDateId]"
-                      cachedDataType="i4"
-                      cachedName="ArrivalDateId"
-                      externalMetadataColumnId="Package\Load Fact IdleTime\FACT_IdleTime.Inputs[OLE DB Destination Input].ExternalColumns[ArrivalDateId]"
-                      lineageId="Package\Load Fact IdleTime\Convert Departure and Arrival to Calendar Id.Outputs[Derived Column Output].Columns[ArrivalDateId]" />
-                    <inputColumn
                       refId="Package\Load Fact IdleTime\FACT_IdleTime.Inputs[OLE DB Destination Input].Columns[ShipRowId]"
                       cachedDataType="i4"
                       cachedName="ShipRowId"
                       externalMetadataColumnId="Package\Load Fact IdleTime\FACT_IdleTime.Inputs[OLE DB Destination Input].ExternalColumns[ShipRowId]"
                       lineageId="Package\Load Fact IdleTime\Lookup ShipId.Outputs[Lookup Match Output].Columns[ShipRowId]" />
                     <inputColumn
-                      refId="Package\Load Fact IdleTime\FACT_IdleTime.Inputs[OLE DB Destination Input].Columns[DepartureDateId]"
-                      cachedDataType="i4"
-                      cachedName="DepartureDateId"
-                      externalMetadataColumnId="Package\Load Fact IdleTime\FACT_IdleTime.Inputs[OLE DB Destination Input].ExternalColumns[DepatureDateId]"
-                      lineageId="Package\Load Fact IdleTime\Convert Departure and Arrival to Calendar Id.Outputs[Derived Column Output].Columns[DepartureDateId]" />
-                    <inputColumn
                       refId="Package\Load Fact IdleTime\FACT_IdleTime.Inputs[OLE DB Destination Input].Columns[IdleTime]"
                       cachedDataType="i4"
                       cachedName="IdleTime"
                       externalMetadataColumnId="Package\Load Fact IdleTime\FACT_IdleTime.Inputs[OLE DB Destination Input].ExternalColumns[IdleTimeInDays]"
                       lineageId="Package\Load Fact IdleTime\VIEW_IdleTime.Outputs[OLE DB Source Output].Columns[IdleTime]" />
+                    <inputColumn
+                      refId="Package\Load Fact IdleTime\FACT_IdleTime.Inputs[OLE DB Destination Input].Columns[ArrivalDateTime]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ArrivalDateTime"
+                      externalMetadataColumnId="Package\Load Fact IdleTime\FACT_IdleTime.Inputs[OLE DB Destination Input].ExternalColumns[ArrivalDateTime]"
+                      lineageId="Package\Load Fact IdleTime\Convert Date to type DateTime.Outputs[Data Conversion Output].Columns[ArrivalDateTime]" />
+                    <inputColumn
+                      refId="Package\Load Fact IdleTime\FACT_IdleTime.Inputs[OLE DB Destination Input].Columns[DepartureDateTime]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DepartureDateTime"
+                      externalMetadataColumnId="Package\Load Fact IdleTime\FACT_IdleTime.Inputs[OLE DB Destination Input].ExternalColumns[DepatureDateTime]"
+                      lineageId="Package\Load Fact IdleTime\Convert Date to type DateTime.Outputs[Data Conversion Output].Columns[DepartureDateTime]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -6121,17 +6010,17 @@
                       dataType="i4"
                       name="PortIdCurrent" />
                     <externalMetadataColumn
-                      refId="Package\Load Fact IdleTime\FACT_IdleTime.Inputs[OLE DB Destination Input].ExternalColumns[ArrivalDateId]"
-                      dataType="i4"
-                      name="ArrivalDateId" />
-                    <externalMetadataColumn
-                      refId="Package\Load Fact IdleTime\FACT_IdleTime.Inputs[OLE DB Destination Input].ExternalColumns[DepatureDateId]"
-                      dataType="i4"
-                      name="DepatureDateId" />
-                    <externalMetadataColumn
                       refId="Package\Load Fact IdleTime\FACT_IdleTime.Inputs[OLE DB Destination Input].ExternalColumns[IdleTimeInDays]"
                       dataType="ui1"
                       name="IdleTimeInDays" />
+                    <externalMetadataColumn
+                      refId="Package\Load Fact IdleTime\FACT_IdleTime.Inputs[OLE DB Destination Input].ExternalColumns[ArrivalDateTime]"
+                      dataType="dbTimeStamp"
+                      name="ArrivalDateTime" />
+                    <externalMetadataColumn
+                      refId="Package\Load Fact IdleTime\FACT_IdleTime.Inputs[OLE DB Destination Input].ExternalColumns[DepatureDateTime]"
+                      dataType="dbTimeStamp"
+                      name="DepatureDateTime" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -6181,7 +6070,7 @@
                   expressionType="Notify"
                   name="SqlCommandParam"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[FACT_IdleTime]) [refTable]
-where [refTable].[PortIdCurrent] = ? and [refTable].[ArrivalDateId] = ? and [refTable].[ShipRowId] = ?</property>
+where [refTable].[PortIdCurrent] = ? and [refTable].[ArrivalDateTime] = ? and [refTable].[ShipRowId] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the type of connection used to access the reference dataset."
@@ -6212,12 +6101,12 @@ where [refTable].[PortIdCurrent] = ? and [refTable].[ArrivalDateId] = ? and [ref
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ShipRowId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="PortIdCurrent" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ArrivalDateId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DepatureDateId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IdleTimeInDays" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ShipRowId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="PortIdCurrent" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ArrivalDateTime" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DepatureDateTime" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IdleTimeInDays" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Load Fact IdleTime\VIEW_IdleTime.Outputs[OLE DB Source Output].Columns[PortIdCurrent]};#{Package\Load Fact IdleTime\Convert Departure and Arrival to Calendar Id.Outputs[Derived Column Output].Columns[ArrivalDateId]};#{Package\Load Fact IdleTime\Lookup ShipId.Outputs[Lookup Match Output].Columns[ShipRowId]};</property>
+                  name="ParameterMap">#{Package\Load Fact IdleTime\VIEW_IdleTime.Outputs[OLE DB Source Output].Columns[PortIdCurrent]};#{Package\Load Fact IdleTime\Convert Date to type DateTime.Outputs[Data Conversion Output].Columns[ArrivalDateTime]};#{Package\Load Fact IdleTime\Lookup ShipId.Outputs[Lookup Match Output].Columns[ShipRowId]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -6273,15 +6162,15 @@ where [refTable].[PortIdCurrent] = ? and [refTable].[ArrivalDateId] = ? and [ref
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Load Fact IdleTime\Lookup Increment.Inputs[Lookup Input].Columns[ArrivalDateId]"
-                      cachedDataType="i4"
-                      cachedName="ArrivalDateId"
-                      lineageId="Package\Load Fact IdleTime\Convert Departure and Arrival to Calendar Id.Outputs[Derived Column Output].Columns[ArrivalDateId]">
+                      refId="Package\Load Fact IdleTime\Lookup Increment.Inputs[Lookup Input].Columns[ArrivalDateTime]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ArrivalDateTime"
+                      lineageId="Package\Load Fact IdleTime\Convert Date to type DateTime.Outputs[Data Conversion Output].Columns[ArrivalDateTime]">
                       <properties>
                         <property
                           dataType="System.String"
                           description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">ArrivalDateId</property>
+                          name="JoinToReferenceColumn">ArrivalDateTime</property>
                         <property
                           dataType="System.Null"
                           description="Specifies the column in the reference table from which a column is copied."
@@ -6690,14 +6579,9 @@ where [refTable].[Id] = ? AND [refTable].[EndDate] IS NULL;</property>
           <paths>
             <path
               refId="Package\Load Fact IdleTime.Paths[Data Conversion Output]"
-              endId="Package\Load Fact IdleTime\Convert Departure and Arrival to Calendar Id.Inputs[Derived Column Input]"
-              name="Data Conversion Output"
-              startId="Package\Load Fact IdleTime\Convert Departure and Arrival to string.Outputs[Data Conversion Output]" />
-            <path
-              refId="Package\Load Fact IdleTime.Paths[Derived Column Output]"
               endId="Package\Load Fact IdleTime\Lookup ShipId.Inputs[Lookup Input]"
-              name="Derived Column Output"
-              startId="Package\Load Fact IdleTime\Convert Departure and Arrival to Calendar Id.Outputs[Derived Column Output]" />
+              name="Data Conversion Output"
+              startId="Package\Load Fact IdleTime\Convert Date to type DateTime.Outputs[Data Conversion Output]" />
             <path
               refId="Package\Load Fact IdleTime.Paths[Lookup Match Output]"
               endId="Package\Load Fact IdleTime\Lookup Increment.Inputs[Lookup Input]"
@@ -6710,7 +6594,7 @@ where [refTable].[Id] = ? AND [refTable].[EndDate] IS NULL;</property>
               startId="Package\Load Fact IdleTime\Lookup Increment.Outputs[Lookup No Match Output]" />
             <path
               refId="Package\Load Fact IdleTime.Paths[OLE DB Source Output]"
-              endId="Package\Load Fact IdleTime\Convert Departure and Arrival to string.Inputs[Data Conversion Input]"
+              endId="Package\Load Fact IdleTime\Convert Date to type DateTime.Inputs[Data Conversion Input]"
               name="OLE DB Source Output"
               startId="Package\Load Fact IdleTime\VIEW_IdleTime.Outputs[OLE DB Source Output]" />
           </paths>
@@ -7048,133 +6932,24 @@ AND [refTable].[EndDate] IS NULL;</property>
               </outputs>
             </component>
             <component
-              refId="Package\Load Fact Shipment\Date string to DateKeyId"
-              componentClassID="Microsoft.DerivedColumn"
-              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-              name="Date string to DateKeyId"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\Load Fact Shipment\Date string to DateKeyId.Inputs[Derived Column Input]"
-                  description="Input to the Derived Column Transformation"
-                  name="Derived Column Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Load Fact Shipment\Date string to DateKeyId.Inputs[Derived Column Input].Columns[Copy of ArrivalDate]"
-                      cachedDataType="wstr"
-                      cachedLength="10"
-                      cachedName="Copy of ArrivalDate"
-                      lineageId="Package\Load Fact Shipment\Date to Type string.Outputs[Data Conversion Output].Columns[Copy of ArrivalDate]" />
-                    <inputColumn
-                      refId="Package\Load Fact Shipment\Date string to DateKeyId.Inputs[Derived Column Input].Columns[Copy of DepartureDate]"
-                      cachedDataType="wstr"
-                      cachedLength="10"
-                      cachedName="Copy of DepartureDate"
-                      lineageId="Package\Load Fact Shipment\Date to Type string.Outputs[Data Conversion Output].Columns[Copy of DepartureDate]" />
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Load Fact Shipment\Date string to DateKeyId.Outputs[Derived Column Output]"
-                  description="Default Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  name="Derived Column Output"
-                  synchronousInputId="Package\Load Fact Shipment\Date string to DateKeyId.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Load Fact Shipment\Date string to DateKeyId.Outputs[Derived Column Output].Columns[ArrivalDateId]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Load Fact Shipment\Date string to DateKeyId.Outputs[Derived Column Output].Columns[ArrivalDateId]"
-                      name="ArrivalDateId"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">(DT_I4)[REPLACE](#{Package\Load Fact Shipment\Date to Type string.Outputs[Data Conversion Output].Columns[Copy of ArrivalDate]},"-","")</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">(DT_I4)REPLACE([Copy of ArrivalDate],"-","")</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Load Fact Shipment\Date string to DateKeyId.Outputs[Derived Column Output].Columns[DepartureDateId]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Load Fact Shipment\Date string to DateKeyId.Outputs[Derived Column Output].Columns[DepartureDateId]"
-                      name="DepartureDateId"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">(DT_I4)[REPLACE](#{Package\Load Fact Shipment\Date to Type string.Outputs[Data Conversion Output].Columns[Copy of DepartureDate]},"-","")</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">(DT_I4)REPLACE([Copy of DepartureDate],"-","")</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Load Fact Shipment\Date string to DateKeyId.Outputs[Derived Column Error Output]"
-                  description="Error Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Derived Column Error Output"
-                  synchronousInputId="Package\Load Fact Shipment\Date string to DateKeyId.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Load Fact Shipment\Date string to DateKeyId.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Load Fact Shipment\Date string to DateKeyId.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Load Fact Shipment\Date string to DateKeyId.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Load Fact Shipment\Date string to DateKeyId.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\Load Fact Shipment\Date to Type string"
+              refId="Package\Load Fact Shipment\Date to type DateTime conversion"
               componentClassID="Microsoft.DataConvert"
               contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
               description="Data Conversion"
-              name="Date to Type string"
+              name="Date to type DateTime conversion"
               usesDispositions="true">
               <inputs>
                 <input
-                  refId="Package\Load Fact Shipment\Date to Type string.Inputs[Data Conversion Input]"
+                  refId="Package\Load Fact Shipment\Date to type DateTime conversion.Inputs[Data Conversion Input]"
                   name="Data Conversion Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Load Fact Shipment\Date to Type string.Inputs[Data Conversion Input].Columns[ArrivalDate]"
+                      refId="Package\Load Fact Shipment\Date to type DateTime conversion.Inputs[Data Conversion Input].Columns[ArrivalDate]"
                       cachedDataType="dbDate"
                       cachedName="ArrivalDate"
                       lineageId="Package\Load Fact Shipment\PSA Shipment.Outputs[OLE DB Source Output].Columns[ArrivalDate]" />
                     <inputColumn
-                      refId="Package\Load Fact Shipment\Date to Type string.Inputs[Data Conversion Input].Columns[DepartureDate]"
+                      refId="Package\Load Fact Shipment\Date to type DateTime conversion.Inputs[Data Conversion Input].Columns[DepartureDate]"
                       cachedDataType="dbDate"
                       cachedName="DepartureDate"
                       lineageId="Package\Load Fact Shipment\PSA Shipment.Outputs[OLE DB Source Output].Columns[DepartureDate]" />
@@ -7184,19 +6959,18 @@ AND [refTable].[EndDate] IS NULL;</property>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Load Fact Shipment\Date to Type string.Outputs[Data Conversion Output]"
+                  refId="Package\Load Fact Shipment\Date to type DateTime conversion.Outputs[Data Conversion Output]"
                   exclusionGroup="1"
                   name="Data Conversion Output"
-                  synchronousInputId="Package\Load Fact Shipment\Date to Type string.Inputs[Data Conversion Input]">
+                  synchronousInputId="Package\Load Fact Shipment\Date to type DateTime conversion.Inputs[Data Conversion Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load Fact Shipment\Date to Type string.Outputs[Data Conversion Output].Columns[Copy of ArrivalDate]"
-                      dataType="wstr"
+                      refId="Package\Load Fact Shipment\Date to type DateTime conversion.Outputs[Data Conversion Output].Columns[ArrivalDateTime]"
+                      dataType="dbTimeStamp"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      length="10"
-                      lineageId="Package\Load Fact Shipment\Date to Type string.Outputs[Data Conversion Output].Columns[Copy of ArrivalDate]"
-                      name="Copy of ArrivalDate"
+                      lineageId="Package\Load Fact Shipment\Date to type DateTime conversion.Outputs[Data Conversion Output].Columns[ArrivalDateTime]"
+                      name="ArrivalDateTime"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -7211,13 +6985,12 @@ AND [refTable].[EndDate] IS NULL;</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Load Fact Shipment\Date to Type string.Outputs[Data Conversion Output].Columns[Copy of DepartureDate]"
-                      dataType="wstr"
+                      refId="Package\Load Fact Shipment\Date to type DateTime conversion.Outputs[Data Conversion Output].Columns[DepartureDateTime]"
+                      dataType="dbTimeStamp"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      length="10"
-                      lineageId="Package\Load Fact Shipment\Date to Type string.Outputs[Data Conversion Output].Columns[Copy of DepartureDate]"
-                      name="Copy of DepartureDate"
+                      lineageId="Package\Load Fact Shipment\Date to type DateTime conversion.Outputs[Data Conversion Output].Columns[DepartureDateTime]"
+                      name="DepartureDateTime"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -7235,22 +7008,22 @@ AND [refTable].[EndDate] IS NULL;</property>
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Load Fact Shipment\Date to Type string.Outputs[Data Conversion Error Output]"
+                  refId="Package\Load Fact Shipment\Date to type DateTime conversion.Outputs[Data Conversion Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Data Conversion Error Output"
-                  synchronousInputId="Package\Load Fact Shipment\Date to Type string.Inputs[Data Conversion Input]">
+                  synchronousInputId="Package\Load Fact Shipment\Date to type DateTime conversion.Inputs[Data Conversion Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load Fact Shipment\Date to Type string.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      refId="Package\Load Fact Shipment\Date to type DateTime conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Load Fact Shipment\Date to Type string.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Load Fact Shipment\Date to type DateTime conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Load Fact Shipment\Date to Type string.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      refId="Package\Load Fact Shipment\Date to type DateTime conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Load Fact Shipment\Date to Type string.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Load Fact Shipment\Date to type DateTime conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -7437,7 +7210,7 @@ AND [refTable].[EndDate] IS NULL;</property>
                   expressionType="Notify"
                   name="SqlCommandParam"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[FACT_Shipment]) [refTable]
-where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable].[PortIdNext] = ? and [refTable].[ConsignorRowId] = ? and [refTable].[ContainerRowId] = ? and [refTable].[ItemRowId] = ? and [refTable].[ShipRowId] = ?</property>
+where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable].[PortIdNext] = ? and [refTable].[DepartureDateTime] = ? and [refTable].[ConsignorRowId] = ? and [refTable].[ContainerRowId] = ? and [refTable].[ItemRowId] = ? and [refTable].[ShipRowId] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the type of connection used to access the reference dataset."
@@ -7468,12 +7241,12 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ShipRowId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="VoyageId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ItemRowId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ContainerRowId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ConsignorRowId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DepartureDateId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="PortIdCurrent" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="PortIdNext" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ArrivalDateId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ContainerAmount" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="PortDistanceInKm" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ShipRowId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="VoyageId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ItemRowId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ContainerRowId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ConsignorRowId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DepartureDateTime" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="PortIdCurrent" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="PortIdNext" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ArrivalDateTime" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ContainerAmount" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="PortDistanceInKm" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Load Fact Shipment\PSA Shipment.Outputs[OLE DB Source Output].Columns[VoyageId]};#{Package\Load Fact Shipment\PSA Shipment.Outputs[OLE DB Source Output].Columns[PortIdCurrent]};#{Package\Load Fact Shipment\PSA Shipment.Outputs[OLE DB Source Output].Columns[PortIdNext]};#{Package\Load Fact Shipment\Consignor Lookup.Outputs[Lookup Match Output].Columns[CosignorRowId]};#{Package\Load Fact Shipment\Container Lookup.Outputs[Lookup Match Output].Columns[ContainerRowId]};#{Package\Load Fact Shipment\Item Lookup.Outputs[Lookup Match Output].Columns[ItemRowId]};#{Package\Load Fact Shipment\Ship Lookup.Outputs[Lookup Match Output].Columns[ShipRowId]};</property>
+                  name="ParameterMap">#{Package\Load Fact Shipment\PSA Shipment.Outputs[OLE DB Source Output].Columns[VoyageId]};#{Package\Load Fact Shipment\PSA Shipment.Outputs[OLE DB Source Output].Columns[PortIdCurrent]};#{Package\Load Fact Shipment\PSA Shipment.Outputs[OLE DB Source Output].Columns[PortIdNext]};#{Package\Load Fact Shipment\Date to type DateTime conversion.Outputs[Data Conversion Output].Columns[DepartureDateTime]};#{Package\Load Fact Shipment\Consignor Lookup.Outputs[Lookup Match Output].Columns[CosignorRowId]};#{Package\Load Fact Shipment\Container Lookup.Outputs[Lookup Match Output].Columns[ContainerRowId]};#{Package\Load Fact Shipment\Item Lookup.Outputs[Lookup Match Output].Columns[ItemRowId]};#{Package\Load Fact Shipment\Ship Lookup.Outputs[Lookup Match Output].Columns[ShipRowId]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -7496,6 +7269,54 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
                   refId="Package\Load Fact Shipment\Lookup Shipment Increment.Inputs[Lookup Input]"
                   name="Lookup Input">
                   <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Fact Shipment\Lookup Shipment Increment.Inputs[Lookup Input].Columns[VoyageId]"
+                      cachedDataType="i4"
+                      cachedName="VoyageId"
+                      lineageId="Package\Load Fact Shipment\PSA Shipment.Outputs[OLE DB Source Output].Columns[VoyageId]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">VoyageId</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Fact Shipment\Lookup Shipment Increment.Inputs[Lookup Input].Columns[PortIdCurrent]"
+                      cachedDataType="i4"
+                      cachedName="PortIdCurrent"
+                      lineageId="Package\Load Fact Shipment\PSA Shipment.Outputs[OLE DB Source Output].Columns[PortIdCurrent]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">PortIdCurrent</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Fact Shipment\Lookup Shipment Increment.Inputs[Lookup Input].Columns[PortIdNext]"
+                      cachedDataType="i4"
+                      cachedName="PortIdNext"
+                      lineageId="Package\Load Fact Shipment\PSA Shipment.Outputs[OLE DB Source Output].Columns[PortIdNext]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">PortIdNext</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
                     <inputColumn
                       refId="Package\Load Fact Shipment\Lookup Shipment Increment.Inputs[Lookup Input].Columns[CosignorRowId]"
                       cachedDataType="i4"
@@ -7561,47 +7382,15 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Load Fact Shipment\Lookup Shipment Increment.Inputs[Lookup Input].Columns[VoyageId]"
-                      cachedDataType="i4"
-                      cachedName="VoyageId"
-                      lineageId="Package\Load Fact Shipment\PSA Shipment.Outputs[OLE DB Source Output].Columns[VoyageId]">
+                      refId="Package\Load Fact Shipment\Lookup Shipment Increment.Inputs[Lookup Input].Columns[DepartureDateTime]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DepartureDateTime"
+                      lineageId="Package\Load Fact Shipment\Date to type DateTime conversion.Outputs[Data Conversion Output].Columns[DepartureDateTime]">
                       <properties>
                         <property
                           dataType="System.String"
                           description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">VoyageId</property>
-                        <property
-                          dataType="System.Null"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn" />
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Load Fact Shipment\Lookup Shipment Increment.Inputs[Lookup Input].Columns[PortIdCurrent]"
-                      cachedDataType="i4"
-                      cachedName="PortIdCurrent"
-                      lineageId="Package\Load Fact Shipment\PSA Shipment.Outputs[OLE DB Source Output].Columns[PortIdCurrent]">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">PortIdCurrent</property>
-                        <property
-                          dataType="System.Null"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn" />
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Load Fact Shipment\Lookup Shipment Increment.Inputs[Lookup Input].Columns[PortIdNext]"
-                      cachedDataType="i4"
-                      cachedName="PortIdNext"
-                      lineageId="Package\Load Fact Shipment\PSA Shipment.Outputs[OLE DB Source Output].Columns[PortIdNext]">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">PortIdNext</property>
+                          name="JoinToReferenceColumn">DepartureDateTime</property>
                         <property
                           dataType="System.Null"
                           description="Specifies the column in the reference table from which a column is copied."
@@ -7756,18 +7545,6 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
                       externalMetadataColumnId="Package\Load Fact Shipment\ODS Shipment.Inputs[OLE DB Destination Input].ExternalColumns[PortDistanceInKm]"
                       lineageId="Package\Load Fact Shipment\PSA Shipment.Outputs[OLE DB Source Output].Columns[PortDistanceInKm]" />
                     <inputColumn
-                      refId="Package\Load Fact Shipment\ODS Shipment.Inputs[OLE DB Destination Input].Columns[DepartureDateId]"
-                      cachedDataType="i4"
-                      cachedName="DepartureDateId"
-                      externalMetadataColumnId="Package\Load Fact Shipment\ODS Shipment.Inputs[OLE DB Destination Input].ExternalColumns[DepartureDateId]"
-                      lineageId="Package\Load Fact Shipment\Date string to DateKeyId.Outputs[Derived Column Output].Columns[DepartureDateId]" />
-                    <inputColumn
-                      refId="Package\Load Fact Shipment\ODS Shipment.Inputs[OLE DB Destination Input].Columns[ArrivalDateId]"
-                      cachedDataType="i4"
-                      cachedName="ArrivalDateId"
-                      externalMetadataColumnId="Package\Load Fact Shipment\ODS Shipment.Inputs[OLE DB Destination Input].ExternalColumns[ArrivalDateId]"
-                      lineageId="Package\Load Fact Shipment\Date string to DateKeyId.Outputs[Derived Column Output].Columns[ArrivalDateId]" />
-                    <inputColumn
                       refId="Package\Load Fact Shipment\ODS Shipment.Inputs[OLE DB Destination Input].Columns[ContainerRowId]"
                       cachedDataType="i4"
                       cachedName="ContainerRowId"
@@ -7791,6 +7568,18 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
                       cachedName="ShipRowId"
                       externalMetadataColumnId="Package\Load Fact Shipment\ODS Shipment.Inputs[OLE DB Destination Input].ExternalColumns[ShipRowId]"
                       lineageId="Package\Load Fact Shipment\Ship Lookup.Outputs[Lookup Match Output].Columns[ShipRowId]" />
+                    <inputColumn
+                      refId="Package\Load Fact Shipment\ODS Shipment.Inputs[OLE DB Destination Input].Columns[DepartureDateTime]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DepartureDateTime"
+                      externalMetadataColumnId="Package\Load Fact Shipment\ODS Shipment.Inputs[OLE DB Destination Input].ExternalColumns[DepartureDateTime]"
+                      lineageId="Package\Load Fact Shipment\Date to type DateTime conversion.Outputs[Data Conversion Output].Columns[DepartureDateTime]" />
+                    <inputColumn
+                      refId="Package\Load Fact Shipment\ODS Shipment.Inputs[OLE DB Destination Input].Columns[ArrivalDateTime]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ArrivalDateTime"
+                      externalMetadataColumnId="Package\Load Fact Shipment\ODS Shipment.Inputs[OLE DB Destination Input].ExternalColumns[ArrivalDateTime]"
+                      lineageId="Package\Load Fact Shipment\Date to type DateTime conversion.Outputs[Data Conversion Output].Columns[ArrivalDateTime]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -7831,13 +7620,13 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
                       dataType="i4"
                       name="PortDistanceInKm" />
                     <externalMetadataColumn
-                      refId="Package\Load Fact Shipment\ODS Shipment.Inputs[OLE DB Destination Input].ExternalColumns[DepartureDateId]"
-                      dataType="i4"
-                      name="DepartureDateId" />
+                      refId="Package\Load Fact Shipment\ODS Shipment.Inputs[OLE DB Destination Input].ExternalColumns[DepartureDateTime]"
+                      dataType="dbTimeStamp"
+                      name="DepartureDateTime" />
                     <externalMetadataColumn
-                      refId="Package\Load Fact Shipment\ODS Shipment.Inputs[OLE DB Destination Input].ExternalColumns[ArrivalDateId]"
-                      dataType="i4"
-                      name="ArrivalDateId" />
+                      refId="Package\Load Fact Shipment\ODS Shipment.Inputs[OLE DB Destination Input].ExternalColumns[ArrivalDateTime]"
+                      dataType="dbTimeStamp"
+                      name="ArrivalDateTime" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -8314,14 +8103,9 @@ AND [refTable].[EndDate] IS NULL;</property>
           <paths>
             <path
               refId="Package\Load Fact Shipment.Paths[Data Conversion Output]"
-              endId="Package\Load Fact Shipment\Date string to DateKeyId.Inputs[Derived Column Input]"
-              name="Data Conversion Output"
-              startId="Package\Load Fact Shipment\Date to Type string.Outputs[Data Conversion Output]" />
-            <path
-              refId="Package\Load Fact Shipment.Paths[Derived Column Output]"
               endId="Package\Load Fact Shipment\Consignor Lookup.Inputs[Lookup Input]"
-              name="Derived Column Output"
-              startId="Package\Load Fact Shipment\Date string to DateKeyId.Outputs[Derived Column Output]" />
+              name="Data Conversion Output"
+              startId="Package\Load Fact Shipment\Date to type DateTime conversion.Outputs[Data Conversion Output]" />
             <path
               refId="Package\Load Fact Shipment.Paths[Lookup Match Output]"
               endId="Package\Load Fact Shipment\Container Lookup.Inputs[Lookup Input]"
@@ -8349,7 +8133,7 @@ AND [refTable].[EndDate] IS NULL;</property>
               startId="Package\Load Fact Shipment\Lookup Shipment Increment.Outputs[Lookup No Match Output]" />
             <path
               refId="Package\Load Fact Shipment.Paths[OLE DB Source Output]"
-              endId="Package\Load Fact Shipment\Date to Type string.Inputs[Data Conversion Input]"
+              endId="Package\Load Fact Shipment\Date to type DateTime conversion.Inputs[Data Conversion Input]"
               name="OLE DB Source Output"
               startId="Package\Load Fact Shipment\PSA Shipment.Outputs[OLE DB Source Output]" />
           </paths>
@@ -8371,100 +8155,19 @@ AND [refTable].[EndDate] IS NULL;</property>
           version="1">
           <components>
             <component
-              refId="Package\Load Ship measurement data\Date string to Calendar date Id"
-              componentClassID="Microsoft.DerivedColumn"
-              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-              name="Date string to Calendar date Id"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\Load Ship measurement data\Date string to Calendar date Id.Inputs[Derived Column Input]"
-                  description="Input to the Derived Column Transformation"
-                  name="Derived Column Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Load Ship measurement data\Date string to Calendar date Id.Inputs[Derived Column Input].Columns[Copy of DateOfMeasurement]"
-                      cachedDataType="wstr"
-                      cachedLength="10"
-                      cachedName="Copy of DateOfMeasurement"
-                      lineageId="Package\Load Ship measurement data\Date to unicode string.Outputs[Data Conversion Output].Columns[Copy of DateOfMeasurement]" />
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Load Ship measurement data\Date string to Calendar date Id.Outputs[Derived Column Output]"
-                  description="Default Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  name="Derived Column Output"
-                  synchronousInputId="Package\Load Ship measurement data\Date string to Calendar date Id.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Load Ship measurement data\Date string to Calendar date Id.Outputs[Derived Column Output].Columns[MeasurementDateId]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Load Ship measurement data\Date string to Calendar date Id.Outputs[Derived Column Output].Columns[MeasurementDateId]"
-                      name="MeasurementDateId"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">(DT_I4)[REPLACE](#{Package\Load Ship measurement data\Date to unicode string.Outputs[Data Conversion Output].Columns[Copy of DateOfMeasurement]},"-","")</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">(DT_I4)REPLACE([Copy of DateOfMeasurement],"-","")</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Load Ship measurement data\Date string to Calendar date Id.Outputs[Derived Column Error Output]"
-                  description="Error Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Derived Column Error Output"
-                  synchronousInputId="Package\Load Ship measurement data\Date string to Calendar date Id.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Load Ship measurement data\Date string to Calendar date Id.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Load Ship measurement data\Date string to Calendar date Id.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Load Ship measurement data\Date string to Calendar date Id.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Load Ship measurement data\Date string to Calendar date Id.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\Load Ship measurement data\Date to unicode string"
+              refId="Package\Load Ship measurement data\Date to DateTime conversion"
               componentClassID="Microsoft.DataConvert"
               contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
               description="Data Conversion"
-              name="Date to unicode string"
+              name="Date to DateTime conversion"
               usesDispositions="true">
               <inputs>
                 <input
-                  refId="Package\Load Ship measurement data\Date to unicode string.Inputs[Data Conversion Input]"
+                  refId="Package\Load Ship measurement data\Date to DateTime conversion.Inputs[Data Conversion Input]"
                   name="Data Conversion Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Load Ship measurement data\Date to unicode string.Inputs[Data Conversion Input].Columns[DateOfMeasurement]"
+                      refId="Package\Load Ship measurement data\Date to DateTime conversion.Inputs[Data Conversion Input].Columns[DateOfMeasurement]"
                       cachedDataType="dbDate"
                       cachedName="DateOfMeasurement"
                       lineageId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (PSA).Outputs[OLE DB Source Output].Columns[DateOfMeasurement]" />
@@ -8474,19 +8177,18 @@ AND [refTable].[EndDate] IS NULL;</property>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Load Ship measurement data\Date to unicode string.Outputs[Data Conversion Output]"
+                  refId="Package\Load Ship measurement data\Date to DateTime conversion.Outputs[Data Conversion Output]"
                   exclusionGroup="1"
                   name="Data Conversion Output"
-                  synchronousInputId="Package\Load Ship measurement data\Date to unicode string.Inputs[Data Conversion Input]">
+                  synchronousInputId="Package\Load Ship measurement data\Date to DateTime conversion.Inputs[Data Conversion Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load Ship measurement data\Date to unicode string.Outputs[Data Conversion Output].Columns[Copy of DateOfMeasurement]"
-                      dataType="wstr"
+                      refId="Package\Load Ship measurement data\Date to DateTime conversion.Outputs[Data Conversion Output].Columns[DateTimeOfMeasurement]"
+                      dataType="dbTimeStamp"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      length="10"
-                      lineageId="Package\Load Ship measurement data\Date to unicode string.Outputs[Data Conversion Output].Columns[Copy of DateOfMeasurement]"
-                      name="Copy of DateOfMeasurement"
+                      lineageId="Package\Load Ship measurement data\Date to DateTime conversion.Outputs[Data Conversion Output].Columns[DateTimeOfMeasurement]"
+                      name="DateTimeOfMeasurement"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -8504,22 +8206,22 @@ AND [refTable].[EndDate] IS NULL;</property>
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Load Ship measurement data\Date to unicode string.Outputs[Data Conversion Error Output]"
+                  refId="Package\Load Ship measurement data\Date to DateTime conversion.Outputs[Data Conversion Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Data Conversion Error Output"
-                  synchronousInputId="Package\Load Ship measurement data\Date to unicode string.Inputs[Data Conversion Input]">
+                  synchronousInputId="Package\Load Ship measurement data\Date to DateTime conversion.Inputs[Data Conversion Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load Ship measurement data\Date to unicode string.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      refId="Package\Load Ship measurement data\Date to DateTime conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Load Ship measurement data\Date to unicode string.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Load Ship measurement data\Date to DateTime conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Load Ship measurement data\Date to unicode string.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      refId="Package\Load Ship measurement data\Date to DateTime conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Load Ship measurement data\Date to unicode string.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Load Ship measurement data\Date to DateTime conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -8636,24 +8338,20 @@ AND [refTable].[EndDate] IS NULL;</property>
                       externalMetadataColumnId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (ODS).Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageCo2EmmisionKgPerKm]"
                       lineageId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (PSA).Outputs[OLE DB Source Output].Columns[AnnualAverageCo2EmmisionKgPerKm]" />
                     <inputColumn
-                      refId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (ODS).Inputs[OLE DB Destination Input].Columns[MeasurementDateId]"
-                      cachedDataType="i4"
-                      cachedName="MeasurementDateId"
-                      externalMetadataColumnId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (ODS).Inputs[OLE DB Destination Input].ExternalColumns[MeasurementDateId]"
-                      lineageId="Package\Load Ship measurement data\Date string to Calendar date Id.Outputs[Derived Column Output].Columns[MeasurementDateId]" />
-                    <inputColumn
                       refId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (ODS).Inputs[OLE DB Destination Input].Columns[ShipRowId]"
                       cachedDataType="i4"
                       cachedName="ShipRowId"
                       externalMetadataColumnId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (ODS).Inputs[OLE DB Destination Input].ExternalColumns[ShipRowId]"
                       lineageId="Package\Load Ship measurement data\Lookup ShipId.Outputs[Lookup Match Output].Columns[ShipRowId]" />
+                    <inputColumn
+                      refId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (ODS).Inputs[OLE DB Destination Input].Columns[DateTimeOfMeasurement]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DateTimeOfMeasurement"
+                      externalMetadataColumnId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (ODS).Inputs[OLE DB Destination Input].ExternalColumns[MeasurementDateTime]"
+                      lineageId="Package\Load Ship measurement data\Date to DateTime conversion.Outputs[Data Conversion Output].Columns[DateTimeOfMeasurement]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (ODS).Inputs[OLE DB Destination Input].ExternalColumns[MeasurementDateId]"
-                      dataType="i4"
-                      name="MeasurementDateId" />
                     <externalMetadataColumn
                       refId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (ODS).Inputs[OLE DB Destination Input].ExternalColumns[ShipCostEuro]"
                       dataType="r8"
@@ -8682,6 +8380,10 @@ AND [refTable].[EndDate] IS NULL;</property>
                       refId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (ODS).Inputs[OLE DB Destination Input].ExternalColumns[ShipRowId]"
                       dataType="i4"
                       name="ShipRowId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (ODS).Inputs[OLE DB Destination Input].ExternalColumns[MeasurementDateTime]"
+                      dataType="dbTimeStamp"
+                      name="MeasurementDateTime" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -8963,7 +8665,7 @@ AND [refTable].[EndDate] IS NULL;</property>
                   expressionType="Notify"
                   name="SqlCommandParam"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[FACT_YearlyMeasurementShipData]) [refTable]
-where [refTable].[MeasurementDateId] = ? and [refTable].[ShipRowId] = ?</property>
+where [refTable].[MeasurementDateTime] = ? and [refTable].[ShipRowId] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the type of connection used to access the reference dataset."
@@ -8994,12 +8696,12 @@ where [refTable].[MeasurementDateId] = ? and [refTable].[ShipRowId] = ?</propert
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ShipRowId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="MeasurementDateId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ShipCostEuro" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TotalFuelConsumptionInTonnes" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TotalCo2EmissionsInTonnes" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TotalTimeSpentAtSeaInHours" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="AnnualAverageFuelConsumptionKgPerKm" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="AnnualAverageCo2EmmisionKgPerKm" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ShipRowId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="MeasurementDateTime" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ShipCostEuro" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TotalFuelConsumptionInTonnes" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TotalCo2EmissionsInTonnes" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TotalTimeSpentAtSeaInHours" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="AnnualAverageFuelConsumptionKgPerKm" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="AnnualAverageCo2EmmisionKgPerKm" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Load Ship measurement data\Date string to Calendar date Id.Outputs[Derived Column Output].Columns[MeasurementDateId]};#{Package\Load Ship measurement data\Lookup ShipId.Outputs[Lookup Match Output].Columns[ShipRowId]};</property>
+                  name="ParameterMap">#{Package\Load Ship measurement data\Date to DateTime conversion.Outputs[Data Conversion Output].Columns[DateTimeOfMeasurement]};#{Package\Load Ship measurement data\Lookup ShipId.Outputs[Lookup Match Output].Columns[ShipRowId]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -9039,15 +8741,15 @@ where [refTable].[MeasurementDateId] = ? and [refTable].[ShipRowId] = ?</propert
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Load Ship measurement data\Lookup Increment.Inputs[Lookup Input].Columns[MeasurementDateId]"
-                      cachedDataType="i4"
-                      cachedName="MeasurementDateId"
-                      lineageId="Package\Load Ship measurement data\Date string to Calendar date Id.Outputs[Derived Column Output].Columns[MeasurementDateId]">
+                      refId="Package\Load Ship measurement data\Lookup Increment.Inputs[Lookup Input].Columns[DateTimeOfMeasurement]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DateTimeOfMeasurement"
+                      lineageId="Package\Load Ship measurement data\Date to DateTime conversion.Outputs[Data Conversion Output].Columns[DateTimeOfMeasurement]">
                       <properties>
                         <property
                           dataType="System.String"
                           description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">MeasurementDateId</property>
+                          name="JoinToReferenceColumn">MeasurementDateTime</property>
                         <property
                           dataType="System.Null"
                           description="Specifies the column in the reference table from which a column is copied."
@@ -9261,14 +8963,9 @@ AND [refTable].[EndDate] IS NULL;</property>
           <paths>
             <path
               refId="Package\Load Ship measurement data.Paths[Data Conversion Output]"
-              endId="Package\Load Ship measurement data\Date string to Calendar date Id.Inputs[Derived Column Input]"
-              name="Data Conversion Output"
-              startId="Package\Load Ship measurement data\Date to unicode string.Outputs[Data Conversion Output]" />
-            <path
-              refId="Package\Load Ship measurement data.Paths[Derived Column Output]"
               endId="Package\Load Ship measurement data\Lookup ShipId.Inputs[Lookup Input]"
-              name="Derived Column Output"
-              startId="Package\Load Ship measurement data\Date string to Calendar date Id.Outputs[Derived Column Output]" />
+              name="Data Conversion Output"
+              startId="Package\Load Ship measurement data\Date to DateTime conversion.Outputs[Data Conversion Output]" />
             <path
               refId="Package\Load Ship measurement data.Paths[Lookup Match Output]"
               endId="Package\Load Ship measurement data\Lookup Increment.Inputs[Lookup Input]"
@@ -9281,7 +8978,7 @@ AND [refTable].[EndDate] IS NULL;</property>
               startId="Package\Load Ship measurement data\Lookup Increment.Outputs[Lookup No Match Output]" />
             <path
               refId="Package\Load Ship measurement data.Paths[OLE DB Source Output]"
-              endId="Package\Load Ship measurement data\Date to unicode string.Inputs[Data Conversion Input]"
+              endId="Package\Load Ship measurement data\Date to DateTime conversion.Inputs[Data Conversion Input]"
               name="OLE DB Source Output"
               startId="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (PSA).Outputs[OLE DB Source Output]" />
           </paths>
@@ -9722,7 +9419,9 @@ AND [refTable].[EndDate] IS NULL;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9816,7 +9515,9 @@ AND [refTable].[EndDate] IS NULL;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9838,7 +9539,9 @@ AND [refTable].[EndDate] IS NULL;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9896,7 +9599,9 @@ AND [refTable].[EndDate] IS NULL;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9918,7 +9623,9 @@ AND [refTable].[EndDate] IS NULL;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -10397,7 +10104,9 @@ AND [refTable].[EndDate] IS NULL;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10419,7 +10128,9 @@ AND [refTable].[EndDate] IS NULL;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10453,7 +10164,9 @@ AND [refTable].[EndDate] IS NULL;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10547,7 +10260,9 @@ AND [refTable].[EndDate] IS NULL;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10569,7 +10284,9 @@ AND [refTable].[EndDate] IS NULL;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -11386,9 +11103,9 @@ AND [refTable].[EndDate] IS NULL;</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="262,42"
-          Id="Package\Load Fact IdleTime\Convert Departure and Arrival to string"
-          TopLeft="492,125" />
+          Size="226,42"
+          Id="Package\Load Fact IdleTime\Convert Date to type DateTime"
+          TopLeft="512,183" />
         <NodeLayout
           Size="151,42"
           Id="Package\Load Fact IdleTime\FACT_IdleTime"
@@ -11396,33 +11113,29 @@ AND [refTable].[EndDate] IS NULL;</property>
         <NodeLayout
           Size="152,42"
           Id="Package\Load Fact IdleTime\VIEW_IdleTime"
-          TopLeft="545,41" />
+          TopLeft="544,68" />
         <NodeLayout
           Size="165,42"
           Id="Package\Load Fact IdleTime\Lookup Increment"
           TopLeft="544,403" />
         <NodeLayout
-          Size="291,42"
-          Id="Package\Load Fact IdleTime\Convert Departure and Arrival to Calendar Id"
-          TopLeft="479,223" />
-        <NodeLayout
           Size="146,42"
           Id="Package\Load Fact IdleTime\Lookup ShipId"
-          TopLeft="551,309" />
+          TopLeft="550,285" />
         <EdgeLayout
           Id="Package\Load Fact IdleTime.Paths[OLE DB Source Output]"
-          TopLeft="622,83">
+          TopLeft="622.5,110">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,42"
+              EndConnector="0,73"
               Start="0,0"
-              End="0,34.5">
+              End="0,65.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,34.5" />
+                    End="0,65.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -11457,64 +11170,42 @@ AND [refTable].[EndDate] IS NULL;</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Fact IdleTime.Paths[Lookup Match Output]"
-          TopLeft="625.25,351">
+          TopLeft="624.75,327">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,52"
+              EndConnector="0,76"
               Start="0,0"
-              End="0,44.5">
+              End="0,68.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,44.5" />
+                    End="0,68.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,16.4453125,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,28.4453125,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load Fact IdleTime.Paths[Derived Column Output]"
-          TopLeft="624.25,265">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,44"
-              Start="0,0"
-              End="0,36.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,36.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\Load Fact IdleTime.Paths[Data Conversion Output]"
-          TopLeft="623.75,167">
+          TopLeft="624,225">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,56"
+              EndConnector="0,60"
               Start="0,0"
-              End="0,48.5">
+              End="0,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,48.5" />
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -11558,7 +11249,7 @@ AND [refTable].[EndDate] IS NULL;</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -11568,7 +11259,7 @@ AND [refTable].[EndDate] IS NULL;</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -11602,23 +11293,11 @@ AND [refTable].[EndDate] IS NULL;</property>
     design-time-name="Package\Load Fact Shipment">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="170,42"
-          Id="Package\Load Fact Shipment\Date to Type string"
-          TopLeft="335.000000089407,94.0000028312205" />
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="139,43"
           Id="Package\Load Fact Shipment\Item Lookup"
           TopLeft="347.999989628792,441.666657100121" />
-        <NodeLayout
-          Size="163,43"
-          Id="Package\Load Fact Shipment\Container Lookup"
-          TopLeft="337.999989926815,361.333327790102" />
-        <NodeLayout
-          Size="145,42"
-          Id="Package\Load Fact Shipment\PSA Shipment"
-          TopLeft="349.000000208616,11.0000028014182" />
         <NodeLayout
           Size="137,43"
           Id="Package\Load Fact Shipment\Ship Lookup"
@@ -11628,6 +11307,14 @@ AND [refTable].[EndDate] IS NULL;</property>
           Id="Package\Load Fact Shipment\ODS Shipment"
           TopLeft="352.000000417233,747.166661674778" />
         <NodeLayout
+          Size="163,43"
+          Id="Package\Load Fact Shipment\Container Lookup"
+          TopLeft="337.999989926815,361.333327790102" />
+        <NodeLayout
+          Size="145,42"
+          Id="Package\Load Fact Shipment\PSA Shipment"
+          TopLeft="348.000000208616,57.0000028014182" />
+        <NodeLayout
           Size="213,43"
           Id="Package\Load Fact Shipment\Lookup Shipment Increment"
           TopLeft="314.59089971537,631.666651437681" />
@@ -11636,23 +11323,23 @@ AND [refTable].[EndDate] IS NULL;</property>
           Id="Package\Load Fact Shipment\Consignor Lookup"
           TopLeft="336.999989956618,280.833330189188" />
         <NodeLayout
-          Size="196,42"
-          Id="Package\Load Fact Shipment\Date string to DateKeyId"
-          TopLeft="323.500000104308,181.500003680587" />
+          Size="240,42"
+          Id="Package\Load Fact Shipment\Date to type DateTime conversion"
+          TopLeft="304.000000089407,181.000002831221" />
         <EdgeLayout
           Id="Package\Load Fact Shipment.Paths[OLE DB Source Output]"
-          TopLeft="420.833333482345,53.0000028014182">
+          TopLeft="422.250000149011,99.0000028014182">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,41.0000000298023"
+              EndConnector="0,82.0000000298028"
               Start="0,0"
-              End="0,33.5000000298023">
+              End="0,74.5000000298028">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,33.5000000298023" />
+                    End="0,74.5000000298028" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -11782,41 +11469,19 @@ AND [refTable].[EndDate] IS NULL;</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load Fact Shipment.Paths[Derived Column Output]"
-          TopLeft="420.249995030463,223.500003680587">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,57.3333265086013"
-              Start="0,0"
-              End="0,49.8333265086013">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,49.8333265086013" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\Load Fact Shipment.Paths[Data Conversion Output]"
-          TopLeft="420.750000096857,136.000002831221">
+          TopLeft="421.499995023013,223.000002831221">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,45.5000008493663"
+              EndConnector="0,57.833327357967"
               Start="0,0"
-              End="0,38.0000008493663">
+              End="0,50.333327357967">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,38.0000008493663" />
+                    End="0,50.333327357967" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -11848,42 +11513,6 @@ AND [refTable].[EndDate] IS NULL;</property>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Fact Shipment\Container Lookup">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">true</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[DIM_Container]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Fact Shipment\PSA Shipment">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -11924,6 +11553,42 @@ AND [refTable].[EndDate] IS NULL;</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
+    design-time-name="Package\Load Fact Shipment\Container Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">true</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DIM_Container]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Fact Shipment\PSA Shipment">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\Load Fact Shipment\Lookup Shipment Increment">
     <Properties>
       <Property>
@@ -11939,7 +11604,7 @@ AND [refTable].[EndDate] IS NULL;</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -11962,7 +11627,7 @@ AND [refTable].[EndDate] IS NULL;</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -11975,159 +11640,120 @@ AND [refTable].[EndDate] IS NULL;</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="183,42"
-          Id="Package\Load Ship measurement data\Date to unicode string"
-          TopLeft="412,184" />
+          Size="216,42"
+          Id="Package\Load Ship measurement data\Date to DateTime conversion"
+          TopLeft="405,185" />
         <NodeLayout
           Size="165,42"
           Id="Package\Load Ship measurement data\Lookup Increment"
-          TopLeft="431,470" />
+          TopLeft="429,427" />
         <NodeLayout
           Size="277,42"
           Id="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (ODS)"
-          TopLeft="371,598" />
+          TopLeft="373,542" />
         <NodeLayout
           Size="274,42"
           Id="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (PSA)"
           TopLeft="369,79" />
         <NodeLayout
-          Size="225,42"
-          Id="Package\Load Ship measurement data\Date string to Calendar date Id"
-          TopLeft="395,281" />
+          Size="146,42"
+          Id="Package\Load Ship measurement data\Lookup ShipId"
+          TopLeft="435,297" />
         <EdgeLayout
-          Id="Package\Load Ship measurement data.Paths[Lookup No Match Output]"
-          TopLeft="511.5,512">
+          Id="Package\Load Ship measurement data.Paths[OLE DB Source Output]"
+          TopLeft="509.5,121">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,86"
+              EndConnector="0,64"
               Start="0,0"
-              End="0,78.5">
+              End="0,56.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,78.5" />
+                    End="0,56.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Ship measurement data.Paths[Lookup No Match Output]"
+          TopLeft="511.5,469">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,73"
+              Start="0,0"
+              End="0,65.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,65.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-55.80638671875,33.4453125,111.6127734375,11.609375"
+              BoundingBox="-55.80638671875,26.9453125,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Ship measurement data.Paths[Lookup Match Output]"
+          TopLeft="509.75,339">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,88"
+              Start="0,0"
+              End="0,80.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,80.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,34.4453125,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Ship measurement data.Paths[Data Conversion Output]"
-          TopLeft="505.5,226">
+          TopLeft="510.5,227">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,55"
+              EndConnector="0,70"
               Start="0,0"
-              End="0,47.5">
+              End="0,62.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,47.5" />
+                    End="0,62.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Ship measurement data.Paths[OLE DB Source Output]"
-          TopLeft="504.75,121">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,63"
-              Start="0,0"
-              End="0,55.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,55.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="146,42"
-          Id="Package\Load Ship measurement data\Lookup ShipId"
-          TopLeft="438,373" />
-        <EdgeLayout
-          Id="Package\Load Ship measurement data.Paths[Derived Column Output]"
-          TopLeft="509.25,323">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,50"
-              Start="0,0"
-              End="0,42.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,42.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Ship measurement data.Paths[Lookup Match Output]"
-          TopLeft="512.25,415">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,55"
-              Start="0,0"
-              End="0,47.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,47.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,17.9453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (PSA)">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Load Ship measurement data\Lookup Increment">
     <Properties>
@@ -12165,12 +11791,25 @@ AND [refTable].[EndDate] IS NULL;</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
+    design-time-name="Package\Load Ship measurement data\FACT_YearlyMeasurementShipData (PSA)">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\Load Ship measurement data\Lookup ShipId">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">true</Value>
+          type="q2:string">true</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -12180,7 +11819,7 @@ AND [refTable].[EndDate] IS NULL;</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>

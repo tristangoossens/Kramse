@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="ODS database - MSSQL connection"
+  DTS:DTSID="{040822C5-69BF-43E9-971E-867929A258DB}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=localhost;Initial Catalog=ODS_Kramse;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Extract_Transform_Load-{040822C5-69BF-43E9-971E-867929A258DB}(localdb)\MSSQLLocalDB.ODS_Kramse;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

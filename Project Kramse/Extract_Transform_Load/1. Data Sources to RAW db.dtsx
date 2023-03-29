@@ -11,8 +11,8 @@
   DTS:LocaleID="1043"
   DTS:ObjectName="1  Data Sources to RAW db"
   DTS:PackageType="5"
-  DTS:VersionBuild="62"
-  DTS:VersionGUID="{38E9AAC9-8D4A-42BB-AA47-41549AEC33B0}">
+  DTS:VersionBuild="63"
+  DTS:VersionGUID="{535F22B4-B87C-46F7-958E-DC8FAF17E545}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />

@@ -11,8 +11,8 @@
   DTS:LocaleID="1043"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="112"
-  DTS:VersionGUID="{69C40095-724C-4282-9418-DC5D3C7FD601}">
+  DTS:VersionBuild="147"
+  DTS:VersionGUID="{C3FFA209-2F5E-4D2B-844C-300BC82CE65D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -1542,6 +1542,86 @@ where [refTable].[CountryName] = ?</property>
               </outputs>
             </component>
             <component
+              refId="Package\Load Containers\EuroPriceKm to EuroPriceNMile"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="EuroPriceKm to EuroPriceNMile"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load Containers\EuroPriceKm to EuroPriceNMile.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Containers\EuroPriceKm to EuroPriceNMile.Inputs[Derived Column Input].Columns[EuroPricePerKm]"
+                      cachedDataType="r8"
+                      cachedName="EuroPricePerKm"
+                      lineageId="Package\Load Containers\Raw_Containers.Outputs[OLE DB Source Output].Columns[EuroPricePerKm]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Containers\EuroPriceKm to EuroPriceNMile.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Load Containers\EuroPriceKm to EuroPriceNMile.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Containers\EuroPriceKm to EuroPriceNMile.Outputs[Derived Column Output].Columns[EuroPriceNMile]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Containers\EuroPriceKm to EuroPriceNMile.Outputs[Derived Column Output].Columns[EuroPriceNMile]"
+                      name="EuroPriceNMile"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Load Containers\Raw_Containers.Outputs[OLE DB Source Output].Columns[EuroPricePerKm]} / 1.852</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">EuroPricePerKm / 1.852</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Containers\EuroPriceKm to EuroPriceNMile.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Load Containers\EuroPriceKm to EuroPriceNMile.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Containers\EuroPriceKm to EuroPriceNMile.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Containers\EuroPriceKm to EuroPriceNMile.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Containers\EuroPriceKm to EuroPriceNMile.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Containers\EuroPriceKm to EuroPriceNMile.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Load Containers\OLE DB Command"
               componentClassID="Microsoft.OLEDBCommand"
               contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
@@ -1973,12 +2053,6 @@ VALUES ('Container', 'PowerFlag or Type is to big', ?, getdate())</property>
                       externalMetadataColumnId="Package\Load Containers\RDBMS_Containers.Inputs[OLE DB Destination Input].ExternalColumns[PowerFlag]"
                       lineageId="Package\Load Containers\Raw_Containers.Outputs[OLE DB Source Output].Columns[PowerFlag]" />
                     <inputColumn
-                      refId="Package\Load Containers\RDBMS_Containers.Inputs[OLE DB Destination Input].Columns[EuroPricePerKm]"
-                      cachedDataType="r8"
-                      cachedName="EuroPricePerKm"
-                      externalMetadataColumnId="Package\Load Containers\RDBMS_Containers.Inputs[OLE DB Destination Input].ExternalColumns[EuroPricePerKm]"
-                      lineageId="Package\Load Containers\Raw_Containers.Outputs[OLE DB Source Output].Columns[EuroPricePerKm]" />
-                    <inputColumn
                       refId="Package\Load Containers\RDBMS_Containers.Inputs[OLE DB Destination Input].Columns[TEU]"
                       cachedDataType="i4"
                       cachedName="TEU"
@@ -1996,6 +2070,12 @@ VALUES ('Container', 'PowerFlag or Type is to big', ?, getdate())</property>
                       cachedName="Cube"
                       externalMetadataColumnId="Package\Load Containers\RDBMS_Containers.Inputs[OLE DB Destination Input].ExternalColumns[MetricCube]"
                       lineageId="Package\Load Containers\Raw_Containers.Outputs[OLE DB Source Output].Columns[Cube]" />
+                    <inputColumn
+                      refId="Package\Load Containers\RDBMS_Containers.Inputs[OLE DB Destination Input].Columns[EuroPriceNMile]"
+                      cachedDataType="r8"
+                      cachedName="EuroPriceNMile"
+                      externalMetadataColumnId="Package\Load Containers\RDBMS_Containers.Inputs[OLE DB Destination Input].ExternalColumns[EuroPricePerNmile]"
+                      lineageId="Package\Load Containers\EuroPriceKm to EuroPriceNMile.Outputs[Derived Column Output].Columns[EuroPriceNMile]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2018,10 +2098,6 @@ VALUES ('Container', 'PowerFlag or Type is to big', ?, getdate())</property>
                       length="10"
                       name="PowerFlag" />
                     <externalMetadataColumn
-                      refId="Package\Load Containers\RDBMS_Containers.Inputs[OLE DB Destination Input].ExternalColumns[EuroPricePerKm]"
-                      dataType="r8"
-                      name="EuroPricePerKm" />
-                    <externalMetadataColumn
                       refId="Package\Load Containers\RDBMS_Containers.Inputs[OLE DB Destination Input].ExternalColumns[TEU]"
                       dataType="i4"
                       name="TEU" />
@@ -2033,6 +2109,10 @@ VALUES ('Container', 'PowerFlag or Type is to big', ?, getdate())</property>
                       refId="Package\Load Containers\RDBMS_Containers.Inputs[OLE DB Destination Input].ExternalColumns[MetricCube]"
                       dataType="r8"
                       name="MetricCube" />
+                    <externalMetadataColumn
+                      refId="Package\Load Containers\RDBMS_Containers.Inputs[OLE DB Destination Input].ExternalColumns[EuroPricePerNmile]"
+                      dataType="r8"
+                      name="EuroPricePerNmile" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -2169,7 +2249,7 @@ VALUES ('Container', 'PowerFlag or Type is to big', ?, getdate())</property>
           <paths>
             <path
               refId="Package\Load Containers.Paths[Conditional Split Default Output]"
-              endId="Package\Load Containers\RDBMS_Containers.Inputs[OLE DB Destination Input]"
+              endId="Package\Load Containers\EuroPriceKm to EuroPriceNMile.Inputs[Derived Column Input]"
               name="Conditional Split Default Output"
               startId="Package\Load Containers\Check if PowerFlag or Type is to big.Outputs[Conditional Split Default Output]" />
             <path
@@ -2177,6 +2257,11 @@ VALUES ('Container', 'PowerFlag or Type is to big', ?, getdate())</property>
               endId="Package\Load Containers\Check if PowerFlag or Type is to big.Inputs[Conditional Split Input]"
               name="Derived Column Output"
               startId="Package\Load Containers\TEU Conversion.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Load Containers.Paths[Derived Column Output1]"
+              endId="Package\Load Containers\RDBMS_Containers.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Load Containers\EuroPriceKm to EuroPriceNMile.Outputs[Derived Column Output]" />
             <path
               refId="Package\Load Containers.Paths[OLE DB Source Output]"
               endId="Package\Load Containers\TEU Conversion.Inputs[Derived Column Input]"
@@ -2614,6 +2699,115 @@ VALUES ('Container', 'PowerFlag or Type is to big', ?, getdate())</property>
         <pipeline
           version="1">
           <components>
+            <component
+              refId="Package\Load Port\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load Port\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Port\Derived Column.Inputs[Derived Column Input].Columns[P_DistanceFormOslo]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="P_DistanceFormOslo"
+                      lineageId="Package\Load Port\Raw_Port.Outputs[OLE DB Source Output].Columns[P_DistanceFormOslo]" />
+                    <inputColumn
+                      refId="Package\Load Port\Derived Column.Inputs[Derived Column Input].Columns[P_DistanceFromPiraeus]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="P_DistanceFromPiraeus"
+                      lineageId="Package\Load Port\Raw_Port.Outputs[OLE DB Source Output].Columns[P_DistanceFromPiraeus]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Port\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Load Port\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Port\Derived Column.Outputs[Derived Column Output].Columns[DistanceFromPiraeusNMile]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Port\Derived Column.Outputs[Derived Column Output].Columns[DistanceFromPiraeusNMile]"
+                      name="DistanceFromPiraeusNMile"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_R8)#{Package\Load Port\Raw_Port.Outputs[OLE DB Source Output].Columns[P_DistanceFromPiraeus]} / 1.852</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_R8)P_DistanceFromPiraeus / 1.852</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Port\Derived Column.Outputs[Derived Column Output].Columns[DistanceFromOsloNMile]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Port\Derived Column.Outputs[Derived Column Output].Columns[DistanceFromOsloNMile]"
+                      name="DistanceFromOsloNMile"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_R8)#{Package\Load Port\Raw_Port.Outputs[OLE DB Source Output].Columns[P_DistanceFormOslo]} / 1.852</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_R8)P_DistanceFormOslo / 1.852</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Port\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Load Port\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Port\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Port\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Port\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Port\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
             <component
               refId="Package\Load Port\Lookup ISO3 Country Code"
               componentClassID="Microsoft.Lookup"
@@ -3178,19 +3372,17 @@ VALUES ('Country', 'Country not found', ?, getdate())</property>
                       externalMetadataColumnId="Package\Load Port\RDBMS_Port.Inputs[OLE DB Destination Input].ExternalColumns[Country]"
                       lineageId="Package\Load Port\Lookup ISO3 Country Code.Outputs[Lookup Match Output].Columns[ISO3Code]" />
                     <inputColumn
-                      refId="Package\Load Port\RDBMS_Port.Inputs[OLE DB Destination Input].Columns[P_DistanceFormOslo]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="P_DistanceFormOslo"
-                      externalMetadataColumnId="Package\Load Port\RDBMS_Port.Inputs[OLE DB Destination Input].ExternalColumns[DistanceFormOsloInKm]"
-                      lineageId="Package\Load Port\Raw_Port.Outputs[OLE DB Source Output].Columns[P_DistanceFormOslo]" />
+                      refId="Package\Load Port\RDBMS_Port.Inputs[OLE DB Destination Input].Columns[DistanceFromPiraeusNMile]"
+                      cachedDataType="r8"
+                      cachedName="DistanceFromPiraeusNMile"
+                      externalMetadataColumnId="Package\Load Port\RDBMS_Port.Inputs[OLE DB Destination Input].ExternalColumns[DistanceFromPiraeusInNMile]"
+                      lineageId="Package\Load Port\Derived Column.Outputs[Derived Column Output].Columns[DistanceFromPiraeusNMile]" />
                     <inputColumn
-                      refId="Package\Load Port\RDBMS_Port.Inputs[OLE DB Destination Input].Columns[P_DistanceFromPiraeus]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="P_DistanceFromPiraeus"
-                      externalMetadataColumnId="Package\Load Port\RDBMS_Port.Inputs[OLE DB Destination Input].ExternalColumns[DistanceFromPiraeusInKm]"
-                      lineageId="Package\Load Port\Raw_Port.Outputs[OLE DB Source Output].Columns[P_DistanceFromPiraeus]" />
+                      refId="Package\Load Port\RDBMS_Port.Inputs[OLE DB Destination Input].Columns[DistanceFromOsloNMile]"
+                      cachedDataType="r8"
+                      cachedName="DistanceFromOsloNMile"
+                      externalMetadataColumnId="Package\Load Port\RDBMS_Port.Inputs[OLE DB Destination Input].ExternalColumns[DistanceFormOsloInNMile]"
+                      lineageId="Package\Load Port\Derived Column.Outputs[Derived Column Output].Columns[DistanceFromOsloNMile]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -3213,13 +3405,13 @@ VALUES ('Country', 'Country not found', ?, getdate())</property>
                       length="50"
                       name="Name" />
                     <externalMetadataColumn
-                      refId="Package\Load Port\RDBMS_Port.Inputs[OLE DB Destination Input].ExternalColumns[DistanceFormOsloInKm]"
-                      dataType="i4"
-                      name="DistanceFormOsloInKm" />
+                      refId="Package\Load Port\RDBMS_Port.Inputs[OLE DB Destination Input].ExternalColumns[DistanceFormOsloInNMile]"
+                      dataType="r8"
+                      name="DistanceFormOsloInNMile" />
                     <externalMetadataColumn
-                      refId="Package\Load Port\RDBMS_Port.Inputs[OLE DB Destination Input].ExternalColumns[DistanceFromPiraeusInKm]"
-                      dataType="i4"
-                      name="DistanceFromPiraeusInKm" />
+                      refId="Package\Load Port\RDBMS_Port.Inputs[OLE DB Destination Input].ExternalColumns[DistanceFromPiraeusInNMile]"
+                      dataType="r8"
+                      name="DistanceFromPiraeusInNMile" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -3251,8 +3443,13 @@ VALUES ('Country', 'Country not found', ?, getdate())</property>
           </components>
           <paths>
             <path
-              refId="Package\Load Port.Paths[Lookup Match Output]"
+              refId="Package\Load Port.Paths[Derived Column Output]"
               endId="Package\Load Port\RDBMS_Port.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Load Port\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Load Port.Paths[Lookup Match Output]"
+              endId="Package\Load Port\Derived Column.Inputs[Derived Column Input]"
               name="Lookup Match Output"
               startId="Package\Load Port\Lookup ISO3 Country Code.Outputs[Lookup Match Output]" />
             <path
@@ -3750,7 +3947,7 @@ where [refTable].[ShipName] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ShipName" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TotalFuelConsumptionInTonnes" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TotalCo2EmissionsInTonnes" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TotalTimeSpentAtSeaInHours" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="AnnualAverageFuelConsumptionPerDistanceKgToMile" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="AnnualAverageCo2EmissionPerDistanceKgCo2ToMile" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ReportingYear" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ShipName" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TotalFuelConsumptionInTonnes" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TotalCo2EmissionsInTonnes" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TotalTimeSpentAtSeaInHours" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="AnnualAverageFuelConsumptionPerDistanceKgToNMile" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="AnnualAverageCo2EmissionPerDistanceKgCo2ToNMile" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ReportingYear" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
@@ -3851,34 +4048,6 @@ where [refTable].[ShipName] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Load Ship\Lookup ship MRV data.Outputs[Lookup Match Output].Columns[AnnualAverageFuelConsumptionPerDistanceKgToMile]"
-                      dataType="r8"
-                      errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\Load Ship\Lookup ship MRV data.Outputs[Lookup Match Output].Columns[AnnualAverageFuelConsumptionPerDistanceKgToMile]"
-                      name="AnnualAverageFuelConsumptionPerDistanceKgToMile"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">AnnualAverageFuelConsumptionPerDistanceKgToMile</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Load Ship\Lookup ship MRV data.Outputs[Lookup Match Output].Columns[AnnualAverageCo2EmissionPerDistanceKgCo2ToMile]"
-                      dataType="r8"
-                      errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\Load Ship\Lookup ship MRV data.Outputs[Lookup Match Output].Columns[AnnualAverageCo2EmissionPerDistanceKgCo2ToMile]"
-                      name="AnnualAverageCo2EmissionPerDistanceKgCo2ToMile"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">AnnualAverageCo2EmissionPerDistanceKgCo2ToMile</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
                       refId="Package\Load Ship\Lookup ship MRV data.Outputs[Lookup Match Output].Columns[ReportingYear]"
                       dataType="i4"
                       errorOrTruncationOperation="Copy Column"
@@ -3890,6 +4059,34 @@ where [refTable].[ShipName] = ?</property>
                           dataType="System.String"
                           description="Specifies the column in the reference table from which a column is copied."
                           name="CopyFromReferenceColumn">ReportingYear</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Ship\Lookup ship MRV data.Outputs[Lookup Match Output].Columns[AnnualAverageFuelConsumptionPerDistanceKgToNMile]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load Ship\Lookup ship MRV data.Outputs[Lookup Match Output].Columns[AnnualAverageFuelConsumptionPerDistanceKgToNMile]"
+                      name="AnnualAverageFuelConsumptionPerDistanceKgToNMile"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">AnnualAverageFuelConsumptionPerDistanceKgToNMile</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Ship\Lookup ship MRV data.Outputs[Lookup Match Output].Columns[AnnualAverageCo2EmissionPerDistanceKgCo2ToNMile]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load Ship\Lookup ship MRV data.Outputs[Lookup Match Output].Columns[AnnualAverageCo2EmissionPerDistanceKgCo2ToNMile]"
+                      name="AnnualAverageCo2EmissionPerDistanceKgCo2ToNMile"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">AnnualAverageCo2EmissionPerDistanceKgCo2ToNMile</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -4336,17 +4533,17 @@ where [refTable].[ShipName] = ?</property>
                       externalMetadataColumnId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].ExternalColumns[MeasurementReportingDate]"
                       lineageId="Package\Load Ship\Convert reporting year to date.Outputs[Derived Column Output].Columns[MeasurementReportingDate]" />
                     <inputColumn
-                      refId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].Columns[AnnualAverageFuelConsumptionPerDistanceKgToMile]"
+                      refId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].Columns[AnnualAverageCo2EmissionPerDistanceKgCo2ToNMile]"
                       cachedDataType="r8"
-                      cachedName="AnnualAverageFuelConsumptionPerDistanceKgToMile"
-                      externalMetadataColumnId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageFuelConsumptionKgPerNMile]"
-                      lineageId="Package\Load Ship\Lookup ship MRV data.Outputs[Lookup Match Output].Columns[AnnualAverageFuelConsumptionPerDistanceKgToMile]" />
-                    <inputColumn
-                      refId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].Columns[AnnualAverageCo2EmissionPerDistanceKgCo2ToMile]"
-                      cachedDataType="r8"
-                      cachedName="AnnualAverageCo2EmissionPerDistanceKgCo2ToMile"
+                      cachedName="AnnualAverageCo2EmissionPerDistanceKgCo2ToNMile"
                       externalMetadataColumnId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageCo2EmissionKgPerNMile]"
-                      lineageId="Package\Load Ship\Lookup ship MRV data.Outputs[Lookup Match Output].Columns[AnnualAverageCo2EmissionPerDistanceKgCo2ToMile]" />
+                      lineageId="Package\Load Ship\Lookup ship MRV data.Outputs[Lookup Match Output].Columns[AnnualAverageCo2EmissionPerDistanceKgCo2ToNMile]" />
+                    <inputColumn
+                      refId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].Columns[AnnualAverageFuelConsumptionPerDistanceKgToNMile]"
+                      cachedDataType="r8"
+                      cachedName="AnnualAverageFuelConsumptionPerDistanceKgToNMile"
+                      externalMetadataColumnId="Package\Load Ship\RDBMS_Ship.Inputs[OLE DB Destination Input].ExternalColumns[AnnualAverageFuelConsumptionKgPerNMile]"
+                      lineageId="Package\Load Ship\Lookup ship MRV data.Outputs[Lookup Match Output].Columns[AnnualAverageFuelConsumptionPerDistanceKgToNMile]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -4490,6 +4687,259 @@ where [refTable].[ShipName] = ?</property>
         <pipeline
           version="1">
           <components>
+            <component
+              refId="Package\Load Shipment\Km to nMile"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Km to nMile"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load Shipment\Km to nMile.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Shipment\Km to nMile.Inputs[Derived Column Input].Columns[Distance]"
+                      cachedDataType="i4"
+                      cachedName="Distance"
+                      lineageId="Package\Load Shipment\Raw_Shipment.Outputs[OLE DB Source Output].Columns[Distance]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Shipment\Km to nMile.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Load Shipment\Km to nMile.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Shipment\Km to nMile.Outputs[Derived Column Output].Columns[DistanceNMile]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Shipment\Km to nMile.Outputs[Derived Column Output].Columns[DistanceNMile]"
+                      name="DistanceNMile"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_R8)#{Package\Load Shipment\Raw_Shipment.Outputs[OLE DB Source Output].Columns[Distance]} / 1.852</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_R8)Distance / 1.852</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Shipment\Km to nMile.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Load Shipment\Km to nMile.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Shipment\Km to nMile.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Shipment\Km to nMile.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Shipment\Km to nMile.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Shipment\Km to nMile.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Shipment\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[RDBMS_Shipment]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Shipment\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{1421DBD4-2B2C-4ECE-91B7-A456A919242E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[RDBMS database - MSSQL connection]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Shipment\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Shipment\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[VoyageId]"
+                      cachedDataType="i4"
+                      cachedName="VoyageId"
+                      externalMetadataColumnId="Package\Load Shipment\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VoyageId]"
+                      lineageId="Package\Load Shipment\Raw_Shipment.Outputs[OLE DB Source Output].Columns[VoyageId]" />
+                    <inputColumn
+                      refId="Package\Load Shipment\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ConsignorId]"
+                      cachedDataType="i4"
+                      cachedName="ConsignorId"
+                      externalMetadataColumnId="Package\Load Shipment\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ConsignorId]"
+                      lineageId="Package\Load Shipment\Raw_Shipment.Outputs[OLE DB Source Output].Columns[ConsignorId]" />
+                    <inputColumn
+                      refId="Package\Load Shipment\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PortIdFrom]"
+                      cachedDataType="i4"
+                      cachedName="PortIdFrom"
+                      externalMetadataColumnId="Package\Load Shipment\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PortIdFrom]"
+                      lineageId="Package\Load Shipment\Raw_Shipment.Outputs[OLE DB Source Output].Columns[PortIdFrom]" />
+                    <inputColumn
+                      refId="Package\Load Shipment\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PortIdTo]"
+                      cachedDataType="i4"
+                      cachedName="PortIdTo"
+                      externalMetadataColumnId="Package\Load Shipment\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PortIdTo]"
+                      lineageId="Package\Load Shipment\Raw_Shipment.Outputs[OLE DB Source Output].Columns[PortIdTo]" />
+                    <inputColumn
+                      refId="Package\Load Shipment\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[NumberContainer]"
+                      cachedDataType="i4"
+                      cachedName="NumberContainer"
+                      externalMetadataColumnId="Package\Load Shipment\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NumberContainer]"
+                      lineageId="Package\Load Shipment\Raw_Shipment.Outputs[OLE DB Source Output].Columns[NumberContainer]" />
+                    <inputColumn
+                      refId="Package\Load Shipment\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ShipmentId]"
+                      cachedDataType="i4"
+                      cachedName="ShipmentId"
+                      externalMetadataColumnId="Package\Load Shipment\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                      lineageId="Package\Load Shipment\Raw_Shipment.Outputs[OLE DB Source Output].Columns[ShipmentId]" />
+                    <inputColumn
+                      refId="Package\Load Shipment\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Distance]"
+                      cachedDataType="i4"
+                      cachedName="Distance"
+                      externalMetadataColumnId="Package\Load Shipment\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DistanceInNMile]"
+                      lineageId="Package\Load Shipment\Raw_Shipment.Outputs[OLE DB Source Output].Columns[Distance]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Shipment\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                      dataType="i4"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\Load Shipment\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VoyageId]"
+                      dataType="i4"
+                      name="VoyageId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Shipment\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ConsignorId]"
+                      dataType="i4"
+                      name="ConsignorId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Shipment\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PortIdFrom]"
+                      dataType="i4"
+                      name="PortIdFrom" />
+                    <externalMetadataColumn
+                      refId="Package\Load Shipment\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PortIdTo]"
+                      dataType="i4"
+                      name="PortIdTo" />
+                    <externalMetadataColumn
+                      refId="Package\Load Shipment\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DistanceInNMile]"
+                      dataType="r8"
+                      name="DistanceInNMile" />
+                    <externalMetadataColumn
+                      refId="Package\Load Shipment\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NumberContainer]"
+                      dataType="i4"
+                      name="NumberContainer" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Shipment\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load Shipment\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Shipment\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Shipment\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Shipment\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Shipment\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
             <component
               refId="Package\Load Shipment\Raw_Shipment"
               componentClassID="Microsoft.OLEDBSource"
@@ -4704,12 +5154,42 @@ where [refTable].[ShipName] = ?</property>
                 </output>
               </outputs>
             </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load Shipment.Paths[Derived Column Output]"
+              endId="Package\Load Shipment\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Load Shipment\Km to nMile.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Load Shipment.Paths[OLE DB Source Output]"
+              endId="Package\Load Shipment\Km to nMile.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\Load Shipment\Raw_Shipment.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load ShipmentDetail"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{AE669CFA-2831-4213-A750-F46ABA008BAF}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load ShipmentDetail"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
             <component
-              refId="Package\Load Shipment\RDBMS_Shipment"
+              refId="Package\Load ShipmentDetail\OLE DB Destination"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
-              name="RDBMS_Shipment"
+              name="OLE DB Destination"
               usesDispositions="true"
               version="4">
               <properties>
@@ -4720,7 +5200,7 @@ where [refTable].[ShipName] = ?</property>
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[RDBMS_Shipment]</property>
+                  name="OpenRowset">[dbo].[RDBMS_ShipmentDetail]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -4742,7 +5222,7 @@ where [refTable].[ShipName] = ?</property>
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">0</property>
+                  typeConverter="AccessMode">3</property>
                 <property
                   dataType="System.Boolean"
                   description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
@@ -4754,7 +5234,7 @@ where [refTable].[ShipName] = ?</property>
                 <property
                   dataType="System.String"
                   description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                  name="FastLoadOptions"></property>
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
@@ -4762,7 +5242,7 @@ where [refTable].[ShipName] = ?</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Load Shipment\RDBMS_Shipment.Connections[OleDbConnection]"
+                  refId="Package\Load ShipmentDetail\OLE DB Destination.Connections[OleDbConnection]"
                   connectionManagerID="{1421DBD4-2B2C-4ECE-91B7-A456A919242E}:external"
                   connectionManagerRefId="Project.ConnectionManagers[RDBMS database - MSSQL connection]"
                   description="The OLE DB runtime connection used to access the database."
@@ -4770,106 +5250,76 @@ where [refTable].[ShipName] = ?</property>
               </connections>
               <inputs>
                 <input
-                  refId="Package\Load Shipment\RDBMS_Shipment.Inputs[OLE DB Destination Input]"
+                  refId="Package\Load ShipmentDetail\OLE DB Destination.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Load Shipment\RDBMS_Shipment.Inputs[OLE DB Destination Input].Columns[VoyageId]"
+                      refId="Package\Load ShipmentDetail\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ContainerAmount]"
                       cachedDataType="i4"
-                      cachedName="VoyageId"
-                      externalMetadataColumnId="Package\Load Shipment\RDBMS_Shipment.Inputs[OLE DB Destination Input].ExternalColumns[VoyageId]"
-                      lineageId="Package\Load Shipment\Raw_Shipment.Outputs[OLE DB Source Output].Columns[VoyageId]" />
+                      cachedName="ContainerAmount"
+                      externalMetadataColumnId="Package\Load ShipmentDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ContainerAmount]"
+                      lineageId="Package\Load ShipmentDetail\Replace ContainerNr with Container amount (Range).Outputs[Derived Column Output].Columns[ContainerAmount]" />
                     <inputColumn
-                      refId="Package\Load Shipment\RDBMS_Shipment.Inputs[OLE DB Destination Input].Columns[ConsignorId]"
+                      refId="Package\Load ShipmentDetail\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ContainerTypeId]"
                       cachedDataType="i4"
-                      cachedName="ConsignorId"
-                      externalMetadataColumnId="Package\Load Shipment\RDBMS_Shipment.Inputs[OLE DB Destination Input].ExternalColumns[ConsignorId]"
-                      lineageId="Package\Load Shipment\Raw_Shipment.Outputs[OLE DB Source Output].Columns[ConsignorId]" />
+                      cachedName="ContainerTypeId"
+                      externalMetadataColumnId="Package\Load ShipmentDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ContainerTypeId]"
+                      lineageId="Package\Load ShipmentDetail\Raw_ShipmentDetail.Outputs[OLE DB Source Output].Columns[ContainerTypeId]" />
                     <inputColumn
-                      refId="Package\Load Shipment\RDBMS_Shipment.Inputs[OLE DB Destination Input].Columns[PortIdFrom]"
-                      cachedDataType="i4"
-                      cachedName="PortIdFrom"
-                      externalMetadataColumnId="Package\Load Shipment\RDBMS_Shipment.Inputs[OLE DB Destination Input].ExternalColumns[PortIdFrom]"
-                      lineageId="Package\Load Shipment\Raw_Shipment.Outputs[OLE DB Source Output].Columns[PortIdFrom]" />
-                    <inputColumn
-                      refId="Package\Load Shipment\RDBMS_Shipment.Inputs[OLE DB Destination Input].Columns[PortIdTo]"
-                      cachedDataType="i4"
-                      cachedName="PortIdTo"
-                      externalMetadataColumnId="Package\Load Shipment\RDBMS_Shipment.Inputs[OLE DB Destination Input].ExternalColumns[PortIdTo]"
-                      lineageId="Package\Load Shipment\Raw_Shipment.Outputs[OLE DB Source Output].Columns[PortIdTo]" />
-                    <inputColumn
-                      refId="Package\Load Shipment\RDBMS_Shipment.Inputs[OLE DB Destination Input].Columns[NumberContainer]"
-                      cachedDataType="i4"
-                      cachedName="NumberContainer"
-                      externalMetadataColumnId="Package\Load Shipment\RDBMS_Shipment.Inputs[OLE DB Destination Input].ExternalColumns[NumberContainer]"
-                      lineageId="Package\Load Shipment\Raw_Shipment.Outputs[OLE DB Source Output].Columns[NumberContainer]" />
-                    <inputColumn
-                      refId="Package\Load Shipment\RDBMS_Shipment.Inputs[OLE DB Destination Input].Columns[ShipmentId]"
+                      refId="Package\Load ShipmentDetail\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ShipmentId]"
                       cachedDataType="i4"
                       cachedName="ShipmentId"
-                      externalMetadataColumnId="Package\Load Shipment\RDBMS_Shipment.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
-                      lineageId="Package\Load Shipment\Raw_Shipment.Outputs[OLE DB Source Output].Columns[ShipmentId]" />
+                      externalMetadataColumnId="Package\Load ShipmentDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                      lineageId="Package\Load ShipmentDetail\Raw_ShipmentDetail.Outputs[OLE DB Source Output].Columns[ShipmentId]" />
                     <inputColumn
-                      refId="Package\Load Shipment\RDBMS_Shipment.Inputs[OLE DB Destination Input].Columns[Distance]"
+                      refId="Package\Load ShipmentDetail\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Item]"
                       cachedDataType="i4"
-                      cachedName="Distance"
-                      externalMetadataColumnId="Package\Load Shipment\RDBMS_Shipment.Inputs[OLE DB Destination Input].ExternalColumns[DistanceInKm]"
-                      lineageId="Package\Load Shipment\Raw_Shipment.Outputs[OLE DB Source Output].Columns[Distance]" />
+                      cachedName="Item"
+                      externalMetadataColumnId="Package\Load ShipmentDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ItemId]"
+                      lineageId="Package\Load ShipmentDetail\Raw_ShipmentDetail.Outputs[OLE DB Source Output].Columns[Item]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Load Shipment\RDBMS_Shipment.Inputs[OLE DB Destination Input].ExternalColumns[VoyageId]"
-                      dataType="i4"
-                      name="VoyageId" />
-                    <externalMetadataColumn
-                      refId="Package\Load Shipment\RDBMS_Shipment.Inputs[OLE DB Destination Input].ExternalColumns[ConsignorId]"
-                      dataType="i4"
-                      name="ConsignorId" />
-                    <externalMetadataColumn
-                      refId="Package\Load Shipment\RDBMS_Shipment.Inputs[OLE DB Destination Input].ExternalColumns[PortIdFrom]"
-                      dataType="i4"
-                      name="PortIdFrom" />
-                    <externalMetadataColumn
-                      refId="Package\Load Shipment\RDBMS_Shipment.Inputs[OLE DB Destination Input].ExternalColumns[PortIdTo]"
-                      dataType="i4"
-                      name="PortIdTo" />
-                    <externalMetadataColumn
-                      refId="Package\Load Shipment\RDBMS_Shipment.Inputs[OLE DB Destination Input].ExternalColumns[NumberContainer]"
-                      dataType="i4"
-                      name="NumberContainer" />
-                    <externalMetadataColumn
-                      refId="Package\Load Shipment\RDBMS_Shipment.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                      refId="Package\Load ShipmentDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
                       dataType="i4"
                       name="Id" />
                     <externalMetadataColumn
-                      refId="Package\Load Shipment\RDBMS_Shipment.Inputs[OLE DB Destination Input].ExternalColumns[DistanceInKm]"
+                      refId="Package\Load ShipmentDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ContainerAmount]"
                       dataType="i4"
-                      name="DistanceInKm" />
+                      name="ContainerAmount" />
+                    <externalMetadataColumn
+                      refId="Package\Load ShipmentDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ItemId]"
+                      dataType="i4"
+                      name="ItemId" />
+                    <externalMetadataColumn
+                      refId="Package\Load ShipmentDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ContainerTypeId]"
+                      dataType="i4"
+                      name="ContainerTypeId" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Load Shipment\RDBMS_Shipment.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\Load ShipmentDetail\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Load Shipment\RDBMS_Shipment.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\Load ShipmentDetail\OLE DB Destination.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load Shipment\RDBMS_Shipment.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\Load ShipmentDetail\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Load Shipment\RDBMS_Shipment.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Load ShipmentDetail\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Load Shipment\RDBMS_Shipment.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\Load ShipmentDetail\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Load Shipment\RDBMS_Shipment.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Load ShipmentDetail\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -4877,31 +5327,6 @@ where [refTable].[ShipName] = ?</property>
                 </output>
               </outputs>
             </component>
-          </components>
-          <paths>
-            <path
-              refId="Package\Load Shipment.Paths[OLE DB Source Output]"
-              endId="Package\Load Shipment\RDBMS_Shipment.Inputs[OLE DB Destination Input]"
-              name="OLE DB Source Output"
-              startId="Package\Load Shipment\Raw_Shipment.Outputs[OLE DB Source Output]" />
-          </paths>
-        </pipeline>
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Load ShipmentDetail"
-      DTS:CreationName="Microsoft.Pipeline"
-      DTS:Description="Data Flow Task"
-      DTS:DTSID="{AE669CFA-2831-4213-A750-F46ABA008BAF}"
-      DTS:ExecutableType="Microsoft.Pipeline"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Load ShipmentDetail"
-      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <pipeline
-          version="1">
-          <components>
             <component
               refId="Package\Load ShipmentDetail\Raw_ShipmentDetail"
               componentClassID="Microsoft.OLEDBSource"
@@ -5066,150 +5491,6 @@ where [refTable].[ShipName] = ?</property>
               </outputs>
             </component>
             <component
-              refId="Package\Load ShipmentDetail\RDBMS_ShipmentDetail"
-              componentClassID="Microsoft.OLEDBDestination"
-              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
-              description="OLE DB Destination"
-              name="RDBMS_ShipmentDetail"
-              usesDispositions="true"
-              version="4">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[RDBMS_ShipmentDetail]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">0</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepIdentity">false</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepNulls">false</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                  name="FastLoadOptions"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
-                  name="FastLoadMaxInsertCommitSize">2147483647</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Load ShipmentDetail\RDBMS_ShipmentDetail.Connections[OleDbConnection]"
-                  connectionManagerID="{1421DBD4-2B2C-4ECE-91B7-A456A919242E}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[RDBMS database - MSSQL connection]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\Load ShipmentDetail\RDBMS_ShipmentDetail.Inputs[OLE DB Destination Input]"
-                  errorOrTruncationOperation="Insert"
-                  errorRowDisposition="FailComponent"
-                  hasSideEffects="true"
-                  name="OLE DB Destination Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Load ShipmentDetail\RDBMS_ShipmentDetail.Inputs[OLE DB Destination Input].Columns[ContainerTypeId]"
-                      cachedDataType="i4"
-                      cachedName="ContainerTypeId"
-                      externalMetadataColumnId="Package\Load ShipmentDetail\RDBMS_ShipmentDetail.Inputs[OLE DB Destination Input].ExternalColumns[ContainerTypeId]"
-                      lineageId="Package\Load ShipmentDetail\Raw_ShipmentDetail.Outputs[OLE DB Source Output].Columns[ContainerTypeId]" />
-                    <inputColumn
-                      refId="Package\Load ShipmentDetail\RDBMS_ShipmentDetail.Inputs[OLE DB Destination Input].Columns[Item]"
-                      cachedDataType="i4"
-                      cachedName="Item"
-                      externalMetadataColumnId="Package\Load ShipmentDetail\RDBMS_ShipmentDetail.Inputs[OLE DB Destination Input].ExternalColumns[ItemId]"
-                      lineageId="Package\Load ShipmentDetail\Raw_ShipmentDetail.Outputs[OLE DB Source Output].Columns[Item]" />
-                    <inputColumn
-                      refId="Package\Load ShipmentDetail\RDBMS_ShipmentDetail.Inputs[OLE DB Destination Input].Columns[ShipmentId]"
-                      cachedDataType="i4"
-                      cachedName="ShipmentId"
-                      externalMetadataColumnId="Package\Load ShipmentDetail\RDBMS_ShipmentDetail.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
-                      lineageId="Package\Load ShipmentDetail\Raw_ShipmentDetail.Outputs[OLE DB Source Output].Columns[ShipmentId]" />
-                    <inputColumn
-                      refId="Package\Load ShipmentDetail\RDBMS_ShipmentDetail.Inputs[OLE DB Destination Input].Columns[ContainerNr]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="ContainerNr"
-                      externalMetadataColumnId="Package\Load ShipmentDetail\RDBMS_ShipmentDetail.Inputs[OLE DB Destination Input].ExternalColumns[ContainerAmount]"
-                      lineageId="Package\Load ShipmentDetail\Raw_ShipmentDetail.Outputs[OLE DB Source Output].Columns[ContainerNr]" />
-                  </inputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Load ShipmentDetail\RDBMS_ShipmentDetail.Inputs[OLE DB Destination Input].ExternalColumns[ContainerTypeId]"
-                      dataType="i4"
-                      name="ContainerTypeId" />
-                    <externalMetadataColumn
-                      refId="Package\Load ShipmentDetail\RDBMS_ShipmentDetail.Inputs[OLE DB Destination Input].ExternalColumns[ItemId]"
-                      dataType="i4"
-                      name="ItemId" />
-                    <externalMetadataColumn
-                      refId="Package\Load ShipmentDetail\RDBMS_ShipmentDetail.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
-                      dataType="i4"
-                      name="Id" />
-                    <externalMetadataColumn
-                      refId="Package\Load ShipmentDetail\RDBMS_ShipmentDetail.Inputs[OLE DB Destination Input].ExternalColumns[ContainerAmount]"
-                      dataType="i4"
-                      name="ContainerAmount" />
-                  </externalMetadataColumns>
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Load ShipmentDetail\RDBMS_ShipmentDetail.Outputs[OLE DB Destination Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Load ShipmentDetail\RDBMS_ShipmentDetail.Inputs[OLE DB Destination Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Load ShipmentDetail\RDBMS_ShipmentDetail.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Load ShipmentDetail\RDBMS_ShipmentDetail.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Load ShipmentDetail\RDBMS_ShipmentDetail.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Load ShipmentDetail\RDBMS_ShipmentDetail.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
               refId="Package\Load ShipmentDetail\Replace ContainerNr with Container amount (Range)"
               componentClassID="Microsoft.DerivedColumn"
               contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
@@ -5227,11 +5508,27 @@ where [refTable].[ShipName] = ?</property>
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="ContainerNr"
+                      lineageId="Package\Load ShipmentDetail\Raw_ShipmentDetail.Outputs[OLE DB Source Output].Columns[ContainerNr]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load ShipmentDetail\Replace ContainerNr with Container amount (Range).Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Load ShipmentDetail\Replace ContainerNr with Container amount (Range).Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load ShipmentDetail\Replace ContainerNr with Container amount (Range).Outputs[Derived Column Output].Columns[ContainerAmount]"
+                      dataType="i4"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\Load ShipmentDetail\Raw_ShipmentDetail.Outputs[OLE DB Source Output].Columns[ContainerNr]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
+                      lineageId="Package\Load ShipmentDetail\Replace ContainerNr with Container amount (Range).Outputs[Derived Column Output].Columns[ContainerAmount]"
+                      name="ContainerAmount"
+                      truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           containsID="true"
@@ -5245,18 +5542,8 @@ where [refTable].[ShipName] = ?</property>
                           expressionType="Notify"
                           name="FriendlyExpression">((DT_I4)TOKEN(ContainerNr,"-",2)) - ((DT_I4)TOKEN(ContainerNr,"-",1)) + 1</property>
                       </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Load ShipmentDetail\Replace ContainerNr with Container amount (Range).Outputs[Derived Column Output]"
-                  description="Default Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  name="Derived Column Output"
-                  synchronousInputId="Package\Load ShipmentDetail\Replace ContainerNr with Container amount (Range).Inputs[Derived Column Input]">
+                    </outputColumn>
+                  </outputColumns>
                   <externalMetadataColumns />
                 </output>
                 <output
@@ -5288,7 +5575,7 @@ where [refTable].[ShipName] = ?</property>
           <paths>
             <path
               refId="Package\Load ShipmentDetail.Paths[Derived Column Output]"
-              endId="Package\Load ShipmentDetail\RDBMS_ShipmentDetail.Inputs[OLE DB Destination Input]"
+              endId="Package\Load ShipmentDetail\OLE DB Destination.Inputs[OLE DB Destination Input]"
               name="Derived Column Output"
               startId="Package\Load ShipmentDetail\Replace ContainerNr with Container amount (Range).Outputs[Derived Column Output]" />
             <path
@@ -5671,6 +5958,86 @@ where [refTable].[ShipName] = ?</property>
           version="1">
           <components>
             <component
+              refId="Package\Load VoyagePort\Km to nMile"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Km to nMile"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load VoyagePort\Km to nMile.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load VoyagePort\Km to nMile.Inputs[Derived Column Input].Columns[VP_Traject_Distance]"
+                      cachedDataType="i4"
+                      cachedName="VP_Traject_Distance"
+                      lineageId="Package\Load VoyagePort\Raw_VoyagePort.Outputs[OLE DB Source Output].Columns[VP_Traject_Distance]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load VoyagePort\Km to nMile.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Load VoyagePort\Km to nMile.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load VoyagePort\Km to nMile.Outputs[Derived Column Output].Columns[TrajectDistanceNMile]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load VoyagePort\Km to nMile.Outputs[Derived Column Output].Columns[TrajectDistanceNMile]"
+                      name="TrajectDistanceNMile"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_R8)#{Package\Load VoyagePort\Raw_VoyagePort.Outputs[OLE DB Source Output].Columns[VP_Traject_Distance]} / 1.852</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_R8)VP_Traject_Distance / 1.852</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load VoyagePort\Km to nMile.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Load VoyagePort\Km to nMile.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load VoyagePort\Km to nMile.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load VoyagePort\Km to nMile.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load VoyagePort\Km to nMile.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load VoyagePort\Km to nMile.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Load VoyagePort\Raw_VoyagePort"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
@@ -5987,11 +6354,11 @@ where [refTable].[ShipName] = ?</property>
                       externalMetadataColumnId="Package\Load VoyagePort\RDBMS_VoyagePort.Inputs[OLE DB Destination Input].ExternalColumns[ArrivalDate]"
                       lineageId="Package\Load VoyagePort\Raw_VoyagePort.Outputs[OLE DB Source Output].Columns[VP_LegDateArrival]" />
                     <inputColumn
-                      refId="Package\Load VoyagePort\RDBMS_VoyagePort.Inputs[OLE DB Destination Input].Columns[VP_Traject_Distance]"
-                      cachedDataType="i4"
-                      cachedName="VP_Traject_Distance"
-                      externalMetadataColumnId="Package\Load VoyagePort\RDBMS_VoyagePort.Inputs[OLE DB Destination Input].ExternalColumns[TrajectDistanceInKm]"
-                      lineageId="Package\Load VoyagePort\Raw_VoyagePort.Outputs[OLE DB Source Output].Columns[VP_Traject_Distance]" />
+                      refId="Package\Load VoyagePort\RDBMS_VoyagePort.Inputs[OLE DB Destination Input].Columns[TrajectDistanceNMile]"
+                      cachedDataType="r8"
+                      cachedName="TrajectDistanceNMile"
+                      externalMetadataColumnId="Package\Load VoyagePort\RDBMS_VoyagePort.Inputs[OLE DB Destination Input].ExternalColumns[TrajectDistanceInNMile]"
+                      lineageId="Package\Load VoyagePort\Km to nMile.Outputs[Derived Column Output].Columns[TrajectDistanceNMile]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -6016,9 +6383,9 @@ where [refTable].[ShipName] = ?</property>
                       dataType="dbDate"
                       name="ArrivalDate" />
                     <externalMetadataColumn
-                      refId="Package\Load VoyagePort\RDBMS_VoyagePort.Inputs[OLE DB Destination Input].ExternalColumns[TrajectDistanceInKm]"
-                      dataType="i4"
-                      name="TrajectDistanceInKm" />
+                      refId="Package\Load VoyagePort\RDBMS_VoyagePort.Inputs[OLE DB Destination Input].ExternalColumns[TrajectDistanceInNMile]"
+                      dataType="r8"
+                      name="TrajectDistanceInNMile" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -6050,8 +6417,13 @@ where [refTable].[ShipName] = ?</property>
           </components>
           <paths>
             <path
-              refId="Package\Load VoyagePort.Paths[OLE DB Source Output]"
+              refId="Package\Load VoyagePort.Paths[Derived Column Output]"
               endId="Package\Load VoyagePort\RDBMS_VoyagePort.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Load VoyagePort\Km to nMile.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Load VoyagePort.Paths[OLE DB Source Output]"
+              endId="Package\Load VoyagePort\Km to nMile.Inputs[Derived Column Input]"
               name="OLE DB Source Output"
               startId="Package\Load VoyagePort\Raw_VoyagePort.Outputs[OLE DB Source Output]" />
           </paths>
@@ -6079,8 +6451,8 @@ where [refTable].[ShipName] = ?</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 10]"
       DTS:CreationName=""
-      DTS:DTSID="{8F4BF2C9-A453-4089-8CFD-169DAB822197}"
-      DTS:From="Package\Load Port"
+      DTS:DTSID="{3BCA64EA-9560-4A7A-9BC5-EBBEE434FF45}"
+      DTS:From="Package\Load Voyage"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 10"
       DTS:To="Package\Load VoyagePort" />
@@ -6159,11 +6531,11 @@ where [refTable].[ShipName] = ?</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 9]"
       DTS:CreationName=""
-      DTS:DTSID="{E174A4E3-1752-4F08-9896-6279503C00E4}"
-      DTS:From="Package\Load Voyage"
+      DTS:DTSID="{600050CA-E413-4883-9E93-81788EAB2C10}"
+      DTS:From="Package\Load Port"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 9"
-      DTS:To="Package\Load VoyagePort" />
+      DTS:To="Package\Load Voyage" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -6212,7 +6584,7 @@ where [refTable].[ShipName] = ?</property>
         <NodeLayout
           Size="140,43"
           Id="Package\Load Voyage"
-          TopLeft="52.6666661078732,221.458332945903" />
+          TopLeft="50.5238089604544,221.458332945903" />
         <NodeLayout
           Size="159,43"
           Id="Package\Load VoyagePort"
@@ -6287,30 +6659,30 @@ where [refTable].[ShipName] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 10]"
-          TopLeft="247.111110552318,161.458332945903">
+          TopLeft="120.523808960454,264.658332945903">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="31.6666666666666,162.666666666667"
+              EndConnector="133.409523814086,59.466666666667"
               Start="0,0"
-              End="31.6666666666666,155.166666666667">
+              End="133.409523814086,51.966666666667">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,77.5984239421727" />
+                    End="0,25.7333333333335" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,77.5984239421727"
-                    Point2="0,81.5984239421727"
-                    Point3="4,81.5984239421727" />
+                    Point1="0,25.7333333333335"
+                    Point2="0,29.7333333333335"
+                    Point3="4,29.7333333333335" />
                   <mssgle:LineSegment
-                    End="27.6666666666666,81.5984239421727" />
+                    End="129.409523814086,29.7333333333335" />
                   <mssgle:CubicBezierSegment
-                    Point1="27.6666666666666,81.5984239421727"
-                    Point2="31.6666666666666,81.5984239421727"
-                    Point3="31.6666666666666,85.5984239421727" />
+                    Point1="129.409523814086,29.7333333333335"
+                    Point2="133.409523814086,29.7333333333335"
+                    Point3="133.409523814086,33.7333333333335" />
                   <mssgle:LineSegment
-                    End="31.6666666666666,155.166666666667" />
+                    End="133.409523814086,51.966666666667" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6321,30 +6693,30 @@ where [refTable].[ShipName] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 11]"
-          TopLeft="80.6666661078732,161.458332945903">
+          TopLeft="80.3999994412065,161.991666279237">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="42,60.0000000000001"
+              EndConnector="18.1238095192479,59.466666666666"
               Start="0,0"
-              End="42,52.5000000000001">
+              End="18.1238095192479,51.966666666666">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26" />
+                    End="0,31.2768361581917" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,26"
-                    Point2="0,30"
-                    Point3="4,30" />
+                    Point1="0,31.2768361581917"
+                    Point2="0,35.2768361581917"
+                    Point3="4,35.2768361581917" />
                   <mssgle:LineSegment
-                    End="38,30" />
+                    End="14.1238095192479,35.2768361581917" />
                   <mssgle:CubicBezierSegment
-                    Point1="38,30"
-                    Point2="42,30"
-                    Point3="42,34" />
+                    Point1="14.1238095192479,35.2768361581917"
+                    Point2="18.1238095192479,35.2768361581917"
+                    Point3="18.1238095192479,39.2768361581917" />
                   <mssgle:LineSegment
-                    End="42,52.5000000000001" />
+                    End="18.1238095192479,51.966666666666" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6603,30 +6975,30 @@ where [refTable].[ShipName] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 9]"
-          TopLeft="122.666666107873,264.12499961257">
+          TopLeft="246.93333277454,161.991666279237">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="105.888888888889,60.0000000000001"
+              EndConnector="-104.409523814086,59.466666666666"
               Start="0,0"
-              End="105.888888888889,52.5000000000001">
+              End="-104.409523814086,51.966666666666">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,31.6405990016639" />
+                    End="0,25.7835451663552" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,31.6405990016639"
-                    Point2="0,35.6405990016639"
-                    Point3="4,35.6405990016639" />
+                    Point1="0,25.7835451663552"
+                    Point2="0,29.7835451663552"
+                    Point3="-4,29.7835451663552" />
                   <mssgle:LineSegment
-                    End="101.888888888889,35.6405990016639" />
+                    End="-100.409523814086,29.7835451663552" />
                   <mssgle:CubicBezierSegment
-                    Point1="101.888888888889,35.6405990016639"
-                    Point2="105.888888888889,35.6405990016639"
-                    Point3="105.888888888889,39.6405990016639" />
+                    Point1="-100.409523814086,29.7835451663552"
+                    Point2="-104.409523814086,29.7835451663552"
+                    Point3="-104.409523814086,33.7835451663552" />
                   <mssgle:LineSegment
-                    End="105.888888888889,52.5000000000001" />
+                    End="-104.409523814086,51.966666666666" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6644,43 +7016,43 @@ where [refTable].[ShipName] = ?</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="165,43"
+          Size="164.8,43.2"
           Id="Package\Load Consignor\Country not found"
           TopLeft="4.50000002980234,494.833329399427" />
         <NodeLayout
-          Size="233,43"
+          Size="232.8,43.2"
           Id="Package\Load Consignor\Replace NULL values in Discount"
           TopLeft="227.16666657726,74.1666676799457" />
         <NodeLayout
-          Size="208,43"
+          Size="208,43.2"
           Id="Package\Load Consignor\Lookup ISO3 Country Code"
           TopLeft="235.833333363136,392.16666273276" />
         <NodeLayout
-          Size="120,43"
+          Size="120,43.2"
           Id="Package\Load Consignor\Log data"
           TopLeft="0,245.066655012767" />
         <NodeLayout
-          Size="216,43"
+          Size="216,43.2"
           Id="Package\Load Consignor\Remove duplicate consignors"
           TopLeft="231.833333363136,494.833329399427" />
         <NodeLayout
-          Size="201,43"
+          Size="200.8,43.2"
           Id="Package\Load Consignor\Lookup correct City name"
           TopLeft="235.249992970378,245.333326252301" />
         <NodeLayout
-          Size="152,43"
+          Size="152,43.2"
           Id="Package\Load Consignor\Raw_Consignor"
           TopLeft="264.833333333333,0.500000149011647" />
         <NodeLayout
-          Size="229,43"
+          Size="228.8,43.2"
           Id="Package\Load Consignor\Split inconsistent or invalid data"
           TopLeft="227.499989829958,141.699993243218" />
         <NodeLayout
-          Size="147,43"
+          Size="147.2,43.2"
           Id="Package\Load Consignor\City not found"
           TopLeft="7.99999976158144,343.999991714955" />
         <NodeLayout
-          Size="167,43"
+          Size="167.2,43.2"
           Id="Package\Load Consignor\RDBMS_Consignor"
           TopLeft="256.500000029802,597.499996066094" />
         <EdgeLayout
@@ -6823,7 +7195,7 @@ where [refTable].[ShipName] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-175.744480111343,27.6657872516387,129.350078125,16"
+              BoundingBox="-175.744480111343,27.6657872516387,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -6859,7 +7231,7 @@ where [refTable].[ShipName] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-174.341705729167,29.2748091603054,129.350078125,16"
+              BoundingBox="-174.341705729167,29.2748091603054,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -6967,7 +7339,7 @@ where [refTable].[ShipName] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-193.000895522618,29.5323305843059,140.7240234375,16"
+              BoundingBox="-193.000895522618,29.5323305843059,123.269921875,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -7016,73 +7388,29 @@ where [refTable].[ShipName] = ?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="167,43"
+          Size="224,41.6"
+          Id="Package\Load Containers\EuroPriceKm to EuroPriceNMile"
+          TopLeft="179.999997317791,359.799994769692" />
+        <NodeLayout
+          Size="167.2,43.2"
           Id="Package\Load Containers\OLE DB Command"
           TopLeft="458.999986320734,395.999988198281" />
         <NodeLayout
-          Size="169,43"
+          Size="168.8,41.6"
           Id="Package\Load Containers\RDBMS_Containers"
-          TopLeft="246.999992638827,399.333322068056" />
+          TopLeft="213.999993130565,473.33332096537" />
         <NodeLayout
-          Size="155,43"
+          Size="155.2,43.2"
           Id="Package\Load Containers\TEU Conversion"
           TopLeft="309.99999076128,122.999996334314" />
         <NodeLayout
-          Size="156,43"
+          Size="156,43.2"
           Id="Package\Load Containers\Raw_Containers"
           TopLeft="303.999990940094,27.999999165535" />
         <NodeLayout
-          Size="249,43"
+          Size="248.8,43.2"
           Id="Package\Load Containers\Check if PowerFlag or Type is to big"
           TopLeft="254.999992400408,265.999992072582" />
-        <EdgeLayout
-          Id="Package\Load Containers.Paths[Derived Column Output]"
-          TopLeft="383.499991580844,165.666663000981">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,100.333329071601"
-              Start="0,0"
-              End="0,92.8333290716012">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,92.8333290716012" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Containers.Paths[Conditional Split Default Output]"
-          TopLeft="335.555548075173,308.666658739249">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,90.6666633288067"
-              Start="0,0"
-              End="0,83.1666633288067">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,83.1666633288067" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-70.61390625,35.7542301019034,141.2278125,11.658203125"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Containers.Paths[Type or Powerflag to big]"
           TopLeft="419.888881289297,308.666658739249">
@@ -7115,7 +7443,7 @@ where [refTable].[ShipName] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="6.17813715113534,40.2674444149119,127.08328125,16"
+              BoundingBox="6.17813715113534,40.2674444149119,110.0881640625,11.7119140625"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -7143,20 +7471,117 @@ where [refTable].[ShipName] = ?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Containers.Paths[Derived Column Output1]"
+          TopLeft="295.199995224178,401.399994769692">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,71.9333261956776"
+              Start="0,0"
+              End="0,64.4333261956776">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,64.4333261956776" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Containers.Paths[Derived Column Output]"
+          TopLeft="383.499991580844,165.666663000981">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,100.333329071601"
+              Start="0,0"
+              End="0,92.8333290716012">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,92.8333290716012" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Containers.Paths[Conditional Split Default Output]"
+          TopLeft="339.266659067075,309.199992072582">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-47.2666617492836,50.6000026971103"
+              Start="0,0"
+              End="-47.2666617492836,43.1000026971103">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.4339946994081" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.4339946994081"
+                    Point2="0,20.4339946994081"
+                    Point3="-4,20.4339946994081" />
+                  <mssgle:LineSegment
+                    End="-43.2666617492836,20.4339946994081" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-43.2666617492836,20.4339946994081"
+                    Point2="-47.2666617492836,20.4339946994081"
+                    Point3="-47.2666617492836,24.4339946994081" />
+                  <mssgle:LineSegment
+                    End="-47.2666617492836,43.1000026971103" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-94.2472371246418,25.4339946994081,141.2278125,11.658203125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Containers\RDBMS_Containers">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Load Item">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="127,42"
+          Size="127.2,41.6"
           Id="Package\Load Item\Raw_Item"
           TopLeft="155,85" />
         <NodeLayout
-          Size="141,42"
+          Size="140.8,41.6"
           Id="Package\Load Item\RDBMS_Item"
           TopLeft="144,242" />
         <EdgeLayout
@@ -7190,37 +7615,125 @@ where [refTable].[ShipName] = ?</property>
     design-time-name="Package\Load Port">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="167,43"
+          Size="208,43.2"
+          Id="Package\Load Port\Lookup ISO3 Country Code"
+          TopLeft="158.839278647068,87.7499958157541" />
+        <NodeLayout
+          Size="167.2,43.2"
           Id="Package\Load Port\OLE DB Command"
           TopLeft="341.249984744937,251.849987943173" />
         <NodeLayout
-          Size="125,43"
-          Id="Package\Load Port\Raw_Port"
-          TopLeft="191.874991422519,3.24999984502793" />
-        <NodeLayout
-          Size="139,42"
+          Size="137.6,41.6"
           Id="Package\Load Port\RDBMS_Port"
           TopLeft="158.124992931262,250.449988439083" />
         <NodeLayout
-          Size="208,43"
-          Id="Package\Load Port\Lookup ISO3 Country Code"
-          TopLeft="158.124992931262,87.7499958157541" />
+          Size="124.8,43.2"
+          Id="Package\Load Port\Raw_Port"
+          TopLeft="191.874991422519,3.24999984502793" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\Load Port\Derived Column"
+          TopLeft="125.714285981898,175.952941023643" />
         <EdgeLayout
-          Id="Package\Load Port.Paths[OLE DB Source Output]"
-          TopLeft="258.333325510224,45.9166665116946">
+          Id="Package\Load Port.Paths[Lookup No Match Output]"
+          TopLeft="262.839278647068,130.949995815754">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,41.8333293040595"
+              EndConnector="162.010706097869,120.899992127419"
               Start="0,0"
-              End="0,34.3333293040595">
+              End="162.010706097869,113.399992127419">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,34.3333293040595" />
+                    End="0,56.4499960637095" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,56.4499960637095"
+                    Point2="0,60.4499960637095"
+                    Point3="4,60.4499960637095" />
+                  <mssgle:LineSegment
+                    End="158.010706097869,60.4499960637095" />
+                  <mssgle:CubicBezierSegment
+                    Point1="158.010706097869,60.4499960637095"
+                    Point2="162.010706097869,60.4499960637095"
+                    Point3="162.010706097869,64.4499960637095" />
+                  <mssgle:LineSegment
+                    End="162.010706097869,113.399992127419" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="25.1989663301844,65.4499960637095,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Port.Paths[Lookup Match Output]"
+          TopLeft="229.505945313735,130.949995815754">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-27.3916593318365,45.0029452078894"
+              Start="0,0"
+              End="-27.3916593318365,37.5029452078894">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.2072984428865" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.2072984428865"
+                    Point2="0,18.2072984428865"
+                    Point3="-4,18.2072984428865" />
+                  <mssgle:LineSegment
+                    End="-23.3916593318365,18.2072984428865" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-23.3916593318365,18.2072984428865"
+                    Point2="-27.3916593318365,18.2072984428865"
+                    Point3="-27.3916593318365,22.2072984428865" />
+                  <mssgle:LineSegment
+                    End="-27.3916593318365,37.5029452078894" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-61.8872163846682,23.2072984428865,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Port.Paths[Derived Column Output]"
+          TopLeft="202.114285981898,217.552941023643">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="24.8107069493636,32.8970474154395"
+              Start="0,0"
+              End="24.8107069493636,25.3970474154395">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.4485237077198" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.4485237077198"
+                    Point2="0,16.4485237077198"
+                    Point3="4,16.4485237077198" />
+                  <mssgle:LineSegment
+                    End="20.8107069493636,16.4485237077198" />
+                  <mssgle:CubicBezierSegment
+                    Point1="20.8107069493636,16.4485237077198"
+                    Point2="24.8107069493636,16.4485237077198"
+                    Point3="24.8107069493636,20.4485237077198" />
+                  <mssgle:LineSegment
+                    End="24.8107069493636,25.3970474154395" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7232,89 +7745,79 @@ where [refTable].[ShipName] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load Port.Paths[Lookup No Match Output]"
-          TopLeft="295.458326264595,130.749995815754">
+          Id="Package\Load Port.Paths[OLE DB Source Output]"
+          TopLeft="254.274991422519,46.4499998450279">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="129.291658480342,121.099992127419"
+              EndConnector="8.56428722454922,41.2999959707262"
               Start="0,0"
-              End="129.291658480342,113.599992127419">
+              End="8.56428722454922,33.7999959707262">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,44.9946533034596" />
+                    End="0,16.6499979853631" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,44.9946533034596"
-                    Point2="0,48.9946533034596"
-                    Point3="4,48.9946533034596" />
+                    Point1="0,16.6499979853631"
+                    Point2="0,20.6499979853631"
+                    Point3="4,20.6499979853631" />
                   <mssgle:LineSegment
-                    End="125.291658480342,48.9946533034596" />
+                    End="4.56428722454922,20.6499979853631" />
                   <mssgle:CubicBezierSegment
-                    Point1="125.291658480342,48.9946533034596"
-                    Point2="129.291658480342,48.9946533034596"
-                    Point3="129.291658480342,52.9946533034596" />
+                    Point1="4.56428722454922,20.6499979853631"
+                    Point2="8.56428722454922,20.6499979853631"
+                    Point3="8.56428722454922,24.6499979853631" />
                   <mssgle:LineSegment
-                    End="129.291658480342,113.599992127419" />
+                    End="8.56428722454922,33.7999959707262" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="8.83944252142086,53.9946533034596,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Port.Paths[Lookup Match Output]"
-          TopLeft="228.291659597929,130.416662482421">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,120.033325956663"
-              Start="0,0"
-              End="0,112.533325956663">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,112.533325956663" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,50.4619754783315,96.3827734375,11.609375"
+              BoundingBox="0,0,0,0"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Port\Raw_Port">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Port\RDBMS_Port">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Load Ship">
     <LayoutInfo>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="216,42"
-          Id="Package\Load Ship\Convert Report year to string"
-          TopLeft="339,442" />
-        <NodeLayout
-          Size="175,43"
-          Id="Package\Load Ship\Lookup ISO Country"
-          TopLeft="363.999989151955,100.999996989966" />
-        <NodeLayout
           Size="222,42"
           Id="Package\Load Ship\Convert reporting year to date"
           TopLeft="342,515" />
-        <NodeLayout
-          Size="140,43"
-          Id="Package\Load Ship\RDBMS_Ship"
-          TopLeft="379.999988734722,597.999986588955" />
         <NodeLayout
           Size="125,43"
           Id="Package\Load Ship\Raw_Ship"
@@ -7327,6 +7830,108 @@ where [refTable].[ShipName] = ?</property>
           Size="211,43"
           Id="Package\Load Ship\DOLLAR -&gt; EUR Conversion"
           TopLeft="337.999989748001,327.999991208315" />
+        <NodeLayout
+          Size="216,42"
+          Id="Package\Load Ship\Convert Report year to string"
+          TopLeft="338.285714284194,442" />
+        <NodeLayout
+          Size="140,43"
+          Id="Package\Load Ship\RDBMS_Ship"
+          TopLeft="379.999988734722,597.999986588955" />
+        <NodeLayout
+          Size="175,43"
+          Id="Package\Load Ship\Lookup ISO Country"
+          TopLeft="363.999989151955,100.999996989966" />
+        <EdgeLayout
+          Id="Package\Load Ship.Paths[Lookup Match Output]"
+          TopLeft="450.16665592293,143.666663656632">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,55.3333304127058"
+              Start="0,0"
+              End="0,47.8333304127058">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.8333304127058" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,18.1119777063529,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Ship.Paths[Derived Column Output1]"
+          TopLeft="444.942852016097,371.199991208315">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,70.800008791685"
+              Start="0,0"
+              End="0,63.300008791685">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,63.300008791685" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Ship.Paths[Derived Column Output]"
+          TopLeft="451.499994367361,557">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40.9999865889549"
+              Start="0,0"
+              End="0,33.4999865889549">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.4999865889549" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Ship.Paths[Data Conversion Output]"
+          TopLeft="449.742857142097,483.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31.4"
+              Start="0,0"
+              End="0,23.9">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.9" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Ship.Paths[OLE DB Source Output]"
           TopLeft="450.999988794327,59.6666661600272">
@@ -7373,112 +7978,9 @@ where [refTable].[ShipName] = ?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Ship.Paths[Lookup Match Output]"
-          TopLeft="450.16665592293,143.666663656632">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,55.3333304127058"
-              Start="0,0"
-              End="0,47.8333304127058">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,47.8333304127058" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,18.1119777063529,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Ship.Paths[Derived Column Output]"
-          TopLeft="451.499994367361,557">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,40.9999865889549"
-              Start="0,0"
-              End="0,33.4999865889549">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,33.4999865889549" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Ship.Paths[Data Conversion Output]"
-          TopLeft="450,484">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,31"
-              Start="0,0"
-              End="0,23.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,23.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Ship.Paths[Derived Column Output1]"
-          TopLeft="445.249994874,370.999991208315">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,71.000008791685"
-              Start="0,0"
-              End="0,63.500008791685">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,63.500008791685" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Ship\RDBMS_Ship">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Load Ship\Lookup ship MRV data">
     <Properties>
@@ -7502,125 +8004,232 @@ where [refTable].[ShipName] = ?</property>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Ship\RDBMS_Ship">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Load Shipment">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="164,43"
-          Id="Package\Load Shipment\RDBMS_Shipment"
-          TopLeft="5.50000000000001,108.166666666667" />
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="149,43"
           Id="Package\Load Shipment\Raw_Shipment"
-          TopLeft="12.8333333333333,5.50000000000004" />
+          TopLeft="471.833333333333,56.5" />
+        <NodeLayout
+          Size="134,42"
+          Id="Package\Load Shipment\Km to nMile"
+          TopLeft="494.999999493361,170.999998748303" />
         <EdgeLayout
           Id="Package\Load Shipment.Paths[OLE DB Source Output]"
-          TopLeft="87.5,48.1666666666667">
+          TopLeft="546.333333333333,99.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60.0000000000001"
+              EndConnector="15.6666661600273,71.4999987483025"
               Start="0,0"
-              End="0,52.5000000000001">
+              End="15.6666661600273,63.9999987483025">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5000000000001" />
+                    End="0,31.7499993741512" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.7499993741512"
+                    Point2="0,35.7499993741512"
+                    Point3="4,35.7499993741512" />
+                  <mssgle:LineSegment
+                    End="11.6666661600273,35.7499993741512" />
+                  <mssgle:CubicBezierSegment
+                    Point1="11.6666661600273,35.7499993741512"
+                    Point2="15.6666661600273,35.7499993741512"
+                    Point3="15.6666661600273,39.7499993741512" />
+                  <mssgle:LineSegment
+                    End="15.6666661600273,63.9999987483025" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Load Shipment\OLE DB Destination"
+          TopLeft="467,311" />
+        <EdgeLayout
+          Id="Package\Load Shipment.Paths[Derived Column Output]"
+          TopLeft="561.999999493361,212.999998748303">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-9.49999949336052,98.0000012516975"
+              Start="0,0"
+              End="-9.49999949336052,90.5000012516975">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.0000006258487" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,45.0000006258487"
+                    Point2="0,49.0000006258487"
+                    Point3="-4,49.0000006258487" />
+                  <mssgle:LineSegment
+                    End="-5.49999949336052,49.0000006258487" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-5.49999949336052,49.0000006258487"
+                    Point2="-9.49999949336052,49.0000006258487"
+                    Point3="-9.49999949336052,53.0000006258487" />
+                  <mssgle:LineSegment
+                    End="-9.49999949336052,90.5000012516975" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Shipment\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Load ShipmentDetail">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="328,42.6666666666667"
+          Size="328,43"
           Id="Package\Load ShipmentDetail\Replace ContainerNr with Container amount (Range)"
-          TopLeft="5.5,108.166666666667" />
+          TopLeft="423.5,189.166666666667" />
         <NodeLayout
-          Size="177.333333333334,42.6666666666667"
+          Size="177,43"
           Id="Package\Load ShipmentDetail\Raw_ShipmentDetail"
-          TopLeft="80.8333333333333,5.50000000000004" />
-        <NodeLayout
-          Size="190.666666666667,42.6666666666667"
-          Id="Package\Load ShipmentDetail\RDBMS_ShipmentDetail"
-          TopLeft="74.1666666666667,210.833333333334" />
+          TopLeft="488.833333333333,69.5" />
         <EdgeLayout
           Id="Package\Load ShipmentDetail.Paths[OLE DB Source Output]"
-          TopLeft="169.5,48.1666666666667">
+          TopLeft="577.333333333333,112.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60.0000000000001"
+              EndConnector="10.1666666666667,76.666666666667"
               Start="0,0"
-              End="0,52.5000000000001">
+              End="10.1666666666667,69.166666666667">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5000000000001" />
+                    End="0,34.3333333333335" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,34.3333333333335"
+                    Point2="0,38.3333333333335"
+                    Point3="4,38.3333333333335" />
+                  <mssgle:LineSegment
+                    End="6.16666666666674,38.3333333333335" />
+                  <mssgle:CubicBezierSegment
+                    Point1="6.16666666666674,38.3333333333335"
+                    Point2="10.1666666666667,38.3333333333335"
+                    Point3="10.1666666666667,42.3333333333335" />
+                  <mssgle:LineSegment
+                    End="10.1666666666667,69.166666666667" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Load ShipmentDetail\OLE DB Destination"
+          TopLeft="493,319" />
         <EdgeLayout
           Id="Package\Load ShipmentDetail.Paths[Derived Column Output]"
-          TopLeft="169.5,150.833333333333">
+          TopLeft="587.5,232.166666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60.0000000000001"
+              EndConnector="-9,86.833333333333"
               Start="0,0"
-              End="0,52.5000000000001">
+              End="-9,79.333333333333">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5000000000001" />
+                    End="0,39.4166666666665" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,39.4166666666665"
+                    Point2="0,43.4166666666665"
+                    Point3="-4,43.4166666666665" />
+                  <mssgle:LineSegment
+                    End="-5,43.4166666666665" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-5,43.4166666666665"
+                    Point2="-9,43.4166666666665"
+                    Point3="-9,47.4166666666665" />
+                  <mssgle:LineSegment
+                    End="-9,79.333333333333" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load ShipmentDetail\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Load Voyage">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="155,43"
+          Size="155.2,43.2"
           Id="Package\Load Voyage\RDBMS_Voyage"
           TopLeft="5.50000000000001,108.166666666667" />
         <NodeLayout
-          Size="140,43"
+          Size="140,43.2"
           Id="Package\Load Voyage\Raw_Voyage"
           TopLeft="12.8333333333333,5.50000000000004" />
         <EdgeLayout
@@ -7654,29 +8263,57 @@ where [refTable].[ShipName] = ?</property>
     design-time-name="Package\Load VoyagePort">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="173,43"
+          Size="172,41.6"
           Id="Package\Load VoyagePort\RDBMS_VoyagePort"
-          TopLeft="5.50000000000001,108.166666666667" />
+          TopLeft="6.49999998509885,207.166665191452" />
         <NodeLayout
-          Size="159,43"
+          Size="159.2,43.2"
           Id="Package\Load VoyagePort\Raw_VoyagePort"
           TopLeft="12.8333333333334,5.50000000000004" />
+        <NodeLayout
+          Size="134.4,41.6"
+          Id="Package\Load VoyagePort\Km to nMile"
+          TopLeft="25.9999996125698,117.999998241663" />
         <EdgeLayout
           Id="Package\Load VoyagePort.Paths[OLE DB Source Output]"
-          TopLeft="92.1666666666667,48.1666666666667">
+          TopLeft="92.8166664729516,48.7">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60.0000000000001"
+              EndConnector="0,69.299998241663"
               Start="0,0"
-              End="0,52.5000000000001">
+              End="0,61.799998241663">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5000000000001" />
+                    End="0,61.799998241663" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load VoyagePort.Paths[Derived Column Output]"
+          TopLeft="92.8499997988343,159.599998241663">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47.566666949789"
+              Start="0,0"
+              End="0,40.066666949789">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.066666949789" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7690,5 +8327,18 @@ where [refTable].[ShipName] = ?</property>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load VoyagePort\RDBMS_VoyagePort">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>

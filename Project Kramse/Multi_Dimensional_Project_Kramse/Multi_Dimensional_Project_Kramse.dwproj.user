@@ -4,7 +4,7 @@
       <Name>Development</Name>
       <Options>
         <TargetServer>localhost</TargetServer>
-        <TargetDatabase>ATEAM_KRAMSE</TargetDatabase>
+        <TargetDatabase>Multi_Dimensional_Project_Kramse</TargetDatabase>
         <StartObject>
           <ObjectId></ObjectId>
           <ObjectType>Current</ObjectType>

@@ -5,7 +5,7 @@ VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{C9674DCB-5085-4A16-B785-4C70DD1589BD}") = "Extract_Transform_Load", "Extract_Transform_Load\Extract_Transform_Load.dtproj", "{E42B77C0-5CD2-4095-86BA-BFA339C09B4D}"
 EndProject
-Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "Multi_Dimensional_Model", "Multi_Dimensional_Model\Multi_Dimensional_Model.dwproj", "{FC59EBFC-8B50-47F5-BA32-F6BB1FED19C6}"
+Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "Multi_Dimensional_Project_Kramse", "Multi_Dimensional_Project_Kramse\Multi_Dimensional_Project_Kramse.dwproj", "{07B994BC-6C89-4BA2-8CB0-C9E50D514FCE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,9 +14,9 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{E42B77C0-5CD2-4095-86BA-BFA339C09B4D}.Development|Default.ActiveCfg = Development
 		{E42B77C0-5CD2-4095-86BA-BFA339C09B4D}.Development|Default.Build.0 = Development
-		{FC59EBFC-8B50-47F5-BA32-F6BB1FED19C6}.Development|Default.ActiveCfg = Development
-		{FC59EBFC-8B50-47F5-BA32-F6BB1FED19C6}.Development|Default.Build.0 = Development
-		{FC59EBFC-8B50-47F5-BA32-F6BB1FED19C6}.Development|Default.Deploy.0 = Development
+		{07B994BC-6C89-4BA2-8CB0-C9E50D514FCE}.Development|Default.ActiveCfg = Development
+		{07B994BC-6C89-4BA2-8CB0-C9E50D514FCE}.Development|Default.Build.0 = Development
+		{07B994BC-6C89-4BA2-8CB0-C9E50D514FCE}.Development|Default.Deploy.0 = Development
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

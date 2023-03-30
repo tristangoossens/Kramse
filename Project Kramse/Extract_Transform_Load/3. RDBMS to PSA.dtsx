@@ -11,8 +11,8 @@
   DTS:LocaleID="1043"
   DTS:ObjectName="3  RDBMS to PSA"
   DTS:PackageType="5"
-  DTS:VersionBuild="144"
-  DTS:VersionGUID="{880D70C2-2248-4624-A4A3-9FF054565571}">
+  DTS:VersionBuild="149"
+  DTS:VersionGUID="{6B1B3CFE-65A3-41D3-89EE-B90FFF036398}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -1928,7 +1928,7 @@
                       refId="Package\Load Shipment\Caculate LoadFactor.Inputs[Derived Column Input].Columns[TotalTEU]"
                       cachedDataType="i8"
                       cachedName="TotalTEU"
-                      lineageId="Package\Load Shipment\Calculate TotalTEU &amp; Revenue.Outputs[Derived Column Output].Columns[TotalTEU]" />
+                      lineageId="Package\Load Shipment\Calculate TotalTEU, Revenue.Outputs[Derived Column Output].Columns[TotalTEU]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -1954,7 +1954,7 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">(DT_R8)#{Package\Load Shipment\Calculate TotalTEU &amp; Revenue.Outputs[Derived Column Output].Columns[TotalTEU]} / #{Package\Load Shipment\Lookup Ship MaxTEU.Outputs[Lookup Match Output].Columns[MaxTeu]} * 100</property>
+                          name="Expression">(DT_R8)#{Package\Load Shipment\Calculate TotalTEU, Revenue.Outputs[Derived Column Output].Columns[TotalTEU]} / #{Package\Load Shipment\Lookup Ship MaxTEU.Outputs[Lookup Match Output].Columns[MaxTeu]} * 100</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -1992,56 +1992,56 @@
               </outputs>
             </component>
             <component
-              refId="Package\Load Shipment\Calculate TotalTEU &amp; Revenue"
+              refId="Package\Load Shipment\Calculate TotalTEU, Revenue"
               componentClassID="Microsoft.DerivedColumn"
               contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
               description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-              name="Calculate TotalTEU &amp; Revenue"
+              name="Calculate TotalTEU, Revenue"
               usesDispositions="true">
               <inputs>
                 <input
-                  refId="Package\Load Shipment\Calculate TotalTEU &amp; Revenue.Inputs[Derived Column Input]"
+                  refId="Package\Load Shipment\Calculate TotalTEU, Revenue.Inputs[Derived Column Input]"
                   description="Input to the Derived Column Transformation"
                   name="Derived Column Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Load Shipment\Calculate TotalTEU &amp; Revenue.Inputs[Derived Column Input].Columns[ContainerAmount]"
+                      refId="Package\Load Shipment\Calculate TotalTEU, Revenue.Inputs[Derived Column Input].Columns[ContainerAmount]"
                       cachedDataType="i8"
                       cachedName="ContainerAmount"
                       lineageId="Package\Load Shipment\Aggregate.Outputs[Aggregate Output 1].Columns[ContainerAmount]" />
                     <inputColumn
-                      refId="Package\Load Shipment\Calculate TotalTEU &amp; Revenue.Inputs[Derived Column Input].Columns[TrajectDistanceInNMile]"
+                      refId="Package\Load Shipment\Calculate TotalTEU, Revenue.Inputs[Derived Column Input].Columns[TrajectDistanceInNMile]"
                       cachedDataType="r8"
                       cachedName="TrajectDistanceInNMile"
                       lineageId="Package\Load Shipment\Lookup VoyagePort.Outputs[Lookup Match Output].Columns[TrajectDistanceInNMile]" />
                     <inputColumn
-                      refId="Package\Load Shipment\Calculate TotalTEU &amp; Revenue.Inputs[Derived Column Input].Columns[TEU]"
+                      refId="Package\Load Shipment\Calculate TotalTEU, Revenue.Inputs[Derived Column Input].Columns[TEU]"
                       cachedDataType="i4"
                       cachedName="TEU"
-                      lineageId="Package\Load Shipment\Lookup.Outputs[Lookup Match Output].Columns[TEU]" />
+                      lineageId="Package\Load Shipment\Lookup Container.Outputs[Lookup Match Output].Columns[TEU]" />
                     <inputColumn
-                      refId="Package\Load Shipment\Calculate TotalTEU &amp; Revenue.Inputs[Derived Column Input].Columns[EuroPricePerNmile]"
+                      refId="Package\Load Shipment\Calculate TotalTEU, Revenue.Inputs[Derived Column Input].Columns[EuroPricePerNmile]"
                       cachedDataType="r8"
                       cachedName="EuroPricePerNmile"
-                      lineageId="Package\Load Shipment\Lookup.Outputs[Lookup Match Output].Columns[EuroPricePerNmile]" />
+                      lineageId="Package\Load Shipment\Lookup Container.Outputs[Lookup Match Output].Columns[EuroPricePerNmile]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Load Shipment\Calculate TotalTEU &amp; Revenue.Outputs[Derived Column Output]"
+                  refId="Package\Load Shipment\Calculate TotalTEU, Revenue.Outputs[Derived Column Output]"
                   description="Default Output of the Derived Column Transformation"
                   exclusionGroup="1"
                   name="Derived Column Output"
-                  synchronousInputId="Package\Load Shipment\Calculate TotalTEU &amp; Revenue.Inputs[Derived Column Input]">
+                  synchronousInputId="Package\Load Shipment\Calculate TotalTEU, Revenue.Inputs[Derived Column Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load Shipment\Calculate TotalTEU &amp; Revenue.Outputs[Derived Column Output].Columns[TotalTEU]"
+                      refId="Package\Load Shipment\Calculate TotalTEU, Revenue.Outputs[Derived Column Output].Columns[TotalTEU]"
                       dataType="i8"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\Load Shipment\Calculate TotalTEU &amp; Revenue.Outputs[Derived Column Output].Columns[TotalTEU]"
+                      lineageId="Package\Load Shipment\Calculate TotalTEU, Revenue.Outputs[Derived Column Output].Columns[TotalTEU]"
                       name="TotalTEU"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -2049,7 +2049,7 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">#{Package\Load Shipment\Aggregate.Outputs[Aggregate Output 1].Columns[ContainerAmount]} * #{Package\Load Shipment\Lookup.Outputs[Lookup Match Output].Columns[TEU]}</property>
+                          name="Expression">#{Package\Load Shipment\Aggregate.Outputs[Aggregate Output 1].Columns[ContainerAmount]} * #{Package\Load Shipment\Lookup Container.Outputs[Lookup Match Output].Columns[TEU]}</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -2059,11 +2059,11 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Load Shipment\Calculate TotalTEU &amp; Revenue.Outputs[Derived Column Output].Columns[RevenueInEuro]"
+                      refId="Package\Load Shipment\Calculate TotalTEU, Revenue.Outputs[Derived Column Output].Columns[RevenueInEuro]"
                       dataType="r8"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\Load Shipment\Calculate TotalTEU &amp; Revenue.Outputs[Derived Column Output].Columns[RevenueInEuro]"
+                      lineageId="Package\Load Shipment\Calculate TotalTEU, Revenue.Outputs[Derived Column Output].Columns[RevenueInEuro]"
                       name="RevenueInEuro"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -2071,7 +2071,7 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">(DT_R8)(#{Package\Load Shipment\Lookup.Outputs[Lookup Match Output].Columns[EuroPricePerNmile]} * #{Package\Load Shipment\Aggregate.Outputs[Aggregate Output 1].Columns[ContainerAmount]} * #{Package\Load Shipment\Lookup VoyagePort.Outputs[Lookup Match Output].Columns[TrajectDistanceInNMile]})</property>
+                          name="Expression">(DT_R8)(#{Package\Load Shipment\Lookup Container.Outputs[Lookup Match Output].Columns[EuroPricePerNmile]} * #{Package\Load Shipment\Aggregate.Outputs[Aggregate Output 1].Columns[ContainerAmount]} * #{Package\Load Shipment\Lookup VoyagePort.Outputs[Lookup Match Output].Columns[TrajectDistanceInNMile]})</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -2084,23 +2084,23 @@
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Load Shipment\Calculate TotalTEU &amp; Revenue.Outputs[Derived Column Error Output]"
+                  refId="Package\Load Shipment\Calculate TotalTEU, Revenue.Outputs[Derived Column Error Output]"
                   description="Error Output of the Derived Column Transformation"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Derived Column Error Output"
-                  synchronousInputId="Package\Load Shipment\Calculate TotalTEU &amp; Revenue.Inputs[Derived Column Input]">
+                  synchronousInputId="Package\Load Shipment\Calculate TotalTEU, Revenue.Inputs[Derived Column Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load Shipment\Calculate TotalTEU &amp; Revenue.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      refId="Package\Load Shipment\Calculate TotalTEU, Revenue.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Load Shipment\Calculate TotalTEU &amp; Revenue.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Load Shipment\Calculate TotalTEU, Revenue.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Load Shipment\Calculate TotalTEU &amp; Revenue.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      refId="Package\Load Shipment\Calculate TotalTEU, Revenue.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Load Shipment\Calculate TotalTEU &amp; Revenue.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Load Shipment\Calculate TotalTEU, Revenue.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -2109,11 +2109,11 @@
               </outputs>
             </component>
             <component
-              refId="Package\Load Shipment\Lookup"
+              refId="Package\Load Shipment\Lookup Container"
               componentClassID="Microsoft.Lookup"
               contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
               description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
-              name="Lookup"
+              name="Lookup Container"
               usesDispositions="true"
               version="6">
               <properties>
@@ -2177,7 +2177,7 @@ where [refTable].[Id] = ?</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Load Shipment\Lookup.Connections[OleDbConnection]"
+                  refId="Package\Load Shipment\Lookup Container.Connections[OleDbConnection]"
                   connectionManagerID="{1421DBD4-2B2C-4ECE-91B7-A456A919242E}:external"
                   connectionManagerRefId="Project.ConnectionManagers[RDBMS database - MSSQL connection]"
                   description="Connection manager used to access lookup data."
@@ -2185,11 +2185,11 @@ where [refTable].[Id] = ?</property>
               </connections>
               <inputs>
                 <input
-                  refId="Package\Load Shipment\Lookup.Inputs[Lookup Input]"
+                  refId="Package\Load Shipment\Lookup Container.Inputs[Lookup Input]"
                   name="Lookup Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Load Shipment\Lookup.Inputs[Lookup Input].Columns[ContainerTypeId]"
+                      refId="Package\Load Shipment\Lookup Container.Inputs[Lookup Input].Columns[ContainerTypeId]"
                       cachedDataType="i4"
                       cachedName="ContainerTypeId"
                       lineageId="Package\Load Shipment\Aggregate.Outputs[Aggregate Output 1].Columns[ContainerTypeId]">
@@ -2210,18 +2210,18 @@ where [refTable].[Id] = ?</property>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Load Shipment\Lookup.Outputs[Lookup Match Output]"
+                  refId="Package\Load Shipment\Lookup Container.Outputs[Lookup Match Output]"
                   errorOrTruncationOperation="Lookup"
                   errorRowDisposition="FailComponent"
                   exclusionGroup="1"
                   name="Lookup Match Output"
-                  synchronousInputId="Package\Load Shipment\Lookup.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Load Shipment\Lookup Container.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load Shipment\Lookup.Outputs[Lookup Match Output].Columns[TEU]"
+                      refId="Package\Load Shipment\Lookup Container.Outputs[Lookup Match Output].Columns[TEU]"
                       dataType="i4"
                       errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\Load Shipment\Lookup.Outputs[Lookup Match Output].Columns[TEU]"
+                      lineageId="Package\Load Shipment\Lookup Container.Outputs[Lookup Match Output].Columns[TEU]"
                       name="TEU"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -2232,10 +2232,10 @@ where [refTable].[Id] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Load Shipment\Lookup.Outputs[Lookup Match Output].Columns[EuroPricePerNmile]"
+                      refId="Package\Load Shipment\Lookup Container.Outputs[Lookup Match Output].Columns[EuroPricePerNmile]"
                       dataType="r8"
                       errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\Load Shipment\Lookup.Outputs[Lookup Match Output].Columns[EuroPricePerNmile]"
+                      lineageId="Package\Load Shipment\Lookup Container.Outputs[Lookup Match Output].Columns[EuroPricePerNmile]"
                       name="EuroPricePerNmile"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -2249,30 +2249,30 @@ where [refTable].[Id] = ?</property>
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Load Shipment\Lookup.Outputs[Lookup No Match Output]"
+                  refId="Package\Load Shipment\Lookup Container.Outputs[Lookup No Match Output]"
                   description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
                   exclusionGroup="1"
                   name="Lookup No Match Output"
-                  synchronousInputId="Package\Load Shipment\Lookup.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Load Shipment\Lookup Container.Inputs[Lookup Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Load Shipment\Lookup.Outputs[Lookup Error Output]"
+                  refId="Package\Load Shipment\Lookup Container.Outputs[Lookup Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Lookup Error Output"
-                  synchronousInputId="Package\Load Shipment\Lookup.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Load Shipment\Lookup Container.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load Shipment\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      refId="Package\Load Shipment\Lookup Container.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Load Shipment\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Load Shipment\Lookup Container.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Load Shipment\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      refId="Package\Load Shipment\Lookup Container.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Load Shipment\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Load Shipment\Lookup Container.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -3147,7 +3147,7 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
                       cachedDataType="i8"
                       cachedName="TotalTEU"
                       externalMetadataColumnId="Package\Load Shipment\PSA_Shipment (Fact).Inputs[OLE DB Destination Input].ExternalColumns[TotalTEU]"
-                      lineageId="Package\Load Shipment\Calculate TotalTEU &amp; Revenue.Outputs[Derived Column Output].Columns[TotalTEU]" />
+                      lineageId="Package\Load Shipment\Calculate TotalTEU, Revenue.Outputs[Derived Column Output].Columns[TotalTEU]" />
                     <inputColumn
                       refId="Package\Load Shipment\PSA_Shipment (Fact).Inputs[OLE DB Destination Input].Columns[LoadFactor]"
                       cachedDataType="r8"
@@ -3183,7 +3183,7 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
                       cachedDataType="r8"
                       cachedName="RevenueInEuro"
                       externalMetadataColumnId="Package\Load Shipment\PSA_Shipment (Fact).Inputs[OLE DB Destination Input].ExternalColumns[ReveneuInEuro]"
-                      lineageId="Package\Load Shipment\Calculate TotalTEU &amp; Revenue.Outputs[Derived Column Output].Columns[RevenueInEuro]" />
+                      lineageId="Package\Load Shipment\Calculate TotalTEU, Revenue.Outputs[Derived Column Output].Columns[RevenueInEuro]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -3444,7 +3444,7 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
               refId="Package\Load Shipment.Paths[Derived Column Output]"
               endId="Package\Load Shipment\Caculate LoadFactor.Inputs[Derived Column Input]"
               name="Derived Column Output"
-              startId="Package\Load Shipment\Calculate TotalTEU &amp; Revenue.Outputs[Derived Column Output]" />
+              startId="Package\Load Shipment\Calculate TotalTEU, Revenue.Outputs[Derived Column Output]" />
             <path
               refId="Package\Load Shipment.Paths[Derived Column Output1]"
               endId="Package\Load Shipment\PSA_Shipment (Fact).Inputs[OLE DB Destination Input]"
@@ -3467,14 +3467,14 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
               startId="Package\Load Shipment\Lookup ShipId.Outputs[Lookup Match Output]" />
             <path
               refId="Package\Load Shipment.Paths[Lookup Match Output3]"
-              endId="Package\Load Shipment\Lookup.Inputs[Lookup Input]"
+              endId="Package\Load Shipment\Lookup Container.Inputs[Lookup Input]"
               name="Lookup Match Output"
               startId="Package\Load Shipment\Lookup Ship MaxTEU.Outputs[Lookup Match Output]" />
             <path
               refId="Package\Load Shipment.Paths[Lookup Match Output4]"
-              endId="Package\Load Shipment\Calculate TotalTEU &amp; Revenue.Inputs[Derived Column Input]"
+              endId="Package\Load Shipment\Calculate TotalTEU, Revenue.Inputs[Derived Column Input]"
               name="Lookup Match Output"
-              startId="Package\Load Shipment\Lookup.Outputs[Lookup Match Output]" />
+              startId="Package\Load Shipment\Lookup Container.Outputs[Lookup Match Output]" />
             <path
               refId="Package\Load Shipment.Paths[OLE DB Source Output]"
               endId="Package\Load Shipment\Lookup Shipment.Inputs[Lookup Input]"
@@ -6605,114 +6605,112 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="179,42"
-          Id="Package\Load Shipment\PSA_Shipment (Fact)"
-          TopLeft="410,295" />
-        <NodeLayout
-          Size="222,42"
-          Id="Package\Load Shipment\Calculate TotalTEU &amp; Revenue"
-          TopLeft="160,177" />
-        <NodeLayout
-          Size="113,42"
-          Id="Package\Load Shipment\Lookup"
-          TopLeft="431,174" />
-        <NodeLayout
-          Size="190,42"
-          Id="Package\Load Shipment\RDBMS_ShipmentDetail"
-          TopLeft="112,64" />
-        <NodeLayout
-          Size="146,42"
-          Id="Package\Load Shipment\Lookup ShipId"
-          TopLeft="961,177" />
-        <NodeLayout
-          Size="178,42"
-          Id="Package\Load Shipment\Lookup Ship MaxTEU"
-          TopLeft="668,176" />
-        <NodeLayout
-          Size="161,42"
-          Id="Package\Load Shipment\Lookup Shipment"
-          TopLeft="458,63" />
+          Size="215,42"
+          Id="Package\Load Shipment\Calculate TotalTEU, Revenue"
+          TopLeft="138,306" />
         <NodeLayout
           Size="170,42"
           Id="Package\Load Shipment\Lookup VoyagePort"
           TopLeft="947,71" />
         <NodeLayout
+          Size="179,42"
+          Id="Package\Load Shipment\PSA_Shipment (Fact)"
+          TopLeft="751,301" />
+        <NodeLayout
+          Size="190,42"
+          Id="Package\Load Shipment\RDBMS_ShipmentDetail"
+          TopLeft="112,64" />
+        <NodeLayout
+          Size="178,42"
+          Id="Package\Load Shipment\Lookup Ship MaxTEU"
+          TopLeft="495,178" />
+        <NodeLayout
+          Size="146,42"
+          Id="Package\Load Shipment\Lookup ShipId"
+          TopLeft="961,177" />
+        <NodeLayout
+          Size="162,42"
+          Id="Package\Load Shipment\Lookup Container"
+          TopLeft="161,178" />
+        <NodeLayout
           Size="174,42"
           Id="Package\Load Shipment\Caculate LoadFactor"
-          TopLeft="179,298" />
+          TopLeft="486,299" />
         <NodeLayout
           Size="127,42"
           Id="Package\Load Shipment\Aggregate"
           TopLeft="697,67" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\Load Shipment\Lookup Shipment"
+          TopLeft="458,63" />
         <EdgeLayout
-          Id="Package\Load Shipment.Paths[Lookup Match Output4]"
-          TopLeft="431,196.5">
+          Id="Package\Load Shipment.Paths[OLE DB Source Output]"
+          TopLeft="302,84.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-49,0"
+              EndConnector="156,0"
               Start="0,0"
-              End="-41.5,0">
+              End="148.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-41.5,0" />
+                    End="148.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-68.94138671875,5,96.3827734375,11.609375"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Shipment.Paths[Lookup Match Output3]"
-          TopLeft="668,196">
+          TopLeft="495,199">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-124,0"
+              EndConnector="-172,0"
               Start="0,0"
-              End="-116.5,0">
+              End="-164.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-116.5,0" />
+                    End="-164.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-106.44138671875,5,96.3827734375,11.609375"
+              BoundingBox="-130.44138671875,5,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Shipment.Paths[Lookup Match Output2]"
-          TopLeft="961,197.5">
+          TopLeft="961,198.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-115,0"
+              EndConnector="-288,0"
               Start="0,0"
-              End="-107.5,0">
+              End="-280.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-107.5,0" />
+                    End="-280.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-101.94138671875,5,96.3827734375,11.609375"
+              BoundingBox="-188.44138671875,5,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -6766,18 +6764,18 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Shipment.Paths[Derived Column Output1]"
-          TopLeft="353,317.5">
+          TopLeft="660,321">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="57,0"
+              EndConnector="91,0"
               Start="0,0"
-              End="49.5,0">
+              End="83.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="49.5,0" />
+                    End="83.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6788,18 +6786,18 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Shipment.Paths[Derived Column Output]"
-          TopLeft="268.5,219">
+          TopLeft="353,323.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,79"
+              EndConnector="133,0"
               Start="0,0"
-              End="0,71.5">
+              End="125.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,71.5" />
+                    End="125.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6831,30 +6829,55 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load Shipment.Paths[OLE DB Source Output]"
-          TopLeft="302,84.5">
+          Id="Package\Load Shipment.Paths[Lookup Match Output4]"
+          TopLeft="243.75,220">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="156,0"
+              EndConnector="0,86"
               Start="0,0"
-              End="148.5,0">
+              End="0,78.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="148.5,0" />
+                    End="0,78.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,33.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Shipment\Lookup VoyagePort">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[RDBMS_VoyagePort]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Load Shipment\PSA_Shipment (Fact)">
     <Properties>
@@ -6869,29 +6892,6 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Shipment\Lookup">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[RDBMS_Containers]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Load Shipment\RDBMS_ShipmentDetail">
     <Properties>
       <Property>
@@ -6901,6 +6901,29 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Shipment\Lookup Ship MaxTEU">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[RDBMS_Ship]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -6928,7 +6951,7 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Shipment\Lookup Ship MaxTEU">
+    design-time-name="Package\Load Shipment\Lookup Container">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
@@ -6938,7 +6961,7 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
       <Property>
         <Name>UsedTableName</Name>
         <Value
-          type="q3:string">[dbo].[RDBMS_Ship]</Value>
+          type="q3:string">[dbo].[RDBMS_Containers]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
@@ -6973,34 +6996,11 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
       </Property>
     </Properties>
   </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Shipment\Lookup VoyagePort">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[RDBMS_VoyagePort]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Load Ships">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="154,42"
           Id="Package\Load Ships\DIM_Ship (PSA)"
@@ -7028,7 +7028,9 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -7307,7 +7309,7 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
     design-time-name="Package\Load YearlyMeasurementShipData">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="238,42"
           Id="Package\Load YearlyMeasurementShipData\PSA_YearlyMeasurementShipData"
@@ -7335,14 +7337,16 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Load YearlyMeasurementShipData\PSA_YearlyMeasurementShipData">
+    design-time-name="Package\Load YearlyMeasurementShipData\OLE DB Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -7355,7 +7359,7 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load YearlyMeasurementShipData\OLE DB Source">
+    design-time-name="Package\Load YearlyMeasurementShipData\PSA_YearlyMeasurementShipData">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

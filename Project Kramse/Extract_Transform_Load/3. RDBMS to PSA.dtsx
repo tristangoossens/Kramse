@@ -11,8 +11,8 @@
   DTS:LocaleID="1043"
   DTS:ObjectName="3  RDBMS to PSA"
   DTS:PackageType="5"
-  DTS:VersionBuild="149"
-  DTS:VersionGUID="{6B1B3CFE-65A3-41D3-89EE-B90FFF036398}">
+  DTS:VersionBuild="152"
+  DTS:VersionGUID="{005F0AAE-58BB-4D4D-A05F-FCDD53E1711E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -1629,284 +1629,6 @@
           version="1">
           <components>
             <component
-              refId="Package\Load Shipment\Aggregate"
-              componentClassID="Microsoft.Aggregate"
-              contactInfo="Aggregate;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
-              description="Aggregates data with functions such as Average, Sum, Count, Max, and Min. For example, group data to compute the sum of sales per product or the average visits per day."
-              name="Aggregate"
-              version="3">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
-                  name="KeyScale"
-                  typeConverter="KeyScaleType">0</property>
-                <property
-                  dataType="System.Null"
-                  description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
-                  name="Keys" />
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the approximate number of distinct values in a column that the aggregation counts distinctly. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no CountDistinctScale value is used."
-                  name="CountDistinctScale"
-                  typeConverter="KeyScaleType">0</property>
-                <property
-                  dataType="System.Null"
-                  description="Specifies the exact number of distinct values in a column that the aggregation counts distinctly. If a CountDistinctScale value is specified, the value in CountDistinctKeys takes precedence."
-                  name="CountDistinctKeys" />
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the percentage by which memory can be extended during the aggregation. Valid values are between 1 and 100."
-                  name="AutoExtendFactor">25</property>
-              </properties>
-              <inputs>
-                <input
-                  refId="Package\Load Shipment\Aggregate.Inputs[Aggregate Input 1]"
-                  name="Aggregate Input 1">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Load Shipment\Aggregate.Inputs[Aggregate Input 1].Columns[ItemId]"
-                      cachedDataType="i4"
-                      cachedName="ItemId"
-                      lineageId="Package\Load Shipment\RDBMS_ShipmentDetail.Outputs[OLE DB Source Output].Columns[ItemId]" />
-                    <inputColumn
-                      refId="Package\Load Shipment\Aggregate.Inputs[Aggregate Input 1].Columns[ContainerTypeId]"
-                      cachedDataType="i4"
-                      cachedName="ContainerTypeId"
-                      lineageId="Package\Load Shipment\RDBMS_ShipmentDetail.Outputs[OLE DB Source Output].Columns[ContainerTypeId]" />
-                    <inputColumn
-                      refId="Package\Load Shipment\Aggregate.Inputs[Aggregate Input 1].Columns[ContainerAmount]"
-                      cachedDataType="i4"
-                      cachedName="ContainerAmount"
-                      lineageId="Package\Load Shipment\RDBMS_ShipmentDetail.Outputs[OLE DB Source Output].Columns[ContainerAmount]" />
-                    <inputColumn
-                      refId="Package\Load Shipment\Aggregate.Inputs[Aggregate Input 1].Columns[VoyageId]"
-                      cachedDataType="i4"
-                      cachedName="VoyageId"
-                      lineageId="Package\Load Shipment\Lookup Shipment.Outputs[Lookup Match Output].Columns[VoyageId]" />
-                    <inputColumn
-                      refId="Package\Load Shipment\Aggregate.Inputs[Aggregate Input 1].Columns[ConsignorId]"
-                      cachedDataType="i4"
-                      cachedName="ConsignorId"
-                      lineageId="Package\Load Shipment\Lookup Shipment.Outputs[Lookup Match Output].Columns[ConsignorId]" />
-                    <inputColumn
-                      refId="Package\Load Shipment\Aggregate.Inputs[Aggregate Input 1].Columns[PortIdFrom]"
-                      cachedDataType="i4"
-                      cachedName="PortIdFrom"
-                      lineageId="Package\Load Shipment\Lookup Shipment.Outputs[Lookup Match Output].Columns[PortIdFrom]" />
-                    <inputColumn
-                      refId="Package\Load Shipment\Aggregate.Inputs[Aggregate Input 1].Columns[PortIdTo]"
-                      cachedDataType="i4"
-                      cachedName="PortIdTo"
-                      lineageId="Package\Load Shipment\Lookup Shipment.Outputs[Lookup Match Output].Columns[PortIdTo]" />
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Load Shipment\Aggregate.Outputs[Aggregate Output 1]"
-                  name="Aggregate Output 1">
-                  <properties>
-                    <property
-                      dataType="System.Int32"
-                      description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
-                      name="KeyScale"
-                      typeConverter="KeyScaleType">0</property>
-                    <property
-                      dataType="System.Null"
-                      description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
-                      name="Keys" />
-                  </properties>
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Load Shipment\Aggregate.Outputs[Aggregate Output 1].Columns[ItemId]"
-                      dataType="i4"
-                      lineageId="Package\Load Shipment\Aggregate.Outputs[Aggregate Output 1].Columns[ItemId]"
-                      name="ItemId">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the ID of the input column used in the aggregation."
-                          name="AggregationColumnId">#{Package\Load Shipment\RDBMS_ShipmentDetail.Outputs[OLE DB Source Output].Columns[ItemId]}</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the type of aggregation."
-                          name="AggregationType"
-                          typeConverter="AggregationType">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
-                          name="IsBig">1</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the string comparison options."
-                          name="AggregationComparisonFlags">0</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Load Shipment\Aggregate.Outputs[Aggregate Output 1].Columns[ContainerTypeId]"
-                      dataType="i4"
-                      lineageId="Package\Load Shipment\Aggregate.Outputs[Aggregate Output 1].Columns[ContainerTypeId]"
-                      name="ContainerTypeId">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the ID of the input column used in the aggregation."
-                          name="AggregationColumnId">#{Package\Load Shipment\RDBMS_ShipmentDetail.Outputs[OLE DB Source Output].Columns[ContainerTypeId]}</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the type of aggregation."
-                          name="AggregationType"
-                          typeConverter="AggregationType">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
-                          name="IsBig">1</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the string comparison options."
-                          name="AggregationComparisonFlags">0</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Load Shipment\Aggregate.Outputs[Aggregate Output 1].Columns[ContainerAmount]"
-                      dataType="i8"
-                      lineageId="Package\Load Shipment\Aggregate.Outputs[Aggregate Output 1].Columns[ContainerAmount]"
-                      name="ContainerAmount">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the ID of the input column used in the aggregation."
-                          name="AggregationColumnId">#{Package\Load Shipment\RDBMS_ShipmentDetail.Outputs[OLE DB Source Output].Columns[ContainerAmount]}</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the type of aggregation."
-                          name="AggregationType"
-                          typeConverter="AggregationType">4</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
-                          name="IsBig">1</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the string comparison options."
-                          name="AggregationComparisonFlags">0</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Load Shipment\Aggregate.Outputs[Aggregate Output 1].Columns[VoyageId]"
-                      dataType="i4"
-                      lineageId="Package\Load Shipment\Aggregate.Outputs[Aggregate Output 1].Columns[VoyageId]"
-                      name="VoyageId">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the ID of the input column used in the aggregation."
-                          name="AggregationColumnId">#{Package\Load Shipment\Lookup Shipment.Outputs[Lookup Match Output].Columns[VoyageId]}</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the type of aggregation."
-                          name="AggregationType"
-                          typeConverter="AggregationType">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
-                          name="IsBig">1</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the string comparison options."
-                          name="AggregationComparisonFlags">0</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Load Shipment\Aggregate.Outputs[Aggregate Output 1].Columns[ConsignorId]"
-                      dataType="i4"
-                      lineageId="Package\Load Shipment\Aggregate.Outputs[Aggregate Output 1].Columns[ConsignorId]"
-                      name="ConsignorId">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the ID of the input column used in the aggregation."
-                          name="AggregationColumnId">#{Package\Load Shipment\Lookup Shipment.Outputs[Lookup Match Output].Columns[ConsignorId]}</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the type of aggregation."
-                          name="AggregationType"
-                          typeConverter="AggregationType">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
-                          name="IsBig">1</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the string comparison options."
-                          name="AggregationComparisonFlags">0</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Load Shipment\Aggregate.Outputs[Aggregate Output 1].Columns[PortIdFrom]"
-                      dataType="i4"
-                      lineageId="Package\Load Shipment\Aggregate.Outputs[Aggregate Output 1].Columns[PortIdFrom]"
-                      name="PortIdFrom">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the ID of the input column used in the aggregation."
-                          name="AggregationColumnId">#{Package\Load Shipment\Lookup Shipment.Outputs[Lookup Match Output].Columns[PortIdFrom]}</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the type of aggregation."
-                          name="AggregationType"
-                          typeConverter="AggregationType">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
-                          name="IsBig">1</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the string comparison options."
-                          name="AggregationComparisonFlags">0</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Load Shipment\Aggregate.Outputs[Aggregate Output 1].Columns[PortIdTo]"
-                      dataType="i4"
-                      lineageId="Package\Load Shipment\Aggregate.Outputs[Aggregate Output 1].Columns[PortIdTo]"
-                      name="PortIdTo">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the ID of the input column used in the aggregation."
-                          name="AggregationColumnId">#{Package\Load Shipment\Lookup Shipment.Outputs[Lookup Match Output].Columns[PortIdTo]}</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the type of aggregation."
-                          name="AggregationType"
-                          typeConverter="AggregationType">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
-                          name="IsBig">1</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the string comparison options."
-                          name="AggregationComparisonFlags">0</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
               refId="Package\Load Shipment\Caculate LoadFactor"
               componentClassID="Microsoft.DerivedColumn"
               contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
@@ -2008,7 +1730,7 @@
                       refId="Package\Load Shipment\Calculate TotalTEU, Revenue.Inputs[Derived Column Input].Columns[ContainerAmount]"
                       cachedDataType="i8"
                       cachedName="ContainerAmount"
-                      lineageId="Package\Load Shipment\Aggregate.Outputs[Aggregate Output 1].Columns[ContainerAmount]" />
+                      lineageId="Package\Load Shipment\Group shipments and sum container amount.Outputs[Aggregate Output 1].Columns[ContainerAmount]" />
                     <inputColumn
                       refId="Package\Load Shipment\Calculate TotalTEU, Revenue.Inputs[Derived Column Input].Columns[TrajectDistanceInNMile]"
                       cachedDataType="r8"
@@ -2049,7 +1771,7 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">#{Package\Load Shipment\Aggregate.Outputs[Aggregate Output 1].Columns[ContainerAmount]} * #{Package\Load Shipment\Lookup Container.Outputs[Lookup Match Output].Columns[TEU]}</property>
+                          name="Expression">#{Package\Load Shipment\Group shipments and sum container amount.Outputs[Aggregate Output 1].Columns[ContainerAmount]} * #{Package\Load Shipment\Lookup Container.Outputs[Lookup Match Output].Columns[TEU]}</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -2071,7 +1793,7 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">(DT_R8)(#{Package\Load Shipment\Lookup Container.Outputs[Lookup Match Output].Columns[EuroPricePerNmile]} * #{Package\Load Shipment\Aggregate.Outputs[Aggregate Output 1].Columns[ContainerAmount]} * #{Package\Load Shipment\Lookup VoyagePort.Outputs[Lookup Match Output].Columns[TrajectDistanceInNMile]})</property>
+                          name="Expression">(DT_R8)(#{Package\Load Shipment\Lookup Container.Outputs[Lookup Match Output].Columns[EuroPricePerNmile]} * #{Package\Load Shipment\Group shipments and sum container amount.Outputs[Aggregate Output 1].Columns[ContainerAmount]} * #{Package\Load Shipment\Lookup VoyagePort.Outputs[Lookup Match Output].Columns[TrajectDistanceInNMile]})</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -2103,6 +1825,284 @@
                       lineageId="Package\Load Shipment\Calculate TotalTEU, Revenue.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Shipment\Group shipments and sum container amount"
+              componentClassID="Microsoft.Aggregate"
+              contactInfo="Aggregate;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Aggregates data with functions such as Average, Sum, Count, Max, and Min. For example, group data to compute the sum of sales per product or the average visits per day."
+              name="Group shipments and sum container amount"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                  name="KeyScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                  name="Keys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of distinct values in a column that the aggregation counts distinctly. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no CountDistinctScale value is used."
+                  name="CountDistinctScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of distinct values in a column that the aggregation counts distinctly. If a CountDistinctScale value is specified, the value in CountDistinctKeys takes precedence."
+                  name="CountDistinctKeys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage by which memory can be extended during the aggregation. Valid values are between 1 and 100."
+                  name="AutoExtendFactor">25</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Load Shipment\Group shipments and sum container amount.Inputs[Aggregate Input 1]"
+                  name="Aggregate Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Shipment\Group shipments and sum container amount.Inputs[Aggregate Input 1].Columns[ItemId]"
+                      cachedDataType="i4"
+                      cachedName="ItemId"
+                      lineageId="Package\Load Shipment\RDBMS_ShipmentDetail.Outputs[OLE DB Source Output].Columns[ItemId]" />
+                    <inputColumn
+                      refId="Package\Load Shipment\Group shipments and sum container amount.Inputs[Aggregate Input 1].Columns[ContainerTypeId]"
+                      cachedDataType="i4"
+                      cachedName="ContainerTypeId"
+                      lineageId="Package\Load Shipment\RDBMS_ShipmentDetail.Outputs[OLE DB Source Output].Columns[ContainerTypeId]" />
+                    <inputColumn
+                      refId="Package\Load Shipment\Group shipments and sum container amount.Inputs[Aggregate Input 1].Columns[ContainerAmount]"
+                      cachedDataType="i4"
+                      cachedName="ContainerAmount"
+                      lineageId="Package\Load Shipment\RDBMS_ShipmentDetail.Outputs[OLE DB Source Output].Columns[ContainerAmount]" />
+                    <inputColumn
+                      refId="Package\Load Shipment\Group shipments and sum container amount.Inputs[Aggregate Input 1].Columns[VoyageId]"
+                      cachedDataType="i4"
+                      cachedName="VoyageId"
+                      lineageId="Package\Load Shipment\Lookup Shipment.Outputs[Lookup Match Output].Columns[VoyageId]" />
+                    <inputColumn
+                      refId="Package\Load Shipment\Group shipments and sum container amount.Inputs[Aggregate Input 1].Columns[ConsignorId]"
+                      cachedDataType="i4"
+                      cachedName="ConsignorId"
+                      lineageId="Package\Load Shipment\Lookup Shipment.Outputs[Lookup Match Output].Columns[ConsignorId]" />
+                    <inputColumn
+                      refId="Package\Load Shipment\Group shipments and sum container amount.Inputs[Aggregate Input 1].Columns[PortIdFrom]"
+                      cachedDataType="i4"
+                      cachedName="PortIdFrom"
+                      lineageId="Package\Load Shipment\Lookup Shipment.Outputs[Lookup Match Output].Columns[PortIdFrom]" />
+                    <inputColumn
+                      refId="Package\Load Shipment\Group shipments and sum container amount.Inputs[Aggregate Input 1].Columns[PortIdTo]"
+                      cachedDataType="i4"
+                      cachedName="PortIdTo"
+                      lineageId="Package\Load Shipment\Lookup Shipment.Outputs[Lookup Match Output].Columns[PortIdTo]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Shipment\Group shipments and sum container amount.Outputs[Aggregate Output 1]"
+                  name="Aggregate Output 1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                      name="KeyScale"
+                      typeConverter="KeyScaleType">0</property>
+                    <property
+                      dataType="System.Null"
+                      description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                      name="Keys" />
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Shipment\Group shipments and sum container amount.Outputs[Aggregate Output 1].Columns[ItemId]"
+                      dataType="i4"
+                      lineageId="Package\Load Shipment\Group shipments and sum container amount.Outputs[Aggregate Output 1].Columns[ItemId]"
+                      name="ItemId">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Load Shipment\RDBMS_ShipmentDetail.Outputs[OLE DB Source Output].Columns[ItemId]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Shipment\Group shipments and sum container amount.Outputs[Aggregate Output 1].Columns[ContainerTypeId]"
+                      dataType="i4"
+                      lineageId="Package\Load Shipment\Group shipments and sum container amount.Outputs[Aggregate Output 1].Columns[ContainerTypeId]"
+                      name="ContainerTypeId">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Load Shipment\RDBMS_ShipmentDetail.Outputs[OLE DB Source Output].Columns[ContainerTypeId]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Shipment\Group shipments and sum container amount.Outputs[Aggregate Output 1].Columns[ContainerAmount]"
+                      dataType="i8"
+                      lineageId="Package\Load Shipment\Group shipments and sum container amount.Outputs[Aggregate Output 1].Columns[ContainerAmount]"
+                      name="ContainerAmount">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Load Shipment\RDBMS_ShipmentDetail.Outputs[OLE DB Source Output].Columns[ContainerAmount]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">4</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Shipment\Group shipments and sum container amount.Outputs[Aggregate Output 1].Columns[VoyageId]"
+                      dataType="i4"
+                      lineageId="Package\Load Shipment\Group shipments and sum container amount.Outputs[Aggregate Output 1].Columns[VoyageId]"
+                      name="VoyageId">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Load Shipment\Lookup Shipment.Outputs[Lookup Match Output].Columns[VoyageId]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Shipment\Group shipments and sum container amount.Outputs[Aggregate Output 1].Columns[ConsignorId]"
+                      dataType="i4"
+                      lineageId="Package\Load Shipment\Group shipments and sum container amount.Outputs[Aggregate Output 1].Columns[ConsignorId]"
+                      name="ConsignorId">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Load Shipment\Lookup Shipment.Outputs[Lookup Match Output].Columns[ConsignorId]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Shipment\Group shipments and sum container amount.Outputs[Aggregate Output 1].Columns[PortIdFrom]"
+                      dataType="i4"
+                      lineageId="Package\Load Shipment\Group shipments and sum container amount.Outputs[Aggregate Output 1].Columns[PortIdFrom]"
+                      name="PortIdFrom">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Load Shipment\Lookup Shipment.Outputs[Lookup Match Output].Columns[PortIdFrom]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Shipment\Group shipments and sum container amount.Outputs[Aggregate Output 1].Columns[PortIdTo]"
+                      dataType="i4"
+                      lineageId="Package\Load Shipment\Group shipments and sum container amount.Outputs[Aggregate Output 1].Columns[PortIdTo]"
+                      name="PortIdTo">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Load Shipment\Lookup Shipment.Outputs[Lookup Match Output].Columns[PortIdTo]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -2165,7 +2165,7 @@ where [refTable].[Id] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Load Shipment\Aggregate.Outputs[Aggregate Output 1].Columns[ContainerTypeId]};</property>
+                  name="ParameterMap">#{Package\Load Shipment\Group shipments and sum container amount.Outputs[Aggregate Output 1].Columns[ContainerTypeId]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -2192,7 +2192,7 @@ where [refTable].[Id] = ?</property>
                       refId="Package\Load Shipment\Lookup Container.Inputs[Lookup Input].Columns[ContainerTypeId]"
                       cachedDataType="i4"
                       cachedName="ContainerTypeId"
-                      lineageId="Package\Load Shipment\Aggregate.Outputs[Aggregate Output 1].Columns[ContainerTypeId]">
+                      lineageId="Package\Load Shipment\Group shipments and sum container amount.Outputs[Aggregate Output 1].Columns[ContainerTypeId]">
                       <properties>
                         <property
                           dataType="System.String"
@@ -2495,7 +2495,7 @@ where [refTable].[Id] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Load Shipment\Aggregate.Outputs[Aggregate Output 1].Columns[VoyageId]};</property>
+                  name="ParameterMap">#{Package\Load Shipment\Group shipments and sum container amount.Outputs[Aggregate Output 1].Columns[VoyageId]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -2522,7 +2522,7 @@ where [refTable].[Id] = ?</property>
                       refId="Package\Load Shipment\Lookup ShipId.Inputs[Lookup Input].Columns[VoyageId]"
                       cachedDataType="i4"
                       cachedName="VoyageId"
-                      lineageId="Package\Load Shipment\Aggregate.Outputs[Aggregate Output 1].Columns[VoyageId]">
+                      lineageId="Package\Load Shipment\Group shipments and sum container amount.Outputs[Aggregate Output 1].Columns[VoyageId]">
                       <properties>
                         <property
                           dataType="System.String"
@@ -2867,7 +2867,7 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Load Shipment\Aggregate.Outputs[Aggregate Output 1].Columns[VoyageId]};#{Package\Load Shipment\Aggregate.Outputs[Aggregate Output 1].Columns[PortIdFrom]};#{Package\Load Shipment\Aggregate.Outputs[Aggregate Output 1].Columns[PortIdTo]};</property>
+                  name="ParameterMap">#{Package\Load Shipment\Group shipments and sum container amount.Outputs[Aggregate Output 1].Columns[VoyageId]};#{Package\Load Shipment\Group shipments and sum container amount.Outputs[Aggregate Output 1].Columns[PortIdFrom]};#{Package\Load Shipment\Group shipments and sum container amount.Outputs[Aggregate Output 1].Columns[PortIdTo]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -2894,7 +2894,7 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
                       refId="Package\Load Shipment\Lookup VoyagePort.Inputs[Lookup Input].Columns[VoyageId]"
                       cachedDataType="i4"
                       cachedName="VoyageId"
-                      lineageId="Package\Load Shipment\Aggregate.Outputs[Aggregate Output 1].Columns[VoyageId]">
+                      lineageId="Package\Load Shipment\Group shipments and sum container amount.Outputs[Aggregate Output 1].Columns[VoyageId]">
                       <properties>
                         <property
                           dataType="System.String"
@@ -2910,7 +2910,7 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
                       refId="Package\Load Shipment\Lookup VoyagePort.Inputs[Lookup Input].Columns[PortIdFrom]"
                       cachedDataType="i4"
                       cachedName="PortIdFrom"
-                      lineageId="Package\Load Shipment\Aggregate.Outputs[Aggregate Output 1].Columns[PortIdFrom]">
+                      lineageId="Package\Load Shipment\Group shipments and sum container amount.Outputs[Aggregate Output 1].Columns[PortIdFrom]">
                       <properties>
                         <property
                           dataType="System.String"
@@ -2926,7 +2926,7 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
                       refId="Package\Load Shipment\Lookup VoyagePort.Inputs[Lookup Input].Columns[PortIdTo]"
                       cachedDataType="i4"
                       cachedName="PortIdTo"
-                      lineageId="Package\Load Shipment\Aggregate.Outputs[Aggregate Output 1].Columns[PortIdTo]">
+                      lineageId="Package\Load Shipment\Group shipments and sum container amount.Outputs[Aggregate Output 1].Columns[PortIdTo]">
                       <properties>
                         <property
                           dataType="System.String"
@@ -3105,25 +3105,25 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
                       cachedDataType="i4"
                       cachedName="ItemId"
                       externalMetadataColumnId="Package\Load Shipment\PSA_Shipment (Fact).Inputs[OLE DB Destination Input].ExternalColumns[ItemId]"
-                      lineageId="Package\Load Shipment\Aggregate.Outputs[Aggregate Output 1].Columns[ItemId]" />
+                      lineageId="Package\Load Shipment\Group shipments and sum container amount.Outputs[Aggregate Output 1].Columns[ItemId]" />
                     <inputColumn
                       refId="Package\Load Shipment\PSA_Shipment (Fact).Inputs[OLE DB Destination Input].Columns[ContainerAmount]"
                       cachedDataType="i8"
                       cachedName="ContainerAmount"
                       externalMetadataColumnId="Package\Load Shipment\PSA_Shipment (Fact).Inputs[OLE DB Destination Input].ExternalColumns[ContainerAmount]"
-                      lineageId="Package\Load Shipment\Aggregate.Outputs[Aggregate Output 1].Columns[ContainerAmount]" />
+                      lineageId="Package\Load Shipment\Group shipments and sum container amount.Outputs[Aggregate Output 1].Columns[ContainerAmount]" />
                     <inputColumn
                       refId="Package\Load Shipment\PSA_Shipment (Fact).Inputs[OLE DB Destination Input].Columns[VoyageId]"
                       cachedDataType="i4"
                       cachedName="VoyageId"
                       externalMetadataColumnId="Package\Load Shipment\PSA_Shipment (Fact).Inputs[OLE DB Destination Input].ExternalColumns[VoyageId]"
-                      lineageId="Package\Load Shipment\Aggregate.Outputs[Aggregate Output 1].Columns[VoyageId]" />
+                      lineageId="Package\Load Shipment\Group shipments and sum container amount.Outputs[Aggregate Output 1].Columns[VoyageId]" />
                     <inputColumn
                       refId="Package\Load Shipment\PSA_Shipment (Fact).Inputs[OLE DB Destination Input].Columns[ConsignorId]"
                       cachedDataType="i4"
                       cachedName="ConsignorId"
                       externalMetadataColumnId="Package\Load Shipment\PSA_Shipment (Fact).Inputs[OLE DB Destination Input].ExternalColumns[ConsignorId]"
-                      lineageId="Package\Load Shipment\Aggregate.Outputs[Aggregate Output 1].Columns[ConsignorId]" />
+                      lineageId="Package\Load Shipment\Group shipments and sum container amount.Outputs[Aggregate Output 1].Columns[ConsignorId]" />
                     <inputColumn
                       refId="Package\Load Shipment\PSA_Shipment (Fact).Inputs[OLE DB Destination Input].Columns[ArrivalDate]"
                       cachedDataType="dbDate"
@@ -3159,19 +3159,19 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
                       cachedDataType="i4"
                       cachedName="ContainerTypeId"
                       externalMetadataColumnId="Package\Load Shipment\PSA_Shipment (Fact).Inputs[OLE DB Destination Input].ExternalColumns[ContainerId]"
-                      lineageId="Package\Load Shipment\Aggregate.Outputs[Aggregate Output 1].Columns[ContainerTypeId]" />
+                      lineageId="Package\Load Shipment\Group shipments and sum container amount.Outputs[Aggregate Output 1].Columns[ContainerTypeId]" />
                     <inputColumn
                       refId="Package\Load Shipment\PSA_Shipment (Fact).Inputs[OLE DB Destination Input].Columns[PortIdFrom]"
                       cachedDataType="i4"
                       cachedName="PortIdFrom"
                       externalMetadataColumnId="Package\Load Shipment\PSA_Shipment (Fact).Inputs[OLE DB Destination Input].ExternalColumns[PortIdCurrent]"
-                      lineageId="Package\Load Shipment\Aggregate.Outputs[Aggregate Output 1].Columns[PortIdFrom]" />
+                      lineageId="Package\Load Shipment\Group shipments and sum container amount.Outputs[Aggregate Output 1].Columns[PortIdFrom]" />
                     <inputColumn
                       refId="Package\Load Shipment\PSA_Shipment (Fact).Inputs[OLE DB Destination Input].Columns[PortIdTo]"
                       cachedDataType="i4"
                       cachedName="PortIdTo"
                       externalMetadataColumnId="Package\Load Shipment\PSA_Shipment (Fact).Inputs[OLE DB Destination Input].ExternalColumns[PortIdNext]"
-                      lineageId="Package\Load Shipment\Aggregate.Outputs[Aggregate Output 1].Columns[PortIdTo]" />
+                      lineageId="Package\Load Shipment\Group shipments and sum container amount.Outputs[Aggregate Output 1].Columns[PortIdTo]" />
                     <inputColumn
                       refId="Package\Load Shipment\PSA_Shipment (Fact).Inputs[OLE DB Destination Input].Columns[TrajectDistanceInNMile]"
                       cachedDataType="r8"
@@ -3439,7 +3439,7 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
               refId="Package\Load Shipment.Paths[Aggregate Output 1]"
               endId="Package\Load Shipment\Lookup VoyagePort.Inputs[Lookup Input]"
               name="Aggregate Output 1"
-              startId="Package\Load Shipment\Aggregate.Outputs[Aggregate Output 1]" />
+              startId="Package\Load Shipment\Group shipments and sum container amount.Outputs[Aggregate Output 1]" />
             <path
               refId="Package\Load Shipment.Paths[Derived Column Output]"
               endId="Package\Load Shipment\Caculate LoadFactor.Inputs[Derived Column Input]"
@@ -3457,7 +3457,7 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
               startId="Package\Load Shipment\Lookup VoyagePort.Outputs[Lookup Match Output]" />
             <path
               refId="Package\Load Shipment.Paths[Lookup Match Output1]"
-              endId="Package\Load Shipment\Aggregate.Inputs[Aggregate Input 1]"
+              endId="Package\Load Shipment\Group shipments and sum container amount.Inputs[Aggregate Input 1]"
               name="Lookup Match Output"
               startId="Package\Load Shipment\Lookup Shipment.Outputs[Lookup Match Output]" />
             <path
@@ -6339,13 +6339,13 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
     design-time-name="Package\Load Consignor">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="150.4,41.6"
+          Size="150,42"
           Id="Package\Load Consignor\PSA_Consignor"
           TopLeft="436,186" />
         <NodeLayout
-          Size="166.4,41.6"
+          Size="166,42"
           Id="Package\Load Consignor\RDBMS_Consignor"
           TopLeft="431,71" />
         <EdgeLayout
@@ -6367,9 +6367,7 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -6405,13 +6403,13 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
     design-time-name="Package\Load Containers">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="148,41.6"
+          Size="148,42"
           Id="Package\Load Containers\PSA_Container"
           TopLeft="480,170" />
         <NodeLayout
-          Size="164,41.6"
+          Size="164,42"
           Id="Package\Load Containers\RDBMS_Container"
           TopLeft="476,52" />
         <EdgeLayout
@@ -6433,9 +6431,7 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -6471,7 +6467,7 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
     design-time-name="Package\Load Items">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="156,42"
           Id="Package\Load Items\DIM_Item (PSA)"
@@ -6499,9 +6495,7 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -6537,7 +6531,7 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
     design-time-name="Package\Load Ports">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="138,42"
           Id="Package\Load Ports\RDBMS_Port"
@@ -6565,9 +6559,7 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -6605,59 +6597,179 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="215,42"
-          Id="Package\Load Shipment\Calculate TotalTEU, Revenue"
-          TopLeft="138,306" />
-        <NodeLayout
-          Size="170,42"
-          Id="Package\Load Shipment\Lookup VoyagePort"
-          TopLeft="947,71" />
-        <NodeLayout
           Size="179,42"
           Id="Package\Load Shipment\PSA_Shipment (Fact)"
-          TopLeft="751,301" />
+          TopLeft="848,301" />
         <NodeLayout
-          Size="190,42"
-          Id="Package\Load Shipment\RDBMS_ShipmentDetail"
-          TopLeft="112,64" />
-        <NodeLayout
-          Size="178,42"
-          Id="Package\Load Shipment\Lookup Ship MaxTEU"
-          TopLeft="495,178" />
-        <NodeLayout
-          Size="146,42"
-          Id="Package\Load Shipment\Lookup ShipId"
-          TopLeft="961,177" />
+          Size="215,42"
+          Id="Package\Load Shipment\Calculate TotalTEU, Revenue"
+          TopLeft="273,303" />
         <NodeLayout
           Size="162,42"
           Id="Package\Load Shipment\Lookup Container"
-          TopLeft="161,178" />
+          TopLeft="304,182" />
         <NodeLayout
-          Size="174,42"
-          Id="Package\Load Shipment\Caculate LoadFactor"
-          TopLeft="486,299" />
+          Size="190,42"
+          Id="Package\Load Shipment\RDBMS_ShipmentDetail"
+          TopLeft="49,63" />
         <NodeLayout
-          Size="127,42"
-          Id="Package\Load Shipment\Aggregate"
-          TopLeft="697,67" />
+          Size="146,42"
+          Id="Package\Load Shipment\Lookup ShipId"
+          TopLeft="1046,180" />
+        <NodeLayout
+          Size="178,42"
+          Id="Package\Load Shipment\Lookup Ship MaxTEU"
+          TopLeft="712,179" />
         <NodeLayout
           Size="161,42"
           Id="Package\Load Shipment\Lookup Shipment"
-          TopLeft="458,63" />
+          TopLeft="330,63" />
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Load Shipment\Lookup VoyagePort"
+          TopLeft="1033,68" />
+        <NodeLayout
+          Size="174,42"
+          Id="Package\Load Shipment\Caculate LoadFactor"
+          TopLeft="572,299" />
+        <NodeLayout
+          Size="289,42"
+          Id="Package\Load Shipment\Group shipments and sum container amount"
+          TopLeft="634,65" />
         <EdgeLayout
-          Id="Package\Load Shipment.Paths[OLE DB Source Output]"
-          TopLeft="302,84.5">
+          Id="Package\Load Shipment.Paths[Lookup Match Output4]"
+          TopLeft="382.75,224">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="156,0"
+              EndConnector="0,79"
               Start="0,0"
-              End="148.5,0">
+              End="0,71.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="148.5,0" />
+                    End="0,71.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,29.9453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Shipment.Paths[Lookup Match Output3]"
+          TopLeft="712,201.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-246,0"
+              Start="0,0"
+              End="-238.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-238.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-167.44138671875,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Shipment.Paths[Lookup Match Output2]"
+          TopLeft="1046,200.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-156,0"
+              Start="0,0"
+              End="-148.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-148.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-122.44138671875,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Shipment.Paths[Lookup Match Output1]"
+          TopLeft="491,85">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="143,0"
+              Start="0,0"
+              End="135.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="135.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="19.55861328125,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Shipment.Paths[Lookup Match Output]"
+          TopLeft="1118.5,110">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,70"
+              Start="0,0"
+              End="0,62.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,62.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,25.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Shipment.Paths[Derived Column Output1]"
+          TopLeft="746,321">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="102,0"
+              Start="0,0"
+              End="94.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="94.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6667,104 +6779,52 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load Shipment.Paths[Lookup Match Output3]"
-          TopLeft="495,199">
+          Id="Package\Load Shipment.Paths[Derived Column Output]"
+          TopLeft="488,322">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-172,0"
+              EndConnector="84,0"
               Start="0,0"
-              End="-164.5,0">
+              End="76.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-164.5,0" />
+                    End="76.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-130.44138671875,5,96.3827734375,11.609375"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load Shipment.Paths[Lookup Match Output2]"
-          TopLeft="961,198.5">
+          Id="Package\Load Shipment.Paths[Aggregate Output 1]"
+          TopLeft="923,87.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-288,0"
+              EndConnector="110,0"
               Start="0,0"
-              End="-280.5,0">
+              End="102.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-280.5,0" />
+                    End="102.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-188.44138671875,5,96.3827734375,11.609375"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load Shipment.Paths[Lookup Match Output1]"
-          TopLeft="619,86">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="78,0"
-              Start="0,0"
-              End="70.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="70.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-12.94138671875,5,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Shipment.Paths[Lookup Match Output]"
-          TopLeft="1033,113">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,64"
-              Start="0,0"
-              End="0,56.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,56.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,22.4453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Shipment.Paths[Derived Column Output1]"
-          TopLeft="660,321">
+          Id="Package\Load Shipment.Paths[OLE DB Source Output]"
+          TopLeft="239,84">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -6784,100 +6844,9 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Shipment.Paths[Derived Column Output]"
-          TopLeft="353,323.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="133,0"
-              Start="0,0"
-              End="125.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="125.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Shipment.Paths[Aggregate Output 1]"
-          TopLeft="824,90">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="123,0"
-              Start="0,0"
-              End="115.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="115.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Shipment.Paths[Lookup Match Output4]"
-          TopLeft="243.75,220">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,86"
-              Start="0,0"
-              End="0,78.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,78.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,33.4453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Shipment\Lookup VoyagePort">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[RDBMS_VoyagePort]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Load Shipment\PSA_Shipment (Fact)">
     <Properties>
@@ -6892,20 +6861,7 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Shipment\RDBMS_ShipmentDetail">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Shipment\Lookup Ship MaxTEU">
+    design-time-name="Package\Load Shipment\Lookup Container">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
@@ -6915,7 +6871,7 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
       <Property>
         <Name>UsedTableName</Name>
         <Value
-          type="q3:string">[dbo].[RDBMS_Ship]</Value>
+          type="q3:string">[dbo].[RDBMS_Containers]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
@@ -6924,6 +6880,19 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Shipment\RDBMS_ShipmentDetail">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -6951,7 +6920,7 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Shipment\Lookup Container">
+    design-time-name="Package\Load Shipment\Lookup Ship MaxTEU">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
@@ -6961,7 +6930,7 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
       <Property>
         <Name>UsedTableName</Name>
         <Value
-          type="q3:string">[dbo].[RDBMS_Containers]</Value>
+          type="q3:string">[dbo].[RDBMS_Ship]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
@@ -6996,11 +6965,34 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Shipment\Lookup VoyagePort">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[RDBMS_VoyagePort]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Load Ships">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="154,42"
           Id="Package\Load Ships\DIM_Ship (PSA)"
@@ -7028,9 +7020,7 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -7066,15 +7056,15 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
     design-time-name="Package\Load Voyages">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="126,42"
           Id="Package\Load Voyages\Sort by Id"
-          TopLeft="653,199" />
+          TopLeft="654,249" />
         <NodeLayout
           Size="283,42"
           Id="Package\Load Voyages\Join TrajectDistanceInKm with voyage data"
-          TopLeft="416,325" />
+          TopLeft="416,341" />
         <NodeLayout
           Size="160,42"
           Id="Package\Load Voyages\Sort by VoyageId"
@@ -7101,94 +7091,88 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="139.666666666667,33"
+              EndConnector="139.666666666667,49"
               Start="0,0"
-              End="139.666666666667,25.5">
+              End="139.666666666667,41.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,15.6886858749122" />
+                    End="0,25.2347153900211" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,15.6886858749122"
-                    Point2="0,19.6886858749122"
-                    Point3="4,19.6886858749122" />
+                    Point1="0,25.2347153900211"
+                    Point2="0,29.2347153900211"
+                    Point3="4,29.2347153900211" />
                   <mssgle:LineSegment
-                    End="135.666666666667,19.6886858749122" />
+                    End="135.666666666667,29.2347153900211" />
                   <mssgle:CubicBezierSegment
-                    Point1="135.666666666667,19.6886858749122"
-                    Point2="139.666666666667,19.6886858749122"
-                    Point3="139.666666666667,23.6886858749122" />
+                    Point1="135.666666666667,29.2347153900211"
+                    Point2="139.666666666667,29.2347153900211"
+                    Point3="139.666666666667,33.2347153900211" />
                   <mssgle:LineSegment
-                    End="139.666666666667,25.5" />
+                    End="139.666666666667,41.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Voyages.Paths[Sort Output]"
-          TopLeft="716,241">
+          TopLeft="717,291">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-112.666666666667,84"
+              EndConnector="-113.666666666667,50"
               Start="0,0"
-              End="-112.666666666667,76.5">
+              End="-113.666666666667,42.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,46.1166549543218" />
+                    End="0,25.8313422347154" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,46.1166549543218"
-                    Point2="0,50.1166549543218"
-                    Point3="-4,50.1166549543218" />
+                    Point1="0,25.8313422347154"
+                    Point2="0,29.8313422347154"
+                    Point3="-4,29.8313422347154" />
                   <mssgle:LineSegment
-                    End="-108.666666666667,50.1166549543218" />
+                    End="-109.666666666667,29.8313422347154" />
                   <mssgle:CubicBezierSegment
-                    Point1="-108.666666666667,50.1166549543218"
-                    Point2="-112.666666666667,50.1166549543218"
-                    Point3="-112.666666666667,54.1166549543218" />
+                    Point1="-109.666666666667,29.8313422347154"
+                    Point2="-113.666666666667,29.8313422347154"
+                    Point3="-113.666666666667,33.8313422347154" />
                   <mssgle:LineSegment
-                    End="-112.666666666667,76.5" />
+                    End="-113.666666666667,42.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Voyages.Paths[OLE DB Source Output1]"
-          TopLeft="716,124">
+          TopLeft="716.5,124">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,75"
+              EndConnector="0,125"
               Start="0,0"
-              End="0,67.5">
+              End="0,117.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,67.5" />
+                    End="0,117.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -7210,33 +7194,29 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Voyages.Paths[Merge Join Output]"
-          TopLeft="557.5,367">
+          TopLeft="557.5,383">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,65"
+              EndConnector="0,49"
               Start="0,0"
-              End="0,57.5">
+              End="0,41.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,57.5" />
+                    End="0,41.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -7258,9 +7238,7 @@ where [refTable].[VoyageId] = ? and [refTable].[PortIdCurrent] = ? and [refTable
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

@@ -11,8 +11,8 @@
   DTS:LocaleID="1043"
   DTS:ObjectName="1  Data Sources to RAW db"
   DTS:PackageType="5"
-  DTS:VersionBuild="63"
-  DTS:VersionGUID="{535F22B4-B87C-46F7-958E-DC8FAF17E545}">
+  DTS:VersionBuild="65"
+  DTS:VersionGUID="{7D9386B3-72A2-458D-8368-223D11DEE536}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -5077,7 +5077,7 @@ where [refTable].[Sh_Shipname] = ?</property>
     design-time-name="Package\Load Consignor data">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="229,42"
           Id="Package\Load Consignor data\Raw_Consignor (Raw database)"
@@ -5105,9 +5105,7 @@ where [refTable].[Sh_Shipname] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -5203,9 +5201,7 @@ where [refTable].[Sh_Shipname] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5227,18 +5223,16 @@ where [refTable].[Sh_Shipname] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <AnnotationLayout
           Text="Convert non-unicode to unicode&#xA;Convert varchar to decimal"
           ParentId="Package\Load Container data"
           FontInfo="{assembly:Null}"
-          Size="202,NaN"
+          Size="205,56"
           Id="e707e30c-66fb-4878-b0ec-529dd374847a"
-          TopLeft="203,276" />
+          TopLeft="149,277" />
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -5259,17 +5253,17 @@ where [refTable].[Sh_Shipname] = ?</property>
     design-time-name="Package\Load Kramse TPS data">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="188,42"
           Id="Package\Load Kramse TPS data\Ship (Access database)"
           TopLeft="927.25,111" />
         <NodeLayout
-          Size="125.333333333334,42.6666666666667"
+          Size="125,43"
           Id="Package\Load Kramse TPS data\Raw_Ship"
           TopLeft="961,406" />
         <NodeLayout
-          Size="149.333333333334,42"
+          Size="149,42"
           Id="Package\Load Kramse TPS data\Raw_Shipment"
           TopLeft="1523,303" />
         <NodeLayout
@@ -5285,11 +5279,11 @@ where [refTable].[Sh_Shipname] = ?</property>
           Id="Package\Load Kramse TPS data\Raw_ShipmentDetail"
           TopLeft="615.75,302.5" />
         <NodeLayout
-          Size="221.333333333334,42"
+          Size="221,42"
           Id="Package\Load Kramse TPS data\VoyagePort (Access database)"
           TopLeft="99.5,116" />
         <NodeLayout
-          Size="186.666666666667,42"
+          Size="187,42"
           Id="Package\Load Kramse TPS data\Port (Access database)"
           TopLeft="1199,110.5" />
         <NodeLayout
@@ -5297,7 +5291,7 @@ where [refTable].[Sh_Shipname] = ?</property>
           Id="Package\Load Kramse TPS data\Raw_Voyage"
           TopLeft="392,304.25" />
         <NodeLayout
-          Size="126.666666666667,42"
+          Size="127,42"
           Id="Package\Load Kramse TPS data\Raw_Item"
           TopLeft="1785.5,306.75" />
         <NodeLayout
@@ -5313,7 +5307,7 @@ where [refTable].[Sh_Shipname] = ?</property>
           Id="Package\Load Kramse TPS data\Raw_Port"
           TopLeft="1231.25,306.75" />
         <NodeLayout
-          Size="158.666666666667,42"
+          Size="159,42"
           Id="Package\Load Kramse TPS data\Raw_VoyagePort"
           TopLeft="133.25,303.5" />
         <NodeLayout
@@ -5321,7 +5315,7 @@ where [refTable].[Sh_Shipname] = ?</property>
           Id="Package\Load Kramse TPS data\Correct name for ships"
           TopLeft="932,309" />
         <NodeLayout
-          Size="238.666666666667,42"
+          Size="239,42"
           Id="Package\Load Kramse TPS data\ShipmentDetail (Access database)"
           TopLeft="585.25,112" />
         <EdgeLayout
@@ -5343,9 +5337,7 @@ where [refTable].[Sh_Shipname] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5367,9 +5359,7 @@ where [refTable].[Sh_Shipname] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5391,9 +5381,7 @@ where [refTable].[Sh_Shipname] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5415,9 +5403,7 @@ where [refTable].[Sh_Shipname] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5439,9 +5425,7 @@ where [refTable].[Sh_Shipname] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5463,9 +5447,7 @@ where [refTable].[Sh_Shipname] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5487,9 +5469,7 @@ where [refTable].[Sh_Shipname] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5511,9 +5491,7 @@ where [refTable].[Sh_Shipname] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5535,9 +5513,7 @@ where [refTable].[Sh_Shipname] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
